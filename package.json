@@ -1,0 +1,10 @@
+{
+    "private": true,
+    "name": "@crispyeuro/crispyeuro-client",
+    "scripts": {
+        "build": "tsc"
+    },
+    "devDependencies": {
+        "typescript": "^4.0.3"
+    }
+}
