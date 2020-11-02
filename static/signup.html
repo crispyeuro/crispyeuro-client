@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="styles_signup.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <header>
+        <div class="logo"><a href="login.html">Crispyeuro</a></div>
+    </header>
+
+    <div class="leftContainer"></div>
+
+    <div class="content">
+        Sign up form
+        <form action="#">
+            <!-- <label for="fName">Name</label><br> -->
+            <input type="text" id="fName" name="name" placeholder="Name" autocomplete="off" ><br>
+
+            <!-- <label for="fusername">Username*</label><br> -->
+            <input type="text" id="fUsername" name="username" placeholder="Username*" autocomplete="off" required><br>
+
+            <!-- <label for="femail">Email*</label><br> -->
+            <input type="email" id="fEmail" name="email" placeholder="Email*" autocomplete="off" required><br>
+
+            <!-- <label for="fPWD">Password*</label><br> -->
+            <input type="password" id="fPWD" name="password" placeholder="Password*" autocomplete="off" required><br>
+
+            <!-- <label for="fConfPWD">Confirm password*</label><br> -->
+            <input type="password" id="fConfPWD" name="password" placeholder="Confitrm password*" autocomplete="off" required><br>
+
+            <label class="labelBirthday"for="fBirthday">Birthday</label><br>
+            <input type="date" id="fBirthday" name="birthday" value="1980-01-01">
+
+            <input type="radio" id="fMale" name="gender" value="male">
+            <label for="fMale">Male&nbsp;</label>
+            <input type="radio" id="fFemale" name="gender" value="female">
+            <label for="fFemale">Female</label><br>
+
+            <!-- <label for="fCountry">Country</label><br> -->
+            <select id="fCountry" name="country">
+                <option value="" disabled selected>Country</option>
+                <option value="estonia">Estonia</option>
+                <option value="latvia">Latvia</option>
+                <option value="lithuania">Lithuania</option>
+            </select><br>
+
+            <!-- <label for="fCity">City</label><br> -->
+            <input type="text" id="fCity" name="city" placeholder="City" autocomplete="off"><br><br>
+
+            <div class="floatRight">
+                <input type="checkbox" id="fTerms" name="terms" value="accept" required>
+                <label for="fTerms">I accept <a href="#">Terms of Use</a></label>
+            </div><br>
+
+            <input type="submit" value="Sign up">
+
+        </form>
+    </div>
+
+    <div class="rightContainer"></div>
+
+    <footer>
+        Crispyeuro 2020 
+    </footer>
+</body>
+
+</html>

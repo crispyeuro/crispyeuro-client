@@ -1,0 +1,115 @@
+@import "styles_main.css";
+
+body {
+    display: grid;
+    grid-template-rows: 40px 1fr 40px;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: 
+        'header header header'
+        'left content right'
+        'footer footer footer';
+    text-align: center;
+    background-color: #e7f3f8;
+}
+
+header {
+    grid-area: header;
+    background-color: var(--primaryColor);
+}
+
+
+.leftContainer {
+    grid-area: left;
+}
+
+.rightContainer {
+    grid-area: right;
+}
+
+.logo {
+    float: left;
+    text-transform: uppercase;
+    /*background-color: var(--secondaryColor);*/
+}
+
+.logo a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    outline: none;
+    color: white;
+}
+
+.content {
+    grid-area: content;
+    padding: 3% 25% 0 25%;
+    margin: 5% 0 5% 0;
+    font-size: 18px;
+    color: var(--textSecondaryColor);
+    /*background-color: #e7f3f8;*/
+    background-color: white;
+    border: 1px solid var(--backgroundSecondColor);
+    border-radius: 4px;
+    box-shadow: 5px 10px var(--backgroundColor);
+    /*border: 1px solid black;*/
+}
+
+form {
+    margin-top: 5%;
+}
+
+input[type=text], input[type=password], input[type=email], select {
+    width: 100%;
+    background-color: white;
+}
+
+input[type=text]:hover, input[type=password]:hover, input[type=email]:hover, input[type=date], select:hover {
+    background-color: white;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=date], select:focus {
+    background-color: white;
+}
+
+input[type=date] {
+    float: left;
+    width: 40%;
+    background-color: white;
+}
+
+input:invalid {
+    background-color: var(--backgroundColor);
+    box-shadow: none;
+}
+
+label {
+    color: var(--textSecondaryColor);
+}
+
+.labelBirthday {
+    float: left;
+}
+
+.floatRight {
+    float: right;
+}
+
+.content a {
+    color: var(--textSecondaryColor);
+}
+
+input[type=submit] {
+    width: 40%;
+    float: right;
+    margin-right: 0;
+}
+
+footer {
+    grid-area: footer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid var(--backgroundSecondColor);
+    background-color: #e7f3f8;
+    color: var(--textSecondaryColor);
+}

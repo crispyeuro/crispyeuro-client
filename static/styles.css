@@ -1,3 +1,11 @@
+:root {
+    /*Primary colors*/
+    --darkBlue: #275D72;
+    --blue: #347B98;
+    --lightBlue: #D4EDF7;
+    --white: #ffffff;
+}
+
 * { box-sizing: border-box; }
 
 html { height: 100%; }
@@ -18,7 +26,7 @@ body {
     top:0;
     bottom:0;
 
-    background-color: #275D72;
+    background-color: var(--darkBlue);
     text-align: center;
     font-size: 20px;
 }
@@ -29,9 +37,9 @@ header {
     position: sticky;
     overflow: hidden;
     top: 0;
-    border-bottom: 3px solid #275D72;
+    /*border-bottom: 3px solid var(--darkBlue);*/
 
-    background-color: #347B98;
+    background-color: var(--blue);
 }
 
 .logo {
@@ -40,7 +48,12 @@ header {
     padding: 8px;
 
     text-transform: uppercase;
-    color: white;
+}
+
+.logo a {
+    text-decoration: none;
+    outline: none;
+    color: var(--white);
 }
 
 nav { 
@@ -62,13 +75,13 @@ nav a {
     display: block;
     padding: 8px 16px;
 
-    color: #D4EDF7;
+    color: var(--lightBlue);
     text-decoration: none;
     font-weight: bold;
 }
 
 nav a:hover {
-    background-color: #275D72;
+    background-color: var(--darkBlue);
 }
 
 .menu { 
@@ -78,9 +91,10 @@ nav a:hover {
     top: 40px;
     width: 20vw;
     height: 100vw;
-    border-right: 3px solid #275D72;
 
-    background-color: #D4EDF7;
+    /*border-right: 3px solid var(--darkBlue);*/
+    border-right: 3px solid var(--blue);
+    background-color: var(--lightBlue);
 }
 
 #coinsAmount {
@@ -94,21 +108,23 @@ nav a:hover {
 }
 
 .sideNav ul {
-    padding: 0;
     margin: 0;
+    padding: 0;
+
     text-align: left;
     list-style-type: none;
 }
 
 .sideNav a {
     display: block;
-    text-decoration: none;
+
     line-height: 30px;
-    color: #347B98;
+    text-decoration: none;
+    color: var(--blue);
 }
 
 .sideNav a:hover {
-    color: #275D72;
+    color: var(--darkBlue);
 }
 
 .content { 
@@ -116,14 +132,16 @@ nav a:hover {
 
     padding: 10px;
 
-    background-color: #D4EDF7;
+    background-color: var(--lightBlue);
 }
 
 footer { 
-    grid-area: footer; 
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    border-top: 3px solid #275D72;
-
-    color: #D4EDF7;
-    background-color: #347B98;
+    /*border-top: 3px solid var(--darkBlue);*/
+    color: var(--lightBlue);
+    background-color: var(--blue);
 }

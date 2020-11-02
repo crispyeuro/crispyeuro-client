@@ -1,3 +1,5 @@
+/*@import "styles_main.css";*/
+
 * { box-sizing: border-box; }
 
 html, body { height: 100%; }
@@ -17,7 +19,7 @@ body {
     text-align: center;
     font-size: 20px;
     color: #275D72;
-    background-color: #275D72;
+    /*background-color: #7a8386;*/
 }
 
 .welcome, .login, footer {
@@ -96,7 +98,7 @@ footer {
             'footer';
     }
 
-    .welcome { font-size: 18px; }
+    .welcome { font-size: 20px; }
 
     .login { 
         padding-top: 10vh;

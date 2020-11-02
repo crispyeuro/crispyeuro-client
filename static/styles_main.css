@@ -1,0 +1,58 @@
+:root {
+    /*Main theme colors*/
+    --backgroundColor: #D4EDF7;
+    --backgroundSecondColor: #7db3c7;
+
+    --primaryColor: #347B98;
+    --secondaryColor: #275D72;
+
+    --textPrimaryColor: #000000;
+    --textSecondaryColor: #275D72;
+    
+    /*Form colors*/
+    --formBtnColor: #00a6e2;
+    --formBtnHover: 0.9;
+    --formBtnTextColor: #ffffff;
+
+    --formInputColor: #347c9842;
+    --formInputHoverColor: #a9bec5;
+    --formTextColor: #334a52;
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    background-color: var(--backgroundColor);
+}
+
+input[type=text], input[type=password], input[type=email], input[type=date], select {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid var(--formBtnColor);
+    border-radius: 4px;
+    color: var(--formTextColor);
+    background-color: var(--formInputColor);
+}
+
+input[type=text]:focus, input[type=password]:focus { 
+    background-color: var(--formInputHoverColor); 
+}
+
+button, input[type=submit] {
+    background-color: var(--formBtnColor);
+    color: var(--formBtnTextColor);
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+button:hover, input[type=submit]:hover {
+    opacity: var(--formBtnHover); 
+}
