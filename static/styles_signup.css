@@ -1,4 +1,4 @@
-@import "styles_main.css";
+@import "main.css";
 
 body {
     display: grid;
@@ -29,6 +29,7 @@ header {
 .logo {
     float: left;
     text-transform: uppercase;
+    outline: none;
     /*background-color: var(--secondaryColor);*/
 }
 

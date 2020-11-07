@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Coin card</title>
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/coincard.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="index.html">Crispyeuro</a></div>
+        <nav>
+            <ul>
+                <li><a href="#messages">Messages</a></li>
+                <li><a href="#swap">Swap</a></li>
+                <li><a href="#username">Username</a></li>
+                <li><a href="login.html">Log out</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="menu">
+        <div class="sideNav">
+            Menu <br><br>
+
+            <label for="coinsAmount">I have 40 of 100 coins</label><br>
+            <meter id="coinsAmount" value="0.4">40%</meter><br><br>
+
+            <ul>
+                <li><a href="#countries">All</a></li>
+                <li><a href="#countries">Countries</a></li>
+                <li><a href="#denominations">Denominations</a></li>
+                <li><a href="#commemorative">Commemorative</a></li>
+                <li><a href="#colored">Colored</a></li>
+                <li><a href="#silver">Silver</a></li>
+                <li><a href="#gold">Gold</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="goBack">
+            <button class="backToCountry">Go back to [Country]</button>
+        </div>
+        <div class="cardName">
+            <div class="containerName">[Denomination][Year][Country]</div>
+        </div>
+        <div class="coinPicture">
+            PIC
+        </div>
+        <div class="specification">
+            <div class="containerName">Specification</div><br><br>
+            <table>
+                <tr>
+                    <th>Value</th>
+                    <td>[Denomination]</td>
+                </tr>
+                <tr>
+                    <th>Year</th>
+                    <td>[Year]</td>
+                </tr>
+                <tr>
+                    <th>Country</th>
+                    <td>[Country]</td>
+                </tr>
+            </table>
+            <br>
+
+            <label class="collapse" for="techInfo">+&nbsp;Show technical information</label>
+            <input type="checkbox" id="techInfo" checked>
+            <div class="collapsed">
+                <table>
+                    <tr>
+                        <th>Diameter(mm)</th>
+                        <td>[Diameter]</td>
+                    </tr>
+                    <tr>
+                        <th>Thickness(mm)</th>
+                        <td>[Thickness]</td>
+                    </tr>
+                    <tr>
+                        <th>Mass(g)</th>
+                        <td>[Mass]</td>
+                    </tr>
+                    <tr>
+                        <th>Composition</th>
+                        <td>[Composition]</td>
+                    </tr>
+                    <tr>
+                        <th>Edge</th>
+                        <td>[Edge]</td>
+                    </tr>
+                </table>
+            </div>
+            <br>
+
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <td>[Feature]</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>[Description]</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="mintage">
+            <div class="containerName">Mintage</div><br><br> 
+            <table class="mintageTable">
+                <tr>
+                    <th>Mintage</th>
+                    <th>UNC</th>
+                    <th>BU</th>
+                    <th>Proof</th>
+                </tr>
+                <tr>
+                    <th>[Volume]</th>
+                    <td>[UNCVolume]</td>
+                    <td>[BUVolume]</td>
+                    <td>[ProofVolume]</td>
+                </tr>
+            </table>
+            <br>
+            Mint: [MintedAt]<br>
+            Date of issue: [DateIssue]<br>
+            [Information about sets]<br><br>
+        </div>
+        <div class="addCollection">
+            <div class="containerName">My collection</div>
+            <br>
+            [I don't have it in my collection]<br>
+            <button>Add to my collection</button>
+            <br><br>
+        </div>
+        <div class="swap">
+            <div class="containerName">Swap availability</div>
+            <br><br><br><br><br><br>
+        </div>
+    </div>
+
+    <footer>
+        Crispyeuro 2020
+    </footer>
+</body>
+</html>

@@ -1,0 +1,117 @@
+.content {
+    display: grid;
+    grid-template-rows: 40px 40px auto auto auto auto;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: 
+        'goBack goBack'
+        'cardName cardName'
+        'specification picture'
+        'mintage mintage'
+        'addCollection addCollection'
+        'swap swap';
+    font-size: 16px;
+}
+
+.goBack {
+    grid-area: goBack;
+    display: flex;
+    align-items: center;
+}
+
+button {
+    margin-left: 0;
+}
+
+.cardName, .specification, .coinPicture, .mintage, .addCollection, .swap {
+    text-align: left;
+    padding: 10px;
+}
+
+.cardName {
+    grid-area: cardName;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-weight: bold;
+    border: 1px solid #7db3c7;
+        border-radius: 4px;
+    background-color: var(--backgroundColor);
+}
+
+.specification {
+    grid-area: specification;
+    border-bottom: 1px solid #7db3c7;
+}
+
+.coinPicture {
+    grid-area: picture;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 250px;
+    margin: 10%;
+    padding: 10px;
+    border: 2px solid black;
+}
+
+.mintage {
+    grid-area: mintage;
+    border-bottom: 1px solid #7db3c7;
+}
+
+.addCollection {
+    grid-area: addCollection;
+    border-bottom: 1px solid #7db3c7;
+}
+
+.swap {
+    grid-area: swap;
+}
+
+table, th, td {
+    border: 1px solid lightgray;
+    border-collapse: collapse;
+}
+
+table {
+    width: 100%;
+}
+
+th, td {
+    padding: 5px;
+}
+
+th {
+    width: 20%;
+}
+
+td {
+    width: 80%;
+}
+
+tr:nth-child(even) {
+    background-color: #e7f3f8;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.collapsed, input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]:checked + .collapsed {
+    display: block;
+}
+
+.mintageTable th, .mintageTable td {
+    width: 25%;
+}
+
+.containerName {
+    font-size: 18px;
+    color: var(--textSecondaryColor);
+}
+

@@ -1,14 +1,4 @@
-:root {
-    /*Primary colors*/
-    --darkBlue: #275D72;
-    --blue: #347B98;
-    --lightBlue: #D4EDF7;
-    --white: #ffffff;
-}
-
-* { box-sizing: border-box; }
-
-html { height: 100%; }
+@import "main.css";
 
 body {
     display: grid;
@@ -16,19 +6,17 @@ body {
         'header header'
         'menu content'
         'menu footer';
-    grid-template-rows: 40px 1fr 30px;
-    grid-template-columns: 20vw 1fr;
-    /*grid-gap: 3px;*/
+    grid-template-rows: 40px 1fr 40px;
+    grid-template-columns: 18vw 1fr;
     
-    height:100%;
-    margin: 0;
-    padding: 0;
     top:0;
     bottom:0;
 
-    background-color: var(--darkBlue);
+    /*background-color: var(--darkBlue);*/
+    background-color: #e7f3f8;
+
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 header { 
@@ -37,23 +25,25 @@ header {
     position: sticky;
     overflow: hidden;
     top: 0;
+    font-size: 20px;
     /*border-bottom: 3px solid var(--darkBlue);*/
 
-    background-color: var(--blue);
+    background-color: var(--primaryColor);
 }
 
 .logo {
     display: inline;
     float: left;
-    padding: 8px;
 
     text-transform: uppercase;
 }
 
 .logo a {
+    display: block;
+    padding: 8px;
     text-decoration: none;
     outline: none;
-    color: var(--white);
+    color: var(--formBtnTextColor);
 }
 
 nav { 
@@ -75,13 +65,13 @@ nav a {
     display: block;
     padding: 8px 16px;
 
-    color: var(--lightBlue);
+    color: var(--backgroundColor);
     text-decoration: none;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 nav a:hover {
-    background-color: var(--darkBlue);
+    background-color: var(--secondaryColor);
 }
 
 .menu { 
@@ -89,17 +79,26 @@ nav a:hover {
 
     position: fixed;
     top: 40px;
-    width: 20vw;
-    height: 100vw;
+    width: 18vw;
+    /*height: 100vw;*/
+    padding: 0.5%;
 
     /*border-right: 3px solid var(--darkBlue);*/
-    border-right: 3px solid var(--blue);
-    background-color: var(--lightBlue);
+    border-bottom: 1px solid #7db3c7;
+    background-color: white;
 }
 
 #coinsAmount {
-    width: 60%;
+    width: 100%;
     height: 15px;
+}
+
+meter {
+    background: linear-gradient(to bottom, white, lightgray);
+}
+
+meter::-moz-meter-bar {
+    background: linear-gradient(to bottom, white, #00a6e2);
 }
 
 .sideNav {
@@ -120,11 +119,11 @@ nav a:hover {
 
     line-height: 30px;
     text-decoration: none;
-    color: var(--blue);
+    color: var(--secondaryColor);
 }
 
 .sideNav a:hover {
-    color: var(--darkBlue);
+    background-color: var(--backgroundColor);
 }
 
 .content { 
@@ -132,7 +131,50 @@ nav a:hover {
 
     padding: 10px;
 
-    background-color: var(--lightBlue);
+    border-left: 1px solid #7db3c7;
+    background-color: white;
+}
+
+.countries, .denominations, .commemorative, .colored, .silver, .gold {
+    border: 1px solid var(--secondaryColor);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 1% 2% 2% 2%;
+}
+
+.floatLeft {
+    float: left;
+}
+
+.floatRight {
+    float: right;
+}
+
+.displayInline {
+    display: inline;
+}
+
+.contentContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.country {
+    width: 100px;
+    height: 50px;
+    margin: 3px;
+    padding: 0;
+    font-size: 14px;
+    background-color:  #e7f3f8;
+    color: var(--secondaryColor);
+    border: 1px solid #7db3c7;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.country:hover{
+    background-color: #7db3c7;
 }
 
 footer { 
@@ -141,7 +183,9 @@ footer {
     justify-content: center;
     align-items: center;
 
+    border-top: 1px solid #7db3c7;
+    border-left: 1px solid #7db3c7;
     /*border-top: 3px solid var(--darkBlue);*/
-    color: var(--lightBlue);
-    background-color: var(--blue);
+    color: var(--secondaryColor);
+    background-color: #e7f3f8;
 }
