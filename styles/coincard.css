@@ -34,13 +34,12 @@ button {
     padding-left: 10px;
     font-weight: bold;
     border: 1px solid #7db3c7;
-        border-radius: 4px;
+    border-radius: 4px;
     background-color: var(--backgroundColor);
 }
 
 .specification {
     grid-area: specification;
-    border-bottom: 1px solid #7db3c7;
 }
 
 .coinPicture {
@@ -57,6 +56,7 @@ button {
 
 .mintage {
     grid-area: mintage;
+    border-top: 1px solid #7db3c7;
     border-bottom: 1px solid #7db3c7;
 }
 
@@ -98,7 +98,7 @@ input[type="checkbox"] {
     display: none;
 }
 
-.collapsed, input[type="checkbox"] {
+input[type="checkbox"] + .collapsed {
     display: none;
 }
 
@@ -114,4 +114,3 @@ input[type="checkbox"]:checked + .collapsed {
     font-size: 18px;
     color: var(--textSecondaryColor);
 }
-

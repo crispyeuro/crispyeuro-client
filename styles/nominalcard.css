@@ -1,0 +1,51 @@
+.content {
+    display: grid;
+    grid-template-rows: 40px 40px auto 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    'goBack'
+    'cardName'
+    'description'
+    'coins';
+    font-size: 16px;
+}
+
+.goBack {
+    grid-area: goBack;
+    display: flex;
+    align-items: center;
+}
+
+.cardName {
+    grid-area: cardName;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-weight: bold;
+    border: 1px solid #7db3c7;
+    border-radius: 4px;
+    background-color: var(--backgroundColor);
+}
+
+.cardDescription {
+    grid-area: description;
+    border-bottom: 1px solid #7db3c7;
+}
+
+.coins {
+    grid-area: coins;
+}
+
+button {
+    margin-left: 0;
+}
+
+.cardName, .cardDescription, .coins {
+    text-align: left;
+    padding: 10px;
+}
+
+.containerName {
+    font-size: 18px;
+    color: var(--textSecondaryColor);
+}

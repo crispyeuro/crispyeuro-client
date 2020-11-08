@@ -1,0 +1,93 @@
+.content {
+    display: grid;
+    grid-template-rows: 40px 40px auto 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    'goBack'
+    'cardName'
+    'description'
+    'coins';
+    font-size: 16px;
+}
+
+.goBack {
+    grid-area: goBack;
+    display: flex;
+    align-items: center;
+}
+
+.cardName {
+    grid-area: cardName;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-weight: bold;
+    border: 1px solid #7db3c7;
+    border-radius: 4px;
+    background-color: var(--backgroundColor);
+}
+
+.cardDescription {
+    grid-area: description;
+    border-bottom: 1px solid #7db3c7;
+}
+
+.coins {
+    grid-area: coins;
+}
+
+button {
+    margin-left: 0;
+}
+
+.cardName, .cardDescription, .coins {
+    text-align: left;
+    padding: 10px;
+}
+
+.containerName {
+    font-size: 18px;
+    color: var(--textSecondaryColor);
+}
+
+.coinsContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.coin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    width: 150px;
+    height: 150px;
+    border: 1px solid  #7db3c7;
+    border-radius: 4px;
+    margin: 5px 10px 5px 0;
+}
+
+.coin:hover {
+    background-color:  #e7f3f8;
+}
+
+.coinPic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    height: 110px;
+    border: 1px solid lightgray;
+    border-radius: 50%;
+}
+
+.coinPic {
+    background-color: white;
+}
+
+.coin a {
+    position: absolute;
+    height: 150px;
+    width: 150px;
+}

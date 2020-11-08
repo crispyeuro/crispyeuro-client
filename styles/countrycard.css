@@ -1,0 +1,88 @@
+.content {
+    display: grid;
+    grid-template-rows: 40px 40px auto 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    'goBack'
+    'cardName'
+    'description'
+    'coins';
+    font-size: 16px;
+}
+
+.goBack {
+    grid-area: goBack;
+    display: flex;
+    align-items: center;
+}
+
+.cardName {
+    grid-area: cardName;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-weight: bold;
+    border: 1px solid #7db3c7;
+    border-radius: 4px;
+    background-color: var(--backgroundColor);
+}
+
+.cardDescription {
+    grid-area: description;
+    border-bottom: 1px solid #7db3c7;
+}
+
+.coins {
+    grid-area: coins;
+}
+
+button {
+    margin-left: 0;
+}
+
+.cardName, .cardDescription, .coins {
+    text-align: left;
+    padding: 10px;
+}
+
+.containerName {
+    font-size: 18px;
+    color: var(--textSecondaryColor);
+}
+
+table, th, td {
+    border: 1px solid lightgray;
+    border-collapse: collapse;
+}
+
+table {
+    width: 85%;
+}
+
+th, td {
+    padding: 5px;
+}
+
+th, td {
+    width: 11.11%;
+}
+
+tr:nth-child(even) {
+    background-color: #e7f3f8;
+}
+
+.rowYear {
+    width: 10%;
+}
+
+.rowFeature {
+    width: 60%;
+}
+
+.rowMintage {
+    width: 15%;
+}
+
+.rowInCollection {
+    width: 15%;
+}
