@@ -49,3 +49,16 @@ button {
     font-size: 18px;
     color: var(--textSecondaryColor);
 }
+
+table {
+    width: 80%;
+}
+
+th, td {
+    padding: 5px;
+    width: 33.33%;
+}
+
+tr:nth-child(even) {
+    background-color: #e7f3f8;
+}

@@ -51,7 +51,8 @@ button {
     height: 250px;
     margin: 10%;
     padding: 10px;
-    border: 2px solid black;
+    border: 1px solid #7db3c7;
+    border-radius: 50%;
 }
 
 .mintage {

@@ -1,0 +1,70 @@
+.content {
+    font-size: 16px;
+    background-color: #e7f3f8;
+}
+
+form {
+    width: 50%;
+    margin: auto;
+    text-align: left;
+}
+
+.formRow {
+    display: flex;
+    align-items: center;
+    padding: 1% 0 1% 0;
+}
+
+
+.formRow label {
+    display: inline-block;
+    width:  35%;
+    padding: 8px;
+    margin-right: 8px;
+    border-radius: 4px;
+    background-color: #D4EDF7;
+}
+
+.formRow label[for=fMale], .content label[for=fFemale] {
+    width: auto;
+    background-color: transparent;
+}
+
+.formRow input, .formRow select {
+    width: 65%;
+    margin: 0;
+    background-color: white;
+}
+
+.formRow input:focus, .formRow select:focus {
+    background-color: white;
+}
+
+.birthdayAndGender {
+    width: 65%;
+}
+
+.formRow input[type=date] {
+    width: 30%;
+    margin-right: 5%;
+}
+
+.formRow input[type=radio], .termsAndSubmit input[type=checkbox] {
+    width: auto;
+    margin-right: 1%;
+}
+
+.containerName {
+    font-size: 20px;
+    margin-bottom: 2%;
+}
+
+input[type=submit] {
+    margin: 0;
+}
+
+.termsAndSubmit {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1% 0 1% 0;
+}
