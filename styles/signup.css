@@ -3,20 +3,18 @@
 body {
     display: grid;
     grid-template-rows: 40px 1fr 40px;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
     grid-template-areas: 
         'header header header'
         'left content right'
         'footer footer footer';
     text-align: center;
-    background-color: #e7f3f8;
 }
 
 header {
     grid-area: header;
-    background-color: var(--primaryColor);
+    background-color: var(--headerPrimaryColor);
 }
-
 
 .leftContainer {
     grid-area: left;
@@ -28,80 +26,128 @@ header {
 
 .logo {
     float: left;
+
     text-transform: uppercase;
     outline: none;
-    /*background-color: var(--secondaryColor);*/
 }
 
 .logo a {
     display: block;
     padding: 8px;
+
     text-decoration: none;
     outline: none;
-    color: white;
+    color: var(--btnTextColor);
 }
 
 .content {
     grid-area: content;
-    padding: 3% 25% 0 25%;
-    margin: 5% 0 5% 0;
-    font-size: 18px;
-    color: var(--textSecondaryColor);
-    /*background-color: #e7f3f8;*/
-    background-color: white;
-    border: 1px solid var(--backgroundSecondColor);
-    border-radius: 4px;
-    box-shadow: 5px 10px var(--backgroundColor);
-    /*border: 1px solid black;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2% 0 2% 0;
+
+    border: var(--containerBorder);
+    border-radius: var(--borderRadius);
+    box-shadow: 5px 10px var(--bgSecondaryColor);
+
+    font-size: var(--fontPrimarySize);
+    color: var(--headerSecondaryColor);
+    background-color: var(--bgContainerColor);
+}
+
+.containerName {
+    font-size: var(--fontHeadingSize);
+    margin-bottom: 5%;
 }
 
 form {
-    margin-top: 5%;
+    width: 100%;
+    max-width: 1200px;
+    overflow: hidden;
+}
+
+.formRightArea {
+    display: flex;
+    width: 32.5%;
+    max-width:400px;
 }
 
 input[type=text], input[type=password], input[type=email], select {
+    width: 35%;
+    max-width: 400px;
+    margin: 0;
+}
+
+#fNameMistake, #fUsernameMistake, #fEmailMistake, #fPWDMistake, #fConfPWDMistake, 
+#fBirthdayAndGenderMistake, #fCountryMistake, #fCityMistake , #fTermsMistake {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    font-size: 16px;
+    padding-left: 2%;
+    width: 32.5%;
+    max-width: 400px;
+}
+
+.formRow {
+    display: flex;
     width: 100%;
-    background-color: white;
-}
-
-input[type=text]:hover, input[type=password]:hover, input[type=email]:hover, input[type=date], select:hover {
-    background-color: white;
-}
-
-input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=date], select:focus {
-    background-color: white;
+    margin-bottom: 10px;
 }
 
 input[type=date] {
-    float: left;
-    width: 40%;
-    background-color: white;
+    min-width: 130px;
+    margin: 0;
 }
 
+.birthday {
+    width: 17.5%;
+}
+
+.gender {
+    width: 17.5%;
+}
+
+.genderRow {
+    float: left;
+}
+
+input[type=text]:hover, input[type=password]:hover, input[type=email]:hover, input[type=date], select:hover {
+    background-color: var(--bgContainerColor);
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=date]:focus, select:focus {
+    background-color: var(--bgContainerColor);
+    box-shadow: 0 0 0 1px var(--borderSecondaryColor) inset;
+    outline: none;
+}
+
+/*
 input:invalid {
-    background-color: var(--backgroundColor);
-    box-shadow: none;
+    background-color: var(--bgSecondaryColor);
+    outline: none;
+}
+*/
+
+input[id="fUsername"], input[id="fEmail"], input[id="fPWD"], input[id=fConfPWD] {
+    background-color: var(--bgSecondaryColor);
 }
 
-label {
-    color: var(--textSecondaryColor);
+label, a {
+    color: var(--headerSecondaryColor);
 }
 
-.labelBirthday {
-    float: left;
-}
-
-.floatRight {
-    float: right;
-}
-
-.content a {
-    color: var(--textSecondaryColor);
+input[type=radio], label[for="fMale"], label[for="fFemale"] {
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 0;
 }
 
 input[type=submit] {
-    width: 40%;
-    float: right;
+    width: 30%;
+    min-width: 125px;
     margin-right: 0;
 }
 
@@ -110,7 +156,124 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid var(--backgroundSecondColor);
-    background-color: #e7f3f8;
-    color: var(--textSecondaryColor);
+
+    border-top: var(--containerBorder);
+    color: var(--headerSecondaryColor);
+    background-color: var(--bgPrimaryColor);
+}
+
+.displayInline {
+    display: inline-block;
+}
+
+.formTermsRow, .formSubmitRow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 35%;
+}
+
+.checkboxContainer {
+    position: relative;
+    display: inline-block;
+    padding-left: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.fCheckbox {
+    position: absolute;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    background-color: var(--bgSecondaryColor);
+    border: var(--containerBorder);
+    border-radius: var(--borderRadius);
+}
+
+.checkboxContainer a {
+    padding-left: 4px;
+}
+
+input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+}
+
+.checkboxContainer:hover .fCheckbox{
+    background-color: var(--bgContainerColor);
+}
+
+.fCheckbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.fCheckbox:after {
+    border-right: 2px solid var(--headerSecondaryColor);
+    border-bottom: 2px solid var(--headerSecondaryColor);;
+    height: 10px;
+    width: 5px;
+    transform: rotate(45deg);
+    top: 2px;
+    right: 5px;
+}
+
+.checkboxContainer input[type=checkbox]:checked ~ .fCheckbox:after {
+    display: block;
+}
+
+input[type=checkbox]:checked ~ .fCheckbox{
+    background-color: var(--bgContainerColor);
+}
+
+
+/*Responsive layout*/
+
+@media only screen and (max-width: 1200px) {
+    body { grid-template-columns: 1fr 10fr 1fr; }
+}
+
+@media only screen and (max-width: 992px) {
+    body { grid-template-columns: auto 1fr auto; }
+}
+
+@media only screen and (max-width: 768px) {
+    body { grid-template-columns: auto 1fr auto; }
+
+    .formRightArea { width: 0; }
+
+    input[type=text], input[type=password], input[type=email], select, .formTermsRow, .formSubmitRow { width: 50%; }
+
+    .birthday { width: 25%; }
+    
+    .gender { width: 25%; }
+}
+
+@media only screen and (max-width: 600px) {
+    input[type=text], input[type=password], input[type=email], select, .formTermsRow, .formSubmitRow { width: 100%; }
+
+    .birthday {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 50%;
+        margin-left: 5%;
+    }
+    
+    .gender {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 50%;
+        margin-left: 5%;
+    }
+
+    #fNameMistake, #fUsernameMistake, #fEmailMistake, #fPWDMistake, #fConfPWDMistake, 
+    #fBirthdayAndGenderMistake, #fCountryMistake, #fCityMistake , #fTermsMistake { width: 100%; }
+
+    .formRow { display: block; }
 }
