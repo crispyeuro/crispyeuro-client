@@ -1,159 +1,10 @@
 @import "main.css";
 
-body {
-    display: grid;
-    grid-template-areas: 
-        'header header'
-        'menu content'
-        'menu footer';
-    grid-template-rows: 40px 1fr 40px;
-    grid-template-columns: 18vw 1fr;
-    
-    top:0;
-    bottom:0;
-
-    /*background-color: var(--darkBlue);*/
-    background-color: #e7f3f8;
-
-    text-align: center;
-    font-size: 18px;
-}
-
-header { 
-    grid-area: header; 
-
-    position: sticky;
-    z-index: 1;
-    
-    overflow: hidden;
-    top: 0;
-    font-size: 20px;
-    /*border-bottom: 3px solid var(--darkBlue);*/
-
-    background-color: var(--primaryColor);
-}
-
-.logo {
-    display: inline;
-    float: left;
-
-    text-transform: uppercase;
-}
-
-.logo a {
-    display: block;
-    padding: 8px;
-    text-decoration: none;
-    outline: none;
-    color: var(--formBtnTextColor);
-}
-
-nav { 
-    float: right;
-}
-
-nav ul {
-    margin: 0;
-    padding: 0;
-
-    list-style-type: none;
-}
-
-nav li {
-    float: left;
-}
-
-nav a {
-    display: block;
-    padding: 8px 16px;
-
-    color: var(--backgroundColor);
-    text-decoration: none;
-    /*font-weight: bold;*/
-}
-
-nav a:hover {
-    background-color: var(--secondaryColor);
-}
-
-.menu { 
-    grid-area: menu;
-
-    position: fixed;
-    top: 40px;
-    width: 18vw;
-    /*height: 100vw;*/
-    padding: 0.5%;
-
-    /*border-right: 3px solid var(--darkBlue);*/
-    border-bottom: 1px solid #7db3c7;
-    background-color: white;
-}
-
-#coinsAmount {
-    width: 100%;
-    height: 15px;
-}
-
-meter {
-    background: linear-gradient(to bottom, white, lightgray);
-}
-
-meter::-moz-meter-bar {
-    background: linear-gradient(to bottom, white, #00a6e2);
-}
-
-.sideNav {
-    padding: 0 10%;
-    overflow: auto;
-}
-
-.sideNav ul {
-    margin: 0;
-    padding: 0;
-
-    text-align: left;
-    list-style-type: none;
-}
-
-.sideNav a {
-    display: block;
-
-    line-height: 30px;
-    text-decoration: none;
-    color: var(--secondaryColor);
-}
-
-.sideNav a:hover {
-    background-color: var(--backgroundColor);
-}
-
-.content { 
-    grid-area: content; 
-
-    padding: 10px;
-
-    border-left: 1px solid #7db3c7;
-    background-color: white;
-}
-
 .countries, .denominations, .commemorative, .colored, .silver, .gold {
     border: 1px solid var(--secondaryColor);
     border-radius: 10px;
     margin-bottom: 10px;
     padding: 1% 2% 2% 2%;
-}
-
-.floatLeft {
-    float: left;
-}
-
-.floatRight {
-    float: right;
-}
-
-.displayInline {
-    display: inline;
 }
 
 .contentContainer {
@@ -167,7 +18,7 @@ meter::-moz-meter-bar {
     height: 50px;
     margin: 3px;
     padding: 0;
-    font-size: 14px;
+    font-size: 16px;
     background-color:  #e7f3f8;
     color: var(--secondaryColor);
     border: 1px solid #7db3c7;
@@ -177,17 +28,4 @@ meter::-moz-meter-bar {
 
 .country:hover{
     background-color: #7db3c7;
-}
-
-footer { 
-    grid-area: footer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border-top: 1px solid #7db3c7;
-    border-left: 1px solid #7db3c7;
-    /*border-top: 3px solid var(--darkBlue);*/
-    color: var(--secondaryColor);
-    background-color: #e7f3f8;
 }

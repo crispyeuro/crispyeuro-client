@@ -1,3 +1,5 @@
+@import "main.css";
+
 .content {
     display: grid;
     grid-template-rows: 40px 40px auto auto auto auto;
@@ -9,7 +11,6 @@
         'mintage mintage'
         'addCollection addCollection'
         'swap swap';
-    font-size: 16px;
 }
 
 .goBack {
@@ -32,10 +33,11 @@ button {
     display: flex;
     align-items: center;
     padding-left: 10px;
+
     font-weight: bold;
-    border: 1px solid #7db3c7;
-    border-radius: 4px;
-    background-color: var(--backgroundColor);
+    border: var(--containerBorder);
+    border-radius: var(--borderRadius);
+    background-color: var(--bgSecondaryColor);
 }
 
 .specification {
@@ -47,23 +49,28 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+
     width: 250px;
     height: 250px;
+
     margin: 10%;
     padding: 10px;
-    border: 1px solid #7db3c7;
+
+    border: var(--containerBorder);
     border-radius: 50%;
 }
 
 .mintage {
     grid-area: mintage;
-    border-top: 1px solid #7db3c7;
-    border-bottom: 1px solid #7db3c7;
+
+    border-top: var(--containerBorder);
+    border-bottom: var(--containerBorder);
 }
 
 .addCollection {
     grid-area: addCollection;
-    border-bottom: 1px solid #7db3c7;
+
+    border-bottom: var(--containerBorder);
 }
 
 .swap {
@@ -92,7 +99,7 @@ td {
 }
 
 tr:nth-child(even) {
-    background-color: #e7f3f8;
+    background-color: var(--bgPrimaryColor);
 }
 
 input[type="checkbox"] {
@@ -112,6 +119,6 @@ input[type="checkbox"]:checked + .collapsed {
 }
 
 .containerName {
-    font-size: 18px;
-    color: var(--textSecondaryColor);
+    font-size: var(--fontPrimarySize);
+    color: var(--headerSecondaryColor);
 }

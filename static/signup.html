@@ -15,49 +15,90 @@
     <div class="leftContainer"></div>
 
     <div class="content">
-        Sign up form
-        <form action="#">
-            <!-- <label for="fName">Name</label><br> -->
-            <input type="text" id="fName" name="name" placeholder="Name" autocomplete="off" ><br>
+        <div class="containerName">Sign up form</div>
+        <form name="signupForm" action="#" onsubmit="return validateSignupForm()">
+            <div class="formRow">
+                <div class="formRightArea"></div>
+                <input type="text" id="fName" name="name" placeholder="Name" autocomplete="off">
+                <div id="fNameMistake"></div>
+            </div>
 
-            <!-- <label for="fusername">Username*</label><br> -->
-            <input type="text" id="fUsername" name="username" placeholder="Username*" autocomplete="off" required><br>
+            <div class="formRow">
+                <div class="formRightArea"></div>
+            <input type="text" id="fUsername" name="username" placeholder="Username*" autocomplete="off">
+            <div id="fUsernameMistake"></div>
+            </div>
 
-            <!-- <label for="femail">Email*</label><br> -->
-            <input type="email" id="fEmail" name="email" placeholder="Email*" autocomplete="off" required><br>
+            <div class="formRow">
+                <div class="formRightArea"></div>
+            <input type="email" id="fEmail" name="email" placeholder="Email*" autocomplete="off">
+            <div id="fEmailMistake"></div>
+            </div>
 
-            <!-- <label for="fPWD">Password*</label><br> -->
-            <input type="password" id="fPWD" name="password" placeholder="Password*" autocomplete="off" required><br>
+            <div class="formRow">
+                <div class="formRightArea"></div>
+            <input type="password" id="fPWD" name="password" placeholder="Password*" autocomplete="off">
+            <div id=fPWDMistake></div>
+            </div>
 
-            <!-- <label for="fConfPWD">Confirm password*</label><br> -->
-            <input type="password" id="fConfPWD" name="password" placeholder="Confitrm password*" autocomplete="off" required><br>
+            <div class="formRow">
+                <div class="formRightArea"></div>
+            <input type="password" id="fConfPWD" name="confPassword" placeholder="Confitrm password*" autocomplete="off">
+            <div id="fConfPWDMistake"></div>
+            </div>
 
-            <label class="labelBirthday"for="fBirthday">Birthday</label><br>
-            <input type="date" id="fBirthday" name="birthday" value="1980-01-01">
+            <div class="formRow">
+                <div class="formRightArea"></div>
+                <div class="birthday">
+                    <label class="floatLeft" for="fBirthday">Birthday</label><br>
+                    <input class="floatLeft" type="date" id="fBirthday" name="birthday">
+                </div>
+                <div class="gender">
+                    <label class="floatLeft">Gender</label><br>
+                    <div class=genderRow>
+                    <input type="radio" id="fMale" name="gender" value="male">
+                    <label for="fMale">Male</label>
+                    <input type="radio" id="fFemale" name="gender" value="female">
+                    <label for="fFemale">Female</label>
+                    </div>
+                </div>
+            <div id="fBirthdayAndGenderMistake"></div>
+            </div>
 
-            <input type="radio" id="fMale" name="gender" value="male">
-            <label for="fMale">Male&nbsp;</label>
-            <input type="radio" id="fFemale" name="gender" value="female">
-            <label for="fFemale">Female</label><br>
-
-            <!-- <label for="fCountry">Country</label><br> -->
+            <div class="formRow">
+                <div class="formRightArea"></div>
             <select id="fCountry" name="country">
                 <option value="" disabled selected>Country</option>
                 <option value="estonia">Estonia</option>
                 <option value="latvia">Latvia</option>
                 <option value="lithuania">Lithuania</option>
-            </select><br>
+            </select>
+            <div id="fCountryMistake"></div>
+            </div>
 
-            <!-- <label for="fCity">City</label><br> -->
-            <input type="text" id="fCity" name="city" placeholder="City" autocomplete="off"><br><br>
+            <div class="formRow">
+                <div class="formRightArea"></div>
+            <input type="text" id="fCity" name="city" placeholder="City" autocomplete="off">
+            <div id="fCityMistake"></div>
+            </div>
 
-            <div class="floatRight">
-                <input type="checkbox" id="fTerms" name="terms" value="accept" required>
-                <label for="fTerms">I accept <a href="#">Terms of Use</a></label>
-            </div><br>
+            <div class="formRow">
+                <div class="formRightArea"></div>
+            <div class="formTermsRow">
+                <label for="fTerms" class="checkboxContainer">I accept <a href="#" id=fTermsLink>Terms of Use</a>
+                    <input type="checkbox" id="fTerms" name="terms" value="accept">
+                    <div class="fCheckbox"></div>
+                </label>
+            </div>
+            <div id="fTermsMistake"></div>
+            </div>
 
-            <input type="submit" value="Sign up">
-
+            <div class="formRow">
+                <div class="formRightArea"></div>
+            <div class="formSubmitRow">
+                <input type="submit" value="Sign up">
+            </div>
+            </div>
         </form>
     </div>
 
@@ -67,5 +108,7 @@
         Crispyeuro 2020 
     </footer>
 </body>
+
+<script src="../scripts/app.js"></script>
 
 </html>

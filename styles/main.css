@@ -1,7 +1,53 @@
 :root {
+    /*Background colors*/
+    --bgPrimaryColor: #e7f3f8; /*Old bg*/ /*Lighter*/
+    --bgSecondaryColor: #d4edf7; /*Old backgroundColor*/ /*Darker*/
+    --bgContainerColor: #ffffff;
+
+    /*Border colors*/
+    --borderPrimaryColor: #7db3c7; /*Old backgroundSecondaryColor*/
+    --borderSecondaryColor: #00a6e2; /*Old formBtnColor*/
+    /*Borders*/
+    --containerBorder: 1px solid var(--borderPrimaryColor);
+    --borderRadius: 4px;
+
+    /*Header, heading, text colors*/
+    --headerPrimaryColor: #347b98; /*Old primaryColor*/
+    --headerSecondaryColor: #275d72; /*Old secondaryColor and textSecondaryColor*/ /*For header and headings*/
+    --textColor: #000000; /*Old textPrimaryColor*/
+
+    /*Font styles*/
+    --fontContentSize: 16px;
+    --fontPrimarySize: 18px;
+    --fontHeadingSize: 20px;
+
+    /*Buttons*/
+    --btnBgColor:  #00a6e2; /*Old formBtnColor*/
+    --btnHover: 0.9; /*Old formBtnHover*/
+    --btnTextColor: #ffffff; /*Old formBtnTextColor*/
+    --btnBorder: none;
+    --btnPadding: 8px 12px;
+
+    /*(Form) input styles*/
+    --inputBgColor: #ffffff;
+    --inputBgInvalidColor: #d4edf7;
+    --inputBorder: 1px solid var(--borderSecondaryColor);
+    --inputOutlineColor: none;
+    /*Login input colors*/
+    --logInputBgColor: #347c9842; /*Old formInoutColor*/
+    --logInutHoverColor: #a9bec5; /*Old formInputHoverColor*/
+    --logInputTextColor: #334a52; /*Old formTextColor*/
+
+    /*Progress meter colors*/
+    --meterCoinsAmountColor: #d3d3d3;
+    --meterCoinsProgressColor: #00a6e2;
+}
+
+:root {
     /*Main theme colors*/
     --backgroundColor: #D4EDF7;
     --backgroundSecondColor: #7db3c7;
+    --bg: #e7f3f8;
 
     --primaryColor: #347B98;
     --secondaryColor: #275D72;
@@ -26,33 +72,52 @@ html, body { height: 100%; }
 body {
     margin: 0;
     padding: 0;
-    font-size: 20px;
-    background-color: var(--backgroundColor);
+    font-size: 18px;
+    font-family: "Times New Roman", Times, serif;
+    /*font-size: 18px;*/
+    background-color: var(--bgPrimaryColor);
 }
 
 input[type=text], input[type=password], input[type=email], input[type=date], select {
     padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid var(--formBtnColor);
-    border-radius: 4px;
-    color: var(--formTextColor);
-    background-color: var(--formInputColor);
-}
-
-input[type=text]:focus, input[type=password]:focus { 
-    background-color: var(--formInputHoverColor); 
+    margin: 0 0 10px 0;
+    border: var(--inputBorder);
+    border-radius: var(--borderRadius);
+    color: var(--logInputTextColor);
+    font-size: 16px;
+    font-family: inherit;
+    background-color: var(--inputBgColor);
 }
 
 button, input[type=submit] {
-    background-color: var(--formBtnColor);
-    color: var(--formBtnTextColor);
-    border: none;
-    border-radius: 4px;
-    padding: 8px 12px;
+    background-color: var(--btnBgColor);
+    color: var(--btnTextColor);
+    border: var(--btnBorder);
+    border-radius: var(--borderRadius);
+    padding: var(--btnPadding);
     margin: 10px;
     cursor: pointer;
+    font-size: 16px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+label {
+    font-size: 16px;
+    font-family: inherit;
 }
 
 button:hover, input[type=submit]:hover {
-    opacity: var(--formBtnHover); 
+    opacity: var(--btnHover); 
+}
+
+.floatLeft {
+    float: left;
+}
+
+.floatRight {
+    float: right;
+}
+
+.displayInline {
+    display: inline;
 }

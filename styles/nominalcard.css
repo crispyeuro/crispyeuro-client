@@ -1,3 +1,5 @@
+@import "main.css";
+
 .content {
     display: grid;
     grid-template-rows: 40px 40px auto 1fr;
@@ -7,7 +9,6 @@
     'cardName'
     'description'
     'coins';
-    font-size: 16px;
 }
 
 .goBack {
@@ -20,16 +21,18 @@
     grid-area: cardName;
     display: flex;
     align-items: center;
+
     padding-left: 10px;
     font-weight: bold;
-    border: 1px solid #7db3c7;
-    border-radius: 4px;
-    background-color: var(--backgroundColor);
+
+    border: var(--containerBorder);
+    border-radius: var(borderRadius);
+    background-color: var(--bgSecondaryColor);
 }
 
 .cardDescription {
     grid-area: description;
-    border-bottom: 1px solid #7db3c7;
+    border-bottom: var(--containerBorder);
 }
 
 .coins {
@@ -46,8 +49,8 @@ button {
 }
 
 .containerName {
-    font-size: 18px;
-    color: var(--textSecondaryColor);
+    font-size: var(--fontPrimarySize);
+    color: var(--headerSecondaryColor);
 }
 
 table {
@@ -60,5 +63,5 @@ th, td {
 }
 
 tr:nth-child(even) {
-    background-color: #e7f3f8;
+    background-color: var(--bgPrimaryColor);
 }
