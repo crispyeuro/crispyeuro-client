@@ -13,6 +13,10 @@ body {
 
 header {
     grid-area: header;
+    position: sticky;
+    z-index: 1;
+    overflow: hidden;
+    top: 0;
     background-color: var(--headerPrimaryColor);
 }
 
@@ -111,7 +115,9 @@ input[type=date] {
 }
 
 .genderRow {
-    float: left;
+    padding: 9px 0 8px 0;
+    display: flex;
+    align-items: center;
 }
 
 input[type=text]:hover, input[type=password]:hover, input[type=email]:hover, input[type=date], select:hover {
@@ -124,25 +130,12 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, inp
     outline: none;
 }
 
-/*
-input:invalid {
-    background-color: var(--bgSecondaryColor);
-    outline: none;
-}
-*/
-
 input[id="fUsername"], input[id="fEmail"], input[id="fPWD"], input[id=fConfPWD] {
     background-color: var(--bgSecondaryColor);
 }
 
 label, a {
     color: var(--headerSecondaryColor);
-}
-
-input[type=radio], label[for="fMale"], label[for="fFemale"] {
-    display: inline-block;
-    margin-top: 10px;
-    margin-left: 0;
 }
 
 input[type=submit] {
@@ -162,10 +155,6 @@ footer {
     background-color: var(--bgPrimaryColor);
 }
 
-.displayInline {
-    display: inline-block;
-}
-
 .formTermsRow, .formSubmitRow {
     display: flex;
     align-items: center;
@@ -175,8 +164,7 @@ footer {
 
 .checkboxContainer {
     position: relative;
-    display: inline-block;
-    padding-left: 25px;
+    padding-left: 20px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -185,11 +173,11 @@ footer {
 .fCheckbox {
     position: absolute;
     left: 0;
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
     cursor: pointer;
     background-color: var(--bgSecondaryColor);
-    border: var(--containerBorder);
+    border: var(--inputBorder);
     border-radius: var(--borderRadius);
 }
 
@@ -214,12 +202,12 @@ input[type=checkbox] {
 
 .fCheckbox:after {
     border-right: 2px solid var(--headerSecondaryColor);
-    border-bottom: 2px solid var(--headerSecondaryColor);;
-    height: 10px;
-    width: 5px;
+    border-bottom: 2px solid var(--headerSecondaryColor);
+    height: 8px;
+    width: 4px;
     transform: rotate(45deg);
-    top: 2px;
-    right: 5px;
+    top: 1px;
+    right: 4px;
 }
 
 .checkboxContainer input[type=checkbox]:checked ~ .fCheckbox:after {
@@ -230,6 +218,56 @@ input[type=checkbox]:checked ~ .fCheckbox{
     background-color: var(--bgContainerColor);
 }
 
+.fCheckbox:active, label[class=checkboxContainer]:active > .fCheckbox {
+    box-shadow: 0 0 0 1px var(--borderSecondaryColor) inset;
+}
+
+.radioContainer {
+    position: relative;
+    padding-left: 20px;
+    padding-right: 10px;
+    display: flex;
+}
+
+.radioContainer input {
+    position: absolute;
+    opacity: 0;
+}
+
+.fRadio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    background-color: var(--bgContainerColor);
+    border: var(--inputBorder);
+    border-radius: 50%;
+}
+
+.fRadio:active, label[class=radioContainer]:active > .fRadio {
+    box-shadow: 0 0 0 1px var(--borderSecondaryColor) inset;
+}
+
+.fRadio:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.fRadio:after {
+    top: 3.5px;
+    left: 3.5px;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: var(--headerSecondaryColor);
+}
+
+.radioContainer input[type=radio]:checked ~ .fRadio:after {
+    display: block;
+}
 
 /*Responsive layout*/
 
@@ -244,36 +282,35 @@ input[type=checkbox]:checked ~ .fCheckbox{
 @media only screen and (max-width: 768px) {
     body { grid-template-columns: auto 1fr auto; }
 
-    .formRightArea { width: 0; }
-
-    input[type=text], input[type=password], input[type=email], select, .formTermsRow, .formSubmitRow { width: 50%; }
-
-    .birthday { width: 25%; }
-    
-    .gender { width: 25%; }
-}
-
-@media only screen and (max-width: 600px) {
     input[type=text], input[type=password], input[type=email], select, .formTermsRow, .formSubmitRow { width: 100%; }
 
-    .birthday {
+    .formRow {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        width: 50%;
-        margin-left: 5%;
-    }
-    
-    .gender {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 50%;
-        margin-left: 5%;
+        align-items: center;
     }
 
     #fNameMistake, #fUsernameMistake, #fEmailMistake, #fPWDMistake, #fConfPWDMistake, 
-    #fBirthdayAndGenderMistake, #fCountryMistake, #fCityMistake , #fTermsMistake { width: 100%; }
+    #fBirthdayAndGenderMistake, #fCountryMistake, #fCityMistake , #fTermsMistake {
+    padding-left: 0;
+    width: 100%;
+}
 
-    .formRow { display: block; }
+    .birthday { 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 30%; 
+    }
+    
+    .gender { 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 30%; 
+    }
+
+    .formTermsRow, .formSubmitRow {
+        margin-right: 10%;
+    }
 }

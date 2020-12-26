@@ -11,15 +11,12 @@ body {
     grid-template-areas: 
         'welcome login'
         'footer footer';
-    /*grid-gap: 1px;*/
-
     margin: 0;
     padding: 0;
 
     text-align: center;
     font-size: 20px;
     color: #275D72;
-    /*background-color: #7a8386;*/
 }
 
 .welcome, .login, footer {
@@ -47,6 +44,11 @@ input[type=text], input[type=password] {
 
 input[type=text]:focus, input[type=password]:focus { 
     background-color: #a9bec5; 
+}
+
+input:invalid {
+    outline: none;
+    box-shadow: none;
 }
 
 button {
@@ -122,5 +124,4 @@ footer {
     .signUpContainer button { width: 25%; }
 
     footer { background-color: #7db3c7;}
-
 }

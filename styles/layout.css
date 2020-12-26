@@ -65,6 +65,7 @@ nav li {
 nav a {
     display: block;
     padding: 8px 16px;
+    transition: all 0.35s ease-in-out;
 
     text-decoration: none;
     color: var(--bgSecondaryColor);
@@ -72,6 +73,70 @@ nav a {
 
 nav a:hover {
     background-color: var(--headerSecondaryColor);
+    transition: all 0.3s ease-in-out;
+}
+
+.navBtnContainer {
+    display: none;
+    width: 40px;
+    height: 40px;
+    padding-right: 8px;
+    cursor: pointer;
+}
+
+.navBtnContainer:hover {
+    background-color: var(--headerSecondaryColor);
+    transition: all 0.35s ease-in-out;
+}
+
+.navBtn {
+    position: relative;
+    border-bottom: 3px solid var(--btnTextColor);
+    width: 25px;
+    height: 20px;
+    top: 25%;
+    left: 7.5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.navBtn:before {
+    content: "";
+    position: absolute;
+    border-top: 3px solid var(--btnTextColor);
+    width: 100%;
+    left: 0;
+}
+
+.navBtn:after {
+    content: "";
+    position: absolute;
+    border-bottom: 3px solid var(--btnTextColor);
+    width: 100%;
+    top: 50%;
+    left: 0;
+}
+
+.navCloseBtn {
+    position: relative;
+    border-bottom: 3px solid var(--btnTextColor);
+    width: 25px;
+    height: 3px;
+    top: 18px;
+    left: 8px;
+    transform: rotate(45deg);
+    transition: all 0.35s ease-in-out;
+}
+
+.navCloseBtn::after {
+    content: "";
+    position: absolute;
+    border-bottom: 3px solid var(--btnTextColor);
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 18px;
+    right: 8px;
+    transform: rotate(-90deg);
 }
 
 
@@ -114,6 +179,7 @@ nav a:hover {
 .sideNav {
     padding: 0 10%;
     overflow: auto;
+    /*height: inherit;*/
 }
 
 .sideNav ul {
@@ -134,6 +200,10 @@ nav a:hover {
 
 .sideNav a:hover {
     background-color: var(--bgSecondaryColor);
+}
+
+.sideNavBtnContainer {
+    display: none;
 }
 
 
@@ -160,4 +230,148 @@ footer {
     border-left: var(--containerBorder);
     color: var(--headerSecondaryColor);
     background-color: var(--bgPrimaryColor);
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        display: grid;
+        grid-template-areas:
+            'header'
+            'menu'
+            'content'
+            'footer';
+        grid-template-rows: 40px auto auto 40px;
+        grid-template-columns: 1fr;
+    }
+
+    nav .navLinksOnMobile {
+        top: 40px;
+        position: fixed;
+        justify-content: center;
+        height: 160px;
+        background-color: var(--headerPrimaryColor);
+        z-index: 2;
+        opacity: 0.95;
+    }
+
+    nav .navLinks {
+        display: none;
+    }
+
+    nav, nav a {
+        width: 100vw;
+    }
+
+    .logo {
+        position: absolute;
+        float: left;
+        left: 0;
+    }
+
+    .navBtnContainer {
+        display: block;
+        float: right;
+    }
+
+    /*Side navigation*/
+    .menu {
+        position: relative;
+        top: 0;
+        width: 100%;
+        min-height: auto;
+        padding: 0;
+        background-color: var(--bgPrimaryColor);
+        /*background-color: var(--bgSecondaryColor);*/
+    }
+
+    .sideNav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+    }
+
+    .myCoinsAmountMeter {
+        width: 40%;
+        max-width: 200px;
+        height: 15px;
+    
+        background-color: var(--meterCoinsAmountColor);
+    }
+
+    .sideNav ul {
+        width: 100%;
+        /*background-color: var(--bgSecondaryColor);*/
+        margin: 10px 0 0 0;
+    }
+
+    .sideNav a {
+        text-align: center;
+    }
+
+    .sideNav a:hover {
+        background-color: var(--borderPrimaryColor);
+    }
+
+    .sideNavBtnContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 85px;
+        height: 23px;
+        cursor: pointer;
+        background-color: var(--bgPrimaryColor);
+        padding-left: 8px;
+        padding-right: 8px;
+        margin-top: 10px;
+        border-top: var(--containerBorder);
+        border-radius: 10px 10px 0 0;
+    }
+    
+    .sideNavBtnContainer:hover {
+        width: 100px;
+        /*background-color: var(--bgSecondaryColor);*/
+        transition: all 0.35s ease-in-out;
+    }
+
+    .sideNavCloseBtn {
+        width: 12px;
+        height: 12px;
+        border-bottom: 3px solid var(--headerPrimaryColor);
+        border-left: 3px solid var(--headerPrimaryColor);
+        top: 6px;
+        left: 12px;
+        margin-top: 6px;
+        margin-left: 10px;
+        transform: rotate(135deg);
+        transition: all 0.35s ease-in-out;
+    }
+
+    .sideNavBtn {
+        width: 12px;
+        height: 12px;
+        border-bottom: 3px solid var(--headerPrimaryColor);
+        border-left: 3px solid var(--headerPrimaryColor);
+        top: 6px;
+        left: 12px;
+        margin-top: -4px;
+        margin-left: 10px;
+        transform: rotate(-45deg);
+        transition: all 0.35s ease-in-out;
+    }
+
+    .sideNavText {
+        color: var(--headerPrimaryColor);
+    }
+
+    .sideNavLinks {
+        display: none;
+    }
+
+    .sideNavLinksOnMobile {
+        display: block;
+    }
 }
