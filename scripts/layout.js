@@ -16,7 +16,11 @@ window.onload = function() {
     document.getElementsByClassName("menu")[0].innerHTML = 
         `<div class="sideNav">
         <br>
-        I have 40 coins<br>
+        <div class="sideNavBtnContainer" onclick="showSideNav()">
+            <div class="sideNavText">Menu</div>
+            <div class="sideNavBtn" id="sideNavBtnAction"></div>
+        </div>
+        I have 40 coins
             <div class="myCoinsAmountMeter">
                 <div class="myCoinsAmountProgress">40%</div>
             </div><br>
@@ -30,10 +34,6 @@ window.onload = function() {
                 <li><a href="#silver">Silver</a></li>
                 <li><a href="#gold">Gold</a></li>
             </ul>
-            <div class="sideNavBtnContainer" onclick="showSideNav()">
-                <div class="sideNavText">Menu</div>
-                <div class="sideNavBtn" id="sideNavBtnAction"></div>
-            </div>
         </div>`;
 
     document.getElementById("footer").innerHTML = 

@@ -233,17 +233,6 @@ footer {
 }
 
 @media only screen and (max-width: 768px) {
-    body {
-        display: grid;
-        grid-template-areas:
-            'header'
-            'menu'
-            'content'
-            'footer';
-        grid-template-rows: 40px auto auto 40px;
-        grid-template-columns: 1fr;
-    }
-
     nav .navLinksOnMobile {
         top: 40px;
         position: fixed;
@@ -273,6 +262,24 @@ footer {
         float: right;
     }
 
+}
+
+@media only screen and (max-width: 992px) {
+    body {
+        display: grid;
+        grid-template-areas:
+            'header'
+            'menu'
+            'content'
+            'footer';
+        grid-template-rows: 40px auto auto 40px;
+        grid-template-columns: 1fr;
+    }
+
+    .content {
+        border: none;
+    }
+
     /*Side navigation*/
     .menu {
         position: relative;
@@ -280,7 +287,7 @@ footer {
         width: 100%;
         min-height: auto;
         padding: 0;
-        background-color: var(--bgPrimaryColor);
+        /*background-color: var(--bgPrimaryColor);*/
         /*background-color: var(--bgSecondaryColor);*/
     }
 
@@ -297,14 +304,23 @@ footer {
         width: 40%;
         max-width: 200px;
         height: 15px;
+        margin-bottom: 20px;
     
         background-color: var(--meterCoinsAmountColor);
+        border-radius: 3px;
+    }
+
+    .myCoinsAmountProgress {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
     }
 
     .sideNav ul {
         width: 100%;
-        /*background-color: var(--bgSecondaryColor);*/
-        margin: 10px 0 0 0;
+        /*background-color: var(--bgPrimaryColor);*/
+        /*margin: 10px 0 0 0;*/
+        margin: 0;
+        border-top: var(--containerBorder);
     }
 
     .sideNav a {
@@ -313,6 +329,7 @@ footer {
 
     .sideNav a:hover {
         background-color: var(--borderPrimaryColor);
+        color: var(--bgPrimaryColor);
     }
 
     .sideNavBtnContainer {
@@ -320,32 +337,37 @@ footer {
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        width: 85px;
+        /*width: 85px;*/
+        width: 100%;
         height: 23px;
         cursor: pointer;
-        background-color: var(--bgPrimaryColor);
+        background-color: var(--btnTextColor);
         padding-left: 8px;
         padding-right: 8px;
-        margin-top: 10px;
-        border-top: var(--containerBorder);
-        border-radius: 10px 10px 0 0;
+        margin-bottom: 10px;
+        background-color: var(--headerPrimaryColor);
+        opacity: 0.95;
+        transition: all 0.35s ease-in-out;
+        /*border-bottom: var(--containerBorder);
+        border-radius: 10px 10px 0 0;*/
     }
     
     .sideNavBtnContainer:hover {
-        width: 100px;
+        /*width: 100px;*/
         /*background-color: var(--bgSecondaryColor);*/
-        transition: all 0.35s ease-in-out;
+        background-color: var(--headerSecondaryColor);
+        /*transition: all 0.35s ease-in-out;*/
     }
 
     .sideNavCloseBtn {
         width: 12px;
         height: 12px;
-        border-bottom: 3px solid var(--headerPrimaryColor);
-        border-left: 3px solid var(--headerPrimaryColor);
+        border-bottom: 2px solid var(--btnTextColor);
+        border-left: 2px solid var(--btnTextColor);
         top: 6px;
         left: 12px;
-        margin-top: 6px;
-        margin-left: 10px;
+        margin-top: 7px;
+        margin-left: 7px;
         transform: rotate(135deg);
         transition: all 0.35s ease-in-out;
     }
@@ -353,18 +375,18 @@ footer {
     .sideNavBtn {
         width: 12px;
         height: 12px;
-        border-bottom: 3px solid var(--headerPrimaryColor);
-        border-left: 3px solid var(--headerPrimaryColor);
+        border-bottom: 2px solid var(--btnTextColor);
+        border-left: 2px solid var(--btnTextColor);
         top: 6px;
         left: 12px;
-        margin-top: -4px;
-        margin-left: 10px;
+        margin-top: -7px;
+        margin-left: 7px;
         transform: rotate(-45deg);
         transition: all 0.35s ease-in-out;
     }
 
     .sideNavText {
-        color: var(--headerPrimaryColor);
+        color: var(--btnTextColor);
     }
 
     .sideNavLinks {
