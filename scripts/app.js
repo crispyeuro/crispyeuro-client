@@ -283,3 +283,7 @@ function checkTerms() {
         return false;
     }
 }
+
+function goBack() {
+    window.history.back();
+}

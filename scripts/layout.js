@@ -14,7 +14,8 @@ window.onload = function() {
         /*document.getElementsByClassName("navBtnContainer")[0].onclick = function() {showMenu()};*/
 
     document.getElementsByClassName("menu")[0].innerHTML = 
-        `<div class="sideNav">
+        `
+        <div class="sideNav" id="pcSideNavLinksContainer">
         <br>
         <div class="sideNavBtnContainer" onclick="showSideNav()">
             <div class="sideNavText">Menu</div>
@@ -26,7 +27,7 @@ window.onload = function() {
             </div><br>
 
             <ul class="sideNavLinks" id="sideNavLinksContainer">
-                <li><a href="#countries">All</a></li>
+                <li><a href="index.html">All</a></li>
                 <li><a href="#countries">Countries</a></li>
                 <li><a href="#denominations">Denominations</a></li>
                 <li><a href="#commemorative">Commemorative</a></li>
@@ -65,6 +66,25 @@ function showSideNav() {
         sideNavBtnAction.className = "sideNavBtn";
     }
 }
+
+/*function pcShowSideNav() {
+    var pcSideNavBtnAction = document.getElementById("pcSideNavBtnAction");
+    var pcSideNavAction = document.getElementById("pcSideNavLinksContainer");
+    var pcMenu = document.getElementById("menu");
+    var pcContent = document.getElementById("content");
+    if (pcSideNavAction.className == "sideNav") {
+        pcSideNavAction.className = "pcSideNavClosed";
+        pcSideNavBtnAction.className = "pcSideNavCloseBtn";
+        pcMenu.className = "menu menuSmallWidth";
+        pcContent.className = "content contentSmallMargin";
+    }
+    else {
+        pcSideNavAction.className = "sideNav";
+        pcSideNavBtnAction.className = "pcSideNavBtn";
+        pcMenu.className = "menu menuWidth";
+        pcContent.className = "content contentMargin";
+    }
+}*/
 /*
 window.onresize = function() {
     if (window.innerWidth > 768) {
@@ -74,3 +94,18 @@ window.onresize = function() {
     }
 }
 */
+
+function countries() {
+    var countries = document.getElementById("countries");
+    if (countries.className == "countries") {
+        countries.className = "countries hideCountries";
+        return true;
+    } else {
+        countries.className = "countries";
+        return true;
+    }
+}
+
+function stopParent(event) {
+    event.stopPropagation();
+}

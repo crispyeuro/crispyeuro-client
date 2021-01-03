@@ -7,7 +7,7 @@ body {
         'menu content'
         'menu footer';
     grid-template-rows: 40px 1fr 40px;
-    grid-template-columns: 18vw 1fr;
+    grid-template-columns: minmax(150px, 12vw) 1fr;
     
     top:0;
     bottom:0;
@@ -141,17 +141,44 @@ nav a:hover {
 
 
 /*Side navigation*/
-.menu { 
+/*.menu { 
     grid-area: menu;
 
     position: fixed;
     top: 40px;
     width: 18vw;
     min-height: 45vh;
-    padding: 0.5%;
+    /*padding: 0.5%;*/
+    /*border: 1px solid var(--secondaryColor);
 
     border-bottom: var(--containerBorder);
     background-color: var(--bgContainerColor);
+    /*background-color: var(--bgPrimaryColor);
+}*/
+
+.menu { 
+    grid-area: menu;
+
+    position: fixed;
+    top: 40px;
+    /*min-height: 45vh;*/
+    height: 100%;
+    min-width: 150px;
+    width: 12vw;
+    /*padding: 0.5%;*/
+    /*border: 1px solid var(--secondaryColor);*/
+
+    /*border-bottom: var(--containerBorder);*/
+    background-color: var(--bgContainerColor);
+    /*background-color: var(--bgPrimaryColor);*/
+}
+
+.menuWidth {
+    width: 18vw;
+}
+
+.menuSmallWidth {
+    width: 2vw;
 }
 
 .myCoinsAmountMeter {
@@ -159,6 +186,7 @@ nav a:hover {
     height: 15px;
 
     background-color: var(--meterCoinsAmountColor);
+    border-radius: 3px;
 }
 
 .myCoinsAmountProgress {
@@ -169,6 +197,8 @@ nav a:hover {
     font-size: 14px;
     color: white;
     background-color: var(--meterCoinsProgressColor);
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
 }
 
 .myCoinsAmountProgress::before, .myCoinsAmountProgress::after {
@@ -180,6 +210,7 @@ nav a:hover {
     padding: 0 10%;
     overflow: auto;
     /*height: inherit;*/
+    width: 100%;
 }
 
 .sideNav ul {
@@ -199,12 +230,70 @@ nav a:hover {
 }
 
 .sideNav a:hover {
-    background-color: var(--bgSecondaryColor);
+    /*background-color: var(--bgSecondaryColor);*/
+    color: var(--borderPrimaryColor);
 }
 
 .sideNavBtnContainer {
     display: none;
 }
+
+/*.pcSideNavBtnContainer {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 23px;
+    /*background-color: var(--headerPrimaryColor);
+    opacity: 0.95;
+    transition: all 0.35s ease-in-out;
+    justify-content: flex-end;
+    align-content: center;
+    cursor: pointer;
+}
+
+.pcSideNavBtnContainer:hover {
+    background-color: var(--headerSecondaryColor);
+}
+
+.pcSideNavCloseBtn {
+    width: 12px;
+    height: 12px;
+    border-bottom: 1px solid var(--borderPrimaryColor);
+    border-left: 1px solid var(--borderPrimaryColor);
+    transform: rotate(225deg);
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    transition: all 0.35s ease-in-out;
+}
+
+.pcSideNavBtn {
+    width: 12px;
+    height: 12px;
+    border-bottom: 1px solid var(--borderPrimaryColor);
+    border-left: 1px solid var(--borderPrimaryColor);
+
+    transform: rotate(45deg);
+    position: absolute;
+    top: 5px;
+    transition: all 0.35s ease-in-out;
+}
+
+.pcSideNavBtnContainer:hover > .pcSideNavBtn {
+    border-bottom: 2px solid var(--btnTextColor);
+    border-left: 2px solid var(--btnTextColor);
+    transition: all 0.35s ease-in-out;
+}
+
+.pcSideNavBtnContainer:hover > .pcSideNavCloseBtn {
+    border-bottom: 2px solid var(--btnTextColor);
+    border-left: 2px solid var(--btnTextColor);
+    transition: all 0.35s ease-in-out;
+}
+
+.pcSideNavClosed {
+    display: none;
+}*/
 
 
 /*Main content container*/
@@ -216,6 +305,29 @@ nav a:hover {
     font-size: var(--fontContentSize);
     border-left: var(--containerBorder);
     background-color: var(--bgContainerColor);
+}
+
+/*.contentMargin {
+    margin-left: 18vw;
+}
+
+.contentSmallMargin {
+    margin-left: 2vw;
+}
+
+.wideContent {
+    grid-area: content; 
+
+    padding: 10px;
+    margin-left: 2vw;
+
+    font-size: var(--fontContentSize);
+    border-left: var(--containerBorder);
+    background-color: var(--bgContainerColor);
+}*/
+
+.hideCountries > .contentContainer{
+    display: none;
 }
 
 
@@ -287,8 +399,11 @@ footer {
         width: 100%;
         min-height: auto;
         padding: 0;
+        margin: 0;
         /*background-color: var(--bgPrimaryColor);*/
         /*background-color: var(--bgSecondaryColor);*/
+        border-bottom: var(--containerBorder);
+        border-radius: 0;
     }
 
     .sideNav {
@@ -395,5 +510,9 @@ footer {
 
     .sideNavLinksOnMobile {
         display: block;
+    }
+
+    .pcSideNavBtnContainer {
+        display: none;
     }
 }
