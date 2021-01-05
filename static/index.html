@@ -12,9 +12,9 @@
     <header id="header"></header>
     <div class="menu"></div>
 
-    <div class="content">Content <br><br>
-        <div class="countries" id="countries" onclick="countries()">
-            <div class="floatLeft">Countries</div><br>
+    <div class="content">Categories <br><br>
+        <div class="countries" id="countries" onclick="countries('check')">
+            <div class="floatLeft categoryHeader">Countries</div><br>
             <div class="contentContainer">
                 <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Andorra</button>
                 <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Austria</button>
@@ -41,9 +41,10 @@
                 <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Vatican</button>
             </div>
         </div>
-        <div class="denominations">
-            <div class="displayInline">
-                <div class="floatLeft">Denominations</div>
+
+        <div class="denominations hideDenominations" id="denominations" onclick="denominations('check')">
+            <div class="displayInline hideDenominationsCheckbox" id="denominationsHeader">
+                <div class="floatLeft categoryHeader">Denominations</div>
                 <div class="floatRight">
                     <input type="checkbox" id="allDenom" name="denominations" value="allDenom">
                     <label for="allDenom">Show all</label>
@@ -51,19 +52,20 @@
                 <br>
             </div>
             <div class="contentContainer">
-                <button class="country" onclick="location.href='nominalcard.html'">1 cent</button>
-                <button class="country" onclick="location.href='nominalcard.html'">2 cent</button>
-                <button class="country" onclick="location.href='nominalcard.html'">5 cent</button>
-                <button class="country" onclick="location.href='nominalcard.html'">10 cent</button>
-                <button class="country" onclick="location.href='nominalcard.html'">20 cent</button>
-                <button class="country" onclick="location.href='nominalcard.html'">50 cent</button>
-                <button class="country" onclick="location.href='nominalcard.html'">1 euro</button>
-                <button class="country" onclick="location.href='nominalcard.html'">2 euro</button>
+                <button class="country" onclick="location.href='nominalcard.html'; stopParent(event)">1 cent</button>
+                <button class="country" onclick="location.href='nominalcard.html'; stopParent(event)">2 cent</button>
+                <button class="country" onclick="location.href='nominalcard.html'; stopParent(event)">5 cent</button>
+                <button class="country" onclick="location.href='nominalcard.html'; stopParent(event)">10 cent</button>
+                <button class="country" onclick="location.href='nominalcard.html'; stopParent(event)">20 cent</button>
+                <button class="country" onclick="location.href='nominalcard.html'; stopParent(event)">50 cent</button>
+                <button class="country" onclick="location.href='nominalcard.html'; stopParent(event)">1 euro</button>
+                <button class="country" onclick="location.href='nominalcard.html'; stopParent(event)">2 euro</button>
             </div>
         </div>
-        <div class="commemorative">
-            <div class="displayInline">
-                <div class="floatLeft">Commemorative</div>
+
+        <div class="commemorative hideCommemorative" id="commemorative" onclick="commemorative('check')">
+            <div class="displayInline hideCommemorativeCheckbox" id="commemorativeHeader">
+                <div class="floatLeft categoryHeader">Commemorative</div>
                 <div class="floatRight">
                     <input type="checkbox" id="commonIssues" name="commCommonIssues" value="commonIssues" checked>
                     <label for="commonIssues">Common Issues</label>
@@ -75,38 +77,41 @@
                 <br>
             </div>
             <div class="contentContainer">
-                <button class="country" onclick="location.href='commemorativecard.html'">2004</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2005</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2006</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2007</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2007 TOR</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2008</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2009</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2009 EMU</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2010</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2011</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2012</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2012 10YE</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2013</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2014</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2015</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2015 30YF</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2016</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2017</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2018</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2019</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2020</button>
-                <button class="country" onclick="location.href='commemorativecard.html'">2021</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2004</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2005</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2006</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2007</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2007 TOR</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2008</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2009</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2009 EMU</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2010</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2011</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2012</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2012 10YE</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2013</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2014</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2015</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2015 30YF</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2016</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2017</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2018</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2019</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2020</button>
+                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2021</button>
             </div>
         </div>
         <div class="colored">
-            Colored<br>
+            <div class="floatLeft categoryHeader">Colored</div>
+            <br>
         </div>
         <div class="silver">
-            Silver coins<br>
+            <div class="floatLeft categoryHeader">Silver coins</div>
+            <br>
         </div>
         <div class="gold">
-            Gold coins<br>
+            <div class="floatLeft categoryHeader">Gold coins</div>
+            <br>
         </div>
     </div>
 

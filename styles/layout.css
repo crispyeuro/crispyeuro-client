@@ -326,7 +326,8 @@ nav a:hover {
     background-color: var(--bgContainerColor);
 }*/
 
-.hideCountries > .contentContainer{
+.hideCountries > .contentContainer, .hideDenominations > .contentContainer, .hideDenominationsCheckbox > .floatRight,
+.hideCommemorative > .contentContainer, .hideCommemorativeCheckbox > .floatRight{
     display: none;
 }
 
@@ -384,7 +385,7 @@ footer {
             'menu'
             'content'
             'footer';
-        grid-template-rows: 40px auto auto 40px;
+        grid-template-rows: 40px auto 1fr 40px;
         grid-template-columns: 1fr;
     }
 
@@ -397,7 +398,6 @@ footer {
         position: relative;
         top: 0;
         width: 100%;
-        min-height: auto;
         padding: 0;
         margin: 0;
         /*background-color: var(--bgPrimaryColor);*/

@@ -1,13 +1,13 @@
 @import "main.css";
 
 .countries, .denominations, .commemorative, .colored, .silver, .gold {
-    border: 1px solid var(--secondaryColor);
+    border: var(--containerBorder);
     border-radius: 10px;
     margin-bottom: 10px;
     padding: 1% 2% 1% 2%;
 }
 
-.countries:hover {
+.countries:hover, .denominations:hover, .commemorative:hover, .colored:hover, .silver:hover, .gold:hover {
     background-color: var(--bgPrimaryColor);
 }
 
@@ -16,6 +16,10 @@
     flex-wrap: wrap;
     align-items: center;
     width: 100%;
+}
+
+.categoryHeader {
+    color: var(--textColor);
 }
 
 .country {
@@ -27,11 +31,14 @@
     /*background-color:  #e7f3f8;*/
     background-color: var(--bgContainerColor);
     color: var(--secondaryColor);
-    border: 1px solid #7db3c7;
+    /*border: 1px solid #7db3c7;*/
+    border: 1px solid var(--borderSecondaryColor);
     border-radius: 4px;
     cursor: pointer;
 }
 
 .country:hover{
-    background-color: #7db3c7;
+    /*background-color: #7db3c7;*/
+    background-color: var(--btnBgColor);
+    color: var(--btnTextColor);
 }
