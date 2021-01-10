@@ -58,6 +58,7 @@ button {
     border-radius: 4px;
     padding: 8px 12px;
     width: 30%;
+    min-width: 100px;
     margin: 10px;
     cursor: pointer;
 }
@@ -84,13 +85,93 @@ button:hover { opacity: 0.9; }
     background-color:  #D4EDF7;
 }
 
+/*Checkbox*/
+.cBoxOuterContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.checkboxContainer {
+    position: relative;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cbLabel {
+    padding-left: 15px;
+}
+
+.cb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fCheckbox {
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    background-color: #347c9842;
+    border: 1px solid #00a6e2;
+    border-radius: 4px;
+}
+
+.checkboxContainer a {
+    padding-left: 4px;
+}
+
+input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+}
+/*
+.checkboxContainer:hover .fCheckbox{
+    background-color: #ffffff;
+}*/
+
+.fCheckbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.fCheckbox:after {
+    border-right: 2px solid #275d72;
+    border-bottom: 2px solid #275d72;
+    height: 8px;
+    width: 4px;
+    transform: rotate(45deg);
+    top: 1px;
+    right: 4px;
+}
+
+.checkboxContainer input[type=checkbox]:checked ~ .fCheckbox:after {
+    display: block;
+}
+
+input[type=checkbox]:checked ~ .fCheckbox{
+    /*background-color: #ffffff;*/
+    background-color: #347c9842;
+}
+
+.fCheckbox:active, label[class=checkboxContainer]:active > .fCheckbox {
+    box-shadow: 0 0 0 1px #00a6e2 inset;
+    background-color:  #a9bec5;
+}
+
 footer {
     grid-area: footer;
     border-top: 3px solid #7db3c7;
     background-color: #D4EDF7;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
     body {
         grid-template-columns: 1fr;
         grid-template-rows: 50px 1fr 40px;

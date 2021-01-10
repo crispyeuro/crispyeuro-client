@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Welcome</title>
     <link rel="stylesheet" href="../styles/login.css">
+    <!--<link rel="stylesheet" href="../styles/main.css">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -16,15 +17,24 @@
     <div class="login">
         <div class="logInForm">
             <form action="index.html">
-                <b>LOG IN or SIGN UP</b><br><br><br>
+                <b>Please LOG IN</b><br><br><br>
                 <label for="username">Username</label><br>
                 <input type="text" placeholder="Enter Username" name="username" required autocomplete="off"><br>
 
                 <label for="password">Password</label><br>
                 <input type="password" placeholder="Enter Password" name="password" required autocomplete="off"><br>
 
-                <input type="checkbox" checked="checked" name="remember"> Remember me<br>
-                <button type="submit" class="logInBtn">Log In</button>  
+                <!--<input type="checkbox" checked="checked" name="remember"> Remember me<br>-->
+                <div class="cBoxOuterContainer">
+                    <label for="fTerms" class="checkboxContainer">
+                        <div class="cb">
+                            <input type="checkbox" id="fTerms" name="terms" value="accept" checked="checked">
+                            <div class="fCheckbox"></div>
+                        </div>
+                        <div class="cbLabel">Remember me</div>
+                </label>
+                </div>
+                <button type="submit" class="logInBtn">Log In</button>
             </form>
         </div>
 

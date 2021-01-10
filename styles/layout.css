@@ -169,8 +169,8 @@ nav a:hover {
     /*border: 1px solid var(--secondaryColor);*/
 
     /*border-bottom: var(--containerBorder);*/
-    background-color: var(--bgContainerColor);
-    /*background-color: var(--bgPrimaryColor);*/
+    /*background-color: var(--bgContainerColor);*/
+    background-color: var(--bgPrimaryColor);
 }
 
 .menuWidth {
@@ -350,9 +350,16 @@ footer {
         top: 40px;
         position: fixed;
         justify-content: center;
-        height: 160px;
-        background-color: var(--headerPrimaryColor);
+        /*height: 160px;*/
+        height: 100vh;
+        /*background-color: var(--headerPrimaryColor);*/
+        background-color: rgba(52, 123,152, 0.7);
         z-index: 2;
+        /*opacity: 0.95;*/
+    }
+
+    .navLinksOnMobile li {
+        background-color: var(--headerPrimaryColor);
         opacity: 0.95;
     }
 
@@ -433,6 +440,7 @@ footer {
     .sideNav ul {
         width: 100%;
         /*background-color: var(--bgPrimaryColor);*/
+        background-color: var(--bgContainerColor);
         /*margin: 10px 0 0 0;*/
         margin: 0;
         border-top: var(--containerBorder);
