@@ -228,3 +228,51 @@ function checkHash() {
         return true;
     }
 }
+
+function loadCountries() {
+    for(country = 0; country <= countryArray.length-1; country++) {
+        var element = document.createElement("button");
+        element.className = "country";
+        element.addEventListener('click', () => location.href='countrycard.html');
+        element.addEventListener('click', event => event.stopPropagation());
+        var textNode = document.createTextNode(countryArray[country]);
+        element.appendChild(textNode);
+        document.getElementById("countriesList").appendChild(element);
+    }
+}
+
+function loadDenominations() {
+    for(coin = 0; coin <= coinsArray.length-1; coin++) {
+        var element = document.createElement("button");
+        element.className = "country";
+        element.addEventListener('click', () => location.href='nominalcard.html');
+        element.addEventListener('click', event => event.stopPropagation());
+        var textNode = document.createTextNode(coinsArray[coin]);
+        element.appendChild(textNode);
+        document.getElementById("denominationsList").appendChild(element);
+    }
+}
+
+function loadOtherDenom() {
+    for(coin = 0; coin <= otherCoinsArray.length-1; coin++) {
+        var element = document.createElement("button");
+        element.className = "country";
+        element.addEventListener('click', () => location.href='nominalcard.html');
+        element.addEventListener('click', event => event.stopPropagation());
+        var textNode = document.createTextNode(otherCoinsArray[coin]);
+        element.appendChild(textNode);
+        document.getElementById("denominationsList").appendChild(element);
+    }
+}
+
+function showOtherDenom() {
+    var checkBox = document.getElementById("allDenom");
+    var otherDenomDiv = document.getElementById("showOtherDenom");
+    if (checkBox.checked == true) {
+        otherDenomDiv.style.display = "block";
+        loadOtherDenom();
+    } else {
+        otherDenomDiv.style.display = "none";
+        document.getElementById("showOtherDenom").innerHTML = "";
+    }
+}

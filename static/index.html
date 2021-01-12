@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Main page</title>
     <script src="../scripts/layout.js"></script>
+    <script src="../scripts/data.js"></script>
     <link rel="stylesheet" href="../styles/layout.css">
     <link rel="stylesheet" href="../styles/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,30 +16,10 @@
     <div class="content">Categories <br><br>
         <div class="countries" id="countries" onclick="countries('check')">
             <div class="floatLeft categoryHeader">Countries</div><br>
-            <div class="contentContainer">
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Andorra</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Austria</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Belgium</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Cyprus</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Estonia</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Finland</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">France</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Germany</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Greece</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Ireland</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Italy</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Latvia</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Lithuania</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Luxembourg</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Malta</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Monaco</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Netherlands</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Portugal</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">San Marino</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Slovakia</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Slovenia</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Spain</button>
-                <button class="country" onclick="location.href='countrycard.html'; stopParent(event)">Vatican</button>
+            <div id="countriesList" class="contentContainer">
+                <script type="text/javascript">
+                    loadCountries();
+                </script>
             </div>
         </div>
 
@@ -46,20 +27,18 @@
             <div class="displayInline hideDenominationsCheckbox" id="denominationsHeader">
                 <div class="floatLeft categoryHeader">Denominations</div>
                 <div class="floatRight">
-                    <input type="checkbox" id="allDenom" name="denominations" value="allDenom">
-                    <label for="allDenom">Show all</label>
+                    <label for="allDenom" class="checkboxContainer" onclick="stopParent(event)">Show all
+                        <input type="checkbox" id="allDenom" name="denominations" value="allDenom" onclick="showOtherDenom()">
+                        <div class="fCheckbox"></div>
+                    </label>
                 </div>
                 <br>
             </div>
-            <div class="contentContainer">
-                <button class="country" onclick="location.href='nominalcard.html'; stopParent(event)">1 cent</button>
-                <button class="country" onclick="location.href='nominalcard.html'; stopParent(event)">2 cent</button>
-                <button class="country" onclick="location.href='nominalcard.html'; stopParent(event)">5 cent</button>
-                <button class="country" onclick="location.href='nominalcard.html'; stopParent(event)">10 cent</button>
-                <button class="country" onclick="location.href='nominalcard.html'; stopParent(event)">20 cent</button>
-                <button class="country" onclick="location.href='nominalcard.html'; stopParent(event)">50 cent</button>
-                <button class="country" onclick="location.href='nominalcard.html'; stopParent(event)">1 euro</button>
-                <button class="country" onclick="location.href='nominalcard.html'; stopParent(event)">2 euro</button>
+            <div id="denominationsList" class="contentContainer">
+                <script type="text/javascript">
+                    loadDenominations();
+                </script>
+                <div id="showOtherDenom" style="display: none;"></div>
             </div>
         </div>
 
@@ -67,12 +46,19 @@
             <div class="displayInline hideCommemorativeCheckbox" id="commemorativeHeader">
                 <div class="floatLeft categoryHeader">Commemorative</div>
                 <div class="floatRight">
-                    <input type="checkbox" id="commonIssues" name="commCommonIssues" value="commonIssues" checked>
-                    <label for="commonIssues">Common Issues</label>
-                    <input type="checkbox" id="byYear" name="commByYear" value="byYear" checked>
-                    <label for="byYear">By year</label>
-                    <input type="checkbox" id="byCountry" name="commByCountry" value="byCountry">
-                    <label for="byCountry">By country</label>
+                    <label for="commonIssues" class="checkboxContainer displayInline" onclick="stopParent(event)">Common issues
+                        <input type="checkbox" id="commonIssues" name="commCommonIssues" value="commonIssues">
+                        <div class="fCheckbox"></div>
+                    </label>
+
+                    <label for="byYear" class="radioContainer displayInline" onclick="stopParent(event)">By Year
+                        <input type="radio" id="byYear" name="commemorative" value="byYear" checked>
+                        <div class="fRadio"></div>
+                    </label>
+                    <label for="byCountry" class="radioContainer displayInline" onclick="stopParent(event)">By Country
+                        <input type="radio" id="byCountry" name="commemorative" value="byCountry">
+                        <div class="fRadio"></div>
+                    </label>
                 </div>
                 <br>
             </div>

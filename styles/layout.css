@@ -345,6 +345,123 @@ footer {
     background-color: var(--bgPrimaryColor);
 }
 
+
+.checkboxContainer {
+    position: relative;
+    padding-left: 20px;
+    display: flex;
+    /*align-items: center;
+    justify-content: flex-end;*/
+    color: var(--headerSecondaryColor);
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.fCheckbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    /*background-color: var(--bgSecondaryColor);*/
+    background-color: var(--bgContainerColor);
+    border: var(--inputBorder);
+    border-radius: var(--borderRadius);
+}
+
+input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+}
+
+.checkboxContainer:hover .fCheckbox{
+    background-color: var(--bgContainerColor);
+    box-shadow: 0 0 0 1px var(--borderSecondaryColor) inset;
+}
+
+.fCheckbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.fCheckbox:after {
+    border-right: 2px solid var(--headerSecondaryColor);
+    border-bottom: 2px solid var(--headerSecondaryColor);
+    height: 8px;
+    width: 4px;
+    transform: rotate(45deg);
+    top: 1px;
+    right: 4px;
+}
+
+.checkboxContainer input[type=checkbox]:checked ~ .fCheckbox:after {
+    display: block;
+}
+
+input[type=checkbox]:checked ~ .fCheckbox{
+    background-color: var(--bgContainerColor);
+}
+
+
+.fCheckbox:active, label[class=checkboxContainer]:active > .fCheckbox {
+    box-shadow: 0 0 0 1px var(--borderSecondaryColor) inset;
+}
+
+.radioContainer {
+    position: relative;
+    padding-left: 20px;
+    padding-right: 10px;
+    display: flex;
+    color: var(--headerSecondaryColor);
+}
+
+.radioContainer input {
+    position: absolute;
+    opacity: 0;
+}
+
+.fRadio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    background-color: var(--bgContainerColor);
+    border: var(--inputBorder);
+    border-radius: 50%;
+}
+
+.fRadio:active, label[class=radioContainer]:active > .fRadio {
+    box-shadow: 0 0 0 1px var(--borderSecondaryColor) inset;
+}
+
+.radioContainer:hover .fRadio{
+    background-color: var(--bgContainerColor);
+    box-shadow: 0 0 0 1px var(--borderSecondaryColor) inset;
+}
+
+.fRadio:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.fRadio:after {
+    top: 3px;
+    left: 3px;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: var(--headerSecondaryColor);
+}
+
+.radioContainer input[type=radio]:checked ~ .fRadio:after {
+    display: block;
+}
+
 @media only screen and (max-width: 768px) {
     nav .navLinksOnMobile {
         top: 40px;
@@ -381,7 +498,6 @@ footer {
         display: block;
         float: right;
     }
-
 }
 
 @media only screen and (max-width: 992px) {
