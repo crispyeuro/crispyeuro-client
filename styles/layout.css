@@ -370,6 +370,10 @@ footer {
     border-radius: var(--borderRadius);
 }
 
+.disabled {
+    opacity: 0.5;
+}
+
 input[type=checkbox] {
     position: absolute;
     opacity: 0;
@@ -378,6 +382,12 @@ input[type=checkbox] {
 .checkboxContainer:hover .fCheckbox{
     background-color: var(--bgContainerColor);
     box-shadow: 0 0 0 1px var(--borderSecondaryColor) inset;
+}
+
+.disabled:hover .fCheckbox {
+    background-color: var(--bgContainerColor);
+    box-shadow: none;
+    cursor: auto;
 }
 
 .fCheckbox:after {

@@ -230,49 +230,128 @@ function checkHash() {
 }
 
 function loadCountries() {
+    var countryList = document.getElementById("countriesList");
     for(country = 0; country <= countryArray.length-1; country++) {
         var element = document.createElement("button");
         element.className = "country";
-        element.addEventListener('click', () => location.href='countrycard.html');
+        var onClickAttr = document.createAttribute("onclick");
+        onClickAttr.value = 'location.href="countrycard.html#' + countryArray[country].replace(/\s/g, '') + '"';
+        element.setAttributeNode(onClickAttr);
         element.addEventListener('click', event => event.stopPropagation());
         var textNode = document.createTextNode(countryArray[country]);
         element.appendChild(textNode);
-        document.getElementById("countriesList").appendChild(element);
+        countryList.appendChild(element);
     }
 }
 
-function loadDenominations() {
-    for(coin = 0; coin <= coinsArray.length-1; coin++) {
+function loadOrdinaryCoins() {
+    var denomList = document.getElementById("denomList");
+    for(i = 0; i <= coins.length-1; i++) {
         var element = document.createElement("button");
         element.className = "country";
-        element.addEventListener('click', () => location.href='nominalcard.html');
+        var onClickAttr = document.createAttribute("onclick");
+        onClickAttr.value = 'location.href="nominalcard.html#' + (coins[i].coin).replace(/\s/g, '') + '"';
+        element.setAttributeNode(onClickAttr);
         element.addEventListener('click', event => event.stopPropagation());
-        var textNode = document.createTextNode(coinsArray[coin]);
+        var textNode = document.createTextNode(coins[i].coin);
         element.appendChild(textNode);
-        document.getElementById("denominationsList").appendChild(element);
+        denomList.appendChild(element);
     }
 }
 
-function loadOtherDenom() {
-    for(coin = 0; coin <= otherCoinsArray.length-1; coin++) {
-        var element = document.createElement("button");
-        element.className = "country";
-        element.addEventListener('click', () => location.href='nominalcard.html');
-        element.addEventListener('click', event => event.stopPropagation());
-        var textNode = document.createTextNode(otherCoinsArray[coin]);
-        element.appendChild(textNode);
-        document.getElementById("denominationsList").appendChild(element);
-    }
-}
-
-function showOtherDenom() {
-    var checkBox = document.getElementById("allDenom");
-    var otherDenomDiv = document.getElementById("showOtherDenom");
-    if (checkBox.checked == true) {
-        otherDenomDiv.style.display = "block";
-        loadOtherDenom();
+function checkOtherCoins() {
+    var denomCheckBox = document.getElementById("allDenom");
+    var denomList = document.getElementById("denomList");
+    denomList.textContent = "";
+    if (denomCheckBox.checked == true) {
+        var allCoins = sortAllCoins();
+        for(i = 0; i <= allCoins.length-1; i++) {
+            var element = document.createElement("button");
+            element.className = "country";
+            var onClickAttr = document.createAttribute("onclick");
+            onClickAttr.value = 'location.href="nominalcard.html#' + (allCoins[i].coin).replace(/\s/g, '') + '"';
+            element.setAttributeNode(onClickAttr);
+            element.addEventListener('click', event => event.stopPropagation());
+            var textNode = document.createTextNode(allCoins[i].coin);
+            element.appendChild(textNode);
+            document.getElementById("denomList").appendChild(element);
+        }
     } else {
-        otherDenomDiv.style.display = "none";
-        document.getElementById("showOtherDenom").innerHTML = "";
+        loadOrdinaryCoins();
     }
+}
+
+function sortAllCoins() {
+    var allCoins = coins.concat(otherCoins);
+    return allCoins.sort((a, b) => parseFloat(a.value) - parseFloat(b.value));
+}
+
+function loadIssues() {
+    var issuesList = document.getElementById("issuesList");
+    var commonIssuesCB = document.getElementById("commonIssuesCB");
+    var commemoByYearCB = document.getElementById("commemoByYearCB");
+    var commemoByCountryCB = document.getElementById("commemoByCountryCB");
+    var commonIssuesLabel = document.getElementById("commonIssuesLabel");
+    issuesList.textContent = "";
+    if (commonIssuesCB.checked == true && commemoByYearCB.checked == true) {
+        if(commonIssuesLabel.className == "checkboxContainer displayInline disabled") {
+            commonIssuesLabel.className = "checkboxContainer displayInline";
+            commonIssuesCB.disabled = false;
+        }
+        var allIssues = sortAllIssues();
+        for(i = 0; i <= allIssues.length-1; i++) {
+            var element = document.createElement("button");
+            element.className = "country";
+            var onClickAttr = document.createAttribute("onclick");
+            onClickAttr.value = 'location.href="commemorativecard.html#' + (allIssues[i].coin).replace(/\s/g, '') + '"';
+            element.setAttributeNode(onClickAttr);
+            element.addEventListener('click', event => event.stopPropagation());
+            var textNode = document.createTextNode(allIssues[i].coin);
+            element.appendChild(textNode);
+            issuesList.appendChild(element);
+        }
+        return true;
+    }
+    if (commemoByYearCB.checked == true) {
+        if(commonIssuesLabel.className == "checkboxContainer displayInline disabled") {
+            commonIssuesLabel.className = "checkboxContainer displayInline";
+            commonIssuesCB.disabled = false;
+        }
+        for(i = 0; i <= issues.length-1; i++) {
+            var element = document.createElement("button");
+            element.className = "country";
+            var onClickAttr = document.createAttribute("onclick");
+            onClickAttr.value = 'location.href="commemorativecard.html#' + (issues[i].coin).replace(/\s/g, '') + '"';
+            element.setAttributeNode(onClickAttr);
+            element.addEventListener('click', () => location.href='commemorativecard.html');
+            element.addEventListener('click', event => event.stopPropagation());
+            var textNode = document.createTextNode(issues[i].coin);
+            element.appendChild(textNode);
+            issuesList.appendChild(element);
+        }
+        return true;
+    }
+    if (commemoByCountryCB.checked == true) {
+        if(commonIssuesLabel.className == "checkboxContainer displayInline") {
+            commonIssuesLabel.className += " disabled";
+            commonIssuesCB.disabled = true;
+        }
+        for(i = 0; i <= countryArray.length-1; i++) {
+            var element = document.createElement("button");
+            element.className = "country";
+            var onClickAttr = document.createAttribute("onclick");
+            onClickAttr.value = 'location.href="commemorativecard.html#' + (countryArray[i]).replace(/\s/g, '') + '"';
+            element.setAttributeNode(onClickAttr);
+            element.addEventListener('click', event => event.stopPropagation());
+            var textNode = document.createTextNode(countryArray[i]);
+            element.appendChild(textNode);
+            issuesList.appendChild(element);
+        }
+        return false;
+    }
+}
+
+function sortAllIssues() {
+    var allIssues = issues.concat(commonIssues);
+    return allIssues.sort((a, b) => parseFloat(a.year) - parseFloat(b.year));
 }

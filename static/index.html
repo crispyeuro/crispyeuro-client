@@ -28,17 +28,16 @@
                 <div class="floatLeft categoryHeader">Denominations</div>
                 <div class="floatRight">
                     <label for="allDenom" class="checkboxContainer" onclick="stopParent(event)">Show all
-                        <input type="checkbox" id="allDenom" name="denominations" value="allDenom" onclick="showOtherDenom()">
+                        <input type="checkbox" id="allDenom" name="denominations" value="allDenom" onclick="checkOtherCoins()">
                         <div class="fCheckbox"></div>
                     </label>
                 </div>
                 <br>
             </div>
-            <div id="denominationsList" class="contentContainer">
+            <div id="denomList" class="contentContainer">
                 <script type="text/javascript">
-                    loadDenominations();
+                    loadOrdinaryCoins();
                 </script>
-                <div id="showOtherDenom" style="display: none;"></div>
             </div>
         </div>
 
@@ -46,45 +45,26 @@
             <div class="displayInline hideCommemorativeCheckbox" id="commemorativeHeader">
                 <div class="floatLeft categoryHeader">Commemorative</div>
                 <div class="floatRight">
-                    <label for="commonIssues" class="checkboxContainer displayInline" onclick="stopParent(event)">Common issues
-                        <input type="checkbox" id="commonIssues" name="commCommonIssues" value="commonIssues">
+                    <label id="commonIssuesLabel" for="commonIssuesCB" class="checkboxContainer displayInline" onclick="stopParent(event)">Common issues
+                        <input type="checkbox" id="commonIssuesCB" name="commCommonIssues" value="commonIssues" checked onclick="loadIssues()">
                         <div class="fCheckbox"></div>
                     </label>
 
-                    <label for="byYear" class="radioContainer displayInline" onclick="stopParent(event)">By Year
-                        <input type="radio" id="byYear" name="commemorative" value="byYear" checked>
+                    <label for="commemoByYearCB" class="radioContainer displayInline" onclick="stopParent(event)">By Year
+                        <input type="radio" id="commemoByYearCB" name="commemorative" value="byYear" checked onclick="loadIssues()">
                         <div class="fRadio"></div>
                     </label>
-                    <label for="byCountry" class="radioContainer displayInline" onclick="stopParent(event)">By Country
-                        <input type="radio" id="byCountry" name="commemorative" value="byCountry">
+                    <label for="commemoByCountryCB" class="radioContainer displayInline" onclick="stopParent(event)">By Country
+                        <input type="radio" id="commemoByCountryCB" name="commemorative" value="byCountry" onclick="loadIssues()">
                         <div class="fRadio"></div>
                     </label>
                 </div>
                 <br>
             </div>
-            <div class="contentContainer">
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2004</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2005</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2006</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2007</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2007 TOR</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2008</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2009</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2009 EMU</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2010</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2011</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2012</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2012 10YE</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2013</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2014</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2015</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2015 30YF</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2016</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2017</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2018</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2019</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2020</button>
-                <button class="country" onclick="location.href='commemorativecard.html'; stopParent(event)">2021</button>
+            <div id="issuesList" class="contentContainer">
+                <script type="text/javascript">
+                    loadIssues();
+                </script>
             </div>
         </div>
         <div class="colored">
