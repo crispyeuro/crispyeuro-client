@@ -31,14 +31,14 @@ window.onload = function() {
                 <li><a href="#" onclick="openCountries();return false;">Countries</a></li>
                 <li><a href="#" onclick="openDenominations();return false;">Denominations</a></li>
                 <li><a href="#" onclick="openCommemorative();return false;">Commemorative</a></li>
-                <li><a href="#colored">Colored</a></li>
-                <li><a href="#silver">Silver</a></li>
-                <li><a href="#gold">Gold</a></li>
+                <li><a href="#" onclick="openColored();return false;">Colored coins</a></li>
+                <li><a href="#" onclick="openSilver();return false;">Silver coins</a></li>
+                <li><a href="#" onclick="openGold();return false;">Gold coins</a></li>
             </ul>
         </div>`;
 
     document.getElementById("footer").innerHTML = 
-    `Crispyeuro 2021`;
+    `Crispyeuro 2020-2021`;
 
     checkHash();
 }
@@ -179,7 +179,90 @@ function commemorative(x) {
             return true;
         }
     }
-    
+}
+
+function colored(x) {
+    var colored = document.getElementById("colored");
+    var coloredHeader = document.getElementById("coloredHeader");
+    if (x == "open") {
+        if (colored.className == "colored hideColored") {
+            colored.className = "colored";
+            coloredHeader.className = "displayInline";
+            return true;
+        }
+    } if (x == "close") {
+        if (colored.className == "colored") {
+            colored.className = "colored hideColored";
+            coloredHeader.className = "displayInline hideColoredCB";
+            return true;
+        }
+    } if (x == "check") {
+        if (colored.className == "colored") {
+            colored.className = "colored hideColored";
+            coloredHeader.className = "displayInline hideColoredCB";
+            return true;
+        } else {
+            colored.className = "colored";
+            coloredHeader.className = "displayInline";
+            return true;
+        }
+    }
+}
+
+function silver(x) {
+    var silver = document.getElementById("silver");
+    var silverHeader = document.getElementById("silverHeader");
+    if (x == "open") {
+        if (silver.className == "silver hideSilver") {
+            silver.className = "silver";
+            silverHeader.className = "displayInline";
+            return true;
+        }
+    } if (x == "close") {
+        if (silver.className == "silver") {
+            silver.className = "silver hideSilver";
+            silverHeader.className = "displayInline hideSilverCB";
+            return true;
+        }
+    } if (x == "check") {
+        if (silver.className == "silver") {
+            silver.className = "silver hideSilver";
+            silverHeader.className = "displayInline hideSilverCB";
+            return true;
+        } else {
+            silver.className = "silver";
+            silverHeader.className = "displayInline";
+            return true;
+        }
+    }
+}
+
+function gold(x) {
+    var gold = document.getElementById("gold");
+    var goldHeader = document.getElementById("goldHeader");
+    if (x == "open") {
+        if (gold.className == "gold hideGold") {
+            gold.className = "gold";
+            goldHeader.className = "displayInline";
+            return true;
+        }
+    } if (x == "close") {
+        if (gold.className == "gold") {
+            gold.className = "gold hideGold";
+            goldHeader.className = "displayInline hideGoldCB";
+            return true;
+        }
+    } if (x == "check") {
+        if (gold.className == "gold") {
+            gold.className = "gold hideGold";
+            goldHeader.className = "displayInline hideGoldCB";
+            return true;
+        } else {
+            gold.className = "gold";
+            goldHeader.className = "displayInline";
+            return true;
+        }
+    }
 }
 
 function openAll() {
@@ -202,29 +285,82 @@ function openCommemorative() {
     checkHash();
 }
 
+function openColored() {
+    window.open("index.html#colored", "_self");
+    checkHash();
+}
+
+function openSilver() {
+    window.open("index.html#silver", "_self");
+    checkHash();
+}
+
+function openGold() {
+    window.open("index.html#gold", "_self");
+    checkHash();
+}
+
 function checkHash() {
     const x = window.location.hash.substr(1);
     if (x == "all") {
         countries("open");
         denominations("open");
         commemorative("open");
+        colored("open");
+        silver("open");
+        gold("open");
         return true;
     }
     if (x == "countries") {
         countries("open");
         denominations("close");
         commemorative("close");
+        colored("close");
+        silver("close");
+        gold("close");
         return true;
     }
     if (x == "denominations") {
         countries("close");
         denominations("open");
         commemorative("close");
+        colored("close");
+        silver("close");
+        gold("close");
         return true;
     } if (x == "commemorative") {
         countries("close");
         denominations("close");
         commemorative("open");
+        colored("close");
+        silver("close");
+        gold("close");
+        return true;
+    } if (x == "colored") {
+        countries("close");
+        denominations("close");
+        commemorative("close");
+        colored("open");
+        silver("close");
+        gold("close");
+        return true;
+    }
+    if (x == "silver") {
+        countries("close");
+        denominations("close");
+        commemorative("close");
+        colored("close");
+        silver("open");
+        gold("close");
+        return true;
+    }
+    if (x == "gold") {
+        countries("close");
+        denominations("close");
+        commemorative("close");
+        colored("close");
+        silver("close");
+        gold("open");
         return true;
     }
 }
@@ -354,4 +490,100 @@ function loadIssues() {
 function sortAllIssues() {
     var allIssues = issues.concat(commonIssues);
     return allIssues.sort((a, b) => parseFloat(a.year) - parseFloat(b.year));
+}
+
+function loadColored() {
+    var coloredByYearRadio = document.getElementById("coloredByYearRadio");
+    var coloredByCountryRadio = document.getElementById("coloredByCountryRadio");
+    var coloredList = document.getElementById("coloredList");
+    coloredList.textContent = "";
+    if (coloredByYearRadio.checked == true) {
+        for(i = 0; i <= issues.length-1; i++) {
+            var element = document.createElement("button");
+            element.className = "country";
+            var onClickAttr = document.createAttribute("onclick");
+            onClickAttr.value = 'location.href="countrycard.html#Colored-' + issues[i].coin + '"';
+            element.setAttributeNode(onClickAttr);
+            element.addEventListener('click', event => event.stopPropagation());
+            var textNode = document.createTextNode(issues[i].coin);
+            element.appendChild(textNode);
+            coloredList.appendChild(element);
+        }
+    } if (coloredByCountryRadio.checked == true) {
+        for(i = 0; i <= countryArray.length-1; i++) {
+            var element = document.createElement("button");
+            element.className = "country";
+            var onClickAttr = document.createAttribute("onclick");
+            onClickAttr.value = 'location.href="countrycard.html#Colored-' + countryArray[i].replace(/\s/g, '') + '"';
+            element.setAttributeNode(onClickAttr);
+            element.addEventListener('click', event => event.stopPropagation());
+            var textNode = document.createTextNode(countryArray[i]);
+            element.appendChild(textNode);
+            coloredList.appendChild(element);
+        }
+    }
+}
+
+function loadSilver() {
+    var silverByYearRadio = document.getElementById("silverByYearRadio");
+    var silverByCountryRadio = document.getElementById("silverByCountryRadio");
+    var silverList = document.getElementById("silverList");
+    silverList.textContent = "";
+    if (silverByYearRadio.checked == true) {
+        for(i = 0; i <= issues.length-1; i++) {
+            var element = document.createElement("button");
+            element.className = "country";
+            var onClickAttr = document.createAttribute("onclick");
+            onClickAttr.value = 'location.href="countrycard.html#Silver-' + issues[i].coin + '"';
+            element.setAttributeNode(onClickAttr);
+            element.addEventListener('click', event => event.stopPropagation());
+            var textNode = document.createTextNode(issues[i].coin);
+            element.appendChild(textNode);
+            silverList.appendChild(element);
+        }
+    } if (silverByCountryRadio.checked == true) {
+        for(i = 0; i <= countryArray.length-1; i++) {
+            var element = document.createElement("button");
+            element.className = "country";
+            var onClickAttr = document.createAttribute("onclick");
+            onClickAttr.value = 'location.href="countrycard.html#Silver-' + countryArray[i].replace(/\s/g, '') + '"';
+            element.setAttributeNode(onClickAttr);
+            element.addEventListener('click', event => event.stopPropagation());
+            var textNode = document.createTextNode(countryArray[i]);
+            element.appendChild(textNode);
+            silverList.appendChild(element);
+        }
+    }
+}
+
+function loadGold() {
+    var goldByYearRadio = document.getElementById("goldByYearRadio");
+    var goldByCountryRadio = document.getElementById("goldByCountryRadio");
+    var goldList = document.getElementById("goldList");
+    goldList.textContent = "";
+    if (goldByYearRadio.checked == true) {
+        for(i = 0; i <= issues.length-1; i++) {
+            var element = document.createElement("button");
+            element.className = "country";
+            var onClickAttr = document.createAttribute("onclick");
+            onClickAttr.value = 'location.href="countrycard.html#Gold-' + issues[i].coin + '"';
+            element.setAttributeNode(onClickAttr);
+            element.addEventListener('click', event => event.stopPropagation());
+            var textNode = document.createTextNode(issues[i].coin);
+            element.appendChild(textNode);
+            goldList.appendChild(element);
+        }
+    } if (goldByCountryRadio.checked == true) {
+        for(i = 0; i <= countryArray.length-1; i++) {
+            var element = document.createElement("button");
+            element.className = "country";
+            var onClickAttr = document.createAttribute("onclick");
+            onClickAttr.value = 'location.href="countrycard.html#Gold-' + countryArray[i].replace(/\s/g, '') + '"';
+            element.setAttributeNode(onClickAttr);
+            element.addEventListener('click', event => event.stopPropagation());
+            var textNode = document.createTextNode(countryArray[i]);
+            element.appendChild(textNode);
+            goldList.appendChild(element);
+        }
+    }
 }

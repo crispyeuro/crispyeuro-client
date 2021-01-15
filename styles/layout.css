@@ -68,7 +68,8 @@ nav a {
     transition: all 0.35s ease-in-out;
 
     text-decoration: none;
-    color: var(--bgSecondaryColor);
+    /*color: var(--bgSecondaryColor);*/
+    color: white;
 }
 
 nav a:hover {
@@ -165,12 +166,16 @@ nav a:hover {
     height: 100%;
     min-width: 150px;
     width: 12vw;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
     /*padding: 0.5%;*/
     /*border: 1px solid var(--secondaryColor);*/
 
     /*border-bottom: var(--containerBorder);*/
     /*background-color: var(--bgContainerColor);*/
-    background-color: var(--bgPrimaryColor);
+    /*background-color: var(--bgPrimaryColor);*/
+    background-color:  rgb(214, 228, 234);
 }
 
 .menuWidth {
@@ -184,7 +189,7 @@ nav a:hover {
 .myCoinsAmountMeter {
     width: 100%;
     height: 15px;
-
+    /*background-color: var(--meterCoinsAmountColor);*/
     background-color: var(--meterCoinsAmountColor);
     border-radius: 3px;
 }
@@ -225,13 +230,15 @@ nav a:hover {
     display: block;
 
     line-height: 30px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
     text-decoration: none;
-    color: var(--headerSecondaryColor);
+    color: rgb(46, 56, 77, 1);
 }
 
 .sideNav a:hover {
     /*background-color: var(--bgSecondaryColor);*/
-    color: var(--borderPrimaryColor);
+    color: var(--headerPrimaryColor);
 }
 
 .sideNavBtnContainer {
@@ -298,13 +305,20 @@ nav a:hover {
 
 /*Main content container*/
 .content { 
+    top:40px;
     grid-area: content; 
 
     padding: 10px;
+    min-height: 100%;
 
     font-size: var(--fontContentSize);
-    border-left: var(--containerBorder);
-    background-color: var(--bgContainerColor);
+    /*border-left: var(--containerBorder);*/
+    border-left: 1px solid rgba(135, 152, 173, 0.6);
+    /*background-color: var(--bgContainerColor);*/
+    /*background-color: rgba(235, 240, 245, 1);*/
+    background-color: white;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
 }
 
 /*.contentMargin {
@@ -326,8 +340,12 @@ nav a:hover {
     background-color: var(--bgContainerColor);
 }*/
 
-.hideCountries > .contentContainer, .hideDenominations > .contentContainer, .hideDenominationsCheckbox > .floatRight,
-.hideCommemorative > .contentContainer, .hideCommemorativeCheckbox > .floatRight{
+.hideCountries > .contentContainer, 
+.hideDenominations > .contentContainer, .hideDenominationsCheckbox > .floatRight,
+.hideCommemorative > .contentContainer, .hideCommemorativeCheckbox > .floatRight,
+.hideColored > .contentContainer, .hideColoredCB > .floatRight, 
+.hideSilver > .contentContainer, .hideSilverCB > .floatRight,
+.hideGold > .contentContainer, .hideGoldCB > .floatRight {
     display: none;
 }
 
@@ -338,11 +356,16 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    border-top: var(--containerBorder);
-    border-left: var(--containerBorder);
-    color: var(--headerSecondaryColor);
-    background-color: var(--bgPrimaryColor);
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    border-top: 1px solid rgba(135, 152, 173, 0.6);
+    /*border-left: 1px solid rgb(214, 228, 234);*/
+    /*color: var(--headerSecondaryColor);*/
+    color: rgb(46, 56, 77, 1);
+    /*background-color: var(--bgPrimaryColor);*/
+    /*background-color:  rgba(235, 240, 245, 1);*/
+    background-color: rgb(214, 228, 234);
 }
 
 
