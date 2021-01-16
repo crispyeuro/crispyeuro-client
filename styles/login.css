@@ -22,7 +22,40 @@ body {
     font-family: 'Rubik', sans-serif;
 }
 
-.welcome, .login, footer {
+.welcome, footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-areas: 
+        'loginTop'
+        'loginCenter'
+        'loginBottom';
+}
+
+.loginTop {
+    grid-area: loginTop;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vw;
+    font-weight: 400;
+}
+
+.loginCenter {
+    grid-area: loginCenter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginBottom {
+    grid-area: loginBottom;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,6 +88,7 @@ body {
 
 .pleaseLogIn {
     margin-bottom: 20px;
+    font-weight: 300;
 }
 
 input[type=text], input[type=password] {
@@ -70,6 +104,7 @@ input[type=text], input[type=password] {
     /*background-color: #347c9842;*/
     background-color: rgba(32, 41, 60, 1);
     font-family: 'Rubik', sans-serif;
+    font-weight: 300;
 }
 
 input[type=text]:focus, input[type=password]:focus { 
@@ -93,6 +128,24 @@ label[for=username], label[for=password] {
 input:invalid {
     outline: none;
     box-shadow: none;
+}
+
+.forgotPassword {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.forgotPassword a {
+    font-size: 14px;
+    color: rgba(152, 167, 185, 1);
+    text-decoration: none;
+}
+
+.forgotPassword a:hover {
+    text-decoration: underline;
 }
 
 button {
@@ -148,6 +201,7 @@ button:hover { opacity: 0.9; }
     /*background-color:  #D4EDF7;*/
     background-color: rgba(47, 59, 82, 1);
     color: rgba(152, 167, 185, 1);
+    font-weight: 300;
 }
 
 /*Checkbox*/
@@ -236,7 +290,17 @@ footer {
     color: rgba(32, 41, 60, 1);
 }
 
+.inputError {
+    margin-top: -10px;
+    font-size: 14px;
+    text-align: right;
+}
+
 @media only screen and (max-width: 992px) {
+    .loginCenter {
+        flex-direction: column;
+    }
+
     .logInForm { width: 80%; }
 
     button[type=submit] { width: 130px; }

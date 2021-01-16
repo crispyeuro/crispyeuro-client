@@ -15,42 +15,54 @@
     </div>
 
     <div class="login">
-        <div class="logInDiv">
-            <form class="logInForm" action="index.html">
-                <span class="pleaseLogIn">Please LOG IN</span>
-                <label for="username">Username</label>
-                <input type="text" placeholder="Enter Username" name="username" required autocomplete="off">
-
-                <label for="password">Password</label>
-                <input type="password" placeholder="Enter Password" name="password" required autocomplete="off">
-
-                <!--<input type="checkbox" checked="checked" name="remember"> Remember me<br>-->
-                <div class="cBoxOuterContainer">
-                    <label for="fTerms" class="checkboxContainer">
-                        <div class="cb">
-                            <input type="checkbox" id="fTerms" name="terms" value="accept" checked="checked">
-                            <div class="fCheckbox"></div>
-                        </div>
-                        <div class="cbLabel">Remember me</div>
-                </label>
-                </div>
-                <div class="logInBtnContainer">
-                    <button type="submit" class="logInBtn">Log In</button>
-                </div>
-            </form>
+        <div class="loginTop">
+            Start your euro coin collection!
         </div>
 
-        <div class="lineContainer">
-            <div class="line"></div><br>
-            or<br>
-            <div class="line"></div>
+        <div class="loginCenter">
+            <div class="logInDiv">
+                <form name="loginForm" action="index.html" class="logInForm" onsubmit="return validateLogInForm()" method="post">
+                    <span class="pleaseLogIn">Please LOG IN</span>
+                    <label for="username">Username</label>
+                    <input type="text" id="fLoginUsername" placeholder="Enter Username" name="username" required autocomplete="off" autofocus>
+                    <div id="fUsernameError" class="inputError"></div>
+    
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Enter Password" name="password" required autocomplete="off">
+                    <div class=forgotPassword>
+                        <a href=#>Forgot password?</a>
+                    </div>
+    
+                    <!--<input type="checkbox" checked="checked" name="remember"> Remember me<br>-->
+                    <div class="cBoxOuterContainer">
+                        <label for="fTerms" class="checkboxContainer">
+                            <div class="cb">
+                                <input type="checkbox" id="fTerms" name="terms" value="accept" checked="checked">
+                                <div class="fCheckbox"></div>
+                            </div>
+                            <div class="cbLabel">Remember me</div>
+                    </label>
+                    </div>
+                    <div class="logInBtnContainer">
+                        <button type="submit" class="logInBtn">Log In</button>
+                    </div>
+                </form>
+            </div>
+    
+            <div class="lineContainer">
+                <div class="line"></div><br>
+                or<br>
+                <div class="line"></div>
+            </div>
+    
+            <div class="signUpContainer">
+                <form action="signup.html">
+                    <button type="submit" class="signUpBtn" value="sign_up">Sign Up</button>
+                </form>
+            </div>
         </div>
 
-        <div class="signUpContainer">
-            <form action="signup.html">
-                <button type="submit" class="signUpBtn" value="sign_up">Sign Up</button>
-            </form>
-        </div>
+        <div class="loginBottom"></div>
 
     </div>
 
@@ -58,5 +70,7 @@
         Crispyeuro 2020-2021
     </footer>
 </body>
+
+<script src="../scripts/login.js"></script>
 
 </html>
