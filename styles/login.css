@@ -1,4 +1,5 @@
 /*@import "styles_main.css";*/
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * { box-sizing: border-box; }
 
@@ -16,7 +17,9 @@ body {
 
     text-align: center;
     font-size: 20px;
-    color: #275D72;
+    /*color: #275D72;*/
+    color: rgb(255, 255, 255, 1);
+    font-family: 'Rubik', sans-serif;
 }
 
 .welcome, .login, footer {
@@ -27,23 +30,64 @@ body {
 
 .welcome {
     grid-area: welcome;
+    flex-direction: column;
 
     font-size: 3vw;
-    background-color: #7db3c7;
+    /*background-color: #7db3c7;*/
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(36, 46, 66, 1);
+}
+
+.welcomeLogo {
+    font-family: 'Times New Roman', Times, serif;
+    color: rgba(47, 59, 82, 1);
+}
+
+.logo {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.logInForm {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.pleaseLogIn {
+    margin-bottom: 20px;
 }
 
 input[type=text], input[type=password] {
-    width: 50%;
+    /*width: 50%;*/
+    width: 100%;
     padding: 8px;
     margin-bottom: 10px;
-    border: 2px solid #00a6e2;
+    /*border: 2px solid #00a6e2;*/
+    border: 1px solid rgba(52, 123, 152, 1);
     border-radius: 4px;
-    color: #334a52;
-    background-color: #347c9842;
+    /*color: #334a52;*/
+    color: rgba(255, 255, 255, 1);
+    /*background-color: #347c9842;*/
+    background-color: rgba(32, 41, 60, 1);
+    font-family: 'Rubik', sans-serif;
 }
 
 input[type=text]:focus, input[type=password]:focus { 
-    background-color: #a9bec5; 
+    /*background-color: #a9bec5; */
+    background-color: rgba(32, 41, 60, 1);
+    color: rgba(52, 123, 152, 1);
+}
+
+label {
+    width: 100%;
+    text-align: left;
+    color: rgba(255, 255, 255, 1);
+    font-size: 16px;
+}
+
+label[for=username], label[for=password] {
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 input:invalid {
@@ -52,7 +96,8 @@ input:invalid {
 }
 
 button {
-    background-color: #00a6e2;
+    /*background-color: #00a6e2;*/
+    background-color: rgba(52, 123, 152, 1);
     color: white;
     border: none;
     border-radius: 4px;
@@ -61,11 +106,28 @@ button {
     min-width: 100px;
     margin: 10px;
     cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Rubik', sans-serif;
 }
 
 button:hover { opacity: 0.9; }
 
-.logInForm { width: 55%; }
+.logInBtn {
+    width: 60%;
+    margin-right: 0;
+}
+
+.logInBtnContainer {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+}
+
+.logInDiv { 
+    display: flex;
+    justify-content: center;
+    width: 55%; 
+}
 
 .signUpContainer { width: 40%; }
 
@@ -74,7 +136,8 @@ button:hover { opacity: 0.9; }
 .lineContainer { width: 5%; }
 
 .line {
-    border-left: 3px solid #7db3c7;
+    /*border-left: 3px solid #7db3c7;*/
+    border-left: 3px solid rgba(36, 46, 66, 1);
     display: inline-block;
     height: 100px;
     margin: 15px 10px 10px 10px;
@@ -82,24 +145,23 @@ button:hover { opacity: 0.9; }
 
 .login {
     grid-area: login;
-    background-color:  #D4EDF7;
+    /*background-color:  #D4EDF7;*/
+    background-color: rgba(47, 59, 82, 1);
+    color: rgba(152, 167, 185, 1);
 }
 
 /*Checkbox*/
 .cBoxOuterContainer {
-    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-
+    justify-content: flex-end;
 }
 
 .checkboxContainer {
     position: relative;
     padding-left: 10px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /*Save atuto width when flex*/
+    flex-basis: max-content;
 }
 
 .cbLabel {
@@ -117,8 +179,8 @@ button:hover { opacity: 0.9; }
     height: 16px;
     width: 16px;
     cursor: pointer;
-    background-color: #347c9842;
-    border: 1px solid #00a6e2;
+    background-color: rgba(47, 59, 82, 1);
+    border: 1px solid rgba(52, 123, 152, 1);
     border-radius: 4px;
 }
 
@@ -130,10 +192,11 @@ input[type=checkbox] {
     position: absolute;
     opacity: 0;
 }
-/*
+
 .checkboxContainer:hover .fCheckbox{
-    background-color: #ffffff;
-}*/
+    /*background-color: #ffffff;*/
+    background-color: rgba(32, 41, 60, 1);
+}
 
 .fCheckbox:after {
     content: "";
@@ -142,8 +205,8 @@ input[type=checkbox] {
 }
 
 .fCheckbox:after {
-    border-right: 2px solid #275d72;
-    border-bottom: 2px solid #275d72;
+    border-right: 2px solid rgba(152, 167, 185, 1);
+    border-bottom: 2px solid rgba(152, 167, 185, 1);
     height: 8px;
     width: 4px;
     transform: rotate(45deg);
@@ -157,52 +220,70 @@ input[type=checkbox] {
 
 input[type=checkbox]:checked ~ .fCheckbox{
     /*background-color: #ffffff;*/
-    background-color: #347c9842;
+    background-color: rgba(32, 41, 60, 1);
 }
 
 .fCheckbox:active, label[class=checkboxContainer]:active > .fCheckbox {
-    box-shadow: 0 0 0 1px #00a6e2 inset;
-    background-color:  #a9bec5;
+    box-shadow: 0 0 0 1px rgba(52, 123, 152, 1) inset;
+    background-color:  rgba(32, 41, 60, 1);
 }
 
 footer {
     grid-area: footer;
-    border-top: 3px solid #7db3c7;
-    background-color: #D4EDF7;
+    border-top: 3px solid rgba(36, 46, 66, 1);
+    /*background-color: #D4EDF7;*/
+    background-color: rgba(47, 59, 82, 1);
+    color: rgba(32, 41, 60, 1);
+}
+
+@media only screen and (max-width: 992px) {
+    .logInForm { width: 80%; }
+
+    button[type=submit] { width: 130px; }
 }
 
 @media only screen and (max-width: 768px) {
     body {
         grid-template-columns: 1fr;
-        grid-template-rows: 50px 1fr 40px;
+        grid-template-rows: 1fr 5fr 40px;
         grid-template-areas: 
             'welcome'
             'login'
             'footer';
     }
 
-    .welcome { font-size: 20px; }
+    .welcome { font-size: 25px; }
 
     .login { 
         padding-top: 10vh;
-        display: block; }
+        display: block; 
+    }
 
-    .logInForm, .signUpContainer, .lineContainer { width:100%; }
+    .logInDiv, .signUpContainer, .lineContainer { width:100%; }
 
     .lineContainer {
         display: flex;
         justify-content: center;
+        align-items: center;
         margin: 20px 0;
     }
 
     .line {
         border-left: none;
-        border-bottom: 3px solid #7db3c7;
+        /*border-bottom: 3px solid #7db3c7;*/
+        border-bottom: 3px solid rgba(36, 46, 66, 1);
         height: auto;
         width: 30%;
     }
 
-    .signUpContainer button { width: 25%; }
+    .signUpContainer button { 
+        width: 40%; 
+        margin-top: 5px;
+        margin-bottom: 30px;
+    }
 
-    footer { background-color: #7db3c7;}
+    footer { 
+        /*background-color: #7db3c7;*/
+        background-color: rgba(47, 59, 82, 1);
+    }
 }

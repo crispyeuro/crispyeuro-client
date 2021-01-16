@@ -10,19 +10,19 @@
 
 <body>
     <div class="welcome">
-        CRISPYEURO<br>
-        Welcome
+        <div class="logo">CRISPYEURO</div><br>
+        <div class="welcomeLogo">Welcome</div>
     </div>
 
     <div class="login">
-        <div class="logInForm">
-            <form action="index.html">
-                <b>Please LOG IN</b><br><br><br>
-                <label for="username">Username</label><br>
-                <input type="text" placeholder="Enter Username" name="username" required autocomplete="off"><br>
+        <div class="logInDiv">
+            <form class="logInForm" action="index.html">
+                <span class="pleaseLogIn">Please LOG IN</span>
+                <label for="username">Username</label>
+                <input type="text" placeholder="Enter Username" name="username" required autocomplete="off">
 
-                <label for="password">Password</label><br>
-                <input type="password" placeholder="Enter Password" name="password" required autocomplete="off"><br>
+                <label for="password">Password</label>
+                <input type="password" placeholder="Enter Password" name="password" required autocomplete="off">
 
                 <!--<input type="checkbox" checked="checked" name="remember"> Remember me<br>-->
                 <div class="cBoxOuterContainer">
@@ -34,7 +34,9 @@
                         <div class="cbLabel">Remember me</div>
                 </label>
                 </div>
-                <button type="submit" class="logInBtn">Log In</button>
+                <div class="logInBtnContainer">
+                    <button type="submit" class="logInBtn">Log In</button>
+                </div>
             </form>
         </div>
 
@@ -46,14 +48,14 @@
 
         <div class="signUpContainer">
             <form action="signup.html">
-                <button type="submit" value="sign_up">Sign Up</button>
+                <button type="submit" class="signUpBtn" value="sign_up">Sign Up</button>
             </form>
         </div>
 
     </div>
 
     <footer>
-        Crispyeuro 2021
+        Crispyeuro 2020-2021
     </footer>
 </body>
 
