@@ -28,12 +28,9 @@
                     <div id="fUsernameError" class="inputError"></div>
     
                     <label for="password">Password</label>
-                    <input type="password" placeholder="Enter Password" name="password" required autocomplete="off">
-                    <div class=forgotPassword>
-                        <a href=#>Forgot password?</a>
-                    </div>
-    
-                    <!--<input type="checkbox" checked="checked" name="remember"> Remember me<br>-->
+                    <input type="password" id="fLoginPassword" placeholder="Enter Password" name="password" required autocomplete="off">
+                    <div id="fPasswordError" class="inputError"></div>
+
                     <div class="cBoxOuterContainer">
                         <label for="fTerms" class="checkboxContainer">
                             <div class="cb">
@@ -41,12 +38,38 @@
                                 <div class="fCheckbox"></div>
                             </div>
                             <div class="cbLabel">Remember me</div>
-                    </label>
+                        </label>
                     </div>
+
                     <div class="logInBtnContainer">
                         <button type="submit" class="logInBtn">Log In</button>
                     </div>
+                    
+                    <div class=forgotPassword>
+                        <a href=# onclick="showForgotPassForm()">Forgot password?</a>
+                    </div>
                 </form>
+
+                <form name="forgotPassForm" action="#" class="forgotPassForm" onsubmit="return validateForgotPassForm()" method="post">
+                    <span class="findYourAccount">Find your account</span>
+                    <label for="email">Email</label>
+                    <input type="email" id="fForgotPassEmail" placeholder="Enter email" name="email" autocomplete="off">
+                    <div id="fForgotPassEmailError" class="inputError"></div>
+
+                    <div class="forgotPassBtnContainer">
+                        <input type="submit" class="forgotPassBtn" value="Send">
+                    </div>
+
+                    <div class=forgotPassword>
+                        <a href=# onclick="showLoginForm()">Go back</a>
+                    </div>
+                </form>
+
+                <div class="recoverAccountForm">
+                    <span class="findYourAccount">Find your account</span>
+                    <span class="recoverAccountText">An email with instructions was sent.</span>
+                    <button onclick="showLoginForm()">Log in</button>
+                </div>
             </div>
     
             <div class="lineContainer">
