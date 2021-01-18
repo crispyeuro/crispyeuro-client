@@ -1,75 +1,77 @@
-@import "main.css";
+/*@import "main.css";*/
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
 
 body {
     display: grid;
-    grid-template-rows: 40px 1fr 40px;
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: 1fr 40px;
     grid-template-areas: 
-        'header header header'
-        'left content right'
-        'footer footer footer';
+        'welcome login'
+        'footer footer';
+    margin: 0;
+    padding: 0;
+
     text-align: center;
+    font-size: 20px;
+    font-family: 'Rubik', sans-serif;
+    color: rgb(255, 255, 255, 1);
 }
 
-header {
-    grid-area: header;
-    position: sticky;
-    z-index: 1;
-    overflow: hidden;
-    top: 0;
-    background-color: var(--headerPrimaryColor);
+.welcome, footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.leftContainer {
-    grid-area: left;
+.login {
+    grid-area: login;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: 300;
+    color: rgba(152, 167, 185, 1);
+    background-color: rgba(45, 60, 86, 1);
 }
 
-.rightContainer {
-    grid-area: right;
+.welcome {
+    grid-area: welcome;
+
+    flex-direction: column;
+
+    font-size: 3vw;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(37, 48, 66, 1);
+}
+
+.welcomeLogo {
+    font-family: 'Times New Roman', Times, serif;
+    color: rgba(45, 60, 86, 1);
 }
 
 .logo {
-    float: left;
-
-    text-transform: uppercase;
-    outline: none;
-}
-
-.logo a {
-    display: block;
-    padding: 8px;
-
-    text-decoration: none;
-    outline: none;
-    color: var(--btnTextColor);
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .content {
-    grid-area: content;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 2% 0 2% 0;
-
-    border: var(--containerBorder);
-    border-radius: var(--borderRadius);
-    box-shadow: 5px 10px var(--bgSecondaryColor);
-
-    font-size: var(--fontPrimarySize);
-    color: var(--headerSecondaryColor);
-    background-color: var(--bgContainerColor);
-}
-
-.containerName {
-    font-size: var(--fontHeadingSize);
-    margin-bottom: 5%;
-}
-
-form {
     width: 100%;
-    max-width: 1200px;
-    overflow: hidden;
+}
+
+.signUpFormName {
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.signUpForm {
+    width: 100%;
 }
 
 .formRightArea {
@@ -78,14 +80,41 @@ form {
     max-width:400px;
 }
 
-input[type=text], input[type=password], input[type=email], select {
+input[type=text], input[type=password], input[type=email], select, input[type=date] {
     width: 35%;
     max-width: 400px;
     margin: 0;
+
+    padding: 8px;
+    border: 1px solid rgba(52, 123, 152, 1);
+    border-radius: 4px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(32, 41, 60, 1);
+}
+
+input[id="fUsername"], input[id="fEmail"], input[id="fPWD"], input[id=fConfPWD] {
+    background-color: rgba(32, 42, 65, 1);
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, select:focus, input[type=date]:focus { 
+    /*background-color: rgba(32, 42, 65, 1);*/
+    color: rgba(52, 123, 152, 1);
+}
+
+input[type=date] {
+    min-width: 125px;
+    outline: none;
+}
+
+input:invalid {
+    outline: none;
+    box-shadow: none;
 }
 
 #fNameMistake, #fUsernameMistake, #fEmailMistake, #fPWDMistake, #fConfPWDMistake, 
-#fBirthdayAndGenderMistake, #fCountryMistake, #fCityMistake , #fTermsMistake {
+#fBirthdayAndGenderMistake, #fCountryMistake, #fCityMistake , #fTermsMistake, #fRequiredFiend {
     display: flex;
     align-items: center;
     text-align: left;
@@ -101,67 +130,65 @@ input[type=text], input[type=password], input[type=email], select {
     margin-bottom: 10px;
 }
 
-input[type=date] {
-    min-width: 130px;
-    margin: 0;
-}
-
-.birthday {
+.birthday, .gender {
     width: 17.5%;
 }
 
-.gender {
-    width: 17.5%;
-}
-
-.genderRow {
-    padding: 9px 0 8px 0;
+.birthdayRow, .genderRow {
+    width: 100%;
+    height: 34px;
     display: flex;
     align-items: center;
 }
 
-input[type=text]:hover, input[type=password]:hover, input[type=email]:hover, input[type=date], select:hover {
-    background-color: var(--bgContainerColor);
+.floatLeft {
+    float: left;
 }
 
-input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=date]:focus, select:focus {
-    background-color: var(--bgContainerColor);
-    box-shadow: 0 0 0 1px var(--borderSecondaryColor) inset;
-    outline: none;
+.recuiredField {
+    font-size: 15px;
+    font-weight: 300;
+    margin-top: -4px;
 }
 
-input[id="fUsername"], input[id="fEmail"], input[id="fPWD"], input[id=fConfPWD] {
-    background-color: var(--bgSecondaryColor);
+label {
+    text-align: left;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
 }
 
-label, a {
-    color: var(--headerSecondaryColor);
-}
-
-input[type=submit] {
+button, input[type=submit] {
+    padding: 8px 12px;
     width: 30%;
     min-width: 125px;
-    margin-right: 0;
+    
+    cursor: pointer;
+
+    border: none;
+    border-radius: 4px;
+    
+    font-family: 'Rubik', sans-serif;
+    text-transform: uppercase;
+    color: white;
+    background-color: rgba(52, 123, 152, 1);
 }
 
-footer {
-    grid-area: footer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+button:hover, input[type=submit]:hover { opacity: 0.9; }
 
-    border-top: var(--containerBorder);
-    color: var(--headerSecondaryColor);
-    background-color: var(--bgPrimaryColor);
-}
-
-.formTermsRow, .formSubmitRow {
+.formTermsRow, .formSubmitRow, .goBackBtnRow {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     width: 35%;
 }
 
+.goBackBtnRow a {
+    font-size: 16px;
+    color: rgba(152, 167, 185, 1);
+}
+
+
+/*Checkbox*/
 .checkboxContainer {
     position: relative;
     padding-left: 20px;
@@ -176,13 +203,14 @@ footer {
     height: 16px;
     width: 16px;
     cursor: pointer;
-    background-color: var(--bgSecondaryColor);
-    border: var(--inputBorder);
-    border-radius: var(--borderRadius);
+    border: 1px solid rgba(52, 123, 152, 1);
+    border-radius: 4px;
+    background-color: rgba(45, 60, 86, 1);
 }
 
 .checkboxContainer a {
     padding-left: 4px;
+    color: rgba(152, 167, 185, 1);
 }
 
 input[type=checkbox] {
@@ -190,9 +218,7 @@ input[type=checkbox] {
     opacity: 0;
 }
 
-.checkboxContainer:hover .fCheckbox{
-    background-color: var(--bgContainerColor);
-}
+.checkboxContainer:hover .fCheckbox{ background-color: rgba(32, 42, 65, 1); }
 
 .fCheckbox:after {
     content: "";
@@ -201,8 +227,8 @@ input[type=checkbox] {
 }
 
 .fCheckbox:after {
-    border-right: 2px solid var(--headerSecondaryColor);
-    border-bottom: 2px solid var(--headerSecondaryColor);
+    border-right: 2px solid rgba(152, 167, 185, 1);
+    border-bottom: 2px solid rgba(152, 167, 185, 1);
     height: 8px;
     width: 4px;
     transform: rotate(45deg);
@@ -210,18 +236,17 @@ input[type=checkbox] {
     right: 4px;
 }
 
-.checkboxContainer input[type=checkbox]:checked ~ .fCheckbox:after {
-    display: block;
-}
+.checkboxContainer input[type=checkbox]:checked ~ .fCheckbox:after { display: block; }
 
-input[type=checkbox]:checked ~ .fCheckbox{
-    background-color: var(--bgContainerColor);
-}
+input[type=checkbox]:checked ~ .fCheckbox{ background-color: rgba(32, 42, 65, 1); }
 
 .fCheckbox:active, label[class=checkboxContainer]:active > .fCheckbox {
-    box-shadow: 0 0 0 1px var(--borderSecondaryColor) inset;
+    box-shadow: 0 0 0 1px rgba(52, 123, 152, 1) inset;
+    background-color:  rgba(32, 42, 65, 1);
 }
 
+
+/*Radio*/
 .radioContainer {
     position: relative;
     padding-left: 20px;
@@ -236,53 +261,100 @@ input[type=checkbox]:checked ~ .fCheckbox{
 
 .fRadio {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     top: 0;
     left: 0;
     height: 16px;
     width: 16px;
     cursor: pointer;
-    background-color: var(--bgContainerColor);
-    border: var(--inputBorder);
+    background-color: rgba(45, 60, 86, 1);
+    border: 1px solid rgba(52, 123, 152, 1);
     border-radius: 50%;
 }
 
 .fRadio:active, label[class=radioContainer]:active > .fRadio {
-    box-shadow: 0 0 0 1px var(--borderSecondaryColor) inset;
+    box-shadow: 0 0 0 1px rgba(52, 123, 152, 1) inset;
+    background-color:  rgba(32, 42, 65, 1);
 }
 
 .fRadio:after {
     content: "";
-    position: absolute;
     display: none;
-}
-
-.fRadio:after {
-    top: 3.5px;
-    left: 3.5px;
+    top: 6px;
+    left: 6px;
     height: 8px;
     width: 8px;
-    border-radius: 50%;
-    background-color: var(--headerSecondaryColor);
+    border-radius: 100%;
+    background-color: rgba(152, 167, 185, 1);
 }
 
-.radioContainer input[type=radio]:checked ~ .fRadio:after {
-    display: block;
+.radioContainer input[type=radio]:checked ~ .fRadio:after { display: block; }
+
+input[type=radio]:checked ~ .fRadio{ background-color: rgba(32, 42, 65, 1); }
+
+footer {
+    grid-area: footer;
+
+    border-top: 3px solid rgba(37, 48, 66, 1);
+    color: rgba(32, 42, 65, 1);
+    background-color: rgba(45, 60, 86, 1);
 }
+
 
 /*Responsive layout*/
 
-@media only screen and (max-width: 1200px) {
-    body { grid-template-columns: 1fr 10fr 1fr; }
+@media only screen and (max-width: 1300px) {
+    body {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: 1fr 40px;
+    }
+
+
+    /*.birthdayRow, .genderRow { height: 40px; }
+
+    .genderRow {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .birthday { width: 22%; }
+
+    .gender { width: 13%; }*/
 }
 
-@media only screen and (max-width: 992px) {
-    body { grid-template-columns: auto 1fr auto; }
+@media only screen and (max-width: 1100px) {
+    /*body { grid-template-columns: auto 1fr auto; }*/
+    body {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 3fr 40px;
+        grid-template-areas: 
+            'welcome'
+            'login'
+            'footer';
+    }
 }
 
 @media only screen and (max-width: 768px) {
-    body { grid-template-columns: auto 1fr auto; }
+    .formRightArea {
+        width: 15%;
+    }
 
-    input[type=text], input[type=password], input[type=email], select, .formTermsRow, .formSubmitRow { width: 100%; }
+    .birthdayRow, .genderRow { height: 40px; }
+
+    .genderRow {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .birthday { width: 22%; }
+
+    .gender { width: 13%; }
 
     .formRow {
         display: flex;
@@ -294,23 +366,78 @@ input[type=checkbox]:checked ~ .fCheckbox{
     #fBirthdayAndGenderMistake, #fCountryMistake, #fCityMistake , #fTermsMistake {
     padding-left: 0;
     width: 100%;
+    background-color: yellow;
 }
 
-    .birthday { 
+input[type=text], input[type=password], input[type=email], select, input[type=date] {
+    width: 100%;
+}
+
+.birthday { 
+    width: 40%; 
+    justify-self: flex-start;
+    align-self: flex-start;
+}
+
+.gender { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-self: flex-start;
+    align-self: flex-start;
+
+    padding-left: 10px;
+    width: 60%; 
+}
+
+.formRow {
+    width: 100%;
+}
+
+.bithdayGenderRow {
+    display: flex;
+    flex-direction: clumn;
+    width: 100%;
+}
+
+.formRightArea {
+    width: 0;
+}
+
+.signUpForm {
+    width: 50%;
+}
+
+/*.responsiveRow {
+    width: 80%;
+}
+
+.bgRow {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}*/
+
+}
+
+@media only screen and (max-width: 600px) {
+    .signUpForm {
+        width: 80%;
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        width: 30%; 
-    }
-    
-    .gender { 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 30%; 
     }
 
-    .formTermsRow, .formSubmitRow {
-        margin-right: 10%;
+    input[type=text], input[type=password], input[type=email], select, input[type=date] {
+        width: 100%;
     }
+
+    #fNameMistake, #fUsernameMistake, #fEmailMistake, #fPWDMistake, #fConfPWDMistake, 
+    #fBirthdayAndGenderMistake, #fCountryMistake, #fCityMistake , #fTermsMistake {
+    width: 100%;
+    }
+
 }

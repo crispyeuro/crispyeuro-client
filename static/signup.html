@@ -2,115 +2,137 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Sign Up</title>
+    <title>Sign up</title>
     <link rel="stylesheet" href="../styles/signup.css">
+    <!--<link rel="stylesheet" href="../styles/main.css">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-    <header>
-        <div class="logo"><a href="login.html">Crispyeuro</a></div>
-    </header>
-
-    <div class="leftContainer"></div>
-
-    <!-- oninvalid-->
-    <div class="content">
-        <div class="containerName">Sign up form</div>
-        <form name="signupForm" action="#" onsubmit="return validateSignupForm()">
-            <div class="formRow">
-                <div class="formRightArea"></div>
-                <input type="text" id="fName" name="name" placeholder="Name" autocomplete="off">
-                <div id="fNameMistake"></div>
-            </div>
-
-            <div class="formRow">
-                <div class="formRightArea"></div>
-            <input type="text" id="fUsername" name="username" placeholder="Username*" autocomplete="off">
-            <div id="fUsernameMistake"></div>
-            </div>
-
-            <div class="formRow">
-                <div class="formRightArea"></div>
-            <input type="email" id="fEmail" name="email" placeholder="Email*" autocomplete="off">
-            <div id="fEmailMistake"></div>
-            </div>
-
-            <div class="formRow">
-                <div class="formRightArea"></div>
-            <input type="password" id="fPWD" name="password" placeholder="Password*" autocomplete="off">
-            <div id=fPWDMistake></div>
-            </div>
-
-            <div class="formRow">
-                <div class="formRightArea"></div>
-            <input type="password" id="fConfPWD" name="confPassword" placeholder="Confitrm password*" autocomplete="off">
-            <div id="fConfPWDMistake"></div>
-            </div>
-
-            <div class="formRow" id="responsiveRow">
-                <div class="formRightArea"></div>
-                <div class="birthday">
-                    <label class="floatLeft" for="fBirthday">Birthday</label><br>
-                    <input class="floatLeft" type="date" id="fBirthday" name="birthday">
-                </div>
-                <div class="gender">
-                    <label class="floatLeft">Gender</label><br>
-                    <div class=genderRow>
-                    <label for="fMale" class="radioContainer">Male
-                        <input type="radio" id="fMale" name="gender" value="male">
-                        <div class="fRadio"></div>
-                    </label>
-                    <label for="fFemale" class="radioContainer">Female
-                        <input type="radio" id="fFemale" name="gender" value="female">
-                        <div class="fRadio"></div>
-                    </label>
-                    </div>
-                </div>
-            <div id="fBirthdayAndGenderMistake"></div>
-            </div>
-
-            <div class="formRow">
-                <div class="formRightArea"></div>
-            <select id="fCountry" name="country">
-                <option value="" disabled selected>Country</option>
-                <option value="estonia">Estonia</option>
-                <option value="latvia">Latvia</option>
-                <option value="lithuania">Lithuania</option>
-            </select>
-            <div id="fCountryMistake"></div>
-            </div>
-
-            <div class="formRow">
-                <div class="formRightArea"></div>
-            <input type="text" id="fCity" name="city" placeholder="City" autocomplete="off">
-            <div id="fCityMistake"></div>
-            </div>
-
-            <div class="formRow">
-                <div class="formRightArea"></div>
-            <div class="formTermsRow">
-                <label for="fTerms" class="checkboxContainer">I accept <a href="#" id=fTermsLink>Terms of Use</a>
-                    <input type="checkbox" id="fTerms" name="terms" value="accept">
-                    <div class="fCheckbox"></div>
-                </label>
-            </div>
-            <div id="fTermsMistake"></div>
-            </div>
-
-            <div class="formRow">
-                <div class="formRightArea"></div>
-            <div class="formSubmitRow">
-                <input type="submit" value="Sign up">
-            </div>
-            </div>
-        </form>
+    <div class="welcome">
+        <div class="logo">CRISPYEURO</div><br>
+        <div class="welcomeLogo">Welcome</div>
     </div>
 
-    <div class="rightContainer"></div>
+    <div class="login">
+
+        <div class="loginTop"></div>
+
+        <div class="content">
+            <div class="signUpFormName">Sign up</div>
+            <form class="signUpForm" name="signupForm" action="#" onsubmit="return validateSignupForm()" method="post">
+                <div class="formRow">
+                    <div class="formRightArea"></div>
+                    <input type="text" id="fName" name="name" placeholder="Name" autocomplete="off">
+                    <div id="fNameMistake"></div>
+                </div>
+    
+                <div class="formRow">
+                    <div class="formRightArea"></div>
+                <input type="text" id="fUsername" name="username" placeholder="Username*" autocomplete="off" autofocus>
+                <div id="fUsernameMistake"></div>
+                </div>
+    
+                <div class="formRow">
+                    <div class="formRightArea"></div>
+                <input type="email" id="fEmail" name="email" placeholder="Email*" autocomplete="off">
+                <div id="fEmailMistake"></div>
+                </div>
+    
+                <div class="formRow">
+                    <div class="formRightArea"></div>
+                <input type="password" id="fPWD" name="password" placeholder="Password*" autocomplete="off">
+                <div id=fPWDMistake></div>
+                </div>
+    
+                <div class="formRow">
+                    <div class="formRightArea"></div>
+                <input type="password" id="fConfPWD" name="confPassword" placeholder="Confitrm password*" autocomplete="off">
+                <div id="fConfPWDMistake"></div>
+                </div>
+    
+                <div class="formRow responsiveRow">
+                    <div class="formRightArea"></div>
+                    <div class="birthday">
+                        <label class="floatLeft" for="fBirthday">Birthday</label><br>
+                        <div class="birthdayRow">
+                            <input type="date" id="fBirthday" name="birthday">
+                        </div>
+                    </div>
+                    <div class="gender">
+                        <label class="floatLeft genderLabel">Gender</label><br>
+                        <div class="genderRow">
+                            <label for="fMale" class="radioContainer">Male
+                                <input type="radio" id="fMale" name="gender" value="male">
+                                <div class="fRadio"></div>
+                            </label>
+                            <label for="fFemale" class="radioContainer">Female
+                                <input type="radio" id="fFemale" name="gender" value="female">
+                                <div class="fRadio"></div>
+                            </label>
+                        </div>
+                    </div>
+                <div id="fBirthdayAndGenderMistake"></div>
+                </div>
+    
+                <div class="formRow">
+                    <div class="formRightArea"></div>
+                <select id="fCountry" name="country">
+                    <option value="" disabled selected>Country</option>
+                    <option value="estonia">Estonia</option>
+                    <option value="latvia">Latvia</option>
+                    <option value="lithuania">Lithuania</option>
+                </select>
+                <div id="fCountryMistake"></div>
+                </div>
+    
+                <div class="formRow">
+                    <div class="formRightArea"></div>
+                <input type="text" id="fCity" name="city" placeholder="City" autocomplete="off">
+                <div id="fCityMistake"></div>
+                </div>
+
+                <div class="formRow">
+                    <div class="formRightArea"></div>
+                    <span class="recuiredField">* Recuired field</span>
+                <div id="fRequiredFiend"></div>
+                </div>
+    
+                <div class="formRow">
+                    <div class="formRightArea"></div>
+                <div class="formTermsRow">
+                    <label for="fTerms" class="checkboxContainer">I accept <a href="#" id=fTermsLink>Terms of Use</a>
+                        <input type="checkbox" id="fTerms" name="terms" value="accept">
+                        <div class="fCheckbox"></div>
+                    </label>
+                </div>
+                <div id="fTermsMistake"></div>
+                </div>
+    
+                <div class="formRow">
+                    <div class="formRightArea"></div>
+                    <div class="formSubmitRow">
+                        <input type="submit" value="Sign up">
+                    </div>
+                </div>
+
+                <div class="formRow">
+                    <div class="formRightArea"></div>
+                    <div class="goBackBtnRow">
+                        <a href=# onclick="goBack()">Go back</a>
+                    </div>
+                </div>
+
+                </div>
+            </form>
+        </div>
+
+        <div class="loginBottom"></div>
+
+    </div>
 
     <footer>
-        Crispyeuro 2021 
+        Crispyeuro 2020-2021
     </footer>
 </body>
 
