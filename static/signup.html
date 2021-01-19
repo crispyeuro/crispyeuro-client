@@ -14,19 +14,14 @@
         <div class="welcomeLogo">Welcome</div>
     </div>
 
-    <div class="login">
+    <div class="signUp">
+        <div class="signUpTop">
+            Start your euro coin collection!
+        </div>
 
-        <div class="loginTop"></div>
-
-        <div class="content">
+        <div class="signUpCenter">
             <div class="signUpFormName">Sign up</div>
-            <form class="signUpForm" name="signupForm" action="#" onsubmit="return validateSignupForm()" method="post">
-                <div class="formRow">
-                    <div class="formRightArea"></div>
-                    <input type="text" id="fName" name="name" placeholder="Name" autocomplete="off">
-                    <div id="fNameMistake"></div>
-                </div>
-    
+            <form class="signUpForm" name="signupForm" action="#" onsubmit="return validateSignUpForm()" method="post">
                 <div class="formRow">
                     <div class="formRightArea"></div>
                 <input type="text" id="fUsername" name="username" placeholder="Username*" autocomplete="off" autofocus>
@@ -49,47 +44,6 @@
                     <div class="formRightArea"></div>
                 <input type="password" id="fConfPWD" name="confPassword" placeholder="Confitrm password*" autocomplete="off">
                 <div id="fConfPWDMistake"></div>
-                </div>
-    
-                <div class="formRow responsiveRow">
-                    <div class="formRightArea"></div>
-                    <div class="birthday">
-                        <label class="floatLeft" for="fBirthday">Birthday</label><br>
-                        <div class="birthdayRow">
-                            <input type="date" id="fBirthday" name="birthday">
-                        </div>
-                    </div>
-                    <div class="gender">
-                        <label class="floatLeft genderLabel">Gender</label><br>
-                        <div class="genderRow">
-                            <label for="fMale" class="radioContainer">Male
-                                <input type="radio" id="fMale" name="gender" value="male">
-                                <div class="fRadio"></div>
-                            </label>
-                            <label for="fFemale" class="radioContainer">Female
-                                <input type="radio" id="fFemale" name="gender" value="female">
-                                <div class="fRadio"></div>
-                            </label>
-                        </div>
-                    </div>
-                <div id="fBirthdayAndGenderMistake"></div>
-                </div>
-    
-                <div class="formRow">
-                    <div class="formRightArea"></div>
-                <select id="fCountry" name="country">
-                    <option value="" disabled selected>Country</option>
-                    <option value="estonia">Estonia</option>
-                    <option value="latvia">Latvia</option>
-                    <option value="lithuania">Lithuania</option>
-                </select>
-                <div id="fCountryMistake"></div>
-                </div>
-    
-                <div class="formRow">
-                    <div class="formRightArea"></div>
-                <input type="text" id="fCity" name="city" placeholder="City" autocomplete="off">
-                <div id="fCityMistake"></div>
                 </div>
 
                 <div class="formRow">
@@ -123,12 +77,10 @@
                     </div>
                 </div>
 
-                </div>
             </form>
         </div>
 
-        <div class="loginBottom"></div>
-
+        <div class="signUpBottom"></div>
     </div>
 
     <footer>
@@ -136,6 +88,6 @@
     </footer>
 </body>
 
-<script src="../scripts/app.js"></script>
+<script src="../scripts/signup.js"></script>
 
 </html>
