@@ -79,9 +79,7 @@ body {
     color: rgba(45, 60, 86, 1);
 }
 
-.logo {
-    font-family: 'Times New Roman', Times, serif;
-}
+.logo { font-family: 'Times New Roman', Times, serif; }
 
 .logInForm {
     display: flex;
@@ -216,7 +214,7 @@ button:hover, input[type=submit]:hover { opacity: 0.9; }
     width: 100%;
 }
 
-.logInDiv { 
+.loginFormContainer { 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -247,13 +245,13 @@ button:hover, input[type=submit]:hover { opacity: 0.9; }
 }
 
 /*Checkbox*/
-.cBoxOuterContainer {
+.cBoxContainer {
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 
-.checkboxContainer {
+.cBoxOuterContainer {
     position: relative;
 
     display: flex;
@@ -262,9 +260,9 @@ button:hover, input[type=submit]:hover { opacity: 0.9; }
     padding-left: 10px;
 }
 
-.cbLabel { padding-left: 15px; }
+.cBoxLabel { padding-left: 15px; }
 
-.cb {
+.cBoxInnerContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -283,14 +281,14 @@ button:hover, input[type=submit]:hover { opacity: 0.9; }
     background-color: rgba(45, 60, 86, 1);
 }
 
-.checkboxContainer a { padding-left: 4px; }
+.cBoxOuterContainer a { padding-left: 4px; }
 
 input[type=checkbox] {
     position: absolute;
     opacity: 0;
 }
 
-.checkboxContainer:hover .fCheckbox{ background-color: rgba(32, 42, 65, 1); }
+.cBoxOuterContainer:hover .fCheckbox{ background-color: rgba(32, 42, 65, 1); }
 
 .fCheckbox:after {
     content: "";
@@ -311,11 +309,11 @@ input[type=checkbox] {
     border-bottom: 2px solid rgba(152, 167, 185, 1);
 }
 
-.checkboxContainer input[type=checkbox]:checked ~ .fCheckbox:after { display: block; }
+.cBoxOuterContainer input[type=checkbox]:checked ~ .fCheckbox:after { display: block; }
 
 input[type=checkbox]:checked ~ .fCheckbox{ background-color: rgba(32, 42, 65, 1); }
 
-.fCheckbox:active, label[class=checkboxContainer]:active > .fCheckbox {
+.fCheckbox:active, label[class=cBoxOuterContainer]:active > .fCheckbox {
     box-shadow: 0 0 0 1px rgba(52, 123, 152, 1) inset;
     background-color:  rgba(32, 42, 65, 1);
 }
@@ -359,7 +357,7 @@ footer {
         margin-bottom: 30px;
     }
 
-    .logInDiv, .signUpContainer, .lineContainer { width:100%; }
+    .loginFormContainer, .signUpContainer, .lineContainer { width:100%; }
 }
 
 @media only screen and (max-width: 768px) {

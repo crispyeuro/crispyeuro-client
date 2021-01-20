@@ -20,7 +20,7 @@
         </div>
 
         <div class="loginCenter">
-            <div class="logInDiv">
+            <div class="loginFormContainer">
                 <form name="loginForm" action="index.html" class="logInForm" onsubmit="return validateLogInForm()" method="post">
                     <span class="pleaseLogIn">Please LOG IN</span>
                     <label for="username">Username</label>
@@ -31,13 +31,13 @@
                     <input type="password" id="fLoginPassword" placeholder="Enter Password" name="password" required autocomplete="off">
                     <div id="fPasswordError" class="inputError"></div>
 
-                    <div class="cBoxOuterContainer">
-                        <label for="fTerms" class="checkboxContainer">
-                            <div class="cb">
+                    <div class="cBoxContainer">
+                        <label for="fTerms" class="cBoxOuterContainer">
+                            <div class="cBoxInnerContainer">
                                 <input type="checkbox" id="fTerms" name="terms" value="accept" checked="checked">
                                 <div class="fCheckbox"></div>
                             </div>
-                            <div class="cbLabel">Remember me</div>
+                            <div class="cBoxLabel">Remember me</div>
                         </label>
                     </div>
 

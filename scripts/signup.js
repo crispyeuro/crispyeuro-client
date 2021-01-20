@@ -1,6 +1,7 @@
 function validateSignUpForm() {
     if (checkUsername() && checkEmail() && checkPassword() && checkConfirmPassword() && checkTerms()) {
-        return true;
+        showSignUpSuccess();
+        return false;
     } else {
         checkUsername();
         checkEmail();
@@ -158,6 +159,11 @@ function checkTerms() {
         document.getElementById("fTermsMistake").style.color = "rgb(171, 242, 255)";
         return false;
     }
+}
+
+function showSignUpSuccess() {
+    document.getElementsByClassName("signUpFormContainer")[0].style.display = "none";
+    document.getElementsByClassName("signUpSuccess")[0].style.display = "block";
 }
 
 function goBack() {
