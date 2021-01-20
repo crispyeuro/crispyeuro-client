@@ -24,14 +24,14 @@
     padding-left: 10px;
 
     font-weight: bold;
-    border: var(--containerBorder);
-    border-radius: var(--borderRadius);
-    background-color: var(--bgSecondaryColor);
+    border: 1px solid rgba(125, 179, 199, 1);
+    border-radius: 4px;
+    background-color: rgba(212, 237, 247, 1);
 }
 
 .cardDescription {
     grid-area: description;
-    border-bottom: var(--containerBorder);
+    border-bottom: 1px solid rgba(125, 179, 199, 1);
 }
 
 .coins {
@@ -48,12 +48,12 @@ button {
 }
 
 .containerName {
-    font-size: var(--fontPrimarySize);
-    color: var(--headerSecondaryColor);
+    font-size: 18px;
+    color: rgba(39, 93, 114, 1);
 }
 
 table, th, td {
-    border: 1px solid lightgray;
+    border: 1px solid rgba(211, 211, 211, 1);
     border-collapse: collapse;
 }
 
@@ -70,7 +70,7 @@ th, td {
 }
 
 tr:nth-child(even) {
-    background-color: var(--bgPrimaryColor);
+    background-color: rgba(231, 243, 248, 1);
 }
 
 .rowYear {

@@ -2,60 +2,115 @@
 
 form {
     width: 65%;
-    margin: auto;
-    padding: 2% 7.5% 2% 7.5%;
-
     text-align: left;
 }
 
 .formRow {
     display: flex;
-    align-items: center;
-    padding: 1% 0 1% 0;
+    margin-bottom: 3px;
+    width: 100%;
 }
 
-.formRow label {
-    display: inline-block;
-    width:  35%;
+.formLabel {
     padding: 8px;
-    margin-right: 8px;
-
-    border-radius: var(--borderRadius);
-    background-color: var(--bgSecondaryColor);
+    width: 150px;
+    border-radius: 4px;
+    background-color: rgba(212, 237, 247, 1);
+    margin-bottom: 5px;
 }
 
-.formRow label[for=fMale], .content label[for=fFemale] {
-    width: auto;
-    
-    background-color: transparent;
+.formLeftContainer {
+    padding: 8px;
+    width: 150px;
 }
 
-.formRow input, .formRow select {
-    width: 65%;
-    margin: 0;
+.formRow label[for=fMale], .formRow  label[for=fFemale] {
+    margin-right: 10px;
 }
 
-.birthdayAndGender { width: 65%; }
-
-.formRow input[type=date] {
-    width: 38%;
-    margin-right: 5%;
+.formRow input[type=text], input[type=email], input[type=password], input[type=date], .formRow select, .genderRow, .inputRow {
+    width: 40%;
+    min-width: 400px;
+    width: 40%;
+    margin: 0 5px 5px 5px;
 }
 
-.formRow input[type=radio], .termsAndSubmit input[type=checkbox] {
-    width: auto;
-    margin-right: 1%;
+.genderRow {
+    display: flex;
+    align-items: center;
+    padding-left: 4px;
+}
+
+.inputRow {
+    display: flex;
+    justify-content: right;
 }
 
 .containerName {
     font-size: 20px;
     margin-bottom: 2%;
+    text-align: left;
 }
 
-input[type=submit] { margin: 0; }
-
-.termsAndSubmit {
+.mistakeRow {
     display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+/*Checkbox*/
+.checkboxContainer {
+    position: relative;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
     justify-content: flex-end;
-    padding: 1% 0 1% 0;
+}
+
+.fCheckbox {
+    position: absolute;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    border: 1px solid rgba(52, 123, 152, 1);
+    border-radius: 4px;
+    background-color: rgba(45, 60, 86, 1);
+}
+
+.checkboxContainer a {
+    padding-left: 4px;
+    color: rgba(152, 167, 185, 1);
+}
+
+input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+}
+
+.checkboxContainer:hover .fCheckbox{ background-color: rgba(32, 42, 65, 1); }
+
+.fCheckbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.fCheckbox:after {
+    border-right: 2px solid rgba(152, 167, 185, 1);
+    border-bottom: 2px solid rgba(152, 167, 185, 1);
+    height: 8px;
+    width: 4px;
+    transform: rotate(45deg);
+    top: 1px;
+    right: 4px;
+}
+
+.checkboxContainer input[type=checkbox]:checked ~ .fCheckbox:after { display: block; }
+
+input[type=checkbox]:checked ~ .fCheckbox{ background-color: rgba(32, 42, 65, 1); }
+
+.fCheckbox:active, label[class=checkboxContainer]:active > .fCheckbox {
+    box-shadow: 0 0 0 1px rgba(52, 123, 152, 1) inset;
+    background-color:  rgba(32, 42, 65, 1);
 }

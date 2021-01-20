@@ -25,8 +25,8 @@ header {
     top: 0;
     overflow: hidden;
 
-    font-size: var(--fontHeadingSize);
-    background-color: var(--headerPrimaryColor);
+    font-size: 20px;
+    background-color: rgba(52, 123, 152, 1);
 }
 
 .logo {
@@ -42,14 +42,12 @@ header {
     
     text-decoration: none;
     outline: none;
-    color: var(--btnTextColor);
+    color: rgb(255, 255, 255);
 }
 
 
 /*Header navigation*/
-nav { 
-    float: right;
-}
+nav { float: right; }
 
 nav ul {
     margin: 0;
@@ -58,9 +56,7 @@ nav ul {
     list-style-type: none;
 }
 
-nav li {
-    float: left;
-}
+nav li { float: left; }
 
 nav a {
     display: block;
@@ -68,142 +64,132 @@ nav a {
     transition: all 0.35s ease-in-out;
 
     text-decoration: none;
-    /*color: var(--bgSecondaryColor);*/
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 nav a:hover {
-    background-color: var(--headerSecondaryColor);
     transition: all 0.3s ease-in-out;
+
+    background-color: rgba(39, 93, 114, 1);
 }
 
 .navBtnContainer {
     display: none;
+
     width: 40px;
     height: 40px;
     padding-right: 8px;
+
     cursor: pointer;
 }
 
 .navBtnContainer:hover {
-    background-color: var(--headerSecondaryColor);
     transition: all 0.35s ease-in-out;
+    background-color: rgb(39, 93, 114);
 }
 
 .navBtn {
     position: relative;
-    border-bottom: 3px solid var(--btnTextColor);
+
     width: 25px;
     height: 20px;
     top: 25%;
     left: 7.5px;
+
     transition: all 0.3s ease-in-out;
+    border-bottom: 3px solid rgb(255, 255, 255);
 }
 
 .navBtn:before {
     content: "";
     position: absolute;
-    border-top: 3px solid var(--btnTextColor);
+
     width: 100%;
     left: 0;
+
+    border-top: 3px solid rgb(255, 255, 255);
 }
 
 .navBtn:after {
     content: "";
     position: absolute;
-    border-bottom: 3px solid var(--btnTextColor);
+
     width: 100%;
     top: 50%;
     left: 0;
+
+    border-bottom: 3px solid rgb(255, 255, 255);
 }
 
 .navCloseBtn {
     position: relative;
-    border-bottom: 3px solid var(--btnTextColor);
+
     width: 25px;
     height: 3px;
     top: 18px;
     left: 8px;
+
     transform: rotate(45deg);
     transition: all 0.35s ease-in-out;
+
+    border-bottom: 3px solid rgb(255, 255, 255);
 }
 
 .navCloseBtn::after {
     content: "";
     position: absolute;
-    border-bottom: 3px solid var(--btnTextColor);
+
     width: 100%;
     top: 0;
     left: 0;
     bottom: 18px;
     right: 8px;
+
     transform: rotate(-90deg);
+
+    border-bottom: 3px solid rgb(255, 255, 255);
 }
 
 
 /*Side navigation*/
-/*.menu { 
-    grid-area: menu;
-
-    position: fixed;
-    top: 40px;
-    width: 18vw;
-    min-height: 45vh;
-    /*padding: 0.5%;*/
-    /*border: 1px solid var(--secondaryColor);
-
-    border-bottom: var(--containerBorder);
-    background-color: var(--bgContainerColor);
-    /*background-color: var(--bgPrimaryColor);
-}*/
-
 .menu { 
     grid-area: menu;
 
     position: fixed;
     top: 40px;
-    /*min-height: 45vh;*/
     height: 100%;
     min-width: 150px;
     width: 12vw;
+
     font-family: 'Rubik', sans-serif;
     font-weight: 300;
     font-size: 16px;
-    /*padding: 0.5%;*/
-    /*border: 1px solid var(--secondaryColor);*/
-
-    /*border-bottom: var(--containerBorder);*/
-    /*background-color: var(--bgContainerColor);*/
-    /*background-color: var(--bgPrimaryColor);*/
-    background-color:  rgb(214, 228, 234);
+    background-color:  rgba(214, 228, 234, 1);
 }
 
-.menuWidth {
-    width: 18vw;
-}
+.menuWidth { width: 18vw; }
 
-.menuSmallWidth {
-    width: 2vw;
-}
+.menuSmallWidth { width: 2vw; }
 
 .myCoinsAmountMeter {
     width: 100%;
     height: 15px;
-    /*background-color: var(--meterCoinsAmountColor);*/
-    background-color: var(--meterCoinsAmountColor);
+    
     border-radius: 3px;
+    background-color: rgba(211, 211, 211, 1);
 }
 
 .myCoinsAmountProgress {
     width: 40%;
     height: 15px;
 
-    text-align: right;
-    font-size: 14px;
-    color: white;
-    background-color: var(--meterCoinsProgressColor);
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
+
+    text-align: right;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 166, 226, 1);
 }
 
 .myCoinsAmountProgress::before, .myCoinsAmountProgress::after {
@@ -212,9 +198,8 @@ nav a:hover {
 }
 
 .sideNav {
-    padding: 0 10%;
     overflow: auto;
-    /*height: inherit;*/
+    padding: 0 10%;
     width: 100%;
 }
 
@@ -236,71 +221,9 @@ nav a:hover {
     color: rgb(46, 56, 77, 1);
 }
 
-.sideNav a:hover {
-    /*background-color: var(--bgSecondaryColor);*/
-    color: var(--headerPrimaryColor);
-}
+.sideNav a:hover { color: rgba(52, 123, 152, 1); }
 
-.sideNavBtnContainer {
-    display: none;
-}
-
-/*.pcSideNavBtnContainer {
-    position: relative;
-    display: flex;
-    width: 100%;
-    height: 23px;
-    /*background-color: var(--headerPrimaryColor);
-    opacity: 0.95;
-    transition: all 0.35s ease-in-out;
-    justify-content: flex-end;
-    align-content: center;
-    cursor: pointer;
-}
-
-.pcSideNavBtnContainer:hover {
-    background-color: var(--headerSecondaryColor);
-}
-
-.pcSideNavCloseBtn {
-    width: 12px;
-    height: 12px;
-    border-bottom: 1px solid var(--borderPrimaryColor);
-    border-left: 1px solid var(--borderPrimaryColor);
-    transform: rotate(225deg);
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    transition: all 0.35s ease-in-out;
-}
-
-.pcSideNavBtn {
-    width: 12px;
-    height: 12px;
-    border-bottom: 1px solid var(--borderPrimaryColor);
-    border-left: 1px solid var(--borderPrimaryColor);
-
-    transform: rotate(45deg);
-    position: absolute;
-    top: 5px;
-    transition: all 0.35s ease-in-out;
-}
-
-.pcSideNavBtnContainer:hover > .pcSideNavBtn {
-    border-bottom: 2px solid var(--btnTextColor);
-    border-left: 2px solid var(--btnTextColor);
-    transition: all 0.35s ease-in-out;
-}
-
-.pcSideNavBtnContainer:hover > .pcSideNavCloseBtn {
-    border-bottom: 2px solid var(--btnTextColor);
-    border-left: 2px solid var(--btnTextColor);
-    transition: all 0.35s ease-in-out;
-}
-
-.pcSideNavClosed {
-    display: none;
-}*/
+.sideNavBtnContainer { display: none; }
 
 
 /*Main content container*/
@@ -311,34 +234,12 @@ nav a:hover {
     padding: 10px;
     min-height: 100%;
 
-    font-size: var(--fontContentSize);
-    /*border-left: var(--containerBorder);*/
-    border-left: 1px solid rgba(135, 152, 173, 0.6);
-    /*background-color: var(--bgContainerColor);*/
-    /*background-color: rgba(235, 240, 245, 1);*/
-    background-color: white;
+    font-size: 16px;
     font-family: 'Rubik', sans-serif;
     font-weight: 300;
+    border-left: 1px solid rgba(135, 152, 173, 0.6);
+    background-color: rgb(255, 255, 255);
 }
-
-/*.contentMargin {
-    margin-left: 18vw;
-}
-
-.contentSmallMargin {
-    margin-left: 2vw;
-}
-
-.wideContent {
-    grid-area: content; 
-
-    padding: 10px;
-    margin-left: 2vw;
-
-    font-size: var(--fontContentSize);
-    border-left: var(--containerBorder);
-    background-color: var(--bgContainerColor);
-}*/
 
 .hideCountries > .contentContainer, 
 .hideDenominations > .contentContainer, .hideDenominationsCheckbox > .floatRight,
@@ -353,49 +254,46 @@ nav a:hover {
 /*Footer*/
 footer { 
     grid-area: footer;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     font-family: 'Rubik', sans-serif;
     font-weight: 300;
     font-size: 15px;
     border-top: 1px solid rgba(135, 152, 173, 0.6);
-    /*border-left: 1px solid rgb(214, 228, 234);*/
-    /*color: var(--headerSecondaryColor);*/
     color: rgb(46, 56, 77, 1);
-    /*background-color: var(--bgPrimaryColor);*/
-    /*background-color:  rgba(235, 240, 245, 1);*/
     background-color: rgb(214, 228, 234);
 }
 
 
+/*Checkbox*/
 .checkboxContainer {
     position: relative;
-    padding-left: 20px;
     display: flex;
-    /*align-items: center;
-    justify-content: flex-end;*/
-    color: var(--headerSecondaryColor);
+
     padding-left: 20px;
     padding-right: 10px;
+    color: rgba(39, 93, 114, 1);
 }
 
 .fCheckbox {
     position: absolute;
+
     top: 0;
     left: 0;
     height: 16px;
     width: 16px;
+
     cursor: pointer;
-    /*background-color: var(--bgSecondaryColor);*/
-    background-color: var(--bgContainerColor);
-    border: var(--inputBorder);
-    border-radius: var(--borderRadius);
+
+    border-radius: 4px;
+    border: 1px solid rgba(0, 166, 226, 1);
+    background-color: rgb(255, 255, 255);
 }
 
-.disabled {
-    opacity: 0.5;
-}
+.disabled { opacity: 0.5; }
 
 input[type=checkbox] {
     position: absolute;
@@ -403,14 +301,15 @@ input[type=checkbox] {
 }
 
 .checkboxContainer:hover .fCheckbox{
-    background-color: var(--bgContainerColor);
-    box-shadow: 0 0 0 1px var(--borderSecondaryColor) inset;
+    box-shadow: 0 0 0 1px rgba(0, 166, 226, 1) inset;
+    background-color: rgb(255, 255, 255);
 }
 
 .disabled:hover .fCheckbox {
-    background-color: var(--bgContainerColor);
     box-shadow: none;
     cursor: auto;
+
+    background-color: rgb(255, 255, 255);
 }
 
 .fCheckbox:after {
@@ -420,34 +319,35 @@ input[type=checkbox] {
 }
 
 .fCheckbox:after {
-    border-right: 2px solid var(--headerSecondaryColor);
-    border-bottom: 2px solid var(--headerSecondaryColor);
-    height: 8px;
     width: 4px;
-    transform: rotate(45deg);
+    height: 8px;
     top: 1px;
     right: 4px;
+
+    transform: rotate(45deg);
+
+    border-right: 2px solid rgba(39, 93, 114, 1);
+    border-bottom: 2px solid rgba(39, 93, 114, 1);
 }
 
-.checkboxContainer input[type=checkbox]:checked ~ .fCheckbox:after {
-    display: block;
+.checkboxContainer input[type=checkbox]:checked ~ .fCheckbox:after { display: block; }
+
+input[type=checkbox]:checked ~ .fCheckbox{ background-color: rgb(255, 255, 255); }
+
+
+.fCheckbox:active, label[class=checkboxContainer]:active > .fCheckbox { 
+    box-shadow: 0 0 0 1px rgba(0, 166, 226, 1) inset; 
 }
 
-input[type=checkbox]:checked ~ .fCheckbox{
-    background-color: var(--bgContainerColor);
-}
-
-
-.fCheckbox:active, label[class=checkboxContainer]:active > .fCheckbox {
-    box-shadow: 0 0 0 1px var(--borderSecondaryColor) inset;
-}
-
+/*Radio*/
 .radioContainer {
     position: relative;
+    display: flex;
+
     padding-left: 20px;
     padding-right: 10px;
-    display: flex;
-    color: var(--headerSecondaryColor);
+
+    color: rgba(39, 93, 114, 1);
 }
 
 .radioContainer input {
@@ -457,23 +357,26 @@ input[type=checkbox]:checked ~ .fCheckbox{
 
 .fRadio {
     position: absolute;
+
     top: 0;
     left: 0;
-    height: 16px;
     width: 16px;
+    height: 16px;
+
     cursor: pointer;
-    background-color: var(--bgContainerColor);
-    border: var(--inputBorder);
+
     border-radius: 50%;
+    border: 1px solid rgba(0, 166, 226, 1);
+    background-color: rgb(255, 255, 255);
 }
 
 .fRadio:active, label[class=radioContainer]:active > .fRadio {
-    box-shadow: 0 0 0 1px var(--borderSecondaryColor) inset;
+    box-shadow: 0 0 0 1px rgba(0, 166, 226, 1) inset;
 }
 
 .radioContainer:hover .fRadio{
-    background-color: var(--bgContainerColor);
-    box-shadow: 0 0 0 1px var(--borderSecondaryColor) inset;
+    box-shadow: 0 0 0 1px rgba(0, 166, 226, 1) inset;
+    background-color: rgb(255, 255, 255);
 }
 
 .fRadio:after {
@@ -485,54 +388,17 @@ input[type=checkbox]:checked ~ .fCheckbox{
 .fRadio:after {
     top: 3px;
     left: 3px;
-    height: 8px;
     width: 8px;
+    height: 8px;
+
     border-radius: 50%;
-    background-color: var(--headerSecondaryColor);
+    background-color: rgba(39, 93, 114, 1);
 }
 
-.radioContainer input[type=radio]:checked ~ .fRadio:after {
-    display: block;
-}
+.radioContainer input[type=radio]:checked ~ .fRadio:after { display: block; }
 
-@media only screen and (max-width: 768px) {
-    nav .navLinksOnMobile {
-        top: 40px;
-        position: fixed;
-        justify-content: center;
-        /*height: 160px;*/
-        height: 100vh;
-        /*background-color: var(--headerPrimaryColor);*/
-        background-color: rgba(52, 123,152, 0.7);
-        z-index: 2;
-        /*opacity: 0.95;*/
-    }
 
-    .navLinksOnMobile li {
-        background-color: var(--headerPrimaryColor);
-        opacity: 0.95;
-    }
-
-    nav .navLinks {
-        display: none;
-    }
-
-    nav, nav a {
-        width: 100vw;
-    }
-
-    .logo {
-        position: absolute;
-        float: left;
-        left: 0;
-    }
-
-    .navBtnContainer {
-        display: block;
-        float: right;
-    }
-}
-
+/*Responsive*/
 @media only screen and (max-width: 992px) {
     body {
         display: grid;
@@ -545,21 +411,19 @@ input[type=checkbox]:checked ~ .fCheckbox{
         grid-template-columns: 1fr;
     }
 
-    .content {
-        border: none;
-    }
+    .content { border: none; }
 
     /*Side navigation*/
     .menu {
         position: relative;
         top: 0;
         width: 100%;
+
         padding: 0;
         margin: 0;
-        /*background-color: var(--bgPrimaryColor);*/
-        /*background-color: var(--bgSecondaryColor);*/
-        border-bottom: var(--containerBorder);
+
         border-radius: 0;
+        border-bottom: 1px solid rgba(135, 152, 173, 0.6);
     }
 
     .sideNav {
@@ -567,6 +431,7 @@ input[type=checkbox]:checked ~ .fCheckbox{
         justify-content: center;
         align-items: center;
         flex-direction: column;
+
         padding: 0;
         margin: 0;
     }
@@ -577,8 +442,8 @@ input[type=checkbox]:checked ~ .fCheckbox{
         height: 15px;
         margin-bottom: 20px;
     
-        background-color: var(--meterCoinsAmountColor);
         border-radius: 3px;
+        background-color: rgba(211, 211, 211, 1);
     }
 
     .myCoinsAmountProgress {
@@ -588,20 +453,17 @@ input[type=checkbox]:checked ~ .fCheckbox{
 
     .sideNav ul {
         width: 100%;
-        /*background-color: var(--bgPrimaryColor);*/
-        background-color: var(--bgContainerColor);
-        /*margin: 10px 0 0 0;*/
         margin: 0;
-        border-top: var(--containerBorder);
+
+        border-top: 1px solid rgba(135, 152, 173, 0.6);
+        background-color: rgba(214, 228, 234, 1);
     }
 
-    .sideNav a {
-        text-align: center;
-    }
+    .sideNav a { text-align: center; }
 
     .sideNav a:hover {
-        background-color: var(--borderPrimaryColor);
-        color: var(--bgPrimaryColor);
+        color: rgba(231, 243, 248, 1);
+        background-color: rgba(125, 179, 199, 1);
     }
 
     .sideNavBtnContainer {
@@ -609,67 +471,85 @@ input[type=checkbox]:checked ~ .fCheckbox{
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        /*width: 85px;*/
+
         width: 100%;
         height: 23px;
-        cursor: pointer;
-        background-color: var(--btnTextColor);
         padding-left: 8px;
         padding-right: 8px;
         margin-bottom: 10px;
-        background-color: var(--headerPrimaryColor);
-        opacity: 0.95;
+        
+        cursor: pointer;
+
         transition: all 0.35s ease-in-out;
-        /*border-bottom: var(--containerBorder);
-        border-radius: 10px 10px 0 0;*/
+        background-color: rgba(52, 123, 152, 0.95);
     }
     
-    .sideNavBtnContainer:hover {
-        /*width: 100px;*/
-        /*background-color: var(--bgSecondaryColor);*/
-        background-color: var(--headerSecondaryColor);
-        /*transition: all 0.35s ease-in-out;*/
-    }
+    .sideNavBtnContainer:hover { background-color: rgba(39, 93, 114, 1); }
 
     .sideNavCloseBtn {
         width: 12px;
         height: 12px;
-        border-bottom: 2px solid var(--btnTextColor);
-        border-left: 2px solid var(--btnTextColor);
         top: 6px;
         left: 12px;
+
         margin-top: 7px;
         margin-left: 7px;
+
         transform: rotate(135deg);
         transition: all 0.35s ease-in-out;
+        border-bottom: 2px solid rgb(255, 255, 255);
+        border-left: 2px solid rgb(255, 255, 255);
     }
 
     .sideNavBtn {
         width: 12px;
         height: 12px;
-        border-bottom: 2px solid var(--btnTextColor);
-        border-left: 2px solid var(--btnTextColor);
         top: 6px;
         left: 12px;
+
         margin-top: -7px;
         margin-left: 7px;
+        
         transform: rotate(-45deg);
         transition: all 0.35s ease-in-out;
+        border-bottom: 2px solid rgb(255, 255, 255);
+        border-left: 2px solid rgb(255, 255, 255);
     }
 
-    .sideNavText {
-        color: var(--btnTextColor);
+    .sideNavText { color: rgb(255, 255, 255); }
+
+    .sideNavLinks { display: none; }
+
+    .sideNavLinksOnMobile { display: block; }
+
+    .pcSideNavBtnContainer { display: none; }
+}
+
+@media only screen and (max-width: 768px) {
+    nav .navLinksOnMobile {
+        position: fixed;
+        z-index: 2;
+        justify-content: center;
+        top: 40px;
+        height: 100vh;
+
+        background-color: rgba(52, 123,152, 0.7);
     }
 
-    .sideNavLinks {
-        display: none;
+    .navLinksOnMobile li { background-color: rgba(52, 123, 152, 0.95); }
+
+    nav .navLinks { display: none; }
+
+    nav, nav a { width: 100vw; }
+
+    .logo {
+        position: absolute;
+        float: left;
+        left: 0;
     }
 
-    .sideNavLinksOnMobile {
+    .navBtnContainer {
         display: block;
-    }
-
-    .pcSideNavBtnContainer {
-        display: none;
+        float: right;
     }
 }

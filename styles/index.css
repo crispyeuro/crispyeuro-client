@@ -1,21 +1,18 @@
 @import "main.css";
 
 .countries, .denominations, .commemorative, .colored, .silver, .gold {
-    /*border: var(--containerBorder);*/
     box-shadow: 5px 5px 5px rgba(135, 152, 173, 0.2);
     border: 1px solid rgba(135, 152, 173, 0.6);
-    /*border-radius: 10px;*/
     border-radius: 3px;
     margin-bottom: 15px;
     margin-left: 2%;
     margin-right: 2%;
     padding: 1% 2% 1% 2%;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
 }
 
 .countries:hover, .denominations:hover, .commemorative:hover, .colored:hover, .silver:hover, .gold:hover {
-   /* background-color: var(--bgPrimaryColor);*/
-   background-color: rgb(249,254,255);
+   background-color: rgba(249, 254, 255, 1);
 }
 
 .contentContainer {
@@ -26,8 +23,7 @@
 }
 
 .categoryHeader {
-    /*color: var(--textColor);*/
-    color: rgb(46, 56, 77, 1);
+    color: rgba(46, 56, 77, 1);
     font-family: 'Rubik', sans-serif;
     font-weight: 400;
     text-transform: uppercase;
@@ -40,25 +36,16 @@
     margin: 3px;
     padding: 0;
     font-size: 14px;
-    /*background-color:  #e7f3f8;*/
-    /*background-color: var(--bgContainerColor);*/
-    background-color: white;
-    color: rgb(52, 123, 152);
-    /*color: var(--secondaryColor);*/
+    background-color: rgb(255, 255, 255);
+    color: rgba(52, 123, 152, 1);
     font-family: 'Rubik', sans-serif;
     font-weight: 400;
-    /*border: 1px solid #7db3c7;*/
-    /*border: 1px solid var(--borderSecondaryColor);*/
     border: 1px solid rgba(135, 152, 173, 0.6);
     border-radius: 4px;
     cursor: pointer;
 }
 
 .country:hover{
-    /*background-color: #7db3c7;*/
-    /*background-color: var(--btnBgColor);*/
-    background-color: rgb(214, 228, 234);
-    /*color: var(--btnTextColor);*/
-    color: rgb(46, 56, 77, 1);
+    color: rgba(46, 56, 77, 1);
+    background-color: rgba(214, 228, 234, 1);
 }
-

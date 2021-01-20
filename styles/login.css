@@ -81,6 +81,11 @@ body {
 
 .logo { font-family: 'Times New Roman', Times, serif; }
 
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .logInForm {
     display: flex;
     flex-direction: column;
@@ -133,7 +138,7 @@ input[type=text], input[type=password], input[type=email] {
     background-color: rgba(32, 41, 60, 1);
 }
 
-input[type=text]:focus, input[type=password]:focus, input[type=email] { 
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus { 
     background-color: rgba(32, 42, 65, 1);
     color: rgba(52, 123, 152, 1);
 }
@@ -192,7 +197,7 @@ button, input[type=submit] {
     
     font-family: 'Rubik', sans-serif;
     text-transform: uppercase;
-    color: white;
+    color: rgb(255, 255, 255);
     background-color: rgba(52, 123, 152, 1);
 }
 

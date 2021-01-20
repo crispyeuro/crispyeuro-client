@@ -1,72 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-:root {
-    /*Background colors*/
-    --bgPrimaryColor: #e7f3f8; /*Old bg*/ /*Lighter*/
-    --bgSecondaryColor: #d4edf7; /*Old backgroundColor*/ /*Darker*/
-    --bgContainerColor: #ffffff;
-
-    /*Border colors*/
-    --borderPrimaryColor: #7db3c7; /*Old backgroundSecondaryColor*/
-    --borderSecondaryColor: #00a6e2; /*Old formBtnColor*/
-    /*Borders*/
-    --containerBorder: 1px solid var(--borderPrimaryColor);
-    --borderRadius: 4px;
-
-    /*Header, heading, text colors*/
-    --headerPrimaryColor: #347b98; /*Old primaryColor*/
-    --headerSecondaryColor: #275d72; /*Old secondaryColor and textSecondaryColor*/ /*For header and headings*/
-    --textColor: #000000; /*Old textPrimaryColor*/
-
-    /*Font styles*/
-    --fontContentSize: 16px;
-    --fontPrimarySize: 18px;
-    --fontHeadingSize: 20px;
-
-    /*Buttons*/
-    --btnBgColor:  #00a6e2; /*Old formBtnColor*/
-    --btnHover: 0.9; /*Old formBtnHover*/
-    --btnTextColor: #ffffff; /*Old formBtnTextColor*/
-    --btnBorder: none;
-    --btnPadding: 8px 12px;
-
-    /*(Form) input styles*/
-    --inputBgColor: #ffffff;
-    --inputBgInvalidColor: #d4edf7;
-    --inputBorder: 1px solid var(--borderSecondaryColor);
-    --inputOutlineColor: none;
-    /*Login input colors*/
-    --logInputBgColor: #347c9842; /*Old formInoutColor*/
-    --logInutHoverColor: #a9bec5; /*Old formInputHoverColor*/
-    --logInputTextColor: #334a52; /*Old formTextColor*/
-
-    /*Progress meter colors*/
-    --meterCoinsAmountColor: #d3d3d3;
-    --meterCoinsProgressColor: #00a6e2;
-}
-
-:root {
-    /*Main theme colors*/
-    --backgroundColor: #D4EDF7;
-    --backgroundSecondColor: #7db3c7;
-    --bg: #e7f3f8;
-
-    --primaryColor: #347B98;
-    --secondaryColor: #275D72;
-
-    --textPrimaryColor: #000000;
-    --textSecondaryColor: #275D72;
-    
-    /*Form colors*/
-    --formBtnColor: #00a6e2;
-    --formBtnHover: 0.9;
-    --formBtnTextColor: #ffffff;
-
-    --formInputColor: #347c9842;
-    --formInputHoverColor: #a9bec5;
-    --formTextColor: #334a52;
-}
-
 * { box-sizing: border-box; }
 
 html, body { min-height: 100vh; }
@@ -76,31 +9,36 @@ body {
     padding: 0;
     font-size: 18px;
     font-family: "Times New Roman", Times, serif;
-    /*font-size: 18px;*/
-    /*background-color: var(--bgPrimaryColor);*/
 }
 
 input[type=text], input[type=password], input[type=email], input[type=date], select {
     padding: 8px;
-    margin: 0 0 10px 0;
-    border: var(--inputBorder);
-    border-radius: var(--borderRadius);
-    color: var(--logInputTextColor);
+    border-radius: 4px;
     font-size: 16px;
     font-family: inherit;
-    background-color: var(--inputBgColor);
+
+    /*margin: 0 0 10px 0;*/
+    border: 1px solid rgba(52, 123, 152, 1);
+    color: rgba(51, 74, 82, 1);
+    background-color: rgb(255, 255, 255);
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=date]:focus { 
+    color: rgba(52, 123, 152, 1);
 }
 
 button, input[type=submit] {
-    background-color: var(--btnBgColor);
-    color: var(--btnTextColor);
-    border: var(--btnBorder);
-    border-radius: var(--borderRadius);
-    padding: var(--btnPadding);
-    margin: 10px;
+    padding: 8px 12px;
+    background-color: rgba(52, 123, 152, 1);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
-    font-family: "Times New Roman", Times, serif;
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+
+    /*margin: 10px;*/
+
 }
 
 input:invalid {
@@ -110,11 +48,10 @@ input:invalid {
 
 label {
     font-size: 16px;
-    font-family: "Times New Roman", Times, serif;
 }
 
 button:hover, input[type=submit]:hover {
-    opacity: var(--btnHover); 
+    opacity: 0.9;
 }
 
 .floatLeft {

@@ -35,9 +35,9 @@ button {
     padding-left: 10px;
 
     font-weight: bold;
-    border: var(--containerBorder);
-    border-radius: var(--borderRadius);
-    background-color: var(--bgSecondaryColor);
+    border: 1px solid rgba(125, 179, 199, 1);
+    border-radius: 4px;
+    background-color: rgba(212, 237, 247, 1);
 }
 
 .specification {
@@ -56,21 +56,21 @@ button {
     margin: 10%;
     padding: 10px;
 
-    border: var(--containerBorder);
+    border: 1px solid rgba(125, 179, 199, 1);
     border-radius: 50%;
 }
 
 .mintage {
     grid-area: mintage;
 
-    border-top: var(--containerBorder);
-    border-bottom: var(--containerBorder);
+    border-top: 1px solid rgba(125, 179, 199, 1);
+    border-bottom: 1px solid rgba(125, 179, 199, 1);
 }
 
 .addCollection {
     grid-area: addCollection;
 
-    border-bottom: var(--containerBorder);
+    border-bottom: 1px solid rgba(125, 179, 199, 1);
 }
 
 .swap {
@@ -78,7 +78,7 @@ button {
 }
 
 table, th, td {
-    border: 1px solid lightgray;
+    border: 1px solid rgba(211, 211, 211, 1);
     border-collapse: collapse;
 }
 
@@ -99,7 +99,7 @@ td {
 }
 
 tr:nth-child(even) {
-    background-color: var(--bgPrimaryColor);
+    background-color: rgba(231, 243, 248, 1);
 }
 
 input[type="checkbox"] {
@@ -119,6 +119,6 @@ input[type="checkbox"]:checked + .collapsed {
 }
 
 .containerName {
-    font-size: var(--fontPrimarySize);
-    color: var(--headerSecondaryColor);
+    font-size: 18px;
+    color: rgba(39, 93, 114, 1);
 }

@@ -69,38 +69,9 @@ function showSideNav() {
     }
 }
 
-/*function pcShowSideNav() {
-    var pcSideNavBtnAction = document.getElementById("pcSideNavBtnAction");
-    var pcSideNavAction = document.getElementById("pcSideNavLinksContainer");
-    var pcMenu = document.getElementById("menu");
-    var pcContent = document.getElementById("content");
-    if (pcSideNavAction.className == "sideNav") {
-        pcSideNavAction.className = "pcSideNavClosed";
-        pcSideNavBtnAction.className = "pcSideNavCloseBtn";
-        pcMenu.className = "menu menuSmallWidth";
-        pcContent.className = "content contentSmallMargin";
-    }
-    else {
-        pcSideNavAction.className = "sideNav";
-        pcSideNavBtnAction.className = "pcSideNavBtn";
-        pcMenu.className = "menu menuWidth";
-        pcContent.className = "content contentMargin";
-    }
-}*/
-/*
-window.onresize = function() {
-    if (window.innerWidth > 768) {
-        document.getElementsByClassName("navLink")[0].style.display = "block";
-    } else {
-        document.getElementsByClassName("navLinkMobile")[0].style.display = "none";
-    }
-}
-*/
-
 function stopParent(event) {
     event.stopPropagation();
 }
-
 
 function countries(x) {
     var countries = document.getElementById("countries");
