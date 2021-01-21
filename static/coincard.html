@@ -105,15 +105,47 @@
             <div class="containerName">My collection</div>
             <br>
             [I don't have it in my collection]<br>
-            <button>Add to my collection</button>
+            <button onclick="showAddCoinContainer()">Add to my collection</button>
             <br><br>
         </div>
         <div class="swap">
             <div class="containerName">Swap availability</div>
             <br><br><br><br><br><br>
         </div>
+
+        <div class="addCoinModal">
+            <span class="modalNameRow">Add coin</span><br>
+            <div class="coinNameRow">[Denomination][Year][Country]</div><br>
+            <form>
+                <label for="grade">Grade</label>
+                <select name="grade">
+                    <option value="" disabled selected>Grade</option>
+                    <option value="unc">UNC</option>
+                    <option value="BU">BU</option>
+                    <option value="Proof">Proof</option>
+                    <option value="VF">Proof</option>
+                    <option value="other">Other</option>
+                </select><br>
+
+                <label for="value">Value</label>
+                <input type="text" name="value"><br>
+
+                <label for="amount">Amount</label>
+                <input type="text" name="amount"><br>
+
+                <label for="comment">Comment</label>
+                <textarea name="comment" rows="2" cols="30"></textarea><br>
+                <input type="submit" value="Add coin">
+            </form>
+
+        </div>
+
     </div>
 
     <footer id="footer"></footer>
+
 </body>
+
+<script src="../scripts/modal.js"></script>
+
 </html>
