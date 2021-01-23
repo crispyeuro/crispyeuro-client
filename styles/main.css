@@ -11,11 +11,12 @@ body {
     font-family: "Times New Roman", Times, serif;
 }
 
-input[type=text], input[type=password], input[type=email], input[type=date], select, textarea {
+input[type=text], input[type=password], input[type=email], input[type=date], select, textarea, input[type=file] {
     padding: 8px;
     border-radius: 4px;
-    font-size: 16px;
-    font-family: inherit;
+    font-size: 15px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
 
     /*margin: 0 0 10px 0;*/
     border: 1px solid rgba(52, 123, 152, 1);
@@ -23,7 +24,7 @@ input[type=text], input[type=password], input[type=email], input[type=date], sel
     background-color: rgb(255, 255, 255);
 }
 
-input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=date]:focus { 
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=date]:focus, input[type=file]:focus { 
     color: rgba(52, 123, 152, 1);
 }
 
@@ -47,7 +48,7 @@ input:invalid {
 }
 
 label {
-    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
 }
 
 button:hover, input[type=submit]:hover {

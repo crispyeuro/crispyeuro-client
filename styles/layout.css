@@ -225,6 +225,18 @@ nav a:hover {
 
 .sideNavBtnContainer { display: none; }
 
+.sideNavHidden {
+    display: none;
+}
+
+.hiddenLinks:hover > .sideNavHidden{
+    display: block;
+}
+
+.hiddenLinks:hover > .sideNavCategories a {
+    color: rgba(52, 123, 152, 1);
+}
+
 
 /*Main content container*/
 .content { 

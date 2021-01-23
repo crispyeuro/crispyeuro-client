@@ -6,6 +6,7 @@
     <script src="../scripts/layout.js"></script>
     <link rel="stylesheet" href="../styles/layout.css">
     <link rel="stylesheet" href="../styles/coincard.css">
+    <link rel="stylesheet" href="../styles/modal.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -112,34 +113,65 @@
             <div class="containerName">Swap availability</div>
             <br><br><br><br><br><br>
         </div>
+    </div>
 
-        <div class="addCoinModal">
+    <div class="modalContent">
+        <div class="modal">
+            <div class="closeBtnContainer" onclick="hideAddCoinContainer()">
+                <div class="closeBtn"></div>
+            </div>
             <span class="modalNameRow">Add coin</span><br>
-            <div class="coinNameRow">[Denomination][Year][Country]</div><br>
+            <div class="coinNameRow">[Denomination][Year][Country]. Order: [CoinOrer]</div><br>
             <form>
-                <label for="grade">Grade</label>
-                <select name="grade">
-                    <option value="" disabled selected>Grade</option>
-                    <option value="unc">UNC</option>
-                    <option value="BU">BU</option>
-                    <option value="Proof">Proof</option>
-                    <option value="VF">Proof</option>
-                    <option value="other">Other</option>
-                </select><br>
+                <div class="inputContainer">
+                    <div class="formLeftSide">
+                        <label for="grade">Grade</label>
+                        <select name="grade">
+                            <option value="" disabled selected>Grade</option>
+                            <option value="unc">UNC</option>
+                            <option value="BU">BU</option>
+                            <option value="Proof">Proof</option>
+                            <option value="VF">VF</option>
+                            <option value="other">Other</option>
+                        </select><br>
 
-                <label for="value">Value</label>
-                <input type="text" name="value"><br>
+                        <label for="value">Value</label>
+                        <input type="text" name="value"><br>
 
-                <label for="amount">Amount</label>
-                <input type="text" name="amount"><br>
+                        <label for="amount">Amount</label>
+                        <input type="text" name="amount"><br>
+                    </div>
+                    <div class="formRightSide">
+                        <label for="design">Design</label>
+                        <select name="design">
+                            <option value="" disabled selected>Design</option>
+                            <option value="colorized">Colorized</option>
+                            <option value="gilded">Gilded</option>
+                            <option value="plated">Plated</option>
+                            <option value="other">Other</option>
+                        </select><br>
 
+                        <label for="inSet">In set</label>
+                        <select name="inSet">
+                            <option value="" disabled selected>Set</option>
+                            <option value="setPart">Part of a set</option>
+                            <option value="coincard">Coincard</option>
+                            <option value="box">Box</option>
+                            <option value="folder">Folder</option>
+                        </select><br>
+
+                        <label>Coin picture</label>
+                        <label for="file" class="fileInputLabel">
+                            Choose picture
+                        </label>
+                        <input type="file" id="file" name="file" class="fileInput">
+                    </div>
+                </div>
                 <label for="comment">Comment</label>
-                <textarea name="comment" rows="2" cols="30"></textarea><br>
+                        <textarea name="comment" rows="2" cols="30"></textarea><br>
                 <input type="submit" value="Add coin">
             </form>
-
         </div>
-
     </div>
 
     <footer id="footer"></footer>

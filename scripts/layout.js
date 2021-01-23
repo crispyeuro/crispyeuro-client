@@ -27,13 +27,16 @@ window.onload = function() {
             </div><br>
 
             <ul class="sideNavLinks" id="sideNavLinksContainer">
-                <li><a href="#" onclick="openAll();return false;">All</a></li>
-                <li><a href="#" onclick="openCountries();return false;">Countries</a></li>
-                <li><a href="#" onclick="openDenominations();return false;">Denominations</a></li>
-                <li><a href="#" onclick="openCommemorative();return false;">Commemorative</a></li>
-                <li><a href="#" onclick="openColored();return false;">Colored coins</a></li>
-                <li><a href="#" onclick="openSilver();return false;">Silver coins</a></li>
-                <li><a href="#" onclick="openGold();return false;">Gold coins</a></li>
+                <li><a href="#">Statistics</a></li>
+                <div class="hiddenLinks">
+                    <li class="sideNavCategories"><a href="#" onclick="openAll();return false;">All categories</a></li>
+                    <li class="sideNavHidden"><a href="#" onclick="openCountries();return false;">Countries</a></li>
+                    <li class="sideNavHidden"><a href="#" onclick="openDenominations();return false;">Denominations</a></li>
+                    <li class="sideNavHidden"><a href="#" onclick="openCommemorative();return false;">Commemorative</a></li>
+                    <li class="sideNavHidden"><a href="#" onclick="openColored();return false;">Colored coins</a></li>
+                    <li class="sideNavHidden"><a href="#" onclick="openSilver();return false;">Silver coins</a></li>
+                    <li class="sideNavHidden"><a href="#" onclick="openGold();return false;">Gold coins</a></li>
+                </div>
             </ul>
         </div>`;
 
@@ -556,5 +559,12 @@ function loadGold() {
             element.appendChild(textNode);
             goldList.appendChild(element);
         }
+    }
+}
+
+/*Close top navigation when clicked outside opened top nav on mobile*/
+window.onclick = function(event) {
+    if (event.target === document.getElementsByClassName("navLinksOnMobile")[0]) {
+        showNavLinks();
     }
 }

@@ -11,6 +11,8 @@
         'mintage mintage'
         'addCollection addCollection'
         'swap swap';
+        font-size: 14px;
+        font-weight: 300;
 }
 
 .goBack {
@@ -119,39 +121,8 @@ input[type="checkbox"]:checked + .collapsed {
 }
 
 .containerName {
-    font-size: 18px;
+    font-size: 16px;
     color: rgba(39, 93, 114, 1);
 }
 
-.addCoinModal {
-    display: none;
-    position: fixed;
-    margin: auto;
-    z-index: 1;
-    padding: 2% 1% 2% 1%;
-    text-align: left;
-    border: 1px solid rgba(135, 152, 173, 0.6);
-    background-color: rgb(255, 255, 255);
-    box-shadow: 5px 5px 5px rgba(135, 152, 173, 0.2);
-}
-
-.modalNameRow, .coinNameRow {
-    color: rgba(46, 56, 77, 1);
-    font-family: 'Rubik', sans-serif;
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 15px;
-
-}
-
-.coinNameRow {
-    color: rgba(46, 56, 77, 1);
-    font-family: 'Rubik', sans-serif;
-    font-weight: 400;
-    text-transform: uppercase;
-    font-size: 15px;
-}
-
-.addCoinModal input[type=text], .addCoinModal select {
-    width: 200px;
-}
+@media only screen and (max-width: 768px) { }
