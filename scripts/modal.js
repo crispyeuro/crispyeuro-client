@@ -13,4 +13,7 @@ window.onclick = function(event) {
     if (event.target === modalContent) {
         modalContent.style.display = "none";
     }
+    if (event.target === document.getElementsByClassName("navLinksOnMobile")[0]) {
+        showNavLinks();
+    }
 }

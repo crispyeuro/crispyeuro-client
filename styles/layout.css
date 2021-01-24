@@ -225,17 +225,11 @@ nav a:hover {
 
 .sideNavBtnContainer { display: none; }
 
-.sideNavHidden {
-    display: none;
-}
+.sideNavHidden { display: none; }
 
-.hiddenLinks:hover > .sideNavHidden{
-    display: block;
-}
+.hiddenLinks:hover > .sideNavHidden{ display: block; }
 
-.hiddenLinks:hover > .sideNavCategories a {
-    color: rgba(52, 123, 152, 1);
-}
+.hiddenLinks:hover > .sideNavCategories a { color: rgba(52, 123, 152, 1); }
 
 
 /*Main content container*/
@@ -354,7 +348,6 @@ input[type=checkbox]:checked ~ .fCheckbox{ background-color: rgb(255, 255, 255);
 /*Radio*/
 .radioContainer {
     position: relative;
-    display: flex;
 
     padding-left: 20px;
     padding-right: 10px;
@@ -395,9 +388,7 @@ input[type=checkbox]:checked ~ .fCheckbox{ background-color: rgb(255, 255, 255);
     content: "";
     position: absolute;
     display: none;
-}
 
-.fRadio:after {
     top: 3px;
     left: 3px;
     width: 8px;
@@ -535,6 +526,10 @@ input[type=checkbox]:checked ~ .fCheckbox{ background-color: rgb(255, 255, 255);
     .sideNavLinksOnMobile { display: block; }
 
     .pcSideNavBtnContainer { display: none; }
+
+    .sideNavHidden,  .hiddenLinks:hover > .sideNavHidden{ display: block; }
+    
+    .hiddenLinks:hover > .sideNavCategories a { color: rgb(46, 56, 77, 1); }
 }
 
 @media only screen and (max-width: 768px) {

@@ -125,4 +125,51 @@ input[type="checkbox"]:checked + .collapsed {
     color: rgba(39, 93, 114, 1);
 }
 
-@media only screen and (max-width: 768px) { }
+@media only screen and (max-width: 1300px) {
+    .content {
+        display: grid;
+        grid-template-rows: 40px 40px auto auto auto auto;
+        grid-template-columns: 3fr 1.5fr;
+        grid-template-areas: 
+            'goBack goBack'
+            'cardName cardName'
+            'specification picture'
+            'mintage mintage'
+            'addCollection addCollection'
+            'swap swap';
+            font-size: 14px;
+            font-weight: 300;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .content {
+        display: grid;
+        grid-template-rows: 40px 40px auto auto auto auto auto;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            'goBack'
+            'cardName'
+            'picture'
+            'specification'
+            'mintage'
+            'addCollection'
+            'swap';
+            font-size: 14px;
+            font-weight: 300;
+    }
+
+    .coinPicture {
+    
+        width: 250px;
+        height: 250px;
+    
+        margin: 10px auto;
+        
+        padding: 10px;
+    
+        border: 1px solid rgba(125, 179, 199, 1);
+        border-radius: 50%;
+    }
+}
+
