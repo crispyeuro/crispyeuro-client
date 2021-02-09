@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Sign up</title>
@@ -22,48 +23,52 @@
         <div class="signUpCenter">
             <div class="signUpFormContainer">
                 <div class="signUpFormName">Sign up</div>
-                <form class="signUpForm" name="signupForm" action="#" onsubmit="return validateSignUpForm()" method="post">
+                <form class="signUpForm" name="signupForm" action="#" onsubmit="return validateSignUpForm()"
+                    method="post">
                     <div class="formRow">
                         <div class="formRightArea"></div>
-                    <input type="text" id="fUsername" name="username" placeholder="Username*" autocomplete="off" autofocus>
-                    <div id="fUsernameMistake"></div>
+                        <input type="text" id="fUsername" name="username" placeholder="Username*" autocomplete="off"
+                            autofocus>
+                        <div id="fUsernameMistake"></div>
                     </div>
-        
+
                     <div class="formRow">
                         <div class="formRightArea"></div>
-                    <input type="email" id="fEmail" name="email" placeholder="Email*" autocomplete="off">
-                    <div id="fEmailMistake"></div>
+                        <input type="email" id="fEmail" name="email" placeholder="Email*" autocomplete="off">
+                        <div id="fEmailMistake"></div>
                     </div>
-        
+
                     <div class="formRow">
                         <div class="formRightArea"></div>
-                    <input type="password" id="fPWD" name="password" placeholder="Password*" autocomplete="off">
-                    <div id=fPWDMistake></div>
+                        <input type="password" id="fPWD" name="password" placeholder="Password*" autocomplete="off">
+                        <div id=fPWDMistake></div>
                     </div>
-        
+
                     <div class="formRow">
                         <div class="formRightArea"></div>
-                    <input type="password" id="fConfPWD" name="confPassword" placeholder="Confitrm password*" autocomplete="off">
-                    <div id="fConfPWDMistake"></div>
+                        <input type="password" id="fConfPWD" name="confPassword" placeholder="Confitrm password*"
+                            autocomplete="off">
+                        <div id="fConfPWDMistake"></div>
                     </div>
 
                     <div class="formRow">
                         <div class="formRightArea"></div>
                         <span class="recuiredField">* Recuired field</span>
-                    <div id="fRequiredFiend"></div>
+                        <div id="fRequiredFiend"></div>
                     </div>
-        
+
                     <div class="formRow">
                         <div class="formRightArea"></div>
-                    <div class="formTermsRow">
-                        <label for="fTerms" class="checkboxContainer">I accept <a href="#" id=fTermsLink>Terms of Use</a>
-                            <input type="checkbox" id="fTerms" name="terms" value="accept">
-                            <div class="fCheckbox"></div>
-                        </label>
+                        <div class="formTermsRow">
+                            <label for="fTerms" class="checkboxContainer">I accept <a href="#" id=fTermsLink>Terms of
+                                    Use</a>
+                                <input type="checkbox" id="fTerms" name="terms" value="accept">
+                                <div class="fCheckbox"></div>
+                            </label>
+                        </div>
+                        <div id="fTermsMistake"></div>
                     </div>
-                    <div id="fTermsMistake"></div>
-                    </div>
-        
+
                     <div class="formRow">
                         <div class="formRightArea"></div>
                         <div class="formSubmitRow">

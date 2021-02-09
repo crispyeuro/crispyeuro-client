@@ -8,7 +8,7 @@ function validateLogInForm() {
     }
 }
 
-document.getElementById("fLoginUsername").oninput = function() {checkLoginUsername();};
+document.getElementById("fLoginUsername").oninput = function () { checkLoginUsername(); };
 
 function checkLoginUsername() {
     /*var username = document.getElementById("fLoginUsername").value;*/
@@ -45,7 +45,7 @@ function checkLoginUsername() {
     }
 }
 
-document.getElementById("fLoginPassword").oninput = function() {checkLoginPassword();};
+document.getElementById("fLoginPassword").oninput = function () { checkLoginPassword(); };
 
 function checkLoginPassword() {
     var password = document.forms["loginForm"]["fLoginPassword"].value;
@@ -97,7 +97,7 @@ function validateForgotPassForm() {
     }
 }
 
-document.getElementById("fForgotPassEmail").oninput = function() {checkForgotPassEmail();};
+document.getElementById("fForgotPassEmail").oninput = function () { checkForgotPassEmail(); };
 
 function checkForgotPassEmail() {
     var email = document.getElementById("fForgotPassEmail").value;

@@ -12,7 +12,7 @@ function validateSignUpForm() {
     }
 }
 
-document.getElementById("fUsername").oninput = function() {checkUsername()};
+document.getElementById("fUsername").oninput = function () { checkUsername() };
 
 function checkUsername() {
     var username = document.getElementById("fUsername").value;
@@ -48,7 +48,7 @@ function checkUsername() {
     }
 }
 
-document.getElementById("fEmail").oninput = function() {checkEmail()};
+document.getElementById("fEmail").oninput = function () { checkEmail() };
 
 function checkEmail() {
     var email = document.getElementById("fEmail").value;
@@ -79,7 +79,7 @@ function checkEmail() {
     }
 }
 
-document.getElementById("fPWD").oninput = function() {checkPassword()};
+document.getElementById("fPWD").oninput = function () { checkPassword() };
 
 function checkPassword() {
     var password = document.getElementById("fPWD").value;
@@ -115,7 +115,7 @@ function checkPassword() {
     }
 }
 
-document.getElementById("fConfPWD").oninput = function() {checkConfirmPassword()};
+document.getElementById("fConfPWD").oninput = function () { checkConfirmPassword() };
 
 function checkConfirmPassword() {
     var confPassword = document.getElementById("fConfPWD").value;
@@ -147,7 +147,7 @@ function checkConfirmPassword() {
     }
 }
 
-document.getElementById("fTerms").oninput = function() {checkTerms()};
+document.getElementById("fTerms").oninput = function () { checkTerms() };
 
 function checkTerms() {
     if (document.getElementById("fTerms").checked) {

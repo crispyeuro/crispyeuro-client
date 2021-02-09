@@ -1,18 +1,11 @@
 @import "main.css";
-
 .content {
     display: grid;
     grid-template-rows: 40px 40px auto auto auto auto;
     grid-template-columns: 3fr 1fr;
-    grid-template-areas: 
-        'goBack goBack'
-        'cardName cardName'
-        'specification picture'
-        'mintage mintage'
-        'addCollection addCollection'
-        'swap swap';
-        font-size: 14px;
-        font-weight: 300;
+    grid-template-areas: 'goBack goBack' 'cardName cardName' 'specification picture' 'mintage mintage' 'addCollection addCollection' 'swap swap';
+    font-size: 14px;
+    font-weight: 300;
 }
 
 .goBack {
@@ -35,7 +28,6 @@ button {
     display: flex;
     align-items: center;
     padding-left: 10px;
-
     font-weight: bold;
     border: 1px solid rgba(125, 179, 199, 1);
     border-radius: 4px;
@@ -51,27 +43,22 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 250px;
     height: 250px;
-
     margin: 10%;
     padding: 10px;
-
     border: 1px solid rgba(125, 179, 199, 1);
     border-radius: 50%;
 }
 
 .mintage {
     grid-area: mintage;
-
     border-top: 1px solid rgba(125, 179, 199, 1);
     border-bottom: 1px solid rgba(125, 179, 199, 1);
 }
 
 .addCollection {
     grid-area: addCollection;
-
     border-bottom: 1px solid rgba(125, 179, 199, 1);
 }
 
@@ -108,11 +95,11 @@ input[type="checkbox"] {
     display: none;
 }
 
-input[type="checkbox"] + .collapsed {
+input[type="checkbox"]+.collapsed {
     display: none;
 }
 
-input[type="checkbox"]:checked + .collapsed {
+input[type="checkbox"]:checked+.collapsed {
     display: block;
 }
 
@@ -130,15 +117,9 @@ input[type="checkbox"]:checked + .collapsed {
         display: grid;
         grid-template-rows: 40px 40px auto auto auto auto;
         grid-template-columns: 3fr 1.5fr;
-        grid-template-areas: 
-            'goBack goBack'
-            'cardName cardName'
-            'specification picture'
-            'mintage mintage'
-            'addCollection addCollection'
-            'swap swap';
-            font-size: 14px;
-            font-weight: 300;
+        grid-template-areas: 'goBack goBack' 'cardName cardName' 'specification picture' 'mintage mintage' 'addCollection addCollection' 'swap swap';
+        font-size: 14px;
+        font-weight: 300;
     }
 }
 
@@ -147,29 +128,16 @@ input[type="checkbox"]:checked + .collapsed {
         display: grid;
         grid-template-rows: 40px 40px auto auto auto auto auto;
         grid-template-columns: 1fr;
-        grid-template-areas: 
-            'goBack'
-            'cardName'
-            'picture'
-            'specification'
-            'mintage'
-            'addCollection'
-            'swap';
-            font-size: 14px;
-            font-weight: 300;
+        grid-template-areas: 'goBack' 'cardName' 'picture' 'specification' 'mintage' 'addCollection' 'swap';
+        font-size: 14px;
+        font-weight: 300;
     }
-
     .coinPicture {
-    
         width: 250px;
         height: 250px;
-    
         margin: 10px auto;
-        
         padding: 10px;
-    
         border: 1px solid rgba(125, 179, 199, 1);
         border-radius: 50%;
     }
 }
-

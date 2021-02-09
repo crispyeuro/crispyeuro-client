@@ -1,5 +1,5 @@
-window.onload = function() {
-    document.getElementById("header").innerHTML = 
+window.onload = function () {
+    document.getElementById("header").innerHTML =
         `<div class="logo"><a href="index.html">Crispyeuro</a></div>
         <nav>
             <div class="navBtnContainer" onclick="showNavLinks()"><div class="navBtn" id="navBtnAction"></div></div>
@@ -11,9 +11,9 @@ window.onload = function() {
             </ul>
         </nav>`;
 
-        /*document.getElementsByClassName("navBtnContainer")[0].onclick = function() {showMenu()};*/
+    /*document.getElementsByClassName("navBtnContainer")[0].onclick = function() {showMenu()};*/
 
-    document.getElementsByClassName("menu")[0].innerHTML = 
+    document.getElementsByClassName("menu")[0].innerHTML =
         `
         <div class="sideNav" id="pcSideNavLinksContainer">
         <br>
@@ -27,7 +27,7 @@ window.onload = function() {
             </div><br>
 
             <ul class="sideNavLinks" id="sideNavLinksContainer">
-                <li><a href="#">Statistics</a></li>
+                <li><a href="statistics.html">Statistics</a></li>
                 <div class="hiddenLinks">
                     <li class="sideNavCategories"><a href="#" onclick="openAll();return false;">All categories</a></li>
                     <li class="sideNavHidden"><a href="#" onclick="openCountries();return false;">Countries</a></li>
@@ -40,8 +40,8 @@ window.onload = function() {
             </ul>
         </div>`;
 
-    document.getElementById("footer").innerHTML = 
-    `Crispyeuro 2020-2021`;
+    document.getElementById("footer").innerHTML =
+        `Crispyeuro 2020-2021`;
 
     checkHash();
 }
@@ -52,7 +52,7 @@ function showNavLinks() {
     if (menuAction.className == "navLinks") {
         menuAction.className = "navLinksOnMobile";
         navBtnAction.className = "navCloseBtn";
-    } 
+    }
     else {
         menuAction.className = "navLinks";
         navBtnAction.className = "navBtn";
@@ -341,7 +341,7 @@ function checkHash() {
 
 function loadCountries() {
     var countryList = document.getElementById("countriesList");
-    for(country = 0; country <= countryArray.length-1; country++) {
+    for (country = 0; country <= countryArray.length - 1; country++) {
         var element = document.createElement("button");
         element.className = "country";
         var onClickAttr = document.createAttribute("onclick");
@@ -356,7 +356,7 @@ function loadCountries() {
 
 function loadOrdinaryCoins() {
     var denomList = document.getElementById("denomList");
-    for(i = 0; i <= coins.length-1; i++) {
+    for (i = 0; i <= coins.length - 1; i++) {
         var element = document.createElement("button");
         element.className = "country";
         var onClickAttr = document.createAttribute("onclick");
@@ -375,7 +375,7 @@ function checkOtherCoins() {
     denomList.textContent = "";
     if (denomCheckBox.checked == true) {
         var allCoins = sortAllCoins();
-        for(i = 0; i <= allCoins.length-1; i++) {
+        for (i = 0; i <= allCoins.length - 1; i++) {
             var element = document.createElement("button");
             element.className = "country";
             var onClickAttr = document.createAttribute("onclick");
@@ -404,12 +404,12 @@ function loadIssues() {
     var commonIssuesLabel = document.getElementById("commonIssuesLabel");
     issuesList.textContent = "";
     if (commonIssuesCB.checked == true && commemoByYearCB.checked == true) {
-        if(commonIssuesLabel.className == "checkboxContainer displayInline disabled") {
+        if (commonIssuesLabel.className == "checkboxContainer displayInline disabled") {
             commonIssuesLabel.className = "checkboxContainer displayInline";
             commonIssuesCB.disabled = false;
         }
         var allIssues = sortAllIssues();
-        for(i = 0; i <= allIssues.length-1; i++) {
+        for (i = 0; i <= allIssues.length - 1; i++) {
             var element = document.createElement("button");
             element.className = "country";
             var onClickAttr = document.createAttribute("onclick");
@@ -423,17 +423,17 @@ function loadIssues() {
         return true;
     }
     if (commemoByYearCB.checked == true) {
-        if(commonIssuesLabel.className == "checkboxContainer displayInline disabled") {
+        if (commonIssuesLabel.className == "checkboxContainer displayInline disabled") {
             commonIssuesLabel.className = "checkboxContainer displayInline";
             commonIssuesCB.disabled = false;
         }
-        for(i = 0; i <= issues.length-1; i++) {
+        for (i = 0; i <= issues.length - 1; i++) {
             var element = document.createElement("button");
             element.className = "country";
             var onClickAttr = document.createAttribute("onclick");
             onClickAttr.value = 'location.href="commemorativecard.html#' + (issues[i].coin).replace(/\s/g, '') + '"';
             element.setAttributeNode(onClickAttr);
-            element.addEventListener('click', () => location.href='commemorativecard.html');
+            element.addEventListener('click', () => location.href = 'commemorativecard.html');
             element.addEventListener('click', event => event.stopPropagation());
             var textNode = document.createTextNode(issues[i].coin);
             element.appendChild(textNode);
@@ -442,11 +442,11 @@ function loadIssues() {
         return true;
     }
     if (commemoByCountryCB.checked == true) {
-        if(commonIssuesLabel.className == "checkboxContainer displayInline") {
+        if (commonIssuesLabel.className == "checkboxContainer displayInline") {
             commonIssuesLabel.className += " disabled";
             commonIssuesCB.disabled = true;
         }
-        for(i = 0; i <= countryArray.length-1; i++) {
+        for (i = 0; i <= countryArray.length - 1; i++) {
             var element = document.createElement("button");
             element.className = "country";
             var onClickAttr = document.createAttribute("onclick");
@@ -472,7 +472,7 @@ function loadColored() {
     var coloredList = document.getElementById("coloredList");
     coloredList.textContent = "";
     if (coloredByYearRadio.checked == true) {
-        for(i = 0; i <= issues.length-1; i++) {
+        for (i = 0; i <= issues.length - 1; i++) {
             var element = document.createElement("button");
             element.className = "country";
             var onClickAttr = document.createAttribute("onclick");
@@ -484,7 +484,7 @@ function loadColored() {
             coloredList.appendChild(element);
         }
     } if (coloredByCountryRadio.checked == true) {
-        for(i = 0; i <= countryArray.length-1; i++) {
+        for (i = 0; i <= countryArray.length - 1; i++) {
             var element = document.createElement("button");
             element.className = "country";
             var onClickAttr = document.createAttribute("onclick");
@@ -504,7 +504,7 @@ function loadSilver() {
     var silverList = document.getElementById("silverList");
     silverList.textContent = "";
     if (silverByYearRadio.checked == true) {
-        for(i = 0; i <= issues.length-1; i++) {
+        for (i = 0; i <= issues.length - 1; i++) {
             var element = document.createElement("button");
             element.className = "country";
             var onClickAttr = document.createAttribute("onclick");
@@ -516,7 +516,7 @@ function loadSilver() {
             silverList.appendChild(element);
         }
     } if (silverByCountryRadio.checked == true) {
-        for(i = 0; i <= countryArray.length-1; i++) {
+        for (i = 0; i <= countryArray.length - 1; i++) {
             var element = document.createElement("button");
             element.className = "country";
             var onClickAttr = document.createAttribute("onclick");
@@ -536,7 +536,7 @@ function loadGold() {
     var goldList = document.getElementById("goldList");
     goldList.textContent = "";
     if (goldByYearRadio.checked == true) {
-        for(i = 0; i <= issues.length-1; i++) {
+        for (i = 0; i <= issues.length - 1; i++) {
             var element = document.createElement("button");
             element.className = "country";
             var onClickAttr = document.createAttribute("onclick");
@@ -548,7 +548,7 @@ function loadGold() {
             goldList.appendChild(element);
         }
     } if (goldByCountryRadio.checked == true) {
-        for(i = 0; i <= countryArray.length-1; i++) {
+        for (i = 0; i <= countryArray.length - 1; i++) {
             var element = document.createElement("button");
             element.className = "country";
             var onClickAttr = document.createAttribute("onclick");
@@ -563,7 +563,7 @@ function loadGold() {
 }
 
 /*Close top navigation when clicked outside opened top nav on mobile*/
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target === document.getElementsByClassName("navLinksOnMobile")[0]) {
         showNavLinks();
     }

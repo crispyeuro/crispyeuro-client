@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Main page</title>
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="../styles/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
     <header id="header"></header>
     <div class="menu"></div>
@@ -28,7 +30,8 @@
                 <div class="floatLeft categoryHeader">Denominations</div>
                 <div class="floatRight">
                     <label for="allDenom" class="checkboxContainer" onclick="stopParent(event)">Show all
-                        <input type="checkbox" id="allDenom" name="denominations" value="allDenom" onclick="checkOtherCoins()">
+                        <input type="checkbox" id="allDenom" name="denominations" value="allDenom"
+                            onclick="checkOtherCoins()">
                         <div class="fCheckbox"></div>
                     </label>
                 </div>
@@ -45,17 +48,23 @@
             <div class="displayInline hideCommemorativeCheckbox" id="commemorativeHeader">
                 <div class="floatLeft categoryHeader">Commemorative</div>
                 <div class="floatRight">
-                    <label id="commonIssuesLabel" for="commonIssuesCB" class="checkboxContainer displayInline" onclick="stopParent(event)">Common issues
-                        <input type="checkbox" id="commonIssuesCB" name="commCommonIssues" value="commonIssues" checked onclick="loadIssues()">
+                    <label id="commonIssuesLabel" for="commonIssuesCB" class="checkboxContainer displayInline"
+                        onclick="stopParent(event)">Common issues
+                        <input type="checkbox" id="commonIssuesCB" name="commCommonIssues" value="commonIssues" checked
+                            onclick="loadIssues()">
                         <div class="fCheckbox"></div>
                     </label>
 
-                    <label for="commemoByYearCB" class="radioContainer displayInline" onclick="stopParent(event)">By Year
-                        <input type="radio" id="commemoByYearCB" name="commemorative" value="byYear" checked onclick="loadIssues()">
+                    <label for="commemoByYearCB" class="radioContainer displayInline" onclick="stopParent(event)">By
+                        Year
+                        <input type="radio" id="commemoByYearCB" name="commemorative" value="byYear" checked
+                            onclick="loadIssues()">
                         <div class="fRadio"></div>
                     </label>
-                    <label for="commemoByCountryCB" class="radioContainer displayInline" onclick="stopParent(event)">By Country
-                        <input type="radio" id="commemoByCountryCB" name="commemorative" value="byCountry" onclick="loadIssues()">
+                    <label for="commemoByCountryCB" class="radioContainer displayInline" onclick="stopParent(event)">By
+                        Country
+                        <input type="radio" id="commemoByCountryCB" name="commemorative" value="byCountry"
+                            onclick="loadIssues()">
                         <div class="fRadio"></div>
                     </label>
                 </div>
@@ -72,12 +81,16 @@
             <div class="displayInline hideColoredCB" id="coloredHeader">
                 <div class="floatLeft categoryHeader">Colored coins</div>
                 <div class="floatRight">
-                    <label for="coloredByYearRadio" class="radioContainer displayInline" onclick="stopParent(event)">By Year
-                        <input type="radio" id="coloredByYearRadio" name="colored" value="byYear" onclick="loadColored()">
+                    <label for="coloredByYearRadio" class="radioContainer displayInline" onclick="stopParent(event)">By
+                        Year
+                        <input type="radio" id="coloredByYearRadio" name="colored" value="byYear"
+                            onclick="loadColored()">
                         <div class="fRadio"></div>
                     </label>
-                    <label for="coloredByCountryRadio" class="radioContainer displayInline" onclick="stopParent(event)">By Country
-                        <input type="radio" id="coloredByCountryRadio" name="colored" value="byCountry" checked onclick="loadColored()">
+                    <label for="coloredByCountryRadio" class="radioContainer displayInline"
+                        onclick="stopParent(event)">By Country
+                        <input type="radio" id="coloredByCountryRadio" name="colored" value="byCountry" checked
+                            onclick="loadColored()">
                         <div class="fRadio"></div>
                     </label>
                 </div>
@@ -94,12 +107,15 @@
             <div class="displayInline hideSilverCB" id="silverHeader">
                 <div class="floatLeft categoryHeader">Silver coins</div>
                 <div class="floatRight">
-                    <label for="silverByYearRadio" class="radioContainer displayInline" onclick="stopParent(event)">By Year
+                    <label for="silverByYearRadio" class="radioContainer displayInline" onclick="stopParent(event)">By
+                        Year
                         <input type="radio" id="silverByYearRadio" name="silver" value="byYear" onclick="loadSilver()">
                         <div class="fRadio"></div>
                     </label>
-                    <label for="silverByCountryRadio" class="radioContainer displayInline" onclick="stopParent(event)">By Country
-                        <input type="radio" id="silverByCountryRadio" name="silver" value="byCountry" checked onclick="loadSilver()">
+                    <label for="silverByCountryRadio" class="radioContainer displayInline"
+                        onclick="stopParent(event)">By Country
+                        <input type="radio" id="silverByCountryRadio" name="silver" value="byCountry" checked
+                            onclick="loadSilver()">
                         <div class="fRadio"></div>
                     </label>
                 </div>
@@ -116,12 +132,15 @@
             <div class="displayInline hideGoldCB" id="goldHeader">
                 <div class="floatLeft categoryHeader">Gold coins</div>
                 <div class="floatRight">
-                    <label for="goldByYearRadio" class="radioContainer displayInline" onclick="stopParent(event)">By Year
+                    <label for="goldByYearRadio" class="radioContainer displayInline" onclick="stopParent(event)">By
+                        Year
                         <input type="radio" id="goldByYearRadio" name="gold" value="byYear" onclick="loadGold()">
                         <div class="fRadio"></div>
                     </label>
-                    <label for="goldByCountryRadio" class="radioContainer displayInline" onclick="stopParent(event)">By Country
-                        <input type="radio" id="goldByCountryRadio" name="gold" value="byCountry" checked onclick="loadGold()">
+                    <label for="goldByCountryRadio" class="radioContainer displayInline" onclick="stopParent(event)">By
+                        Country
+                        <input type="radio" id="goldByCountryRadio" name="gold" value="byCountry" checked
+                            onclick="loadGold()">
                         <div class="fRadio"></div>
                     </label>
                 </div>
@@ -140,4 +159,5 @@
 
     <footer id="footer"></footer>
 </body>
+
 </html>

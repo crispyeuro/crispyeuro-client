@@ -1,30 +1,22 @@
 @import "main.css";
-
 body {
     display: grid;
-    grid-template-areas: 
-        'header header'
-        'menu content'
-        'menu footer';
+    grid-template-areas: 'header header' 'menu content' 'menu footer';
     grid-template-rows: 40px 1fr 40px;
     grid-template-columns: minmax(150px, 12vw) 1fr;
-    
-    top:0;
-    bottom:0;
-
+    top: 0;
+    bottom: 0;
     text-align: center;
 }
 
-
 /*Header*/
-header {
-    grid-area: header; 
 
+header {
+    grid-area: header;
     position: sticky;
     z-index: 1;
     top: 0;
     overflow: hidden;
-
     font-size: 20px;
     background-color: rgba(52, 123, 152, 1);
 }
@@ -32,54 +24,51 @@ header {
 .logo {
     display: inline;
     float: left;
-
     text-transform: uppercase;
 }
 
 .logo a {
     display: block;
     padding: 8px;
-    
     text-decoration: none;
     outline: none;
     color: rgb(255, 255, 255);
 }
 
-
 /*Header navigation*/
-nav { float: right; }
+
+nav {
+    float: right;
+}
 
 nav ul {
     margin: 0;
     padding: 0;
-
     list-style-type: none;
 }
 
-nav li { float: left; }
+nav li {
+    float: left;
+}
 
 nav a {
     display: block;
     padding: 8px 16px;
     transition: all 0.35s ease-in-out;
-
     text-decoration: none;
     color: rgb(255, 255, 255);
 }
 
 nav a:hover {
     transition: all 0.3s ease-in-out;
-
     background-color: rgba(39, 93, 114, 1);
 }
 
 .navBtnContainer {
     display: none;
-
     width: 40px;
     height: 40px;
     padding-right: 8px;
-
     cursor: pointer;
 }
 
@@ -90,12 +79,10 @@ nav a:hover {
 
 .navBtn {
     position: relative;
-
     width: 25px;
     height: 20px;
     top: 25%;
     left: 7.5px;
-
     transition: all 0.3s ease-in-out;
     border-bottom: 3px solid rgb(255, 255, 255);
 }
@@ -103,78 +90,69 @@ nav a:hover {
 .navBtn:before {
     content: "";
     position: absolute;
-
     width: 100%;
     left: 0;
-
     border-top: 3px solid rgb(255, 255, 255);
 }
 
 .navBtn:after {
     content: "";
     position: absolute;
-
     width: 100%;
     top: 50%;
     left: 0;
-
     border-bottom: 3px solid rgb(255, 255, 255);
 }
 
 .navCloseBtn {
     position: relative;
-
     width: 25px;
     height: 3px;
     top: 18px;
     left: 8px;
-
     transform: rotate(45deg);
     transition: all 0.35s ease-in-out;
-
     border-bottom: 3px solid rgb(255, 255, 255);
 }
 
 .navCloseBtn::after {
     content: "";
     position: absolute;
-
     width: 100%;
     top: 0;
     left: 0;
     bottom: 18px;
     right: 8px;
-
     transform: rotate(-90deg);
-
     border-bottom: 3px solid rgb(255, 255, 255);
 }
 
-
 /*Side navigation*/
-.menu { 
-    grid-area: menu;
 
+.menu {
+    grid-area: menu;
     position: fixed;
     top: 40px;
     height: 100%;
     min-width: 150px;
     width: 12vw;
-
     font-family: 'Rubik', sans-serif;
     font-weight: 300;
     font-size: 16px;
-    background-color:  rgba(214, 228, 234, 1);
+    background-color: rgba(214, 228, 234, 1);
 }
 
-.menuWidth { width: 18vw; }
+.menuWidth {
+    width: 18vw;
+}
 
-.menuSmallWidth { width: 2vw; }
+.menuSmallWidth {
+    width: 2vw;
+}
 
 .myCoinsAmountMeter {
     width: 100%;
     height: 15px;
-    
     border-radius: 3px;
     background-color: rgba(211, 211, 211, 1);
 }
@@ -182,10 +160,8 @@ nav a:hover {
 .myCoinsAmountProgress {
     width: 40%;
     height: 15px;
-
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
-
     text-align: right;
     font-size: 14px;
     color: rgb(255, 255, 255);
@@ -206,14 +182,12 @@ nav a:hover {
 .sideNav ul {
     margin: 0;
     padding: 0;
-
     text-align: left;
     list-style-type: none;
 }
 
 .sideNav a {
     display: block;
-
     line-height: 30px;
     font-family: 'Rubik', sans-serif;
     font-weight: 400;
@@ -221,25 +195,33 @@ nav a:hover {
     color: rgb(46, 56, 77, 1);
 }
 
-.sideNav a:hover { color: rgba(52, 123, 152, 1); }
+.sideNav a:hover {
+    color: rgba(52, 123, 152, 1);
+}
 
-.sideNavBtnContainer { display: none; }
+.sideNavBtnContainer {
+    display: none;
+}
 
-.sideNavHidden { display: none; }
+.sideNavHidden {
+    display: none;
+}
 
-.hiddenLinks:hover > .sideNavHidden{ display: block; }
+.hiddenLinks:hover>.sideNavHidden {
+    display: block;
+}
 
-.hiddenLinks:hover > .sideNavCategories a { color: rgba(52, 123, 152, 1); }
-
+.hiddenLinks:hover>.sideNavCategories a {
+    color: rgba(52, 123, 152, 1);
+}
 
 /*Main content container*/
-.content { 
-    top:40px;
-    grid-area: content; 
 
+.content {
+    top: 40px;
+    grid-area: content;
     padding: 10px;
     min-height: 100%;
-
     font-size: 16px;
     font-family: 'Rubik', sans-serif;
     font-weight: 300;
@@ -247,24 +229,17 @@ nav a:hover {
     background-color: rgb(255, 255, 255);
 }
 
-.hideCountries > .contentContainer, 
-.hideDenominations > .contentContainer, .hideDenominationsCheckbox > .floatRight,
-.hideCommemorative > .contentContainer, .hideCommemorativeCheckbox > .floatRight,
-.hideColored > .contentContainer, .hideColoredCB > .floatRight, 
-.hideSilver > .contentContainer, .hideSilverCB > .floatRight,
-.hideGold > .contentContainer, .hideGoldCB > .floatRight {
+.hideCountries>.contentContainer, .hideDenominations>.contentContainer, .hideDenominationsCheckbox>.floatRight, .hideCommemorative>.contentContainer, .hideCommemorativeCheckbox>.floatRight, .hideColored>.contentContainer, .hideColoredCB>.floatRight, .hideSilver>.contentContainer, .hideSilverCB>.floatRight, .hideGold>.contentContainer, .hideGoldCB>.floatRight {
     display: none;
 }
 
-
 /*Footer*/
-footer { 
-    grid-area: footer;
 
+footer {
+    grid-area: footer;
     display: flex;
     justify-content: center;
     align-items: center;
-
     font-family: 'Rubik', sans-serif;
     font-weight: 300;
     font-size: 15px;
@@ -273,12 +248,11 @@ footer {
     background-color: rgb(214, 228, 234);
 }
 
-
 /*Checkbox*/
+
 .checkboxContainer {
     position: relative;
     display: flex;
-
     padding-left: 20px;
     padding-right: 10px;
     color: rgba(39, 93, 114, 1);
@@ -286,27 +260,26 @@ footer {
 
 .fCheckbox {
     position: absolute;
-
     top: 0;
     left: 0;
     height: 16px;
     width: 16px;
-
     cursor: pointer;
-
     border-radius: 4px;
     border: 1px solid rgba(0, 166, 226, 1);
     background-color: rgb(255, 255, 255);
 }
 
-.disabled { opacity: 0.5; }
+.disabled {
+    opacity: 0.5;
+}
 
 input[type=checkbox] {
     position: absolute;
     opacity: 0;
 }
 
-.checkboxContainer:hover .fCheckbox{
+.checkboxContainer:hover .fCheckbox {
     box-shadow: 0 0 0 1px rgba(0, 166, 226, 1) inset;
     background-color: rgb(255, 255, 255);
 }
@@ -314,7 +287,6 @@ input[type=checkbox] {
 .disabled:hover .fCheckbox {
     box-shadow: none;
     cursor: auto;
-
     background-color: rgb(255, 255, 255);
 }
 
@@ -329,29 +301,29 @@ input[type=checkbox] {
     height: 8px;
     top: 1px;
     right: 4px;
-
     transform: rotate(45deg);
-
     border-right: 2px solid rgba(39, 93, 114, 1);
     border-bottom: 2px solid rgba(39, 93, 114, 1);
 }
 
-.checkboxContainer input[type=checkbox]:checked ~ .fCheckbox:after { display: block; }
+.checkboxContainer input[type=checkbox]:checked~.fCheckbox:after {
+    display: block;
+}
 
-input[type=checkbox]:checked ~ .fCheckbox{ background-color: rgb(255, 255, 255); }
+input[type=checkbox]:checked~.fCheckbox {
+    background-color: rgb(255, 255, 255);
+}
 
-
-.fCheckbox:active, label[class=checkboxContainer]:active > .fCheckbox { 
-    box-shadow: 0 0 0 1px rgba(0, 166, 226, 1) inset; 
+.fCheckbox:active, label[class=checkboxContainer]:active>.fCheckbox {
+    box-shadow: 0 0 0 1px rgba(0, 166, 226, 1) inset;
 }
 
 /*Radio*/
+
 .radioContainer {
     position: relative;
-
     padding-left: 20px;
     padding-right: 10px;
-
     color: rgba(39, 93, 114, 1);
 }
 
@@ -362,24 +334,21 @@ input[type=checkbox]:checked ~ .fCheckbox{ background-color: rgb(255, 255, 255);
 
 .fRadio {
     position: absolute;
-
     top: 0;
     left: 0;
     width: 16px;
     height: 16px;
-
     cursor: pointer;
-
     border-radius: 50%;
     border: 1px solid rgba(0, 166, 226, 1);
     background-color: rgb(255, 255, 255);
 }
 
-.fRadio:active, label[class=radioContainer]:active > .fRadio {
+.fRadio:active, label[class=radioContainer]:active>.fRadio {
     box-shadow: 0 0 0 1px rgba(0, 166, 226, 1) inset;
 }
 
-.radioContainer:hover .fRadio{
+.radioContainer:hover .fRadio {
     box-shadow: 0 0 0 1px rgba(0, 166, 226, 1) inset;
     background-color: rgb(255, 255, 255);
 }
@@ -388,148 +357,132 @@ input[type=checkbox]:checked ~ .fCheckbox{ background-color: rgb(255, 255, 255);
     content: "";
     position: absolute;
     display: none;
-
     top: 3px;
     left: 3px;
     width: 8px;
     height: 8px;
-
     border-radius: 50%;
     background-color: rgba(39, 93, 114, 1);
 }
 
-.radioContainer input[type=radio]:checked ~ .fRadio:after { display: block; }
-
+.radioContainer input[type=radio]:checked~.fRadio:after {
+    display: block;
+}
 
 /*Responsive*/
+
 @media only screen and (max-width: 992px) {
     body {
         display: grid;
-        grid-template-areas:
-            'header'
-            'menu'
-            'content'
-            'footer';
+        grid-template-areas: 'header' 'menu' 'content' 'footer';
         grid-template-rows: 40px auto 1fr 40px;
         grid-template-columns: 1fr;
     }
-
-    .content { border: none; }
-
+    .content {
+        border: none;
+    }
     /*Side navigation*/
     .menu {
         position: relative;
         top: 0;
         width: 100%;
-
         padding: 0;
         margin: 0;
-
         border-radius: 0;
         border-bottom: 1px solid rgba(135, 152, 173, 0.6);
     }
-
     .sideNav {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-
         padding: 0;
         margin: 0;
     }
-
     .myCoinsAmountMeter {
         width: 40%;
         max-width: 200px;
         height: 15px;
         margin-bottom: 20px;
-    
         border-radius: 3px;
         background-color: rgba(211, 211, 211, 1);
     }
-
     .myCoinsAmountProgress {
         border-top-left-radius: 3px;
         border-bottom-left-radius: 3px;
     }
-
     .sideNav ul {
         width: 100%;
         margin: 0;
-
         border-top: 1px solid rgba(135, 152, 173, 0.6);
         background-color: rgba(214, 228, 234, 1);
     }
-
-    .sideNav a { text-align: center; }
-
+    .sideNav a {
+        text-align: center;
+    }
     .sideNav a:hover {
         color: rgba(231, 243, 248, 1);
         background-color: rgba(125, 179, 199, 1);
     }
-
     .sideNavBtnContainer {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-
         width: 100%;
         height: 23px;
         padding-left: 8px;
         padding-right: 8px;
         margin-bottom: 10px;
-        
         cursor: pointer;
-
         transition: all 0.35s ease-in-out;
         background-color: rgba(52, 123, 152, 0.95);
     }
-    
-    .sideNavBtnContainer:hover { background-color: rgba(39, 93, 114, 1); }
-
+    .sideNavBtnContainer:hover {
+        background-color: rgba(39, 93, 114, 1);
+    }
     .sideNavCloseBtn {
         width: 12px;
         height: 12px;
         top: 6px;
         left: 12px;
-
         margin-top: 7px;
         margin-left: 7px;
-
         transform: rotate(135deg);
         transition: all 0.35s ease-in-out;
         border-bottom: 2px solid rgb(255, 255, 255);
         border-left: 2px solid rgb(255, 255, 255);
     }
-
     .sideNavBtn {
         width: 12px;
         height: 12px;
         top: 6px;
         left: 12px;
-
         margin-top: -7px;
         margin-left: 7px;
-        
         transform: rotate(-45deg);
         transition: all 0.35s ease-in-out;
         border-bottom: 2px solid rgb(255, 255, 255);
         border-left: 2px solid rgb(255, 255, 255);
     }
-
-    .sideNavText { color: rgb(255, 255, 255); }
-
-    .sideNavLinks { display: none; }
-
-    .sideNavLinksOnMobile { display: block; }
-
-    .pcSideNavBtnContainer { display: none; }
-
-    .sideNavHidden,  .hiddenLinks:hover > .sideNavHidden{ display: block; }
-    
-    .hiddenLinks:hover > .sideNavCategories a { color: rgb(46, 56, 77, 1); }
+    .sideNavText {
+        color: rgb(255, 255, 255);
+    }
+    .sideNavLinks {
+        display: none;
+    }
+    .sideNavLinksOnMobile {
+        display: block;
+    }
+    .pcSideNavBtnContainer {
+        display: none;
+    }
+    .sideNavHidden, .hiddenLinks:hover>.sideNavHidden {
+        display: block;
+    }
+    .hiddenLinks:hover>.sideNavCategories a {
+        color: rgb(46, 56, 77, 1);
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -539,22 +492,22 @@ input[type=checkbox]:checked ~ .fCheckbox{ background-color: rgb(255, 255, 255);
         justify-content: center;
         top: 40px;
         height: 100vh;
-
-        background-color: rgba(52, 123,152, 0.7);
+        background-color: rgba(52, 123, 152, 0.7);
     }
-
-    .navLinksOnMobile li { background-color: rgba(52, 123, 152, 0.95); }
-
-    nav .navLinks { display: none; }
-
-    nav, nav a { width: 100vw; }
-
+    .navLinksOnMobile li {
+        background-color: rgba(52, 123, 152, 0.95);
+    }
+    nav .navLinks {
+        display: none;
+    }
+    nav, nav a {
+        width: 100vw;
+    }
     .logo {
         position: absolute;
         float: left;
         left: 0;
     }
-
     .navBtnContainer {
         display: block;
         float: right;

@@ -1,5 +1,4 @@
 @import "main.css";
-
 .countries, .denominations, .commemorative, .colored, .silver, .gold {
     box-shadow: 5px 5px 5px rgba(135, 152, 173, 0.2);
     border: 1px solid rgba(135, 152, 173, 0.6);
@@ -12,7 +11,7 @@
 }
 
 .countries:hover, .denominations:hover, .commemorative:hover, .colored:hover, .silver:hover, .gold:hover {
-   background-color: rgba(249, 254, 255, 1);
+    background-color: rgba(249, 254, 255, 1);
 }
 
 .contentContainer {
@@ -46,7 +45,7 @@
     cursor: pointer;
 }
 
-.country:hover{
+.country:hover {
     color: rgba(46, 56, 77, 1);
     background-color: rgba(214, 228, 234, 1);
 }

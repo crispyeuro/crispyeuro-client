@@ -1,6 +1,6 @@
 function validateSettingsForm() {
     if (checkName() && checkUsername() && checkEmail() && checkPassword() && checkConfirmPassword() &&
-    checkBirthdayAndGender() && checkCountry() && checkCity() && checkTerms()) {
+        checkBirthdayAndGender() && checkCountry() && checkCity() && checkTerms()) {
         return true;
     } else {
         checkUsername();
@@ -15,7 +15,7 @@ function validateSettingsForm() {
     }
 }
 
-document.getElementById("fName").oninput = function() {checkName()};
+document.getElementById("fName").oninput = function () { checkName() };
 
 function checkName() {
     var name = document.getElementById("fName").value;
@@ -51,7 +51,7 @@ function checkName() {
     }
 }
 
-document.getElementById("fUsername").oninput = function() {checkUsername()};
+document.getElementById("fUsername").oninput = function () { checkUsername() };
 
 function checkUsername() {
     var username = document.getElementById("fUsername").value;
@@ -93,7 +93,7 @@ function checkUsername() {
     }
 }
 
-document.getElementById("fEmail").oninput = function() {checkEmail()};
+document.getElementById("fEmail").oninput = function () { checkEmail() };
 
 function checkEmail() {
     var email = document.getElementById("fEmail").value;
@@ -129,7 +129,7 @@ function checkEmail() {
     }
 }
 
-document.getElementById("fPWD").oninput = function() {checkPassword()};
+document.getElementById("fPWD").oninput = function () { checkPassword() };
 
 function checkPassword() {
     var password = document.getElementById("fPWD").value;
@@ -171,7 +171,7 @@ function checkPassword() {
     }
 }
 
-document.getElementById("fConfPWD").oninput = function() {checkConfirmPassword()};
+document.getElementById("fConfPWD").oninput = function () { checkConfirmPassword() };
 
 function checkConfirmPassword() {
     var confPassword = document.getElementById("fConfPWD").value;
@@ -208,9 +208,9 @@ function checkConfirmPassword() {
     }
 }
 
-document.getElementById("fBirthday").oninput = function() {checkBirthdayAndGender()};
-document.getElementById("fMale").oninput = function() {checkBirthdayAndGender()};
-document.getElementById("fFemale").oninput = function() {checkBirthdayAndGender()};
+document.getElementById("fBirthday").oninput = function () { checkBirthdayAndGender() };
+document.getElementById("fMale").oninput = function () { checkBirthdayAndGender() };
+document.getElementById("fFemale").oninput = function () { checkBirthdayAndGender() };
 
 function checkBirthdayAndGender() {
     var birthday = document.getElementById("fBirthday").value;
@@ -225,7 +225,7 @@ function checkBirthdayAndGender() {
     }
 }
 
-document.getElementById("fCountry").oninput = function() {checkCountry()};
+document.getElementById("fCountry").oninput = function () { checkCountry() };
 
 function checkCountry() {
     var country = document.getElementById("fCountry").value;
@@ -240,7 +240,7 @@ function checkCountry() {
     }
 }
 
-document.getElementById("fCity").oninput = function() {checkCity()};
+document.getElementById("fCity").oninput = function () { checkCity() };
 
 function checkCity() {
     var city = document.getElementById("fCity").value;
@@ -263,7 +263,7 @@ function checkCity() {
     }
 }
 
-document.getElementById("fTerms").oninput = function() {checkTerms()};
+document.getElementById("fTerms").oninput = function () { checkTerms() };
 
 function checkTerms() {
     if (document.getElementById("fTerms").checked) {

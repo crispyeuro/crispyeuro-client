@@ -1,14 +1,9 @@
 @import "main.css";
-
 .content {
     display: grid;
     grid-template-rows: 40px 40px auto 1fr;
     grid-template-columns: 1fr;
-    grid-template-areas:
-    'goBack'
-    'cardName'
-    'description'
-    'coins';
+    grid-template-areas: 'goBack' 'cardName' 'description' 'coins';
     font-size: 14px;
     font-weight: 300;
 }
@@ -23,10 +18,8 @@
     grid-area: cardName;
     display: flex;
     align-items: center;
-
     padding-left: 10px;
     font-weight: bold;
-
     border: 1px solid rgba(125, 179, 199, 1);
     border-radius: 4px;
     background-color: rgba(212, 237, 247, 1);

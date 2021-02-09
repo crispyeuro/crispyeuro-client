@@ -1,0 +1,90 @@
+.statisticsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.chartContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px 0 20px 0;
+}
+
+.chartName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    color: rgba(45, 60, 86, 1);
+}
+
+.chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-transform: uppercase;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin: 25px;
+    background: radial-gradient(white 55%, transparent 55.5%), conic-gradient( rgba(52, 123, 152, 1) 25%, rgba(39, 93, 114, 1) 25% 45%, rgba(211, 211, 211, 1) 45% 100%);
+}
+
+.chartTextPercent {
+    font-size: 26px;
+    color: rgba(45, 60, 86, 1);
+}
+
+.chartText {
+    font-size: 14px;
+    color: rgba(152, 167, 185, 1);
+}
+
+.chartDescription {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.chartFirst, .chartSecond, .chartThird {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 3px;
+}
+
+.chartFirst {
+    background-color: rgba(52, 123, 152, 1);
+}
+
+.chartSecond {
+    background-color: rgba(39, 93, 114, 1);
+}
+
+.chartThird {
+    background-color: rgba(211, 211, 211, 1);
+}
+
+.chartDescriptionRow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 10px 0 10px;
+    color: rgba(45, 60, 86, 1);
+}
+
+.detailedChartContainer {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    min-width: 250px;
+    min-height: 250px;
+    margin: 25px;
+    background-color: lavender;
+}

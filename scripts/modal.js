@@ -9,7 +9,7 @@ function hideAddCoinContainer() {
 }
 
 /*Close modal when clicked outside modal*/
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target === modalContent) {
         modalContent.style.display = "none";
     }

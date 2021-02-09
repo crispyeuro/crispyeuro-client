@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Welcome</title>
@@ -21,14 +22,17 @@
 
         <div class="loginCenter">
             <div class="loginFormContainer">
-                <form name="loginForm" action="index.html" class="logInForm" onsubmit="return validateLogInForm()" method="post">
+                <form name="loginForm" action="index.html" class="logInForm" onsubmit="return validateLogInForm()"
+                    method="post">
                     <span class="pleaseLogIn">Please LOG IN</span>
                     <label for="username">Username</label>
-                    <input type="text" id="fLoginUsername" placeholder="Enter Username" name="username" required autocomplete="off" autofocus>
+                    <input type="text" id="fLoginUsername" placeholder="Enter Username" name="username" required
+                        autocomplete="off" autofocus>
                     <div id="fUsernameError" class="inputError"></div>
-    
+
                     <label for="password">Password</label>
-                    <input type="password" id="fLoginPassword" placeholder="Enter Password" name="password" required autocomplete="off">
+                    <input type="password" id="fLoginPassword" placeholder="Enter Password" name="password" required
+                        autocomplete="off">
                     <div id="fPasswordError" class="inputError"></div>
 
                     <div class="cBoxContainer">
@@ -44,13 +48,14 @@
                     <div class="logInBtnContainer">
                         <button type="submit" class="logInBtn">Log In</button>
                     </div>
-                    
+
                     <div class=forgotPassword>
                         <a href=# onclick="showForgotPassForm()">Forgot password?</a>
                     </div>
                 </form>
 
-                <form name="forgotPassForm" action="#" class="forgotPassForm" onsubmit="return validateForgotPassForm()" method="post">
+                <form name="forgotPassForm" action="#" class="forgotPassForm" onsubmit="return validateForgotPassForm()"
+                    method="post">
                     <span class="findYourAccount">Find your account</span>
                     <label for="email">Email</label>
                     <input type="email" id="fForgotPassEmail" placeholder="Enter email" name="email" autocomplete="off">
@@ -71,13 +76,13 @@
                     <button onclick="showLoginForm()">Log in</button>
                 </div>
             </div>
-    
+
             <div class="lineContainer">
                 <div class="line"></div><br>
                 or<br>
                 <div class="line"></div>
             </div>
-    
+
             <div class="signUpContainer">
                 <form action="signup.html">
                     <button type="submit" class="signUpBtn" value="sign_up">Sign Up</button>
