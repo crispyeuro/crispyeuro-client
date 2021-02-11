@@ -140,19 +140,19 @@
 }
 
 .statRegularCoinsMeter {
-    width: 35%;
+    width: 40%;
     background-color: rgba(52, 123, 152, 1);
     color: rgba(211, 211, 211, 1);
 }
 
 .statCommemorativeCoinsMeter {
-    width: 25%;
+    width: 72%;
     background-color: rgba(39, 93, 114, 1);
     color: rgba(211, 211, 211, 1);
 }
 
 .statOtherCoinsMeter {
-    width: 9%;
+    width: 16%;
     background-color: rgba(53, 74, 84, 1);
     color: rgba(211, 211, 211, 1);
 }

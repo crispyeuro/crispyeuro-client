@@ -16,27 +16,32 @@ window.onload = function () {
     document.getElementsByClassName("menu")[0].innerHTML =
         `
         <div class="sideNav" id="pcSideNavLinksContainer">
-        <br>
-        <div class="sideNavBtnContainer" onclick="showSideNav()">
-            <div class="sideNavText">Menu</div>
-            <div class="sideNavBtn" id="sideNavBtnAction"></div>
-        </div>
-        <div class="sideNavMeterName">468 coins collected</div>
+            <br>
+            <div class="sideNavBtnContainer" onclick="showSideNav()">
+                <div class="sideNavText">Menu</div>
+                <div class="sideNavBtn" id="sideNavBtnAction"></div>
+            </div>
+            <div class="sideNavUsername">
+                Hello,
+                <br>
+                <a href="settings.html">[ username ]</a>!
+            </div>
+            <div class="sideNavMeterName">720 coins collected</div>
             <div class="myCoinsAmountMeter">
-                <div class="myCoinsAmountProgress">40%</div>
+                <div class="myCoinsAmountProgress">45%</div>
             </div><br>
 
             <ul class="sideNavLinks" id="sideNavLinksContainer">
-                <li><a href="statistics.html">Statistics</a></li>
-                <li><a href="issueplan.html">Issue plan</a></li>
+                <li><a class="menuLink" href="statistics.html">Statistics</a></li>
+                <li><a class="menuLink" href="issueplan.html">Issue plan</a></li>
                 <div class="hiddenLinks">
-                    <li class="sideNavCategories"><a href="#" onclick="openAll();return false;">Coin categories</a></li>
-                    <li class="sideNavHidden"><a href="#" onclick="openCountries();return false;">Countries</a></li>
-                    <li class="sideNavHidden"><a href="#" onclick="openDenominations();return false;">Denominations</a></li>
-                    <li class="sideNavHidden"><a href="#" onclick="openCommemorative();return false;">Commemorative</a></li>
-                    <li class="sideNavHidden"><a href="#" onclick="openColored();return false;">Colorized coins</a></li>
-                    <li class="sideNavHidden"><a href="#" onclick="openSilver();return false;">Silver coins</a></li>
-                    <li class="sideNavHidden"><a href="#" onclick="openGold();return false;">Gold coins</a></li>
+                    <li class="sideNavCategories"><a class="menuLink" href="#" onclick="openAll();return false;">Coin categories</a></li>
+                    <li class="sideNavHidden"><a class="menuLink" href="#" onclick="openCountries();return false;">Countries</a></li>
+                    <li class="sideNavHidden"><a class="menuLink" href="#" onclick="openDenominations();return false;">Denominations</a></li>
+                    <li class="sideNavHidden"><a class="menuLink" href="#" onclick="openCommemorative();return false;">Commemorative</a></li>
+                    <li class="sideNavHidden"><a class="menuLink" href="#" onclick="openColored();return false;">Colorized coins</a></li>
+                    <li class="sideNavHidden"><a class="menuLink" href="#" onclick="openSilver();return false;">Silver coins</a></li>
+                    <li class="sideNavHidden"><a class="menuLink" href="#" onclick="openGold();return false;">Gold coins</a></li>
                 </div>
             </ul>
         </div>`;

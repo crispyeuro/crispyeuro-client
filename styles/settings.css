@@ -75,7 +75,7 @@ form {
     cursor: pointer;
     border: 1px solid rgba(52, 123, 152, 1);
     border-radius: 4px;
-    background-color: rgba(45, 60, 86, 1);
+    background-color: rgb(255, 255, 255);
 }
 
 .checkboxContainer a {
@@ -89,7 +89,8 @@ input[type=checkbox] {
 }
 
 .checkboxContainer:hover .fCheckbox {
-    background-color: rgba(32, 42, 65, 1);
+    box-shadow: 0 0 0 1px rgba(52, 123, 152, 1) inset;
+    background-color: rgb(255, 255, 255);
 }
 
 .fCheckbox:after {
@@ -99,8 +100,8 @@ input[type=checkbox] {
 }
 
 .fCheckbox:after {
-    border-right: 2px solid rgba(152, 167, 185, 1);
-    border-bottom: 2px solid rgba(152, 167, 185, 1);
+    border-right: 2px solid rgba(39, 93, 114, 1);
+    border-bottom: 2px solid rgba(39, 93, 114, 1);
     height: 8px;
     width: 4px;
     transform: rotate(45deg);
@@ -113,10 +114,9 @@ input[type=checkbox] {
 }
 
 input[type=checkbox]:checked~.fCheckbox {
-    background-color: rgba(32, 42, 65, 1);
+    background-color: rgb(255, 255, 255);
 }
 
 .fCheckbox:active, label[class=checkboxContainer]:active>.fCheckbox {
     box-shadow: 0 0 0 1px rgba(52, 123, 152, 1) inset;
-    background-color: rgba(32, 42, 65, 1);
 }
