@@ -1,0 +1,51 @@
+.issueContainerName {
+    font-size: 3vh;
+    color: rgba(45, 60, 86, 1);
+    margin-bottom: 5%;
+}
+
+table {
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid rgba(135, 152, 173, 0.6);
+    border-collapse: collapse;
+}
+
+.tableHeader {
+    color: rgba(45, 60, 86, 1);
+    background-color: rgba(214, 228, 234, 1);
+}
+
+.rowColor {
+    background-color: rgba(211, 211, 211, 0.3);
+}
+
+.issueColumn {
+    width: 20%;
+}
+
+.issueCountryColumn {
+    width: 10%;
+}
+
+.issueDescriptionColumn {
+    width: 35%;
+}
+
+.issueMintageColumn {
+    width: 30%;
+}
+
+.issueDateColumn {
+    width: 10%;
+}
+
+.issueSourceColumn {
+    width: 15%;
+}
+
+.issueMintageSubColum {
+    width: 7.5%;
+}

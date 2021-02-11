@@ -28,8 +28,9 @@ window.onload = function () {
 
             <ul class="sideNavLinks" id="sideNavLinksContainer">
                 <li><a href="statistics.html">Statistics</a></li>
+                <li><a href="issueplan.html">Issue plan</a></li>
                 <div class="hiddenLinks">
-                    <li class="sideNavCategories"><a href="#" onclick="openAll();return false;">All categories</a></li>
+                    <li class="sideNavCategories"><a href="#" onclick="openAll();return false;">Coin categories</a></li>
                     <li class="sideNavHidden"><a href="#" onclick="openCountries();return false;">Countries</a></li>
                     <li class="sideNavHidden"><a href="#" onclick="openDenominations();return false;">Denominations</a></li>
                     <li class="sideNavHidden"><a href="#" onclick="openCommemorative();return false;">Commemorative</a></li>
