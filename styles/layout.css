@@ -150,6 +150,21 @@ nav a:hover {
     width: 2vw;
 }
 
+.sideNavUsername {
+    font-size: 16px;
+    color: rgba(39, 93, 114, 1);
+    margin-bottom: 15px;
+}
+
+.sideNavUsername a {
+    text-decoration: none;
+    color: rgba(39, 93, 114, 1);
+}
+
+.sideNavUsername a:hover {
+    color: rgba(52, 123, 152, 1);
+}
+
 .sideNavMeterName {
     font-size: 15px;
     color: rgb(46, 56, 77, 1);
@@ -163,7 +178,7 @@ nav a:hover {
 }
 
 .myCoinsAmountProgress {
-    width: 40%;
+    width: 45%;
     height: 15px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -191,7 +206,7 @@ nav a:hover {
     list-style-type: none;
 }
 
-.sideNav a {
+.sideNav .menuLink {
     display: block;
     line-height: 30px;
     font-family: 'Rubik', sans-serif;
@@ -200,7 +215,7 @@ nav a:hover {
     color: rgb(46, 56, 77, 1);
 }
 
-.sideNav a:hover {
+.sideNav .menuLink:hover {
     color: rgba(52, 123, 152, 1);
 }
 
