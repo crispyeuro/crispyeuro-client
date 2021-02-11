@@ -15,9 +15,9 @@
     <div class="menu"></div>
 
     <div class="content">
-        <div class="containerName">Statistics</div>
+        <div class="containerName statsContainerName">Collection statistics</div>
         <div class="statisticsContainer">
-            <div class="chartContainer">
+            <div class="chartContainer stats">
                 <div class="chartName">General</div>
                 <div class="chart">
                     <div class="chartTextPercent">40%</div>
@@ -31,18 +31,39 @@
                         <div class="chartSecond"></div>Commemorative 2 euro
                     </div>
                     <div class="chartDescriptionRow">
-                        <div class="chartThird"></div>Missing coins
+                        <div class="chartThird"></div>Other coins
+                    </div>
+                    <div class="chartDescriptionRow">
+                        <div class="chartFourth"></div>Missing coins
                     </div>
                 </div>
             </div>
 
-            <div class="chartContainer">
+            <div class="chartContainer statsDetails">
                 <div class="chartName">Details</div>
                 <div class="detailedChartContainer">
-                    <div>Regular coins</div>
-                    <div>.</div>
-                    <div>Commemorative 2 euro coins</div>
-                    <div>.</div>
+                    <div class="detailedMeterName">Regular coins</div>
+                    <div class="statCoinsAmountMeter">
+                        <div class="statCoinsAmountProgress statRegularCoinsMeter">35%</div>
+                    </div>
+                    <div class="detailedMeterDescription">350 of 1000 coins collected</div>
+
+                    <div class="detailedMeterName">Commemorative 2 euro coins</div>
+                    <div class="statCoinsAmountMeter">
+                        <div class="statCoinsAmountProgress statCommemorativeCoinsMeter">25%</div>
+                    </div>
+                    <div class="detailedMeterDescription">100 of 400 coins collected</div>
+
+                    <div class="detailedMeterName">Other coins</div>
+                    <div class="statCoinsAmountMeter">
+                        <div class="statCoinsAmountProgress statOtherCoinsMeter">9%</div>
+                    </div>
+                    <div class="detailedMeterDescription">18 of 200 coins collected</div>
+                </div>
+                <div class="chartDescription">
+                    <div class="statsTotalCoinsAmount">
+                        468 of all 1600 coins collected
+                    </div>
                 </div>
             </div>
         </div>

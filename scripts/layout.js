@@ -21,7 +21,7 @@ window.onload = function () {
             <div class="sideNavText">Menu</div>
             <div class="sideNavBtn" id="sideNavBtnAction"></div>
         </div>
-        I have 40 coins
+        <div class="sideNavMeterName">468 coins collected</div>
             <div class="myCoinsAmountMeter">
                 <div class="myCoinsAmountProgress">40%</div>
             </div><br>
@@ -33,7 +33,7 @@ window.onload = function () {
                     <li class="sideNavHidden"><a href="#" onclick="openCountries();return false;">Countries</a></li>
                     <li class="sideNavHidden"><a href="#" onclick="openDenominations();return false;">Denominations</a></li>
                     <li class="sideNavHidden"><a href="#" onclick="openCommemorative();return false;">Commemorative</a></li>
-                    <li class="sideNavHidden"><a href="#" onclick="openColored();return false;">Colored coins</a></li>
+                    <li class="sideNavHidden"><a href="#" onclick="openColored();return false;">Colorized coins</a></li>
                     <li class="sideNavHidden"><a href="#" onclick="openSilver();return false;">Silver coins</a></li>
                     <li class="sideNavHidden"><a href="#" onclick="openGold();return false;">Gold coins</a></li>
                 </div>

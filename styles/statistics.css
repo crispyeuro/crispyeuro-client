@@ -1,3 +1,9 @@
+.statsContainerName {
+    font-size: 3vh;
+    color: rgba(45, 60, 86, 1);
+    margin-bottom: 5%;
+}
+
 .statisticsContainer {
     display: flex;
     justify-content: center;
@@ -14,11 +20,15 @@
     margin: 10px 0 20px 0;
 }
 
+.stats, .statsDetails {
+    min-width: 50%;
+}
+
 .chartName {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 26px;
+    font-size: 3.5vh;
     color: rgba(45, 60, 86, 1);
 }
 
@@ -32,7 +42,11 @@
     height: 250px;
     border-radius: 50%;
     margin: 25px;
-    background: radial-gradient(white 55%, transparent 55.5%), conic-gradient( rgba(52, 123, 152, 1) 25%, rgba(39, 93, 114, 1) 25% 45%, rgba(211, 211, 211, 1) 45% 100%);
+    background: radial-gradient(white 55%, transparent 55.5%), 
+    conic-gradient( rgba(52, 123, 152, 1) 25%, 
+    rgba(39, 93, 114, 1) 25% 43%,
+    rgba(53, 74, 84, 1) 43% 45%,
+    rgba(211, 211, 211, 1) 45% 100%);
 }
 
 .chartTextPercent {
@@ -52,7 +66,7 @@
     flex-wrap: wrap;
 }
 
-.chartFirst, .chartSecond, .chartThird {
+.chartFirst, .chartSecond, .chartThird, .chartFourth {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -68,6 +82,10 @@
 }
 
 .chartThird {
+    background-color: rgba(53, 74, 84, 1);
+}
+
+.chartFourth {
     background-color: rgba(211, 211, 211, 1);
 }
 
@@ -84,7 +102,64 @@
     align-items: flex-start;
     flex-direction: column;
     min-width: 250px;
-    min-height: 250px;
+    height: 250px;
     margin: 25px;
-    background-color: lavender;
+}
+
+.detailedMeterName {
+    font-size: 16px;
+    color: rgba(45, 60, 86, 1);
+}
+
+.detailedMeterDescription {
+    font-size: 14px;
+    color: rgb(179, 179, 179);
+    margin-bottom: 30px;
+}
+
+.statCoinsAmountMeter {
+    width: 250px;
+    height: 20px;
+    border-radius: 5px;
+    background-color: rgba(211, 211, 211, 1);
+    margin-bottom: 2px;
+}
+
+.statCoinsAmountProgress {
+    /*width: 40%;*/
+    height: 20px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    text-align: right;
+    font-size: 16px;
+}
+
+.statCoinsAmountProgress::before, .statCoinsAmountProgress::after {
+    content: " ";
+    white-space: pre;
+}
+
+.statRegularCoinsMeter {
+    width: 35%;
+    background-color: rgba(52, 123, 152, 1);
+    color: rgba(211, 211, 211, 1);
+}
+
+.statCommemorativeCoinsMeter {
+    width: 25%;
+    background-color: rgba(39, 93, 114, 1);
+    color: rgba(211, 211, 211, 1);
+}
+
+.statOtherCoinsMeter {
+    width: 9%;
+    background-color: rgba(53, 74, 84, 1);
+    color: rgba(211, 211, 211, 1);
+}
+
+.statsTotalCoinsAmount {
+    width: 250px;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: rgba(45, 60, 86, 1);
 }
