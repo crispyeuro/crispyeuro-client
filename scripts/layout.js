@@ -5,7 +5,7 @@ window.onload = function () {
             <div class="navBtnContainer" onclick="showNavLinks()"><div class="navBtn" id="navBtnAction"></div></div>
             <ul class="navLinks" id="navLinksContainer">
                 <li><a href="#messages">Messages</a></div></li>
-                <li><a href="#swap">Swap</a></div></li>
+                <li><a href="swap.html">Swap</a></div></li>
                 <li><a href="settings.html">Settings</a></div></li>
                 <li><a href="login.html">Log out</a></div></li>
             </ul>

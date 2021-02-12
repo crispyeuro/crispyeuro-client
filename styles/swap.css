@@ -1,0 +1,67 @@
+.swapContainerName {
+    font-size: 3vh;
+    color: rgba(45, 60, 86, 1);
+    margin-bottom: 2%;
+}
+
+.swapMenu {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.swapMenuBtn {
+    text-align: left;
+    font-size: 16px;
+    color: rgb(46, 56, 77, 1);
+    padding-right: 60px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.swapMenuBtn:hover {
+    color: rgba(52, 123, 152, 1);
+}
+
+.swapMyRequests {
+    display: none;
+    background-color: gray;
+}
+
+.swapOthersRequests {
+    display: flex;
+    margin-top: 15px;
+}
+
+#othersRequests {
+    color: rgba(52, 123, 152, 1);
+}
+
+.swapUserRequest {
+    text-align: left;
+}
+
+.swapUserRequestName {
+    text-align: left;
+}
+
+.swapUserRequestContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    text-align: left;
+    padding: 15px;
+}
+
+.myCoinContainer {
+    width: 300px;
+    height: 200px;
+    border: 1px solid rgba(135, 152, 173, 0.6);
+    border-radius: 3px;
+}
+
+.swapManageOffers {
+    display: none;
+    background-color: honeydew;
+}
