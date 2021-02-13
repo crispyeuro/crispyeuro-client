@@ -21,23 +21,137 @@
             <div class="swapMenuBtn" id="othersRequests">Others' coin swap requests</div>
             <div class="swapMenuBtn" id="manageSwap">Manage my coin swap offers</div>
         </div>
+
         <div class="swapMyRequests">
             .
         </div>
+
         <div class="swapOthersRequests">
             <div class="swapUserRequest">
-                <div class="swapUserRequestName">. A coin swap request from [user515]</div>
-                Wants to swap your coin
-                <div class="swapUserRequestContainer">
-                    <div class="myCoinContainer">
+                <div class="swapUserRequestName" onclick="swapOthersRequestShow('firstRequset')">A coin swap request from [ user515 ]</div>
+                <div class="swapUserRequestContainer opened" id="firstRequset">
+                    Wants to swap your coin
+                    <div class="swapUserRequestCoinContainer">
+                        <div class="myCoinContainer">
+                            <div class="myCoinContainerName">[ Commemorative 2 euro Andorra 2015]</div>
+                            <div class="myCointContent">
+                                <div class="coinPic">PIC</div>
+                                <div class="coinDescription">
+                                    <span>Id #[number] in my collection</span><br><br>
+                                    <span>State: BU</span><br><br>
+                                    <span><a href="coincard.html">Open coin</a></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="forContainer">
+                            for
+                        </div>
 
+                        <div class="myCoinContainer">
+                            <div class="myCoinContainerName">[ Commemorative 2 euro Andorra 2016]</div>
+                            <div class="myCointContent">
+                                <div class="coinPic">PIC</div>
+                                <div class="coinDescription">
+                                    <span>State: BU</span><br><br>
+                                    <span><a href="coincard.html">Open coin</a></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="myCoinContainer">
-
+                    Offer details
+                    <div class="swapOfferDetails">
+                        Some details.
+                    </div>
+                    <div class="swapUserRequestButtons">
+                        <button>Reply</button>
+                        <button>Dismiss</button>
+                        <button>Swapped</button>
                     </div>
                 </div>
-                Offer details
+            </div>
+
+            <div class="swapUserRequest">
+                <div class="swapUserRequestName" onclick="swapOthersRequestShow('secondRequset')">A coin swap request from [ user445 ]</div>
+                <div class="swapUserRequestContainer closed" id="secondRequset">
+                    Wants to swap your coin
+                    <div class="swapUserRequestCoinContainer">
+                        <div class="myCoinContainer">
+                            <div class="myCoinContainerName">[ Commemorative 2 euro Andorra 2015]</div>
+                            <div class="myCointContent">
+                                <div class="coinPic">PIC</div>
+                                <div class="coinDescription">
+                                    <span>Id #[number] in my collection</span><br><br>
+                                    <span>State: BU</span><br><br>
+                                    <span><a href="coincard.html">Open coin</a></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="forContainer">
+                            for
+                        </div>
+
+                        <div class="myCoinContainer">
+                            <div class="myCoinContainerName">[ Commemorative 2 euro Belgium 2004]</div>
+                            <div class="myCointContent">
+                                <div class="coinPic">PIC</div>
+                                <div class="coinDescription">
+                                    <span>State: BU</span><br><br>
+                                    <span><a href="coincard.html">Open coin</a></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="myCoinContainer">
+                            <div class="myCoinContainerName">[ Commemorative 2 euro Belgium 2005]</div>
+                            <div class="myCointContent">
+                                <div class="coinPic">PIC</div>
+                                <div class="coinDescription">
+                                    <span>State: BU</span><br><br>
+                                    <span><a href="coincard.html">Open coin</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    Offer details
+                    <div class="swapOfferDetails">
+                        Some details.
+                    </div>
+                    <div class="swapUserRequestButtons">
+                        <button>Reply</button>
+                        <button>Dismiss</button>
+                        <button>Swapped</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swapUserRequest">
+                <div class="swapUserRequestName" onclick="swapOthersRequestShow('thirdRequset')">A coin swap request from [ user7549 ]</div>
+                <div class="swapUserRequestContainer closed" id="thirdRequset">
+                    Wants to swap your coin
+                    <div class="swapUserRequestCoinContainer">
+                        <div class="myCoinContainer">
+                            <div class="myCoinContainerName">[ Commemorative 2 euro Andorra 2015]</div>
+                            <div class="myCointContent">
+                                <div class="coinPic">PIC</div>
+                                <div class="coinDescription">
+                                    <span>Id #[number] in my collection</span><br><br>
+                                    <span>State: BU</span><br><br>
+                                    <span><a href="coincard.html">Open coin</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    Offer details
+                    <div class="swapOfferDetails">
+                        Some details.
+                    </div>
+                    <div class="swapUserRequestButtons">
+                        <button>Reply</button>
+                        <button>Dismiss</button>
+                        <button>Swapped</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="swapManageOffers">
@@ -49,5 +163,7 @@
 
     <footer id="footer"></footer>
 </body>
+
+<script src="../scripts/swap.js"></script>
 
 </html>

@@ -31,6 +31,7 @@
 
 .swapOthersRequests {
     display: flex;
+    flex-direction: column;
     margin-top: 15px;
 }
 
@@ -39,26 +40,131 @@
 }
 
 .swapUserRequest {
+    width: 90%;
     text-align: left;
+    border: 1px solid rgba(135, 152, 173, 0.6);
+    border-radius: 3px;
+    box-shadow: 5px 5px 5px rgba(135, 152, 173, 0.2);
+    padding: 1%;
+    margin-bottom: 50px;
+    background-color: rgba(135, 152, 173, 0.05);
 }
 
 .swapUserRequestName {
     text-align: left;
+    color: rgba(46, 56, 77, 1);
+    font-weight: 400;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.swapUserRequestName:hover {
+    color: rgba(52, 123, 152, 1);
 }
 
 .swapUserRequestContainer {
+    padding-left: 2%;
+}
+
+.swapUserRequestCoinContainer {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     flex-direction: row;
     text-align: left;
-    padding: 15px;
 }
 
 .myCoinContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
     width: 300px;
-    height: 200px;
+    height: 150px;
     border: 1px solid rgba(135, 152, 173, 0.6);
     border-radius: 3px;
+    margin-bottom: 1%;
+    margin-right: 5px;
+    padding: 3px;
+    background-color: white;
+}
+
+.myCoinContainerName {
+    width: 100%;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(52, 123, 152, 1);
+}
+
+.myCointContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.coinPic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 110px;
+    min-height: 110px;
+    border: 1px solid rgba(52, 123, 152, 1);
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.coinDescription {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 15px;
+    color: rgba(39, 93, 114, 1);
+    padding-left: 10%;
+}
+
+.coinDescription span {
+    margin-bottom: 5px;
+}
+
+.coinDescription a {
+    color: rgba(39, 93, 114, 1);
+}
+
+.coinDescription a:hover {
+    color: rgba(52, 123, 152, 1);
+}
+
+.forContainer {
+    display: flex;
+    justify-content: center;
+    min-width: 150px;
+    padding: 0 5% 0 5%;
+}
+
+.swapOfferDetails {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 50px;
+    border: 1px solid rgba(135, 152, 173, 0.6);
+    border-radius: 3px;
+    margin-bottom: 1%;
+    padding: 1%;
+    background-color: white;
+    color: rgba(39, 93, 114, 1);
+}
+
+.swapUserRequestButtons button {
+    margin-right: 5px;
+}
+
+.opened {
+    display: block;
+}
+
+.closed {
+    display: none;
 }
 
 .swapManageOffers {
