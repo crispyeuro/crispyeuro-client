@@ -1,4 +1,12 @@
 @import "main.css";
+.categoriesContainerName {
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    color: rgba(45, 60, 86, 1);
+    margin-bottom: 2%;
+}
+
 .countries, .denominations, .commemorative, .colored, .silver, .gold {
     box-shadow: 5px 5px 5px rgba(135, 152, 173, 0.2);
     border: 1px solid rgba(135, 152, 173, 0.6);

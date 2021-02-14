@@ -1,4 +1,12 @@
 @import "main.css";
+.settingsContainerName {
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    color: rgba(45, 60, 86, 1);
+    margin-bottom: 2%;
+}
+
 form {
     width: 65%;
     text-align: left;
@@ -12,19 +20,22 @@ form {
 
 .formLabel {
     padding: 8px;
-    width: 150px;
+    width: 160px;
     border-radius: 4px;
-    background-color: rgba(212, 237, 247, 1);
+    background-color: rgba(212, 237, 247, 0.8);
+    color: rgba(45, 60, 86, 1);
     margin-bottom: 5px;
+    font-weight: 400;
 }
 
 .formLeftContainer {
     padding: 8px;
-    width: 150px;
+    width: 160px;
 }
 
 .formRow label[for=fMale], .formRow label[for=fFemale] {
     margin-right: 10px;
+    color: rgba(45, 60, 86, 1);
 }
 
 .formRow input[type=text], input[type=email], input[type=password], input[type=date], .formRow select, .genderRow, .inputRow {
