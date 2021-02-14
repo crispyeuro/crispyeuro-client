@@ -9,7 +9,7 @@ function swapMenuBtnClicked(id) {
             document.getElementById("othersRequests").style.color = "rgb(46, 56, 77, 1)";
 
             document.getElementById("swapManageOffers").className = "swapManageOffers closed";
-            document.getElementById("manageSwap").style = "rgb(46, 56, 77, 1)";
+            document.getElementById("manageSwap").style.color = "rgb(46, 56, 77, 1)";
         }
         return true;
     }

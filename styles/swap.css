@@ -20,7 +20,7 @@
     font-weight: 400;
 }
 
-.swapMenuBtn:hover {
+#myRequestsName:hover, #othersRequestsName:hover, #manageSwapName:hover {
     color: rgba(52, 123, 152, 1);
 }
 
