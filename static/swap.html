@@ -17,16 +17,16 @@
     <div class="content">
         <div class="containerName swapContainerName">Coins swap</div>
         <div class="swapMenu">
-            <div class="swapMenuBtn" id="myRequests">My coin swap requests</div>
-            <div class="swapMenuBtn" id="othersRequests">Others' coin swap requests</div>
-            <div class="swapMenuBtn" id="manageSwap">Manage my coin swap offers</div>
+            <div class="swapMenuBtn" id="myRequests" onclick="swapMenuBtnClicked('myRequests')">My coin swap requests</div>
+            <div class="swapMenuBtn" id="othersRequests" onclick="swapMenuBtnClicked('othersRequests')">Others' coin swap requests</div>
+            <div class="swapMenuBtn" id="manageSwap" onclick="swapMenuBtnClicked('manageSwap')">Manage my coin swap offers</div>
         </div>
 
-        <div class="swapMyRequests">
+        <div class="swapMyRequests closed" id="swapMyRequests">
             .
         </div>
 
-        <div class="swapOthersRequests">
+        <div class="swapOthersRequests opened" id="swapOthersRequests">
             <div class="swapUserRequest">
                 <div class="swapUserRequestName" onclick="swapOthersRequestShow('firstRequset')">A coin swap request from [ user515 ]</div>
                 <div class="swapUserRequestContainer opened" id="firstRequset">
@@ -38,7 +38,7 @@
                                 <div class="coinPic">PIC</div>
                                 <div class="coinDescription">
                                     <span>Id #[number] in my collection</span><br><br>
-                                    <span>State: BU</span><br><br>
+                                    <span>Condition: BU</span><br><br>
                                     <span><a href="coincard.html">Open coin</a></span>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
                             <div class="myCointContent">
                                 <div class="coinPic">PIC</div>
                                 <div class="coinDescription">
-                                    <span>State: BU</span><br><br>
+                                    <span>Condition: BU</span><br><br>
                                     <span><a href="coincard.html">Open coin</a></span>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                                 <div class="coinPic">PIC</div>
                                 <div class="coinDescription">
                                     <span>Id #[number] in my collection</span><br><br>
-                                    <span>State: BU</span><br><br>
+                                    <span>Condition: BU</span><br><br>
                                     <span><a href="coincard.html">Open coin</a></span>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                             <div class="myCointContent">
                                 <div class="coinPic">PIC</div>
                                 <div class="coinDescription">
-                                    <span>State: BU</span><br><br>
+                                    <span>Condition: BU</span><br><br>
                                     <span><a href="coincard.html">Open coin</a></span>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                             <div class="myCointContent">
                                 <div class="coinPic">PIC</div>
                                 <div class="coinDescription">
-                                    <span>State: BU</span><br><br>
+                                    <span>Condition: BU</span><br><br>
                                     <span><a href="coincard.html">Open coin</a></span>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
                                 <div class="coinPic">PIC</div>
                                 <div class="coinDescription">
                                     <span>Id #[number] in my collection</span><br><br>
-                                    <span>State: BU</span><br><br>
+                                    <span>Condition: BU</span><br><br>
                                     <span><a href="coincard.html">Open coin</a></span>
                                 </div>
                             </div>
@@ -154,7 +154,8 @@
                 </div>
             </div>
         </div>
-        <div class="swapManageOffers">
+        
+        <div class="swapManageOffers closed" id="swapManageOffers">
             .
         </div>
 

@@ -25,7 +25,6 @@
 }
 
 .swapMyRequests {
-    display: none;
     background-color: gray;
 }
 
@@ -47,7 +46,7 @@
     box-shadow: 5px 5px 5px rgba(135, 152, 173, 0.2);
     padding: 1%;
     margin-bottom: 50px;
-    background-color: rgba(135, 152, 173, 0.05);
+    background-color: rgba(135, 152, 173, 0.09);
 }
 
 .swapUserRequestName {
@@ -168,6 +167,5 @@
 }
 
 .swapManageOffers {
-    display: none;
-    background-color: honeydew;
+    background-color: blue;
 }
