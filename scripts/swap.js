@@ -54,3 +54,15 @@ function swapOthersRequestShow(id) {
         return true;
     }
 }
+
+function swapMyRequestShow(id) {
+    offerContainer = document.getElementById(id);
+    if (offerContainer.className == "swapMyRequestContainer opened") {
+        offerContainer.className = "swapMyRequestContainer closed";
+        return true;
+    }
+    if (offerContainer.className == "swapMyRequestContainer closed") {
+        offerContainer.className = "swapMyRequestContainer opened";
+        return true;
+    }
+}

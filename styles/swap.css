@@ -24,11 +24,7 @@
     color: rgba(52, 123, 152, 1);
 }
 
-.swapMyRequests {
-    background-color: gray;
-}
-
-.swapOthersRequests {
+.swapOthersRequests, .swapMyRequests, .swapManageOffer {
     display: flex;
     flex-direction: column;
     margin-top: 15px;
@@ -38,7 +34,7 @@
     color: rgba(52, 123, 152, 1);
 }
 
-.swapUserRequest {
+.swapUserRequest, .swapMyRequest {
     width: 90%;
     text-align: left;
     border: 1px solid rgba(135, 152, 173, 0.6);
@@ -49,7 +45,7 @@
     background-color: rgba(135, 152, 173, 0.09);
 }
 
-.swapUserRequestName {
+.swapUserRequestName, .swapMyRequestName {
     text-align: left;
     color: rgba(46, 56, 77, 1);
     font-weight: 400;
@@ -57,11 +53,11 @@
     margin-bottom: 10px;
 }
 
-.swapUserRequestName:hover {
+.swapUserRequestName:hover, .swapMyRequestName:hover {
     color: rgba(52, 123, 152, 1);
 }
 
-.swapUserRequestContainer {
+.swapUserRequestContainer, .swapMyRequestContainer {
     padding-left: 2%;
 }
 
@@ -164,8 +160,4 @@
 
 .closed {
     display: none;
-}
-
-.swapManageOffers {
-    background-color: blue;
 }
