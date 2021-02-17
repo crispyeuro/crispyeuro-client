@@ -7,6 +7,27 @@
     margin-bottom: 2%;
 }
 
+.settingsMenu {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.settingsMenuBtn {
+    text-align: left;
+    font-size: 16px;
+    color: rgb(46, 56, 77, 1);
+    padding-right: 60px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+#userSettings:hover, #collectionSettings:hover {
+    color: rgba(52, 123, 152, 1);
+}
+
 form {
     width: 65%;
     text-align: left;
@@ -130,4 +151,16 @@ input[type=checkbox]:checked~.fCheckbox {
 
 .fCheckbox:active, label[class=checkboxContainer]:active>.fCheckbox {
     box-shadow: 0 0 0 1px rgba(52, 123, 152, 1) inset;
+}
+
+.collectionSettingsTab {
+    display: none;
+}
+
+.opened {
+    display: block;
+}
+
+.closed {
+    display: none;
 }

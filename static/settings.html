@@ -16,91 +16,106 @@
 
     <div class="content">
         <div class="settingsContainerName">Settings</div>
-        <form name="settingsForm" action="#" onsubmit="return validateSettingsForm()" method="post">
-            <div class="formRow">
-                <label class="formLabel" for="fName">Name</label>
-                <input type="text" id="fName" name="name" placeholder="Name" autocomplete="off">
-                <div class="mistakeRow" id="fNameMistake"></div>
-            </div>
 
-            <div class="formRow">
-                <label class="formLabel" for="fUsername #7db3c7">Username</label>
-                <input type="text" id="fUsername" name="username" placeholder="Username*" autocomplete="off" disabled>
-                <div class="mistakeRow" id="fUsernameMistake"></div>
-            </div>
+        <div class="settingsMenu">
+            <div class="settingsMenuBtn" id="userSettings"><span id="userSettingsName">User settings</span></div>
+            <div class="settingsMenuBtn" id="collectionSettings"><span id="collectionSettingsName">Collection
+                    settings</span></div>
+        </div>
 
-            <div class="formRow">
-                <label class="formLabel" for="fEmail">Email</label>
-                <input type="email" id="fEmail" name="email" placeholder="Email*" autocomplete="off">
-                <div class="mistakeRow" id="fEmailMistake"></div>
-            </div>
-
-            <div class="formRow">
-                <label class="formLabel" for="fPWD">New password</label>
-                <input type="password" id="fPWD" name="password" placeholder="Password*" autocomplete="off">
-                <div class="mistakeRow" id="fPWDMistake"></div>
-            </div>
-
-            <div class="formRow">
-                <label class="formLabel" for="fConfPWD">Confirm password</label>
-                <input type="password" id="fConfPWD" name="password" placeholder="Confitrm password*"
-                    autocomplete="off">
-                <div class="mistakeRow" id="fConfPWDMistake"></div>
-            </div>
-
-            <div class="formRow">
-                <label class="formLabel" class="labelBirthday" for="fBirthday">Birthday</label>
-                <input type="date" id="fBirthday" name="birthday">
-                <div class="mistakeRow" id="fBirthdayAndGenderMistake"></div>
-            </div>
-
-            <div class="formRow">
-                <label class="formLabel">Gender</label>
-                <div class="genderRow">
-                    <input type="radio" id="fMale" name="gender" value="male" disabled>
-                    <label for="fMale">Male</label>
-                    <input type="radio" id="fFemale" name="gender" value="female" disabled>
-                    <label for="fFemale">Female</label>
+        <div class="userSettingsTab">
+            <form name="settingsForm" action="#" onsubmit="return validateSettingsForm()" method="post">
+                <div class="formRow">
+                    <label class="formLabel" for="fName">Name</label>
+                    <input type="text" id="fName" name="name" placeholder="Name" autocomplete="off">
+                    <div class="mistakeRow" id="fNameMistake"></div>
                 </div>
-                <div class="mistakeRow" id="fBirthdayAndGenderMistake"></div>
-            </div>
 
-            <div class="formRow">
-                <label class="formLabel" for="fCountry">Country</label>
-                <select id="fCountry" name="country">
-                    <option value="" disabled selected>Country</option>
-                    <option value="estonia">Estonia</option>
-                    <option value="latvia">Latvia</option>
-                    <option value="lithuania">Lithuania</option>
-                </select>
-                <div class="mistakeRow" id="fCountryMistake"></div>
-            </div>
-
-            <div class="formRow">
-                <label class="formLabel" for="fCity">City</label>
-                <input type="text" id="fCity" name="city" placeholder="City" autocomplete="off">
-                <div class="mistakeRow" id="fCityMistake"></div>
-            </div>
-
-            <div class="formRow">
-                <div class="formLeftContainer"></div>
-                <div class="inputRow">
-                    <label for="fTerms" class="checkboxContainer">I accept <a href="#" id=fTermsLink>Terms of Use</a>
-                        <input type="checkbox" id="fTerms" name="terms" value="accept">
-                        <div class="fCheckbox"></div>
-                    </label>
+                <div class="formRow">
+                    <label class="formLabel" for="fUsername #7db3c7">Username</label>
+                    <input type="text" id="fUsername" name="username" placeholder="Username*" autocomplete="off"
+                        value="[someUsername123]" disabled>
+                    <div class="mistakeRow" id="fUsernameMistake"></div>
                 </div>
-                <div class="mistakeRow" id="fTermsMistake"></div>
-            </div>
 
-            <div class="formRow">
-                <div class="formLeftContainer"></div>
-                <div class="inputRow">
-                    <input type="submit" value="Save changes">
+                <div class="formRow">
+                    <label class="formLabel" for="fEmail">Email</label>
+                    <input type="email" id="fEmail" name="email" placeholder="Email*" autocomplete="off">
+                    <div class="mistakeRow" id="fEmailMistake"></div>
                 </div>
-                <div class="mistakeRow" id="fTermsMistake"></div>
-            </div>
-        </form>
+
+                <div class="formRow">
+                    <label class="formLabel" for="fPWD">New password</label>
+                    <input type="password" id="fPWD" name="password" placeholder="Password*" autocomplete="off">
+                    <div class="mistakeRow" id="fPWDMistake"></div>
+                </div>
+
+                <div class="formRow">
+                    <label class="formLabel" for="fConfPWD">Confirm password</label>
+                    <input type="password" id="fConfPWD" name="password" placeholder="Confitrm password*"
+                        autocomplete="off">
+                    <div class="mistakeRow" id="fConfPWDMistake"></div>
+                </div>
+
+                <div class="formRow">
+                    <label class="formLabel" class="labelBirthday" for="fBirthday">Birthday</label>
+                    <input type="date" id="fBirthday" name="birthday">
+                    <div class="mistakeRow" id="fBirthdayAndGenderMistake"></div>
+                </div>
+
+                <div class="formRow">
+                    <label class="formLabel">Gender</label>
+                    <div class="genderRow">
+                        <input type="radio" id="fMale" name="gender" value="male" disabled>
+                        <label for="fMale">Male</label>
+                        <input type="radio" id="fFemale" name="gender" value="female" disabled>
+                        <label for="fFemale">Female</label>
+                    </div>
+                    <div class="mistakeRow" id="fBirthdayAndGenderMistake"></div>
+                </div>
+
+                <div class="formRow">
+                    <label class="formLabel" for="fCountry">Country</label>
+                    <select id="fCountry" name="country">
+                        <option value="" disabled selected>Country</option>
+                        <option value="estonia">Estonia</option>
+                        <option value="latvia">Latvia</option>
+                        <option value="lithuania">Lithuania</option>
+                    </select>
+                    <div class="mistakeRow" id="fCountryMistake"></div>
+                </div>
+
+                <div class="formRow">
+                    <label class="formLabel" for="fCity">City</label>
+                    <input type="text" id="fCity" name="city" placeholder="City" autocomplete="off">
+                    <div class="mistakeRow" id="fCityMistake"></div>
+                </div>
+
+                <div class="formRow">
+                    <div class="formLeftContainer"></div>
+                    <div class="inputRow">
+                        <label for="fTerms" class="checkboxContainer">I accept <a href="#" id=fTermsLink>Terms of
+                                Use</a>
+                            <input type="checkbox" id="fTerms" name="terms" value="accept">
+                            <div class="fCheckbox"></div>
+                        </label>
+                    </div>
+                    <div class="mistakeRow" id="fTermsMistake"></div>
+                </div>
+
+                <div class="formRow">
+                    <div class="formLeftContainer"></div>
+                    <div class="inputRow">
+                        <input type="submit" value="Save changes">
+                    </div>
+                    <div class="mistakeRow" id="fTermsMistake"></div>
+                </div>
+            </form>
+        </div>
+
+        <div class="collectionSettingsTab">
+            Collection settings
+        </div>
     </div>
 
     <footer id="footer"></footer>
