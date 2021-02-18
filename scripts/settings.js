@@ -11,7 +11,6 @@ function settingsMenuBtnClicked(id) {
         return true;
     }
     if (id == "collectionSettings") {
-        console.log("h");
         var collectionSettings = document.getElementById("collectionSettingsTab");
         if (collectionSettings.className == "collectionSettingsTab closed") {
             collectionSettings.className = "collectionSettingsTab opened";
