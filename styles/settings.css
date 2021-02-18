@@ -16,7 +16,7 @@
 
 .settingsMenuBtn {
     text-align: left;
-    font-size: 16px;
+    font-size: 17px;
     color: rgb(46, 56, 77, 1);
     padding-right: 60px;
     margin-bottom: 5px;
@@ -24,7 +24,7 @@
     font-weight: 400;
 }
 
-#userSettings:hover, #collectionSettings:hover {
+#userSettingsName:hover, #collectionSettingsName:hover {
     color: rgba(52, 123, 152, 1);
 }
 
@@ -46,7 +46,7 @@ form {
     background-color: rgba(212, 237, 247, 0.8);
     color: rgba(45, 60, 86, 1);
     margin-bottom: 5px;
-    font-weight: 400;
+    font-size: 16px;
 }
 
 .formLeftContainer {
@@ -89,72 +89,40 @@ form {
     align-items: center;
 }
 
-/*Checkbox*/
-
-.checkboxContainer {
-    position: relative;
-    padding-left: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.fCheckbox {
-    position: absolute;
-    left: 0;
-    height: 16px;
-    width: 16px;
-    cursor: pointer;
-    border: 1px solid rgba(52, 123, 152, 1);
-    border-radius: 4px;
-    background-color: rgb(255, 255, 255);
-}
-
-.checkboxContainer a {
-    padding-left: 4px;
-    color: rgba(152, 167, 185, 1);
-}
-
-input[type=checkbox] {
-    position: absolute;
-    opacity: 0;
-}
-
-.checkboxContainer:hover .fCheckbox {
-    box-shadow: 0 0 0 1px rgba(52, 123, 152, 1) inset;
-    background-color: rgb(255, 255, 255);
-}
-
-.fCheckbox:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-.fCheckbox:after {
-    border-right: 2px solid rgba(39, 93, 114, 1);
-    border-bottom: 2px solid rgba(39, 93, 114, 1);
-    height: 8px;
-    width: 4px;
-    transform: rotate(45deg);
-    top: 1px;
-    right: 4px;
-}
-
-.checkboxContainer input[type=checkbox]:checked~.fCheckbox:after {
-    display: block;
-}
-
-input[type=checkbox]:checked~.fCheckbox {
-    background-color: rgb(255, 255, 255);
-}
-
-.fCheckbox:active, label[class=checkboxContainer]:active>.fCheckbox {
-    box-shadow: 0 0 0 1px rgba(52, 123, 152, 1) inset;
-}
-
 .collectionSettingsTab {
-    display: none;
+    display: flex;
+    text-align: left;
+}
+
+.collectionSetupRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.collectionSetupRow label {
+    margin: 0 50px 10px 0;
+}
+
+.collectionLevelsConainer {
+    margin: 10px 0;
+}
+
+.collectionLevelsContainerName {
+    line-height: 40px;
+}
+
+.collectionLevelRow {
+    margin-bottom: 10px;
+}
+
+.collectionLevelRow span {
+    color: rgb(179, 179, 179);
+}
+
+.collectionLevelRow label {
+    text-transform: uppercase;
+    font-weight: 400;
 }
 
 .opened {

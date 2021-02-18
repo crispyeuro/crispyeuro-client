@@ -18,12 +18,15 @@
         <div class="settingsContainerName">Settings</div>
 
         <div class="settingsMenu">
-            <div class="settingsMenuBtn" id="userSettings"><span id="userSettingsName">User settings</span></div>
-            <div class="settingsMenuBtn" id="collectionSettings"><span id="collectionSettingsName">Collection
-                    settings</span></div>
+            <div class="settingsMenuBtn" id="userSettings" onclick="settingsMenuBtnClicked('userSettings')"><span
+                    id="userSettingsName">User settings</span></div>
+            <div class="settingsMenuBtn" id="collectionSettings" onclick="settingsMenuBtnClicked('collectionSettings')">
+                <span id="collectionSettingsName">Collection
+                    settings</span>
+            </div>
         </div>
 
-        <div class="userSettingsTab">
+        <div class="userSettingsTab" id="userSettingsTab">
             <form name="settingsForm" action="#" onsubmit="return validateSettingsForm()" method="post">
                 <div class="formRow">
                     <label class="formLabel" for="fName">Name</label>
@@ -66,10 +69,14 @@
                 <div class="formRow">
                     <label class="formLabel">Gender</label>
                     <div class="genderRow">
-                        <input type="radio" id="fMale" name="gender" value="male" disabled>
-                        <label for="fMale">Male</label>
-                        <input type="radio" id="fFemale" name="gender" value="female" disabled>
-                        <label for="fFemale">Female</label>
+                        <label for="fMale" class="radioContainer displayInline radioDisabled">Male
+                            <input type="radio" id="fMale" name="gender" value="male" checked disabled>
+                            <div class="fRadio"></div>
+                        </label>
+                        <label for="fFemale" class="radioContainer displayInline radioDisabled">Female
+                            <input type="radio" id="fFemale" name="gender" value="female" disabled>
+                            <div class="fRadio"></div>
+                        </label>
                     </div>
                     <div class="mistakeRow" id="fBirthdayAndGenderMistake"></div>
                 </div>
@@ -113,8 +120,42 @@
             </form>
         </div>
 
-        <div class="collectionSettingsTab">
-            Collection settings
+        <div class="collectionSettingsTab closed" id="collectionSettingsTab">
+            <span class="collectionLevelsContainerName">Choose which coins to collect. Define difficulty level:</span>
+            <div class="collectionLevelsConainer">
+                <div class="collectionLevelRow">
+                    <label for="levelBasic" class="radioContainer displayInline">Basic
+                        <input type="radio" id="levelBasic" name="level" value="basic" checked>
+                        <div class="fRadio"></div>
+                    </label><br>
+                    <span>Collect circulation coins (e.g. Andorra 1 cent to 2 euro, etc.) and commemorative
+                        coins.</span>
+                </div>
+                <div class="collectionLevelRow">
+                    <label for="levelAdvanced" class="radioContainer displayInline">Advanced
+                        <input type="radio" id="levelAdvanced" name="level" value="advanced">
+                        <div class="fRadio"></div>
+                    </label><br>
+                    <span>Collect coins also by years.</span>
+                </div>
+                <div class="collectionLevelRow">
+                    <label for="levelVeryAdvanced" class="radioContainer displayInline"
+                        onclick="radioVeryAdvancedClicked()">Very Advanced
+                        <input type="radio" id="levelVeryAdvanced" name="level" value="veryAdvanced">
+                        <div class="fRadio"></div>
+                    </label><br>
+                    <span>Collect coins also by mint marks.</span>
+                </div>
+            </div>
+
+            <br><span class="collectionLevelsContainerName">Additional settings:</span><br>
+            <div class="collectionSetupRow">
+
+                <label for="setupGermanCoins" class="checkboxContainer" id="setupCheckbox">Show German mints
+                    <input type="checkbox" id="setupGermanCoins" name="germanCoins" value="show">
+                    <div class="fCheckbox"></div>
+                </label>
+            </div>
         </div>
     </div>
 
@@ -122,5 +163,6 @@
 </body>
 
 <script src="../scripts/app.js"></script>
+<script src="../scripts/settings.js"></script>
 
 </html>

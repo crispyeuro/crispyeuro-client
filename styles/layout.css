@@ -286,8 +286,13 @@ footer {
     width: 16px;
     cursor: pointer;
     border-radius: 4px;
-    border: 1px solid rgba(0, 166, 226, 1);
+    border: 1px solid rgba(52, 123, 152, 1);
     background-color: rgb(255, 255, 255);
+}
+
+.checkboxContainer a {
+    padding-left: 4px;
+    color: rgba(152, 167, 185, 1);
 }
 
 .disabled {
@@ -300,7 +305,7 @@ input[type=checkbox] {
 }
 
 .checkboxContainer:hover .fCheckbox {
-    box-shadow: 0 0 0 1px rgba(0, 166, 226, 1) inset;
+    box-shadow: 0 0 0 1px rgba(52, 123, 152, 1) inset;
     background-color: rgb(255, 255, 255);
 }
 
@@ -335,7 +340,7 @@ input[type=checkbox]:checked~.fCheckbox {
 }
 
 .fCheckbox:active, label[class=checkboxContainer]:active>.fCheckbox {
-    box-shadow: 0 0 0 1px rgba(0, 166, 226, 1) inset;
+    box-shadow: 0 0 0 1px rgba(52, 123, 152, 1) inset;
 }
 
 /*Radio*/
@@ -360,16 +365,16 @@ input[type=checkbox]:checked~.fCheckbox {
     height: 16px;
     cursor: pointer;
     border-radius: 50%;
-    border: 1px solid rgba(0, 166, 226, 1);
+    border: 1px solid rgba(52, 123, 152, 1);
     background-color: rgb(255, 255, 255);
 }
 
 .fRadio:active, label[class=radioContainer]:active>.fRadio {
-    box-shadow: 0 0 0 1px rgba(0, 166, 226, 1) inset;
+    box-shadow: 0 0 0 1px rgba(52, 123, 152, 1) inset;
 }
 
 .radioContainer:hover .fRadio {
-    box-shadow: 0 0 0 1px rgba(0, 166, 226, 1) inset;
+    box-shadow: 0 0 0 1px rgba(52, 123, 152, 1) inset;
     background-color: rgb(255, 255, 255);
 }
 
@@ -387,6 +392,16 @@ input[type=checkbox]:checked~.fCheckbox {
 
 .radioContainer input[type=radio]:checked~.fRadio:after {
     display: block;
+}
+
+/*Disabled radio*/
+
+.radioDisabled .fRadio {
+    cursor: initial;
+}
+
+.radioDisabled:hover .fRadio {
+    box-shadow: none;
 }
 
 /*Responsive*/
