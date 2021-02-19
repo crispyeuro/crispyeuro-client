@@ -43,7 +43,9 @@
 }
 
 .contactUser {
-    width: 50px;
+    display: flex;
+    align-items: center;
+    width: min-content;
     cursor: pointer;
 }
 
@@ -51,6 +53,17 @@
     color: rgba(52, 123, 152, 1);
 }
 
+.userOnlineSign {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 5px;
+    background-color: #008956;
+}
+
+.contactUser:hover > .userOnlineSign {
+    background-color: #47c088;
+}
 
 .contactLastMessage {
     width: 100%;

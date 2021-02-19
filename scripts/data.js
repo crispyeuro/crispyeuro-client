@@ -45,4 +45,36 @@ function years() {
         issues.push({ coin: String(i), year: i, common: false });
     }
     return issues;
-}
+};
+
+
+/*Some test contacts and test messages*/
+
+var testContacts = [
+    {id: 1, username: "user4884", online: true},
+    {id: 2, username: "user455", online: true},
+    {id: 3, username: "user23843", online: false},
+    {id: 4, username: "user972", online: false}
+];
+
+var testMessages = [
+    {id: 1, userMessages: user4884Messages},
+    {id: 2, userMessages: user455Messages},
+    {id: 3, userMessages: user23842Messages},
+    {id: 4, userMessages: user972Messages}
+]
+
+var user4884Messages = [
+    {order: 1, message: "Hello!"},
+    {order: 2, message: "Some message"},
+    {order: 3, message: "Some last message"}
+];
+
+var user455Messages = [];
+
+var user23842Messages = [
+    {order: 1, message: "Hi!"},
+    {order: 2, message: "Another last message"}
+];
+
+var user972Messages = [];
