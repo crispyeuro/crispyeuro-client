@@ -29,3 +29,14 @@ function radioVeryAdvancedClicked() {
         document.getElementById("setupGermanCoins").checked = true;
     }
 }
+
+function setupMissingCoins() {
+    var checkbox = document.getElementById("setupMissingCoins");
+    /*if (checkbox.checked == true) {
+        showMissingCoins = true;
+        return true;
+    } else {
+        showMissingCoins = false;
+        return true;
+    }*/
+}

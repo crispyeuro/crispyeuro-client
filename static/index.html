@@ -16,7 +16,15 @@
     <div class="menu"></div>
 
     <div class="content">
-        <div class="categoriesContainerName">Coins by categories</div>
+        <div class="categoriesContainerNameRow">
+            <div class="categoriesNameRowLeft"></div>
+            <div class="categoriesContainerName">Coins by categories</div>
+            <div class="categoriesNameRowRight">
+                <div class="categoriesNameRowBtn categoriesMisingCoinsSetup" id="categoriesNameRowBtnId"
+                    onclick="showMissingCoins()">
+                    Showing missing coins</div>
+            </div>
+        </div>
         <div class="countries" id="countries" onclick="countries('check')">
             <div class="floatLeft categoryHeader">Countries</div><br>
             <div id="countriesList" class="contentContainer">

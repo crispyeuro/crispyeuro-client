@@ -574,3 +574,19 @@ window.onclick = function (event) {
         showNavLinks();
     }
 }
+
+function showMissingCoins() {
+    var btn = document.getElementById("categoriesNameRowBtnId");
+    if (btn.className == "categoriesNameRowBtn categoriesMisingCoinsSetup") {
+        btn.className = "categoriesNameRowBtn categoriesAllCoinsSetup";
+        btn.innerHTML = "Showing all coins";
+        /*showMissingCoins = false;*/
+        return true;
+    }
+    if (btn.className == "categoriesNameRowBtn categoriesAllCoinsSetup") {
+        btn.className = "categoriesNameRowBtn categoriesMisingCoinsSetup";
+        btn.innerHTML = "Showing missing coins";
+        /*showMissingCoins = true;*/
+        return true;
+    }
+}
