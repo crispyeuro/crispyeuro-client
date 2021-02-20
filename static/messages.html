@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <title>Messages</title>
     <script src="../scripts/layout.js"></script>
+    <script src="../scripts/messages.js"></script>
+    <script src="../scripts/data.js"></script>
     <link rel="stylesheet" href="../styles/layout.css">
     <link rel="stylesheet" href="../styles/messages.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,50 +18,25 @@
 
     <div class="content">
         <div class="messagesContainerName">Messages</div>
-        <div class="messagesContainer">
+        <div class="messagesContactsContainer">
             <div class="messagesContactsName">Contacts</div>
-            <div class="messagesContactsList">
-                <div class="messagesBtnRow"><button>Add new contact</button></div>
-                <div class="messagesContact" id="msgFirst">
-                    <div class="closeBtnContainer">
-                        <div class="closeBtn"></div>
-                    </div>
-                    <div class="contactUser">[user4885]
-                        <div class="userOnlineSign"></div>
-                    </div>
-                    <div class="contactLastMessage">Some last message.</div>
-                </div>
-                <div class="messagesContact" id="msgThird">
-                    <div class="closeBtnContainer">
-                        <div class="closeBtn"></div>
-                    </div>
-                    <div class="contactUser">[user23843]</div>
-                    <div class="contactLastMessage">Another last message.</div>
-                </div>
-                <div class="messagesContact" id="msgSecond">
-                    <div class="closeBtnContainer">
-                        <div class="closeBtn"></div>
-                    </div>
-                    <div class="contactUser">[user455]
-                        <div class="userOnlineSign"></div>
-                    </div>
-                    <div class="contactLastMessage">No messages</div>
-                </div>
-                <div class="messagesContact" id="msgFourth">
-                    <div class="closeBtnContainer">
-                        <div class="closeBtn"></div>
-                    </div>
-                    <div class="contactUser">[user972]</div>
-                    <div class="contactLastMessage">No messages</div>
-                </div>
+            <div class="messagesContactsList" id="loadedMessagesContactsList">
+                <script type="text/javascript">
+                    loadMessagesContactsList();
+                </script>
             </div>
-            <div class="messagesText"></div>
+
         </div>
+
+        <div class="conversationContainer">
+            <div class="conversationContainerName">Conversation</div>
+            <div class="conversationMessagesList" id="loadedconversationMessagesList">
+            </div>
+        </div>
+
     </div>
 
     <footer id="footer"></footer>
 </body>
-
-<script src="../scripts/messages.js"></script>
 
 </html>

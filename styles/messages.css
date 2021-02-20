@@ -6,7 +6,7 @@
     margin-bottom: 2%;
 }
 
-.messagesContactsName {
+.messagesContactsName, .conversationContainerName {
     display: flex;
     justify-content: center;
     font-size: 18px;
@@ -14,7 +14,7 @@
     margin-bottom: 1%;
 }
 
-.messagesContactsList {
+.messagesContactsList, .conversationMessagesList {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -42,14 +42,14 @@
     color: rgba(45, 60, 86, 1);
 }
 
-.contactUser {
+.contactUser, .messageFromUserName {
     display: flex;
     align-items: center;
     width: min-content;
     cursor: pointer;
 }
 
-.contactUser:hover {
+.contactUser:hover, .messageFromUserName:hover {
     color: rgba(52, 123, 152, 1);
 }
 
@@ -88,10 +88,6 @@
 #msgThird:hover > .closeBtnContainer, 
 #msgFourth:hover > .closeBtnContainer {
     display: block;
-}
-
-.messagesText {
-    display: none;
 }
 
 .closeBtnContainer {
@@ -133,4 +129,130 @@
     bottom: 12px;
     transform: rotate(-90deg);
     border-bottom: 3px solid rgb(189, 189, 189);
+}
+
+
+/*Conversation tab*/
+
+.conversationContainer {
+    display: none;
+}
+
+.conversation {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    min-height: 80px;
+    text-align: left;
+    background-color: rgb(220, 220, 220);
+    border-radius: 3px;
+    margin-bottom: 1%;
+    padding: 2%;
+    font-weight: 400;
+    color: rgba(45, 60, 86, 1);
+}
+
+.conversationBtnRow {
+    display: flex;
+    justify-content: left;
+    min-width: 45%;
+    margin-bottom: 1%;
+}
+
+.conversationBtnRow a {
+    font-size: 16px;
+    text-decoration: none;
+    color: rgba(152, 167, 185, 1);
+}
+
+.conversationBtnRow a:hover {
+    text-decoration: underline;
+}
+
+.message {
+    margin-bottom: 15px;
+}
+
+.messageFromMeName {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    color: rgba(152, 167, 185, 1);
+    margin-top: -10px;
+}
+
+.messageFromUser {
+    width: 90%;
+    min-height: 50px;
+    background-color: white;
+    border: 1px solid rgba(135, 152, 173, 0.6);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(135, 152, 173, 0.2);
+    padding: 1%;
+    font-weight: 300;
+    color: black;
+}
+
+.messageFromMecontainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.messageFromMe {
+    width: 90%;
+    padding-left: 10%;
+    min-height: 50px;
+    background-color: white;
+    border: 1px solid rgba(135, 152, 173, 0.6);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(135, 152, 173, 0.2);
+    padding: 1%;
+    font-weight: 300;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.messageWriteName {
+    width: 100%;
+    color: rgba(152, 167, 185, 1);
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+.messageWriteName:hover + .messageWrite textarea {
+    border: 2px solid rgba(135, 152, 173, 0.6);
+}
+
+.messageWrite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 72px;
+}
+
+.message textarea {
+    width: 100%;
+    height: 70px;
+    background-color: white;
+    border: 1px solid rgba(135, 152, 173, 0.6);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(135, 152, 173, 0.2);
+    
+    padding: 1%;
+    font-weight: 300;
+    color: black;
+    resize: none;
+    outline: none;
+}
+
+.message textarea:focus, .message textarea:hover {
+    border: 2px solid rgba(135, 152, 173, 0.6);
+}
+
+.conversationSendBtnRow {
+    display: flex;
+    justify-content: right;
+    margin-top: 5px;
 }

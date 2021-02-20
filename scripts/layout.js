@@ -24,7 +24,7 @@ window.onload = function () {
             <div class="sideNavUsername">
                 Hello,
                 <br>
-                <a href="settings.html">[ username ]</a>!
+                <a href="settings.html">[testUsername] </a>!
             </div>
             <div class="sideNavMeterName">720 coins collected</div>
             <div class="myCoinsAmountMeter">
