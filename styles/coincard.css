@@ -66,6 +66,10 @@ button {
     grid-area: swap;
 }
 
+.swap > .checkboxContainer {
+    width:max-content;
+}
+
 table, th, td {
     border: 1px solid rgba(211, 211, 211, 1);
     border-collapse: collapse;
