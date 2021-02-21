@@ -575,7 +575,7 @@ window.onclick = function (event) {
     }
 }
 
-function showMissingCoins() {
+function missingCoinsIndexBtnClick() {
     var btn = document.getElementById("categoriesNameRowBtnId");
     if (btn.className == "categoriesNameRowBtn categoriesMisingCoinsSetup") {
         btn.className = "categoriesNameRowBtn categoriesAllCoinsSetup";

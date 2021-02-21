@@ -163,3 +163,84 @@
 .closed {
     display: none;
 }
+
+.coinSwapSettings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    padding: 10px;
+    border: 1px solid rgba(135, 152, 173, 0.6);
+    border-radius: 3px;
+    margin: 5px;
+}
+
+.coinSwapSettings:hover {
+    background-color: rgba(135, 152, 173, 0.3);
+}
+
+.coinSwapSettingsOrder {
+    width: 10%;
+}
+
+.coinSwapSettingsId {
+    width: 10%;
+}
+
+.coinSwapSettingsType {
+    width: 20%;
+}
+
+.coinSwapSettingsName {
+    width: 40%;
+}
+
+.coinSwapSettingsAvailability {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 20%;
+    width: max-content;
+    height: max-content;
+}
+
+.coinSwapSettingsHeader {
+    font-weight: 400;
+    background-color: rgba(135, 152, 173, 0.3);
+}
+
+.closeBtnContainer {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+/*.closeBtnContainer:hover {
+    background-color: rgb(39, 93, 114);
+}*/
+
+.closeBtnContainer:hover>.closeBtn, .closeBtnContainer:hover>.closeBtn::after {
+    /*border-color: white;*/
+    border-color: rgb(39, 93, 114);
+}
+
+.closeBtn {
+    position: relative;
+    width: 20px;
+    height: 3px;
+    top: 13px;
+    left: 5px;
+    transform: rotate(45deg);
+    border-bottom: 3px solid rgb(189, 189, 189);
+}
+
+.closeBtn::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 12px;
+    transform: rotate(-90deg);
+    border-bottom: 3px solid rgb(189, 189, 189);
+}

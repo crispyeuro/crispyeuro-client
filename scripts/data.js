@@ -80,4 +80,19 @@ var testMessages = [
     { id: 4, userMessages: user972Messages }
 ]
 
+
+/*Missing coins */
+
 var showMissingCoins = false;
+
+
+/*User coins to swap*/
+
+var coinsToSwap = [
+    { order: 6, id: 448, type: "Ordinary", coin: "50 cent 2016 Slovenia", swapAvailability: true },
+    { order: 5, id: 123, type: "Commemorative", coin: "2 euro 2002 Greece", swapAvailability: true },
+    { order: 4, id: 844, type: "Ordinary", coin: "20 cent 2007 Finland", swapAvailability: true },
+    { order: 3, id: 685, type: "Commemorative", coin: "2 euro 2014 Latvia", swapAvailability: true },
+    { order: 2, id: 158, type: "Ordinary", coin: "1 euro 2002 France", swapAvailability: true },
+    { order: 1, id: 125, type: "Ordinary", coin: "1 cent 2015 Andorra", swapAvailability: true },
+]

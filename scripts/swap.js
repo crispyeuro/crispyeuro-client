@@ -66,3 +66,37 @@ function swapMyRequestShow(id) {
         return true;
     }
 }
+
+function loadSwapCoinSettings() {
+    document.getElementById("swapManageOffers").innerHTML =
+        `
+    <br>
+    <div class="coinSwapSettings coinSwapSettingsHeader">
+        <div class="coinSwapSettingsOrder">Order</div>
+        <div class="coinSwapSettingsId">ID</div>
+        <div class="coinSwapSettingsType">Type</div>
+        <div class="coinSwapSettingsName">Name</div>
+        <div class="coinSwapSettingsAvailability">Swap availability</div>
+    </div>
+    `;
+    for (i = 0; i <= coinsToSwap.length - 1; i++) {
+        document.getElementById("swapManageOffers").insertAdjacentHTML("beforeend",
+            `
+        <div class="coinSwapSettings" id="swapSettingsCoin` + i + `">
+            <div class="coinSwapSettingsOrder">` + coinsToSwap[i].order + `</div>
+            <div class="coinSwapSettingsId">` + coinsToSwap[i].id + `</div>
+            <div class="coinSwapSettingsType">` + coinsToSwap[i].type + `</div>
+            <div class="coinSwapSettingsName">` + coinsToSwap[i].coin + `</div>
+            <div class="coinSwapSettingsAvailability">
+                <div class="closeBtnContainer">
+                    <div class="closeBtn" onclick="swapSettingsCoinRemove(` + i + `)"></div>
+                </div>
+            </div>
+        </div>
+        `);
+    }
+}
+
+function swapSettingsCoinRemove(coinNumberId) {
+    document.getElementById("swapSettingsCoin" + coinNumberId).style.display = "none";
+}

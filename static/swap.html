@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <title>Coins swap</title>
     <script src="../scripts/layout.js"></script>
+    <script src="../scripts/data.js"></script>
+    <script src="../scripts/swap.js"></script>
     <link rel="stylesheet" href="../styles/layout.css">
     <link rel="stylesheet" href="../styles/swap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,8 +26,7 @@
                     id="othersRequestsName">Others' coin
                     swap requests</span></div>
             <div class="swapMenuBtn" id="manageSwap" onclick="swapMenuBtnClicked('manageSwap')"><span
-                    id="manageSwapName">Manage my coin swap
-                    offers</span></div>
+                    id="manageSwapName">Manage my coins to swap</span></div>
         </div>
 
         <div class="swapMyRequests closed" id="swapMyRequests">
@@ -208,7 +209,9 @@
         </div>
 
         <div class="swapManageOffers closed" id="swapManageOffers">
-            Swap Settings
+            <script type="text/javascript">
+                loadSwapCoinSettings();
+            </script>
         </div>
 
 
@@ -216,7 +219,5 @@
 
     <footer id="footer"></footer>
 </body>
-
-<script src="../scripts/swap.js"></script>
 
 </html>
