@@ -19,7 +19,11 @@ function showConversation(userId) {
                 conversation += `<div class="userOnlineSign"></div>`;
             }
 
-            conversation += `</div>
+            conversation += `
+            <div class="closeBtnContainer">
+                <div class="closeBtn"></div>
+            </div>
+            </div>
             <div class="messageFromUser">
             ` +
                 contactMessages[i].message +

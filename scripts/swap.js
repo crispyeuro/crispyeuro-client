@@ -88,8 +88,8 @@ function loadSwapCoinSettings() {
             <div class="coinSwapSettingsType">` + coinsToSwap[i].type + `</div>
             <div class="coinSwapSettingsName">` + coinsToSwap[i].coin + `</div>
             <div class="coinSwapSettingsAvailability">
-                <div class="closeBtnContainer">
-                    <div class="closeBtn" onclick="swapSettingsCoinRemove(` + i + `)"></div>
+                <div class="closeBtnContainer" onclick="swapSettingsCoinRemove(` + i + `)">
+                    <div class="closeBtn"></div>
                 </div>
             </div>
         </div>
@@ -98,5 +98,7 @@ function loadSwapCoinSettings() {
 }
 
 function swapSettingsCoinRemove(coinNumberId) {
+    alert(coinNumberId);
     document.getElementById("swapSettingsCoin" + coinNumberId).style.display = "none";
+    return true;
 }

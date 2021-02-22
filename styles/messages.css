@@ -83,10 +83,7 @@
     font-style: italic;
 }
 
-#msgFirst:hover > .closeBtnContainer, 
-#msgSecond:hover > .closeBtnContainer, 
-#msgThird:hover > .closeBtnContainer, 
-#msgFourth:hover > .closeBtnContainer {
+.messagesContact:hover .closeBtnContainer {
     display: block;
 }
 
