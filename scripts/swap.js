@@ -56,7 +56,7 @@ function swapOthersRequestShow(id) {
 }
 
 function swapMyRequestShow(id) {
-    offerContainer = document.getElementById(id);
+    var offerContainer = document.getElementById(id);
     if (offerContainer.className == "swapMyRequestContainer opened") {
         offerContainer.className = "swapMyRequestContainer closed";
         return true;
@@ -69,7 +69,7 @@ function swapMyRequestShow(id) {
 
 function loadSwapCoinSettings() {
     document.getElementById("swapManageOffers").innerHTML =
-        `
+    `
     <br>
     <div class="coinSwapSettings coinSwapSettingsHeader">
         <div class="coinSwapSettingsOrder">Order</div>
@@ -98,7 +98,6 @@ function loadSwapCoinSettings() {
 }
 
 function swapSettingsCoinRemove(coinNumberId) {
-    alert(coinNumberId);
     document.getElementById("swapSettingsCoin" + coinNumberId).style.display = "none";
     return true;
 }

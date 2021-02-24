@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Coin [Denomination][Year][Country]</title>
     <script src="../scripts/layout.js"></script>
+    <script src="../scripts/data.js"></script>
     <link rel="stylesheet" href="../styles/layout.css">
     <link rel="stylesheet" href="../styles/coincard.css">
     <link rel="stylesheet" href="../styles/modal.css">
@@ -48,15 +49,15 @@
             <div class="collapsed">
                 <table>
                     <tr>
-                        <th class="specificationTableHeader">Diameter(mm)</th>
+                        <th class="specificationTableHeader">Diameter (mm)</th>
                         <td>[Diameter]</td>
                     </tr>
                     <tr>
-                        <th class="specificationTableHeader">Thickness(mm)</th>
+                        <th class="specificationTableHeader">Thickness (mm)</th>
                         <td>[Thickness]</td>
                     </tr>
                     <tr>
-                        <th class="specificationTableHeader">Mass(g)</th>
+                        <th class="specificationTableHeader">Mass (g)</th>
                         <td>[Mass]</td>
                     </tr>
                     <tr>
@@ -118,14 +119,14 @@
                     <div class="coincardAddedDeleteBtn">Delete</div>
                 </div>
                 <div class="coincardAddedCoins">
-                    <div class="coincardAddedId">[AddedCoinID]</div>
-                    <div class="coincardAddedGrade">[AddedCoinGrade]</div>
-                    <div class="coincardAddedAmount">[AddedCoinAmount]</div>
+                    <div class="coincardAddedId">[CoinID]</div>
+                    <div class="coincardAddedGrade">[CoinGrade]</div>
+                    <div class="coincardAddedAmount">[CoinAmount]</div>
                     <div class="coincardAddedDataBtn"><a href="#" onclick="showAddedCoinData(); return false;">View</a>
                     </div>
                     <div class="coincardAddedSwap">
-                        <label for="coincardAddedSwapCB" class="checkboxContainer" id="coincardSwapCheckbox">
-                            <input type="checkbox" id="coincardAddedSwapCB" name="userCoinSwapAvailable"
+                        <label for="coincardAddedSwapCB" class="checkboxContainer coincardAddedSwapDisable" id="coincardSwapCheckbox">
+                            <input type="checkbox" class="coincardAddedSwapCB" id="coincardAddedSwapCB" name="userCoinSwapAvailable"
                                 value="addedCoinAvailable">
                             <div class="fCheckbox"></div>
                         </label>
@@ -145,10 +146,23 @@
             <label for="coincardAvailableSwap" class="checkboxContainer" id="coincardSwapCheckbox">Coin available for
                 swap
                 <input type="checkbox" id="coincardAvailableSwap" name="userCoinSwapAvailable"
-                    value="userCoinAvailable">
+                    value="userCoinAvailable" onclick="checkCoincardAvailableSwap()">
                 <div class="fCheckbox"></div>
             </label>
-            <br><br><br><br><br><br>
+            <br>
+            <span class="coincardSwapOfferSName">Users who want this coin</span>
+            <div class="coincardOtherUsersRequests">
+                <div class="coincardUserSwapOffer" onclick="showCoincardMyOffer()">[user151]</div>
+                <div class="coincardUserSwapOffer" onclick="showCoincardMyOffer()">[user181]</div>
+                <div class="coincardUserSwapOffer" onclick="showCoincardMyOffer()">[user159]</div>
+            </div>
+            <br>
+            <span class="coincardSwapOfferSName">Users who offer this coin</span>
+            <div class="coincardOtherUsersOffers">
+                <div class="coincardUserSwapOffer" onclick="showCoincardUserOffer()">[user6549]</div>
+                <div class="coincardUserSwapOffer" onclick="showCoincardUserOffer()">[user729]</div>
+            </div>
+            <br>
         </div>
     </div>
 
@@ -157,8 +171,9 @@
             <div class="closeBtnContainer" onclick="hideAddCoinContainer()">
                 <div class="closeBtn"></div>
             </div>
-            <span class="modalNameRow" id="modalAddCoinName">Add coin</span><br>
+            <span class="modalNameRow" id="modalAddCoinName">Add new coin</span><br>
             <span class="modalNameRow" id="modalCoinDataName">Coin data</span><br>
+            <span class="modalNameRow" id="modalCoinUserSwap">User [username] offer</span>
             <div class="coinNameRow">[Denomination][Year][Country]. Id: [CoinId]</div><br>
             <form name="AddCoinForm" action="" onsubmit="" method="post" enctype="multipart/form-data">
                 <div class="inputContainer">
@@ -209,7 +224,23 @@
                 <textarea name="comment" rows="2" cols="30"></textarea><br>
                 <input id="modalAddCoinBtn" type="submit" value="Add coin">
                 <button onclick="hideAddCoinContainer(); return false;" id="modalSaveCoinBtn">Save</button>
+                <button onclick="hideAddCoinContainer(); return false;" id="modalSendUserOffer">Accept offer</button>
             </form>
+        </div>
+    </div>
+
+    <div class="modalContentMyOffer">
+        <div class="modalUserMyOffer">
+            <div class="closeBtnContainer" onclick="hideModalContentMyOffer()">
+                <div class="closeBtn"></div>
+            </div>
+            <span class="modalNameRow" id="modalAddCoinName">Your offer for user [username]</span><br>
+            <div class="coinNameRow">Pick a coin to offer</div><br>
+            <div id="modalMyCoinsToOfferList"></div>
+            <span class="modalMyCoinsCommentLabel">Comment</span>
+            <br>
+            <textarea name="comment" rows="2" cols="30"></textarea><br>
+            <button onclick="hideModalContentMyOffer(); return false;" id="modalSendMyOffer">Send offer</button>
         </div>
     </div>
 
@@ -218,5 +249,6 @@
 </body>
 
 <script src="../scripts/modal.js"></script>
+<script src="../scripts/coincard.js"></script>
 
 </html>

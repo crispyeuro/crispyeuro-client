@@ -60,6 +60,7 @@ button {
 .addCollection {
     grid-area: addCollection;
     border-bottom: 1px solid rgba(125, 179, 199, 1);
+    overflow-x: auto;
 }
 
 .swap {
@@ -100,6 +101,10 @@ td {
     font-weight: 400;
 }
 
+.collapse {
+    cursor: pointer;
+}
+
 input[type="checkbox"] {
     display: none;
 }
@@ -122,7 +127,8 @@ input[type="checkbox"]:checked+.collapsed {
 }
 
 .addedCoinsTable {
-    display: block;
+    width: 100%;
+    overflow-x: auto;
 }
 
 .coincardAddedCoins {
@@ -130,6 +136,8 @@ input[type="checkbox"]:checked+.collapsed {
     align-items: center;
     justify-content: center;
     text-align: center;
+    overflow-x: auto;
+    min-width: 500px;
     width: 100%;
     padding: 5px;
     border: 1px solid rgba(135, 152, 173, 0.6);
@@ -235,6 +243,26 @@ input[type="checkbox"]:checked+.collapsed {
     bottom: 12px;
     transform: rotate(-90deg);
     border-bottom: 3px solid rgb(189, 189, 189);
+}
+
+.coincardSwapOfferSName {
+    font-size: 16px;
+}
+
+.coincardOtherUsersRequests, .coincardOtherUsersOffers {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.coincardUserSwapOffer {
+    margin: 5px 20px 5px 0;
+    color: rgba(39, 93, 114, 1);
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.coincardUserSwapOffer:hover {
+    text-decoration: underline;
 }
 
 @media only screen and (max-width: 1300px) {
