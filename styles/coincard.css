@@ -66,12 +66,12 @@ button {
     grid-area: swap;
 }
 
-.swap > .checkboxContainer {
-    width:max-content;
+.swap>.checkboxContainer {
+    width: max-content;
 }
 
 table, th, td {
-    border: 1px solid rgba(211, 211, 211, 1);
+    border: 1px solid rgba(135, 152, 173, 0.6);
     border-collapse: collapse;
 }
 
@@ -91,8 +91,13 @@ td {
     width: 80%;
 }
 
-tr:nth-child(even) {
-    background-color: rgba(231, 243, 248, 1);
+.mintageTableHeader, .specificationTableHeader {
+    background-color: rgba(135, 152, 173, 0.3);
+    font-weight: 400;
+}
+
+.mintageTable th {
+    font-weight: 400;
 }
 
 input[type="checkbox"] {
@@ -114,6 +119,122 @@ input[type="checkbox"]:checked+.collapsed {
 .containerName {
     font-size: 16px;
     color: rgba(39, 93, 114, 1);
+}
+
+.addedCoinsTable {
+    display: block;
+}
+
+.coincardAddedCoins {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid rgba(135, 152, 173, 0.6);
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+
+.coincardAddedCoins:hover {
+    background-color: rgba(135, 152, 173, 0.3);
+}
+
+/*When added coins table hovered, change checkbox background color*/
+
+.coincardAddedCoins:hover>.coincardAddedSwap .checkboxContainer .fCheckbox {
+    background-color: transparent;
+}
+
+.coincardAddedId {
+    width: 10%;
+}
+
+.coincardAddedGrade {
+    width: 18%;
+}
+
+.coincardAddedAmount {
+    width: 18%;
+}
+
+.coincardAddedDataBtn {
+    width: 18%;
+}
+
+.coincardAddedDataBtn a {
+    text-decoration: none;
+    color: rgb(39, 93, 114);
+}
+
+.coincardAddedDataBtn a:hover {
+    text-decoration: underline;
+}
+
+.coincardAddedSwap {
+    width: 18%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coincardAddedSwap .checkboxContainer {
+    padding: 0;
+    justify-content: center;
+}
+
+.coincardAddedSwap .checkboxContainer>.fCheckbox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coincardAddedDeleteBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 18%;
+    width: max-content;
+    height: max-content;
+}
+
+.coincardAddedCoinsHeader {
+    font-weight: 400;
+    background-color: rgba(135, 152, 173, 0.3);
+}
+
+.deleteBtnContainer {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.deleteBtnContainer:hover>.deleteBtn, .deleteBtnContainer:hover>.deleteBtn::after {
+    border-color: rgb(39, 93, 114);
+}
+
+.deleteBtn {
+    position: absolute;
+    width: 15px;
+    height: 3px;
+    top: 8px;
+    left: 2.5px;
+    transform: rotate(45deg);
+    border-bottom: 3px solid rgb(189, 189, 189);
+}
+
+.deleteBtn::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 12px;
+    transform: rotate(-90deg);
+    border-bottom: 3px solid rgb(189, 189, 189);
 }
 
 @media only screen and (max-width: 1300px) {

@@ -29,15 +29,15 @@
             <div class="containerName">Specification</div><br><br>
             <table>
                 <tr>
-                    <th>Value</th>
+                    <th class="specificationTableHeader">Value</th>
                     <td>[Denomination]</td>
                 </tr>
                 <tr>
-                    <th>Year</th>
+                    <th class="specificationTableHeader">Year</th>
                     <td>[Year]</td>
                 </tr>
                 <tr>
-                    <th>Country</th>
+                    <th class="specificationTableHeader">Country</th>
                     <td>[Country]</td>
                 </tr>
             </table>
@@ -48,23 +48,23 @@
             <div class="collapsed">
                 <table>
                     <tr>
-                        <th>Diameter(mm)</th>
+                        <th class="specificationTableHeader">Diameter(mm)</th>
                         <td>[Diameter]</td>
                     </tr>
                     <tr>
-                        <th>Thickness(mm)</th>
+                        <th class="specificationTableHeader">Thickness(mm)</th>
                         <td>[Thickness]</td>
                     </tr>
                     <tr>
-                        <th>Mass(g)</th>
+                        <th class="specificationTableHeader">Mass(g)</th>
                         <td>[Mass]</td>
                     </tr>
                     <tr>
-                        <th>Composition</th>
+                        <th class="specificationTableHeader">Composition</th>
                         <td>[Composition]</td>
                     </tr>
                     <tr>
-                        <th>Edge</th>
+                        <th class="specificationTableHeader">Edge</th>
                         <td>[Edge]</td>
                     </tr>
                 </table>
@@ -73,11 +73,11 @@
 
             <table>
                 <tr>
-                    <th>Feature</th>
+                    <th class="specificationTableHeader">Feature</th>
                     <td>[Feature]</td>
                 </tr>
                 <tr>
-                    <th>Description</th>
+                    <th class="specificationTableHeader">Description</th>
                     <td>[Description]</td>
                 </tr>
             </table>
@@ -86,7 +86,7 @@
         <div class="mintage">
             <div class="containerName">Mintage</div><br><br>
             <table class="mintageTable">
-                <tr>
+                <tr class="mintageTableHeader">
                     <th>Mintage</th>
                     <th>UNC</th>
                     <th>BU</th>
@@ -105,15 +105,47 @@
             [Information about sets]<br><br>
         </div>
         <div class="addCollection">
-            <div class="containerName">My collection</div><br>
-            [I don't have it in my collection]<br>
-            <button onclick="showAddCoinContainer()">Add to my collection</button>
+            <div class="containerName">My collection</div>
+            <br>
+            <br>
+            <div class="addedCoinsTable">
+                <div class="coincardAddedCoins coincardAddedCoinsHeader">
+                    <div class="coincardAddedId">ID</div>
+                    <div class="coincardAddedGrade">Grade</div>
+                    <div class="coincardAddedAmount">Amount</div>
+                    <div class="coincardAddedDataBtn">More data</div>
+                    <div class="coincardAddedSwap">Swap availability</div>
+                    <div class="coincardAddedDeleteBtn">Delete</div>
+                </div>
+                <div class="coincardAddedCoins">
+                    <div class="coincardAddedId">[AddedCoinID]</div>
+                    <div class="coincardAddedGrade">[AddedCoinGrade]</div>
+                    <div class="coincardAddedAmount">[AddedCoinAmount]</div>
+                    <div class="coincardAddedDataBtn"><a href="#" onclick="showAddedCoinData(); return false;">View</a>
+                    </div>
+                    <div class="coincardAddedSwap">
+                        <label for="coincardAddedSwapCB" class="checkboxContainer" id="coincardSwapCheckbox">
+                            <input type="checkbox" id="coincardAddedSwapCB" name="userCoinSwapAvailable"
+                                value="addedCoinAvailable">
+                            <div class="fCheckbox"></div>
+                        </label>
+                    </div>
+                    <div class="coincardAddedDeleteBtn">
+                        <div class="deleteBtnContainer">
+                            <div class="deleteBtn"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button onclick="showAddCoinContainer()">Add new coin</button>
             <br><br>
         </div>
         <div class="swap">
             <div class="containerName">Swap availability</div><br>
-            <label for="coincardAvailableSwap" class="checkboxContainer" id="coincardSwapCheckbox">Coin available for swap
-                <input type="checkbox" id="coincardAvailableSwap" name="userCoinSwapAvailable" value="userCoinAvailable">
+            <label for="coincardAvailableSwap" class="checkboxContainer" id="coincardSwapCheckbox">Coin available for
+                swap
+                <input type="checkbox" id="coincardAvailableSwap" name="userCoinSwapAvailable"
+                    value="userCoinAvailable">
                 <div class="fCheckbox"></div>
             </label>
             <br><br><br><br><br><br>
@@ -125,8 +157,9 @@
             <div class="closeBtnContainer" onclick="hideAddCoinContainer()">
                 <div class="closeBtn"></div>
             </div>
-            <span class="modalNameRow">Add coin</span><br>
-            <div class="coinNameRow">[Denomination][Year][Country]. Order: [CoinOrer]</div><br>
+            <span class="modalNameRow" id="modalAddCoinName">Add coin</span><br>
+            <span class="modalNameRow" id="modalCoinDataName">Coin data</span><br>
+            <div class="coinNameRow">[Denomination][Year][Country]. Id: [CoinId]</div><br>
             <form name="AddCoinForm" action="" onsubmit="" method="post" enctype="multipart/form-data">
                 <div class="inputContainer">
                     <div class="formLeftSide">
@@ -174,7 +207,8 @@
                 </div>
                 <label for="comment">Comment</label>
                 <textarea name="comment" rows="2" cols="30"></textarea><br>
-                <input type="submit" value="Add coin">
+                <input id="modalAddCoinBtn" type="submit" value="Add coin">
+                <button onclick="hideAddCoinContainer(); return false;" id="modalSaveCoinBtn">Save</button>
             </form>
         </div>
     </div>

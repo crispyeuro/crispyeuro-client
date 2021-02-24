@@ -18,6 +18,7 @@
     width: 50%;
     background-color: rgb(255, 255, 255);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    padding: 5px;
 }
 
 .modalNameRow, .coinNameRow {
@@ -45,6 +46,7 @@
     height: 40px;
     padding-right: 8px;
     cursor: pointer;
+    margin: -5px;
 }
 
 .closeBtnContainer:hover {
@@ -114,9 +116,10 @@ label {
     width: 100%;
     margin-bottom: 5px;
     border-color: rgba(135, 152, 173, 0.6);
+    resize: none;
 }
 
-.modal input[type=submit] {
+.modal input[type=submit], .modal #modalSaveCoinBtn {
     width: 20%;
     min-width: 150px;
     align-self: flex-end;
@@ -124,6 +127,11 @@ label {
 
 .modal input[type=file] {
     border: none;
+}
+
+.modal input[type=text]:focus, .modal select:focus, .modal textarea:focus, .modal input[type=file]:focus, .fileInputLabel:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px rgba(135, 152, 173, 0.6);
 }
 
 .fileInputLabel {

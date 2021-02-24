@@ -61,7 +61,7 @@
     background-color: #008956;
 }
 
-.contactUser:hover > .userOnlineSign {
+.contactUser:hover>.userOnlineSign {
     background-color: #47c088;
 }
 
@@ -127,7 +127,6 @@
     transform: rotate(-90deg);
     border-bottom: 3px solid rgb(189, 189, 189);
 }
-
 
 /*Conversation tab*/
 
@@ -216,7 +215,7 @@
     margin-top: 10px;
 }
 
-.messageWriteName:hover + .messageWrite textarea {
+.messageWriteName:hover+.messageWrite textarea {
     border: 2px solid rgba(135, 152, 173, 0.6);
 }
 
@@ -235,7 +234,6 @@
     border: 1px solid rgba(135, 152, 173, 0.6);
     border-radius: 5px;
     box-shadow: 5px 5px 5px rgba(135, 152, 173, 0.2);
-    
     padding: 1%;
     font-weight: 300;
     color: black;
