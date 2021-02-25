@@ -1,3 +1,5 @@
+/*Coincard tab modal*/
+
 var modalContent = document.getElementsByClassName("modalContent")[0];
 
 function showAddCoinContainer() {
@@ -58,6 +60,10 @@ window.onclick = function (event) {
         modalContent.style.display = "none";
         return true;
     }
+    if (event.target === document.getElementsByClassName("swapModalContent")[0]) {
+        document.getElementsByClassName("swapModalContent")[0].style.display = "none";
+        return true;
+    }
     if (event.target === document.getElementsByClassName("modalContentMyOffer")[0]) {
         document.getElementsByClassName("modalContentMyOffer")[0].style.display = "none";
         return true;
@@ -97,4 +103,21 @@ function loadSwapCoinsListOffer() {
         </div>
         `);
     }
+}
+
+/*Swap tab modal*/
+
+function showSwapCloseConfirmation(id) {
+    if (id === "swapModalDismiss") {
+        document.getElementById("swapModalDismiss").style.display = "flex";
+        document.getElementById("swapModalCancel").style.display = "none";
+    } if (id === "swapModalCancel") {
+        document.getElementById("swapModalCancel").style.display = "flex";
+        document.getElementById("swapModalDismiss").style.display = "none";
+    }
+    document.getElementsByClassName("swapModalContent")[0].style.display = "flex";
+}
+
+function hideSwapModalContainer() {
+    document.getElementsByClassName("swapModalContent")[0].style.display = "none";
 }

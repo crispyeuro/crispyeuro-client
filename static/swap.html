@@ -9,6 +9,7 @@
     <script src="../scripts/swap.js"></script>
     <link rel="stylesheet" href="../styles/layout.css">
     <link rel="stylesheet" href="../styles/swap.css">
+    <link rel="stylesheet" href="../styles/modal.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -69,7 +70,7 @@
                     </div>
                     <div class="swapUserRequestButtons">
                         <button>Reply</button>
-                        <button>Cancel offer</button>
+                        <button onclick="showSwapCloseConfirmation('swapModalCancel')">Cancel offer</button>
                         <button>Swapped</button>
                     </div>
                 </div>
@@ -116,7 +117,7 @@
                     </div>
                     <div class="swapUserRequestButtons">
                         <button>Reply</button>
-                        <button>Dismiss</button>
+                        <button onclick="showSwapCloseConfirmation('swapModalDismiss')">Dismiss</button>
                         <button>Swapped</button>
                     </div>
                 </div>
@@ -171,7 +172,7 @@
                     </div>
                     <div class="swapUserRequestButtons">
                         <button>Reply</button>
-                        <button>Dismiss</button>
+                        <button onclick="showSwapCloseConfirmation('swapModalDismiss')">Dismiss</button>
                         <button>Swapped</button>
                     </div>
                 </div>
@@ -201,7 +202,7 @@
                     </div>
                     <div class="swapUserRequestButtons">
                         <button>Reply</button>
-                        <button>Dismiss</button>
+                        <button onclick="showSwapCloseConfirmation('swapModalDismiss')">Dismiss</button>
                         <button>Swapped</button>
                     </div>
                 </div>
@@ -217,7 +218,34 @@
 
     </div>
 
+    <div class="swapModalContent">
+        <div class="swapModal">
+            <div class="closeBtnContainer" onclick="hideSwapModalContainer()">
+                <div class="closeBtn"></div>
+            </div>
+            <div class="swapModalDismissContainer" id="swapModalDismiss">
+                <span class="swapModalNameRow">Coin swap</span><br>
+                <div class="swapDismissConfirmationText">Do you want to dismiss this swap request offer?</div>
+                <div class="swapModalBtnRow">
+                    <button class="swapModalBtn" onclick="hideSwapModalContainer()">Yes</button>
+                    <button class="swapModalBtn" onclick="hideSwapModalContainer()">No</button>
+                </div>
+            </div>
+
+            <div class="swapModalCancelContainer" id="swapModalCancel">
+                <span class="swapModalNameRow">Coin swap</span><br>
+                <div class="swapCancelConfirmationText">Do you want to cancel your request for swap?</div>
+                <div class="swapModalBtnRow">
+                    <button class="swapModalBtn" onclick="hideSwapModalContainer()">Yes</button>
+                    <button class="swapModalBtn" onclick="hideSwapModalContainer()">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer id="footer"></footer>
 </body>
+
+<script src="../scripts/modal.js"></script>
 
 </html>

@@ -1,3 +1,5 @@
+/*Coincard modal*/
+
 .modalContent {
     /*display: flex*/
     display: none;
@@ -129,8 +131,7 @@ label {
     border: none;
 }
 
-.modal input[type=text]:focus, .modal select:focus, .modal textarea:focus, .modal input[type=file]:focus, .fileInputLabel:focus,
-.modalUserMyOffer textarea:focus {
+.modal input[type=text]:focus, .modal select:focus, .modal textarea:focus, .modal input[type=file]:focus, .fileInputLabel:focus, .modalUserMyOffer textarea:focus {
     outline: none;
     box-shadow: 0 0 0 1px rgba(135, 152, 173, 0.6);
 }
@@ -213,11 +214,11 @@ label {
     text-decoration: none;
     color: rgb(76, 84, 95);
     font-weight: 400;
-} 
+}
 
 .coinSwapSettingsId a:hover {
     text-decoration: underline;
-} 
+}
 
 .coinSwapSettingsType {
     width: 20%;
@@ -295,8 +296,76 @@ label {
     align-self: flex-end;
 }
 
+
+/*Swap modal*/
+
+.swapModalContent {
+    /*display: flex*/
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.swapModal {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 30%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    padding: 5px;
+}
+
+.swapModalNameRow {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 15px;
+    padding: 5px;
+    text-align: left;
+    color: rgba(46, 56, 77, 1);
+}
+
+.swapModalDismissContainer, .swapModalCancelContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#swapModalDismiss, #swapModalCancel {
+    display: none;
+}
+
+.swapDismissConfirmationText, .swapCancelConfirmationText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
+    text-align: center;
+    margin: 5px;
+    padding: 25px 0;
+}
+
+.swapModalBtnRow {
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px;
+}
+
+.swapModalBtn {
+    min-width: 80px;
+    margin-left: 10px;
+}
+
 @media only screen and (max-width: 992px) {
-    .modal {
+    .modal, .swapModal {
         width: 60%;
     }
 }
@@ -308,5 +377,9 @@ label {
 
     .modalUserMyOffer {
         width: 98%;
+    }
+
+    .swapModal {
+        width: 80%;
     }
 }

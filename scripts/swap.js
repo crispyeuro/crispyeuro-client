@@ -69,7 +69,7 @@ function swapMyRequestShow(id) {
 
 function loadSwapCoinSettings() {
     document.getElementById("swapManageOffers").innerHTML =
-    `
+        `
     <br>
     <div class="coinSwapSettings coinSwapSettingsHeader">
         <div class="coinSwapSettingsOrder">Order</div>
@@ -88,8 +88,8 @@ function loadSwapCoinSettings() {
             <div class="coinSwapSettingsType">` + coinsToSwap[i].type + `</div>
             <div class="coinSwapSettingsName">` + coinsToSwap[i].coin + `</div>
             <div class="coinSwapSettingsAvailability">
-                <div class="closeBtnContainer" onclick="swapSettingsCoinRemove(` + i + `)">
-                    <div class="closeBtn"></div>
+                <div class="swapManageCloseBtnContainer" onclick="swapSettingsCoinRemove(` + i + `)">
+                    <div class="swapManageCloseBtn"></div>
                 </div>
             </div>
         </div>

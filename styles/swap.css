@@ -209,22 +209,18 @@
     background-color: rgba(135, 152, 173, 0.3);
 }
 
-.closeBtnContainer {
+.swapManageCloseBtnContainer {
     width: 30px;
     height: 30px;
     cursor: pointer;
 }
 
-/*.closeBtnContainer:hover {
-    background-color: rgb(39, 93, 114);
-}*/
-
-.closeBtnContainer:hover>.closeBtn, .closeBtnContainer:hover>.closeBtn::after {
+.swapManageCloseBtnContainer:hover>.swapManageCloseBtn, .swapManageCloseBtnContainer:hover>.swapManageCloseBtn::after {
     /*border-color: white;*/
     border-color: rgb(39, 93, 114);
 }
 
-.closeBtn {
+.swapManageCloseBtn {
     position: relative;
     width: 20px;
     height: 3px;
@@ -234,7 +230,7 @@
     border-bottom: 3px solid rgb(189, 189, 189);
 }
 
-.closeBtn::after {
+.swapManageCloseBtn::after {
     content: "";
     position: absolute;
     width: 100%;
