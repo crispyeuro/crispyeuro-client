@@ -11,7 +11,7 @@ window.onload = function () {
                                 <div class="navSearchSign"></div>
                                 <div class="navSearchSignPart"></div>
                             </div>
-                            <button class="navSearchSubmitContainer" type="submit">
+                            <button class="navSearchSubmitContainer" type="submit" onkeydown="validateNavSearchSubmitKey(event)">
                                 <div class="navSearchSign"></div>
                                 <div class="navSearchSignPart"></div>
                             </button>
@@ -589,7 +589,7 @@ function loadGold() {
 window.onclick = function (event) {
     if (event.target === document.getElementsByClassName("navLinksOnMobile")[0]) {
         showNavLinks();
-    } 
+    }
     var navSearchBtn = document.getElementById("navSearchBtn");
     if (!navSearchBtn.contains(event.target) && navSearchBtn.className == "navSearchBtn navSearchBtnExpanded") {
         expandNavSearch();
@@ -619,7 +619,7 @@ function expandNavSearch() {
     if (searchBtn.className == "navSearchBtn") {
         searchBtn.className = "navSearchBtn navSearchBtnExpanded";
         searchInputContainer.style.display = "flex";
-        
+
         /*Focus on search input*/
         navSearchInput.focus();
 
@@ -638,5 +638,12 @@ function expandNavSearch() {
         document.getElementsByClassName("navSearchBtnContainer")[0].style.display = "block";
         document.getElementsByClassName("navSearchSubmitContainer")[0].style.display = "none";
         return true;
+    }
+}
+
+/*When focused on 'Search' input and pressed 'Enter' key*/
+function validateNavSearchSubmitKey(event) {
+    if (event.keyCode === 13) {
+        document.getElementsByClassName("navSearchSubmitContainer")[0].click();
     }
 }

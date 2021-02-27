@@ -127,7 +127,6 @@ nav a:hover, .navSearchBtn:hover {
     border-bottom: 3px solid rgb(255, 255, 255);
 }
 
-
 /*Nav search button*/
 
 .navSearchBtn {
@@ -218,7 +217,6 @@ nav a:hover, .navSearchBtn:hover {
 .navSearchSubmitContainer {
     display: none;
 }
-
 
 /*Side navigation*/
 

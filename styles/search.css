@@ -1,7 +1,19 @@
 .searchContainerName {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     font-size: 22px;
     color: rgba(45, 60, 86, 1);
     margin-bottom: 2%;
+}
+
+.searchValueContainer {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.searchResults {
+    padding: 5% 0;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
 }

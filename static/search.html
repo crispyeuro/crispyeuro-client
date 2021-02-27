@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Search</title>
     <script src="../scripts/layout.js"></script>
+    <script src="../scripts/search.js"></script>
     <link rel="stylesheet" href="../styles/layout.css">
     <link rel="stylesheet" href="../styles/search.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +16,19 @@
     <div class="menu"></div>
 
     <div class="content">
-        <div class="searchContainerName">Search results</div>
+        <div class="searchContainerName">
+            Search results for
+            <br>
+            <br>
+            <div class="searchValueContainer">
+                <script type="text/javascript">
+                    getSearchValue();
+                </script>
+            </div>
+            <div class="searchResults">
+                Nothing found :(
+            </div>
+        </div>
     </div>
 
     <footer id="footer"></footer>
