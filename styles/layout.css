@@ -59,7 +59,7 @@ nav a {
     color: rgb(255, 255, 255);
 }
 
-nav a:hover {
+nav a:hover, .navSearchBtn:hover {
     transition: all 0.3s ease-in-out;
     background-color: rgba(39, 93, 114, 1);
 }
@@ -126,6 +126,99 @@ nav a:hover {
     transform: rotate(-90deg);
     border-bottom: 3px solid rgb(255, 255, 255);
 }
+
+
+/*Nav search button*/
+
+.navSearchBtn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 40px;
+    transition: all 0.35s ease-in-out;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.navSearchBtn form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.navSearchBtnExpanded {
+    width: 25vw;
+}
+
+.navSearchBtnContainer {
+    position: relative;
+    width: 21px;
+    height: 21px;
+    margin: 0 10px;
+}
+
+.navSearchSubmitContainer {
+    position: relative;
+    width: 21px;
+    height: 21px;
+    margin: 0 10px;
+    padding: 0;
+    border-radius: initial;
+    background-color: transparent;
+}
+
+.navSearchSubmitContainer:hover {
+    opacity: 0.8;
+}
+
+.navSearchSign {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 0;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: transparent;
+}
+
+.navSearchSignPart {
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    top: 14px;
+    left: 10px;
+    transform: rotate(45deg);
+    border-bottom: 2px solid rgb(255, 255, 255);
+}
+
+.navSearchInputContainer {
+    /*display: flex;*/
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    height: 100%;
+    margin-right: 15px;
+}
+
+#navSearchInput {
+    margin: 0;
+    width: 100%;
+    height: 25px;
+    outline: none;
+    background-color: rgba(214, 228, 234, 1);
+    transition: width 0.35s ease-in;
+}
+
+.navSearchSubmitContainer {
+    display: none;
+}
+
 
 /*Side navigation*/
 
@@ -535,7 +628,7 @@ input[type=checkbox]:checked~.fCheckbox {
     nav .navLinks {
         display: none;
     }
-    nav, nav a {
+    nav, nav a, .navSearchBtn {
         width: 100vw;
     }
     .logo {

@@ -4,10 +4,27 @@ window.onload = function () {
         <nav>
             <div class="navBtnContainer" onclick="showNavLinks()"><div class="navBtn" id="navBtnAction"></div></div>
             <ul class="navLinks" id="navLinksContainer">
-                <li><a href="messages.html">Messages</a></div></li>
-                <li><a href="swap.html">Swap</a></div></li>
-                <li><a href="settings.html">Settings</a></div></li>
-                <li><a href="login.html">Log out</a></div></li>
+                <li>
+                    <div class="navSearchBtn" id="navSearchBtn" onclick="expandNavSearch()">
+                        <form action="search.html">
+                            <div class="navSearchBtnContainer">
+                                <div class="navSearchSign"></div>
+                                <div class="navSearchSignPart"></div>
+                            </div>
+                            <button class="navSearchSubmitContainer" type="submit">
+                                <div class="navSearchSign"></div>
+                                <div class="navSearchSignPart"></div>
+                            </button>
+                            <div class="navSearchInputContainer" id="navSearchInputContainer">
+                                <input type="text" name="search" class="navSearchInputCollapsed" id="navSearchInput" onclick="stopParent(event)">
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                <li><a href="messages.html">Messages</a></li>
+                <li><a href="swap.html">Swap</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="login.html">Log out</a></li>
             </ul>
         </nav>`;
 
@@ -572,6 +589,10 @@ function loadGold() {
 window.onclick = function (event) {
     if (event.target === document.getElementsByClassName("navLinksOnMobile")[0]) {
         showNavLinks();
+    } 
+    var navSearchBtn = document.getElementById("navSearchBtn");
+    if (!navSearchBtn.contains(event.target) && navSearchBtn.className == "navSearchBtn navSearchBtnExpanded") {
+        expandNavSearch();
     }
 }
 
@@ -587,6 +608,35 @@ function missingCoinsIndexBtnClick() {
         btn.className = "categoriesNameRowBtn categoriesMisingCoinsSetup";
         btn.innerHTML = "Showing missing coins";
         /*showMissingCoins = true;*/
+        return true;
+    }
+}
+
+function expandNavSearch() {
+    var searchBtn = document.getElementById("navSearchBtn");
+    var searchInputContainer = document.getElementById("navSearchInputContainer");
+    var navSearchInput = document.getElementById("navSearchInput");
+    if (searchBtn.className == "navSearchBtn") {
+        searchBtn.className = "navSearchBtn navSearchBtnExpanded";
+        searchInputContainer.style.display = "flex";
+        
+        /*Focus on search input*/
+        navSearchInput.focus();
+
+        /*Display Submit button*/
+        document.getElementsByClassName("navSearchBtnContainer")[0].style.display = "none";
+        document.getElementsByClassName("navSearchSubmitContainer")[0].style.display = "block";
+        return true;
+    } if (searchBtn.className == "navSearchBtn navSearchBtnExpanded") {
+        searchBtn.className = "navSearchBtn";
+        searchInputContainer.style.display = "none";
+
+        /*Lose focus from search input*/
+        navSearchInput.blur();
+
+        /*Display Search button*/
+        document.getElementsByClassName("navSearchBtnContainer")[0].style.display = "block";
+        document.getElementsByClassName("navSearchSubmitContainer")[0].style.display = "none";
         return true;
     }
 }
