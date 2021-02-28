@@ -5,10 +5,11 @@
     <meta charset="utf-8">
     <title>Messages</title>
     <script src="../scripts/layout.js"></script>
-    <script src="../scripts/messages.js"></script>
     <script src="../scripts/data.js"></script>
+    <script src="../scripts/messages.js"></script>
     <link rel="stylesheet" href="../styles/layout.css">
     <link rel="stylesheet" href="../styles/messages.css">
+    <link rel="stylesheet" href="../styles/modal.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -36,7 +37,33 @@
 
     </div>
 
+    <div class="modalContentAddNewContact">
+        <div class="modalAddNewContact">
+            <div class="closeBtnContainer" onclick="hideAddNewContactModal()">
+                <div class="closeBtn"></div>
+            </div>
+            <span class="modalNameRow" id="modalAddNewContactName">Add new contact</span><br>
+            <div class="modalSeacrhNameRow">Search for a contact</div><br>
+            <form class="modalSearchForm">
+                <input class="modalContactSearchInput" type="text" name="contactSearch">
+                <button class="contactsSearchSubmitContainer" type="submit">
+                    <div class="contactsSearchSign"></div>
+                    <div class="contactsSearchSignPart"></div>
+                </button>
+            </form>
+            <div class="modalSearchContactValue"></div>
+            <div class="modalSearchContactResult">
+                Nothing to show
+            </div>
+            <script type="text/javascript">
+                checkUrlForContactSearchValue();
+            </script>
+        </div>
+    </div>
+
     <footer id="footer"></footer>
 </body>
+
+<script src="../scripts/modal.js"></script>
 
 </html>

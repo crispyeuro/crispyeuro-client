@@ -83,11 +83,11 @@
     font-style: italic;
 }
 
-.messagesContact:hover .closeBtnContainer {
+.messagesContact:hover .messagescloseBtnContainer {
     display: block;
 }
 
-.closeBtnContainer {
+.messagescloseBtnContainer {
     display: none;
     align-self: flex-end;
     justify-self: flex-end;
@@ -98,16 +98,12 @@
     margin: -5px 5px 0 0;
 }
 
-/*.closeBtnContainer:hover {
-    background-color: rgb(39, 93, 114);
-}*/
-
-.closeBtnContainer:hover>.closeBtn, .closeBtnContainer:hover>.closeBtn::after {
+.messagescloseBtnContainer:hover>.messagescloseBtn, .messagescloseBtnContainer:hover>.messagescloseBtn::after {
     /*border-color: white;*/
     border-color: rgb(39, 93, 114);
 }
 
-.closeBtn {
+.messagescloseBtn {
     position: relative;
     width: 16px;
     height: 3px;
@@ -117,7 +113,7 @@
     border-bottom: 3px solid rgb(189, 189, 189);
 }
 
-.closeBtn::after {
+.messagescloseBtn::after {
     content: "";
     position: absolute;
     width: 100%;

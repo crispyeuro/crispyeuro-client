@@ -20,8 +20,8 @@ function showConversation(userId) {
             }
 
             conversation += `
-            <div class="closeBtnContainer">
-                <div class="closeBtn"></div>
+            <div class="messagescloseBtnContainer">
+                <div class="messagescloseBtn"></div>
             </div>
             </div>
             <div class="messageFromUser">
@@ -82,7 +82,7 @@ function showContactsList() {
 function loadMessagesContactsList() {
     document.getElementById("loadedMessagesContactsList").innerHTML =
         `
-    <div class="messagesBtnRow"><button>Add new contact</button></div>
+    <div class="messagesBtnRow" onclick="showAddNewContactModal()"><button>Add new contact</button></div>
     `;
     var contactContainer;
     var userLastMessage;
@@ -92,8 +92,8 @@ function loadMessagesContactsList() {
     for (contactId = 0; contactId <= testContacts.length - 1; contactId++) {
         contactContainer = `
         <div class="messagesContact">
-            <div class="closeBtnContainer">
-                <div class="closeBtn"></div>
+            <div class="messagescloseBtnContainer">
+                <div class="messagescloseBtn"></div>
             </div>
             <div class="contactUser">[` + testContacts[contactId].username + `]
         `;
@@ -134,4 +134,59 @@ function loadMessagesContactsList() {
             document.getElementById("userId" + messagesContactId).style.fontStyle = "italic";
         }
     };
+}
+
+function showAddNewContactModal() {
+    document.getElementsByClassName("modalContentAddNewContact")[0].style.display = "flex";
+}
+
+function hideAddNewContactModal() {
+    document.getElementsByClassName("modalContentAddNewContact")[0].style.display = "none";
+}
+
+var searchValue;
+
+function checkUrlForContactSearchValue() {
+    var url = window.location.search;
+    var urlValue = new URLSearchParams(url);
+    searchValue = urlValue.get('contactSearch');
+    if (searchValue !== null) {
+        document.getElementsByClassName("modalSearchContactValue")[0].innerHTML = 'Search results for: "' + searchValue + '"';
+        showAddNewContactModal();
+        searchContacts(searchValue);
+    }
+}
+
+function searchContacts(x) {
+    document.getElementsByClassName("modalSearchContactResult")[0].innerHTML = "";
+    var found = 0;
+    for (i = 0; i < testContacts.length; i++) {
+
+        /*If user is already in contacts list*/
+        if (x == testContacts[i].username && testContacts[i].username == "user972") {
+            var searchResult = `<div class="modalSearchResultRow"><div class="modalSearchUsername"><span class="modalSearchUsernameText">` + testContacts[i].username + `</span>`;
+            if (testContacts[i].online == true) {
+                searchResult += `<div class="userOnlineSign"></div>`;
+            }
+            searchResult += `</div><span>User in contact list</span></div>`;
+            document.getElementsByClassName("modalSearchContactResult")[0].insertAdjacentHTML("beforeend", searchResult);
+            document.getElementsByClassName("modalSearchContactResult")[0].style.justifyContent = "initial";
+            found++;
+            continue;
+        }
+
+        if (x == testContacts[i].username) {
+            var searchResult = `<div class="modalSearchResultRow"><div class="modalSearchUsername"><span class="modalSearchUsernameText">` + testContacts[i].username + `</span>`;
+            if (testContacts[i].online == true) {
+                searchResult += `<div class="userOnlineSign"></div>`;
+            }
+            searchResult += `</div><button onclick="hideAddNewContactModal()" class="modalSubmitAddNewContact">Add contact</button></div>`;
+            document.getElementsByClassName("modalSearchContactResult")[0].insertAdjacentHTML("beforeend", searchResult);
+            document.getElementsByClassName("modalSearchContactResult")[0].style.justifyContent = "initial";
+            found++;
+        }
+    }
+    if (found == 0) {
+        document.getElementsByClassName("modalSearchContactResult")[0].innerHTML = "Nothing found";
+    }
 }

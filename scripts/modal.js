@@ -71,11 +71,15 @@ window.onclick = function (event) {
     if (event.target === document.getElementsByClassName("navLinksOnMobile")[0]) {
         showNavLinks();
     }
+    var navSearchBtn = document.getElementById("navSearchBtn");
+    if (!navSearchBtn.contains(event.target) && navSearchBtn.className == "navSearchBtn navSearchBtnExpanded") {
+        expandNavSearch();
+    }
 }
 
 function loadSwapCoinsListOffer() {
     document.getElementById("modalMyCoinsToOfferList").innerHTML =
-    `
+        `
     <br>
     <div class="coinSwapSettings coinSwapSettingsHeader">
         <div class="coinSwapSettingsOrder">Order</div>
@@ -121,3 +125,14 @@ function showSwapCloseConfirmation(id) {
 function hideSwapModalContainer() {
     document.getElementsByClassName("swapModalContent")[0].style.display = "none";
 }
+
+
+/*Add new contact modal
+function showAddNewContactModal() {
+    document.getElementsByClassName("modalContentAddNewContact")[0].style.display = "flex";
+}
+
+function hideAddNewContactModal() {
+    document.getElementsByClassName("modalContentAddNewContact")[0].style.display = "none";
+}
+*/
