@@ -89,7 +89,8 @@ function loadMessagesContactsList() {
     var userId;
     var contactMessages;
     var messagesContactId = -1;
-    for (contactId = 0; contactId <= testContacts.length - 1; contactId++) {
+    /*Display test contacts. Last display contact not displayed for testing purposes*/
+    for (contactId = 0; contactId < testContacts.length - 1; contactId++) {
         contactContainer = `
         <div class="messagesContact">
             <div class="messagescloseBtnContainer">
@@ -162,8 +163,8 @@ function searchContacts(x) {
     var found = 0;
     for (i = 0; i < testContacts.length; i++) {
 
-        /*If user is already in contacts list*/
-        if (x == testContacts[i].username && testContacts[i].username == "user972") {
+        /*If user is already in contacts list. Last test contact is not in the list for testing purposes.*/
+        if (testContacts[i].username != "user972" && x == testContacts[i].username) {
             var searchResult = `<div class="modalSearchResultRow"><div class="modalSearchUsername"><span class="modalSearchUsernameText">` + testContacts[i].username + `</span>`;
             if (testContacts[i].online == true) {
                 searchResult += `<div class="userOnlineSign"></div>`;

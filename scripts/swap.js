@@ -101,3 +101,23 @@ function swapSettingsCoinRemove(coinNumberId) {
     document.getElementById("swapSettingsCoin" + coinNumberId).style.display = "none";
     return true;
 }
+
+function swapReplyBtnClick(order) {
+    document.getElementById("swapReplyRequestContainer" + order).style.display = "flex";
+    document.getElementById("swapReplyInputValue" + order).focus();
+    document.getElementById("swapReplyRequestBtn" + order).style.display = "none";
+    document.getElementById("swapSendMessageBtn" + order).style.display = "inline-block";
+}
+
+function swapSendReplyBtnClick(order) {
+    document.getElementById("swapRepliesName" + order).style.display = "block";
+    document.getElementById("swapReplies" + order).style.display = "block";
+    var replyValue = document.getElementById("swapReplyInputValue" + order).value;
+    document.getElementById("swapReplies" + order).insertAdjacentHTML("beforeend", 
+    `<div class="swapWrittenReplyContainer">
+    <div class="swapWrittenReplyName">A message from me</div>
+    <div class="swapWrittenReply">` + replyValue + `</div>
+    </div>`
+    );
+    document.getElementById("swapReplyInputValue" + order).value = "";
+}
