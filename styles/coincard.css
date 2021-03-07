@@ -126,6 +126,16 @@ input[type="checkbox"]:checked+.collapsed {
     color: rgba(39, 93, 114, 1);
 }
 
+/*Added coins section*/
+
+.wantThisCoinBtnContainer {
+    margin: 5px 0;
+}
+
+.notWantCoinBtn {
+    display: none;
+}
+
 .addedCoinsTable {
     width: 100%;
     overflow-x: auto;

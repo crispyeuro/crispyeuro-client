@@ -43,11 +43,14 @@ function showCoincardUserOffer() {
 
 function showCoincardMyOffer() {
     document.getElementsByClassName("modalContentMyOffer")[0].style.display = "flex";
+    document.getElementsByClassName("modalUserMyOfferViewUserRequest")[0].style.display = "flex";
     loadSwapCoinsListOffer();
 }
 
 function hideModalContentMyOffer() {
     document.getElementsByClassName("modalContentMyOffer")[0].style.display = "none";
+    document.getElementsByClassName("modalUserMyOfferViewUserRequest")[0].style.display = "none";
+    document.getElementsByClassName("modalUserMyOfferCoinToChoose")[0].style.display = "none";
 }
 
 function hideAddCoinContainer() {
@@ -66,6 +69,10 @@ window.onclick = function (event) {
     }
     if (event.target === document.getElementsByClassName("modalContentMyOffer")[0]) {
         document.getElementsByClassName("modalContentMyOffer")[0].style.display = "none";
+        return true;
+    }
+    if (event.target === document.getElementsByClassName("modalContentWantThisCoin")[0]) {
+        document.getElementsByClassName("modalContentWantThisCoin")[0].style.display = "none";
         return true;
     }
     if (event.target === document.getElementsByClassName("navLinksOnMobile")[0]) {
@@ -136,3 +143,49 @@ function hideAddNewContactModal() {
     document.getElementsByClassName("modalContentAddNewContact")[0].style.display = "none";
 }
 */
+
+
+/*'Want this coin' modal*/
+
+function showWantThisCoinContainer() {
+    document.getElementsByClassName("modalContentWantThisCoin")[0].style.display = "flex";
+    document.getElementsByClassName("modalWantThisCoinConfirm")[0].style.display = "flex";
+    document.getElementsByClassName("modalWantThisCoinSwapRequest")[0].style.display = "none";
+}
+
+function hideContentWantThisCoin() {
+    document.getElementsByClassName("modalContentWantThisCoin")[0].style.display = "none";
+    document.getElementsByClassName("modalWantThisCoinSwapRequest")[0].style.display = "none";
+}
+
+function showCreateSwapRequest() {
+    document.getElementsByClassName("modalWantThisCoinConfirm")[0].style.display = "none";
+    document.getElementsByClassName("modalWantThisCoinSwapRequest")[0].style.display = "flex";
+}
+
+function getWantThisCoinRangeValue() {
+    var wantThisCoinRangeValue = document.getElementById("wantThisCoinRangeInput").value;
+    document.getElementsByClassName("wantThisCoinRangeValue")[0].innerHTML = wantThisCoinRangeValue;
+}
+
+function wantThisCoinBtnContainerChange(action) {
+    if (action == "added") {
+        document.getElementsByClassName("wantCoinBtn")[0].style.display = "none";
+        document.getElementsByClassName("notWantCoinBtn")[0].style.display = "block";
+    }
+    if (action == "deleted") {
+        document.getElementsByClassName("wantCoinBtn")[0].style.display = "block";
+        document.getElementsByClassName("notWantCoinBtn")[0].style.display = "none";
+    }
+}
+
+function showCreateMyOfferContainer(action) {
+    if (action == "create") {
+        document.getElementsByClassName("modalUserMyOfferViewUserRequest")[0].style.display = "none";
+        document.getElementsByClassName("modalUserMyOfferCoinToChoose")[0].style.display = "flex";
+    }
+    if (action == "goBack") {
+        document.getElementsByClassName("modalUserMyOfferViewUserRequest")[0].style.display = "flex";
+        document.getElementsByClassName("modalUserMyOfferCoinToChoose")[0].style.display = "none";
+    }
+}

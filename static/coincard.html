@@ -108,7 +108,11 @@
         <div class="addCollection">
             <div class="containerName">My collection</div>
             <br>
-            <br>
+            <div class="wantThisCoinBtnContainer">
+                <button class="wantCoinBtn" onclick="showWantThisCoinContainer()">Want this coin</button>
+                <button class="notWantCoinBtn" onclick="wantThisCoinBtnContainerChange('deleted')">Don't want this
+                    coin</button>
+            </div>
             <div class="addedCoinsTable">
                 <div class="coincardAddedCoins coincardAddedCoinsHeader">
                     <div class="coincardAddedId">ID</div>
@@ -125,9 +129,10 @@
                     <div class="coincardAddedDataBtn"><a href="#" onclick="showAddedCoinData(); return false;">View</a>
                     </div>
                     <div class="coincardAddedSwap">
-                        <label for="coincardAddedSwapCB" class="checkboxContainer coincardAddedSwapDisable" id="coincardSwapCheckbox">
-                            <input type="checkbox" class="coincardAddedSwapCB" id="coincardAddedSwapCB" name="userCoinSwapAvailable"
-                                value="addedCoinAvailable">
+                        <label for="coincardAddedSwapCB" class="checkboxContainer coincardAddedSwapDisable"
+                            id="coincardSwapCheckbox">
+                            <input type="checkbox" class="coincardAddedSwapCB" id="coincardAddedSwapCB"
+                                name="userCoinSwapAvailable" value="addedCoinAvailable">
                             <div class="fCheckbox"></div>
                         </label>
                     </div>
@@ -145,8 +150,8 @@
             <div class="containerName">Swap availability</div><br>
             <label for="coincardAvailableSwap" class="checkboxContainer" id="coincardSwapCheckbox">Coin available for
                 swap
-                <input type="checkbox" id="coincardAvailableSwap" name="userCoinSwapAvailable"
-                    value="userCoinAvailable" onclick="checkCoincardAvailableSwap()">
+                <input type="checkbox" id="coincardAvailableSwap" name="userCoinSwapAvailable" value="userCoinAvailable"
+                    onclick="checkCoincardAvailableSwap()">
                 <div class="fCheckbox"></div>
             </label>
             <br>
@@ -234,13 +239,142 @@
             <div class="closeBtnContainer" onclick="hideModalContentMyOffer()">
                 <div class="closeBtn"></div>
             </div>
-            <span class="modalNameRow" id="modalAddCoinName">Your offer for user [username]</span><br>
-            <div class="coinNameRow">Pick a coin to offer</div><br>
-            <div id="modalMyCoinsToOfferList"></div>
-            <span class="modalMyCoinsCommentLabel">Comment</span>
-            <br>
-            <textarea name="comment" rows="2" cols="30"></textarea><br>
-            <button onclick="hideModalContentMyOffer(); return false;" id="modalSendMyOffer">Send offer</button>
+            <div class="modalUserMyOfferViewUserRequest">
+                <span class="modalNameRow" id="modalAddCoinName">User [username] coin swap request</span><br>
+                <div class="coinNameRow">Wants [Denomination][Year][Country] coin with these parameters</div><br>
+                <div class="modalWantThisCoinSwapParemeters">
+                    <div class="modalWantThisCoinParamRow">
+                        <label for="grade">Grade</label>
+                        <select name="grade" disabled>
+                            <option value="" disabled selected>Not specified</option>
+                            <option value="unc">UNC</option>
+                            <option value="BU">BU</option>
+                            <option value="Proof">Proof</option>
+                            <option value="VF">VF</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="modalWantThisCoinParamRow">
+                        <label for="amount">Amount</label>
+                        <div class="wantThisCoinRangeRow">
+                            <div class="wantThisCoinRangeValue">1</div>
+                            <input id="wantThisCoinRangeInput" type="range" name="amount" min="1" max="10"
+                                oninput="getWantThisCoinRangeValue();" disabled>
+                        </div>
+                    </div>
+                    <div class="modalWantThisCoinParamRow">
+                        <label for="design">Design</label>
+                        <select name="design" disabled>
+                            <option value="" disabled selected>Not specified</option>
+                            <option value="colorized">Colorized</option>
+                            <option value="gilded">Gilded</option>
+                            <option value="plated">Plated</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="modalWantThisCoinParamRow">
+                        <label for="inSet">In set</label>
+                        <select name="inSet" disabled>
+                            <option value="" disabled selected>Not specified</option>
+                            <option value="setPart">Part of a set</option>
+                            <option value="coincard">Coincard</option>
+                            <option value="box">Box</option>
+                            <option value="folder">Folder</option>
+                            <option value="folder">Other</option>
+                        </select>
+                    </div>
+                    <label>Comment</label>
+                    <textarea name="comment" rows="2" cols="30" disabled></textarea><br>
+                    <div class="modalWantThisCoinBtnContainer">
+                        <button onclick="showCreateMyOfferContainer('create'); return false;">Create offer</button>
+                        <button onclick="hideModalContentMyOffer(); return false;">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modalUserMyOfferCoinToChoose">
+                <span class="modalNameRow" id="modalAddCoinName">Your offer for user [username]</span><br>
+                <div class="coinNameRow">Pick a coin to offer</div><br>
+                <div id="modalMyCoinsToOfferList"></div>
+                <span class="modalMyCoinsCommentLabel">Comment</span>
+                <br>
+                <textarea name="comment" rows="2" cols="30"></textarea><br>
+                <div class="modalWantThisCoinBtnContainer">
+                    <button onclick="showCreateMyOfferContainer('goBack'); return false;">Back</button>
+                    <button onclick="hideModalContentMyOffer(); return false;" id="modalSendMyOffer">Send offer</button>
+                    <button onclick="hideModalContentMyOffer(); return false;">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modalContentWantThisCoin">
+        <div class="modalWantThisCoin">
+            <div class="closeBtnContainer" onclick="hideContentWantThisCoin(); return false;">
+                <div class="closeBtn"></div>
+            </div>
+            <div class="modalWantThisCoinConfirm">
+                <span class="modalNameRow">Confirmation</span><br>
+                <div class="coinNameRow">This coin is added to your wanted coins list</div><br>
+                <div class="modalWantThisCoinText">Would you also want to create a coin swap request?</div>
+                <div class="modalWantThisCoinBtnContainer">
+                    <button
+                        onclick="showCreateSwapRequest(); wantThisCoinBtnContainerChange('added'); return false;">Yes</button>
+                    <button
+                        onclick="hideContentWantThisCoin(); wantThisCoinBtnContainerChange('added'); return false;">No</button>
+                </div>
+            </div>
+            <form class="modalWantThisCoinSwapRequest">
+                <span class="modalNameRow">[Denomination][Year][Country] coin swap request</span><br>
+                <div class="coinNameRow">Choose coin parameters</div><br>
+                <div class="modalWantThisCoinSwapParemeters">
+                    <div class="modalWantThisCoinParamRow">
+                        <label for="grade">Grade</label>
+                        <select name="grade">
+                            <option value="" disabled selected>Not specified</option>
+                            <option value="unc">UNC</option>
+                            <option value="BU">BU</option>
+                            <option value="Proof">Proof</option>
+                            <option value="VF">VF</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="modalWantThisCoinParamRow">
+                        <label for="amount">Amount</label>
+                        <div class="wantThisCoinRangeRow">
+                            <div class="wantThisCoinRangeValue">1</div>
+                            <input id="wantThisCoinRangeInput" type="range" name="amount" min="1" max="10"
+                                oninput="getWantThisCoinRangeValue();">
+                        </div>
+                    </div>
+                    <div class="modalWantThisCoinParamRow">
+                        <label for="design">Design</label>
+                        <select name="design">
+                            <option value="" disabled selected>Not specified</option>
+                            <option value="colorized">Colorized</option>
+                            <option value="gilded">Gilded</option>
+                            <option value="plated">Plated</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="modalWantThisCoinParamRow">
+                        <label for="inSet">In set</label>
+                        <select name="inSet">
+                            <option value="" disabled selected>Not specified</option>
+                            <option value="setPart">Part of a set</option>
+                            <option value="coincard">Coincard</option>
+                            <option value="box">Box</option>
+                            <option value="folder">Folder</option>
+                            <option value="folder">Other</option>
+                        </select>
+                    </div>
+                    <label>Comment</label>
+                    <textarea name="comment" rows="2" cols="30"></textarea><br>
+                </div>
+                <div class="modalWantThisCoinBtnContainer">
+                    <button onclick="hideContentWantThisCoin(); return false;">Done</button>
+                    <button onclick="hideContentWantThisCoin(); return false;">Cancel</button>
+                </div>
+            </form>
         </div>
     </div>
 
