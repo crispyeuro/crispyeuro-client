@@ -113,8 +113,8 @@ function swapSendReplyBtnClick(order) {
     document.getElementById("swapRepliesName" + order).style.display = "block";
     document.getElementById("swapReplies" + order).style.display = "block";
     var replyValue = document.getElementById("swapReplyInputValue" + order).value;
-    document.getElementById("swapReplies" + order).insertAdjacentHTML("beforeend", 
-    `<div class="swapWrittenReplyContainer">
+    document.getElementById("swapReplies" + order).insertAdjacentHTML("beforeend",
+        `<div class="swapWrittenReplyContainer">
     <div class="swapWrittenReplyName">A message from me</div>
     <div class="swapWrittenReply">` + replyValue + `</div>
     </div>`
@@ -123,13 +123,13 @@ function swapSendReplyBtnClick(order) {
 }
 
 function swapRequestChangesBtnClick(requestId, action) {
-    if(action == "open") {
+    if (action == "open") {
         document.getElementById("swapRequestChangesShow" + requestId).className = "swapRequestChangesName closed";
         document.getElementById("swapRequestChangesClose" + requestId).className = "swapRequestChangesName opened";
         document.getElementById("swapRequestChanges" + requestId).className = "swapRequestChanges opened";
-        
+
     }
-    if(action == "close") {
+    if (action == "close") {
         document.getElementById("swapRequestChangesShow" + requestId).className = "swapRequestChangesName opened";
         document.getElementById("swapRequestChangesClose" + requestId).className = "swapRequestChangesName closed";
         document.getElementById("swapRequestChanges" + requestId).className = "swapRequestChanges closed";
