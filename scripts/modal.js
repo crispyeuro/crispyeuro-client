@@ -116,6 +116,39 @@ function loadSwapCoinsListOffer() {
     }
 }
 
+function loadSwapCoinsListChangeOffer() {
+    console.log("hey");
+    document.getElementById("modalMyCoinsToOfferChangeList").innerHTML =
+        `
+    <br>
+    <div class="coinSwapSettings coinSwapSettingsHeader">
+        <div class="coinSwapSettingsOrder">Order</div>
+        <div class="coinSwapSettingsId">ID</div>
+        <div class="coinSwapSettingsType">Type</div>
+        <div class="coinSwapSettingsName">Name</div>
+        <div class="coinSwapSettingsAvailability">Coin to offer</div>
+    </div>
+    `;
+    for (i = 0; i <= coinsToSwap.length - 1; i++) {
+        document.getElementById("modalMyCoinsToOfferChangeList").insertAdjacentHTML("beforeend",
+            `
+        <div class="coinSwapSettings" id="swapSettingsCoin` + i + `">
+            <div class="coinSwapSettingsOrder">` + coinsToSwap[i].order + `</div>
+            <div class="coinSwapSettingsId"><a href="coincard.html" target="_blank" rel="noopener noreferrer">` + coinsToSwap[i].id + `</a></div>
+            <div class="coinSwapSettingsType">` + coinsToSwap[i].type + `</div>
+            <div class="coinSwapSettingsName">` + coinsToSwap[i].coin + `</div>
+            <div class="coinSwapSettingsAvailability">
+                <label for="modalChooseMyCoin` + coinsToSwap[i].id + `" class="checkboxContainer" id="modalSwapCheckbox">
+                    <input type="checkbox" class="modalChooseMyCoin" id="modalChooseMyCoin` + coinsToSwap[i].id + `" name="modalMyCoinForSwap"
+                        value="addedCoinAvailable">
+                    <div class="fCheckbox"></div>
+                </label>
+            </div>
+        </div>
+        `);
+    }
+}
+
 /*Swap tab modal*/
 
 function showSwapCloseConfirmation(id) {
@@ -131,6 +164,17 @@ function showSwapCloseConfirmation(id) {
 
 function hideSwapModalContainer() {
     document.getElementsByClassName("swapModalContent")[0].style.display = "none";
+}
+
+
+/*Change swap offer modal*/
+function showSwapChangeOfferModal() {
+    document.getElementsByClassName("swapChangeOfferModalContent")[0].style.display = "flex";
+    loadSwapCoinsListChangeOffer();
+}
+
+function hideSwapChangeOfferModal() {
+    document.getElementsByClassName("swapChangeOfferModalContent")[0].style.display = "none";
 }
 
 

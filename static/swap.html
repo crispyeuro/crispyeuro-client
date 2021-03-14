@@ -21,13 +21,12 @@
         <div class="swapContainerName">Coins swap</div>
         <div class="swapMenu">
             <div class="swapMenuBtn" id="myRequests" onclick="swapMenuBtnClicked('myRequests')"><span
-                    id="myRequestsName">My coin swap requests</span>
+                    id="myRequestsName">Sent swap requests</span>
             </div>
             <div class="swapMenuBtn" id="othersRequests" onclick="swapMenuBtnClicked('othersRequests')"><span
-                    id="othersRequestsName">Others' coin
-                    swap requests</span></div>
+                    id="othersRequestsName">Received swap requests</span></div>
             <div class="swapMenuBtn" id="manageSwap" onclick="swapMenuBtnClicked('manageSwap')"><span
-                    id="manageSwapName">Manage my coins to swap</span></div>
+                    id="manageSwapName">My coins to swap</span></div>
         </div>
 
         <div class="swapMyRequests closed" id="swapMyRequests">
@@ -78,18 +77,21 @@
                     <div class="swapUserRequestButtons">
                         <button class="swapSendMessageBtn" id="swapSendMessageBtn0"
                             onclick="swapSendReplyBtnClick(0)">Send message</button>
-                        <button class="swapReplyRequestBtn" id="swapReplyRequestBtn0"
-                            onclick="swapReplyBtnClick(0)">Reply</button>
+                        <button class="swapReplyRequestBtn" id="swapReplyRequestBtn0" onclick="swapReplyBtnClick(0)">Reply</button>
+                        <button class="swapChangeOffer" id="swapChangeOffer" onclick="showSwapChangeOfferModal()">Change offer</button>
                         <button onclick="showSwapCloseConfirmation('swapModalCancel')">Cancel offer</button>
-                        <button>Swapped</button>
+                        <button >Swapped</button>
                     </div>
+                    <div class="swapRequestChangesName opened" id="swapRequestChangesShow0" onclick="swapRequestChangesBtnClick(0, 'open')">See offer previous request changes</div>
+                    <div class="swapRequestChangesName closed" id="swapRequestChangesClose0" onclick="swapRequestChangesBtnClick(0, 'close')">Close offer previous request changes</div>
+                    <div class="swapRequestChanges closed" id="swapRequestChanges0">No offer changes</div>
                 </div>
             </div>
         </div>
 
         <div class="swapOthersRequests opened" id="swapOthersRequests">
             <div class="swapUserRequest">
-                <div class="swapUserRequestName" onclick="swapOthersRequestShow('firstRequset')">A coin swap request
+                <div class="swapUserRequestName" onclick="swapOthersRequestShow('firstRequset')">Swap request
                     from [ user515 ]</div>
                 <div class="swapUserRequestContainer opened" id="firstRequset">
                     Wants to swap your coin
@@ -140,11 +142,14 @@
                         <button onclick="showSwapCloseConfirmation('swapModalDismiss')">Dismiss</button>
                         <button>Swapped</button>
                     </div>
+                    <div class="swapRequestChangesName opened" id="swapRequestChangesShow1" onclick="swapRequestChangesBtnClick(1, 'open')">See offer previous request changes</div>
+                    <div class="swapRequestChangesName closed" id="swapRequestChangesClose1" onclick="swapRequestChangesBtnClick(1, 'close')">Close offer previous request changes</div>
+                    <div class="swapRequestChanges closed" id="swapRequestChanges0">No offer changes</div>
                 </div>
             </div>
 
             <div class="swapUserRequest">
-                <div class="swapUserRequestName" onclick="swapOthersRequestShow('secondRequset')">A coin swap request
+                <div class="swapUserRequestName" onclick="swapOthersRequestShow('secondRequset')">Swap request
                     from [ user445 ]</div>
                 <div class="swapUserRequestContainer closed" id="secondRequset">
                     Wants to swap your coin
@@ -205,11 +210,14 @@
                         <button onclick="showSwapCloseConfirmation('swapModalDismiss')">Dismiss</button>
                         <button>Swapped</button>
                     </div>
+                    <div class="swapRequestChangesName opened" id="swapRequestChangesShow2" onclick="swapRequestChangesBtnClick(2, 'open')">See offer previous request changes</div>
+                    <div class="swapRequestChangesName closed" id="swapRequestChangesClose2" onclick="swapRequestChangesBtnClick(2, 'close')">Close offer previous request changes</div>
+                    <div class="swapRequestChanges closed" id="swapRequestChanges0">No offer changes</div>
                 </div>
             </div>
 
             <div class="swapUserRequest">
-                <div class="swapUserRequestName" onclick="swapOthersRequestShow('thirdRequset')">A coin swap request
+                <div class="swapUserRequestName" onclick="swapOthersRequestShow('thirdRequset')">Swap request
                     from [ user7549 ]</div>
                 <div class="swapUserRequestContainer closed" id="thirdRequset">
                     Wants to swap your coin
@@ -245,6 +253,9 @@
                         <button onclick="showSwapCloseConfirmation('swapModalDismiss')">Dismiss</button>
                         <button>Swapped</button>
                     </div>
+                    <div class="swapRequestChangesName opened" id="swapRequestChangesShow3" onclick="swapRequestChangesBtnClick(3, 'open')">See offer previous request changes</div>
+                    <div class="swapRequestChangesName closed" id="swapRequestChangesClose3" onclick="swapRequestChangesBtnClick(3, 'close')">Close offer previous request changes</div>
+                    <div class="swapRequestChanges closed" id="swapRequestChanges0">No offer changes</div>
                 </div>
             </div>
         </div>
@@ -279,6 +290,21 @@
                     <button class="swapModalBtn" onclick="hideSwapModalContainer()">Yes</button>
                     <button class="swapModalBtn" onclick="hideSwapModalContainer()">No</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="swapChangeOfferModalContent">
+        <div class="swapChangeOfferModal">
+            <div class="closeBtnContainer" onclick="hideSwapChangeOfferModal(); return false;">
+                <div class="closeBtn"></div>
+            </div>
+            <div class="coinNameRow">Change your coin swap offer</div><br>
+            <div id="modalMyCoinsToOfferChangeList">...</div>
+            <br>
+            <div class="modalWantThisCoinBtnContainer">
+                <button onclick="hideSwapChangeOfferModal(); return false;" id="modalSendMyOffer">Save offer</button>
+                <button onclick="hideSwapChangeOfferModal(); return false;">Cancel</button>
             </div>
         </div>
     </div>

@@ -121,3 +121,17 @@ function swapSendReplyBtnClick(order) {
     );
     document.getElementById("swapReplyInputValue" + order).value = "";
 }
+
+function swapRequestChangesBtnClick(requestId, action) {
+    if(action == "open") {
+        document.getElementById("swapRequestChangesShow" + requestId).className = "swapRequestChangesName closed";
+        document.getElementById("swapRequestChangesClose" + requestId).className = "swapRequestChangesName opened";
+        document.getElementById("swapRequestChanges" + requestId).className = "swapRequestChanges opened";
+        
+    }
+    if(action == "close") {
+        document.getElementById("swapRequestChangesShow" + requestId).className = "swapRequestChangesName opened";
+        document.getElementById("swapRequestChangesClose" + requestId).className = "swapRequestChangesName closed";
+        document.getElementById("swapRequestChanges" + requestId).className = "swapRequestChanges closed";
+    }
+}
