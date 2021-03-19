@@ -1,5 +1,5 @@
+@import "main.css";
 /*Coincard modal*/
-
 .modalContent {
     /*display: flex*/
     display: none;
@@ -24,8 +24,6 @@
 }
 
 .modalNameRow, .coinNameRow {
-    font-family: 'Rubik', sans-serif;
-    font-weight: 500;
     text-transform: uppercase;
     font-size: 15px;
     padding: 5px;
@@ -36,7 +34,6 @@
 }
 
 .coinNameRow {
-    font-weight: 400;
     color: rgba(52, 123, 152, 1);
 }
 
@@ -56,7 +53,7 @@
 }
 
 .closeBtnContainer:hover>.closeBtn, .closeBtnContainer:hover>.closeBtn::after {
-    border-color: white;
+    border-color: rgb(255, 255, 255);
 }
 
 .closeBtn {
@@ -78,15 +75,14 @@
     bottom: 18px;
     right: 8px;
     transform: rotate(-90deg);
-    border-bottom: 3px solid rgba(52, 123, 152, 1);
+    border-bottom: 3px solid var(--blue);
 }
 
 label {
     font-size: 15px;
     font-weight: 300;
     width: 100px;
-    color: rgba(46, 56, 77, 1);
-    font-weight: 400;
+    color: var(--darkerBlue);
     text-align: left;
 }
 
@@ -146,7 +142,7 @@ label {
     font-size: 15px;
     font-weight: 300;
     color: rgba(51, 74, 82, 1);
-    background-color: rgba(214, 228, 234, 1);
+    background-color: rgba(231, 243, 248, 1);
     border: 1px solid rgba(135, 152, 173, 0.6);
     cursor: pointer;
 }
@@ -166,7 +162,7 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Helvetica', 'Arial', sans-serif;
     font-weight: 400;
     text-align: center;
     margin: 5px;
@@ -261,7 +257,7 @@ label {
     background-color: rgb(255, 255, 255);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 5px;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Helvetica', 'Arial', sans-serif;
     font-size: 16px;
 }
 
@@ -279,7 +275,7 @@ label {
 }
 
 .coinSwapSettings:hover {
-    background-color: rgba(135, 152, 173, 0.3);
+    background-color: rgba(230, 244, 241, 1);
 }
 
 .coinSwapSettingsOrder {
@@ -316,8 +312,9 @@ label {
 }
 
 .coinSwapSettingsHeader {
-    font-weight: 400;
-    background-color: rgba(135, 152, 173, 0.3);
+    font-weight: bold;
+    color: rgba(39, 93, 114, 1);
+    background-color: var(--lightOrange);
 }
 
 #modalMyCoinsToOfferList {
@@ -427,7 +424,7 @@ label {
 }
 
 .swapModalNameRow {
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Helvetica', 'Arial', sans-serif;
     font-weight: 500;
     text-transform: uppercase;
     font-size: 15px;
@@ -450,7 +447,7 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Helvetica', 'Arial', sans-serif;
     font-weight: 300;
     text-align: center;
     margin: 5px;
@@ -469,6 +466,7 @@ label {
 }
 
 /*Change swap offer modal*/
+
 .swapChangeOfferModalContent {
     /*display: flex*/
     display: none;
@@ -490,7 +488,7 @@ label {
     background-color: rgb(255, 255, 255);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 5px;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
 /*Add new contact modal*/
@@ -518,13 +516,13 @@ label {
     background-color: rgb(255, 255, 255);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 5px;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Helvetica', 'Arial', sans-serif;
     font-size: 16px;
     font-weight: 300;
 }
 
 .modalSeacrhNameRow {
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Helvetica', 'Arial', sans-serif;
     text-transform: uppercase;
     font-size: 15px;
     padding: 5px;

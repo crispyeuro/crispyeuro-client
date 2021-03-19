@@ -20,33 +20,33 @@ document.getElementById("fName").oninput = function () { checkName() };
 function checkName() {
     var name = document.getElementById("fName").value;
     if (name == "") {
-        document.getElementById("fName").style.backgroundColor = "white";
+        document.getElementById("fName").style.backgroundColor = "var(--white)";
         document.getElementById("fNameMistake").innerHTML = "";
-        document.getElementById("fNameMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fNameMistake").style.color = "var(--darkBlue)";
         return true;
     }
     if (!name.match("^[A-Za-z\,\.\-]+$")) {
-        document.getElementById("fName").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fName").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fNameMistake").innerHTML = "Allowed letters and punctuation";
-        document.getElementById("fNameMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fNameMistake").style.color = "var(--darkBlue)";
         return false;
     }
     if (name.length < 3 && name != "") {
-        document.getElementById("fName").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fName").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fNameMistake").innerHTML = "Too short name";
-        document.getElementById("fNameMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fNameMistake").style.color = "var(--darkBlue)";
         return false;
     }
     if (!name.match(/[A-z]/g)) {
-        document.getElementById("fName").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fName").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fNameMistake").innerHTML = "Put at least one letter";
-        document.getElementById("fNameMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fNameMistake").style.color = "var(--darkBlue)";
         return false;
     }
     else {
-        document.getElementById("fName").style.backgroundColor = "var(--bgContainerColor)";
+        document.getElementById("fName").style.backgroundColor = "var(--white)";
         document.getElementById("fNameMistake").innerHTML = "OK";
-        document.getElementById("fNameMistake").style.color = "green";
+        document.getElementById("fNameMistake").style.color = "var(--green)";
         return true;
     }
 }
@@ -56,39 +56,39 @@ document.getElementById("fUsername").oninput = function () { checkUsername() };
 function checkUsername() {
     var username = document.getElementById("fUsername").value;
     if (username == "") {
-        document.getElementById("fUsername").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fUsername").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fUsernameMistake").innerHTML = "Please enter username";
-        document.getElementById("fUsernameMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fUsernameMistake").style.color = "var(--darkBlue)";
         return false;
     }
     if (!username.match("^[A-Za-z0-9\,\.\!\?\-\_\*]+$")) {
-        document.getElementById("fUsername").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fUsername").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fUsernameMistake").innerHTML = "Allowed letters, numbers, punctuation";
-        document.getElementById("fUsernameMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fUsernameMistake").style.color = "var(--darkBlue)";
         return false;
     }
     if (!username.match(/[A-z]/g)) {
-        document.getElementById("fUsername").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fUsername").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fUsernameMistake").innerHTML = "Put at least one letter";
-        document.getElementById("fUsernameMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fUsernameMistake").style.color = "var(--darkBlue)";
         return false;
     }
     if (username.length < 3 && username != "") {
-        document.getElementById("fUsername").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fUsername").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fUsernameMistake").innerHTML = "Too short username";
-        document.getElementById("fUsernameMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fUsernameMistake").style.color = "var(--darkBlue)";
         return false;
     }
     if (username.length > 20) {
-        document.getElementById("fUsername").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fUsername").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fUsernameMistake").innerHTML = "Too long username";
-        document.getElementById("fUsernameMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fUsernameMistake").style.color = "var(--darkBlue)";
         return false;
     }
     else {
-        document.getElementById("fUsername").style.backgroundColor = "var(--bgContainerColor)";
+        document.getElementById("fUsername").style.backgroundColor = "var(--white)";
         document.getElementById("fUsernameMistake").innerHTML = "OK";
-        document.getElementById("fUsernameMistake").style.color = "green";
+        document.getElementById("fUsernameMistake").style.color = "var(--green)";
         return true;
     }
 }
@@ -98,33 +98,33 @@ document.getElementById("fEmail").oninput = function () { checkEmail() };
 function checkEmail() {
     var email = document.getElementById("fEmail").value;
     if (email == "") {
-        document.getElementById("fEmail").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fEmail").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fEmailMistake").innerHTML = "Please enter email";
-        document.getElementById("fEmailMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fEmailMistake").style.color = "var(--darkBlue)";
         return false;
     }
     if (!email.match("^[A-Za-z0-9\,\.\-\_\@*]+$")) {
-        document.getElementById("fEmail").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fEmail").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fEmailMistake").innerHTML = 'Not allowed characters';
-        document.getElementById("fEmailMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fEmailMistake").style.color = "var(--darkBlue)";
         return false;
     }
     if (email.length < 3 && email != "") {
-        document.getElementById("fEmail").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fEmail").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fEmailMistake").innerHTML = "Ivalid email";
-        document.getElementById("fEmailMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fEmailMistake").style.color = "var(--darkBlue)";
         return false;
     }
     if (!email.match(/.@./)) {
-        document.getElementById("fEmail").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fEmail").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fEmailMistake").innerHTML = 'Should contain "@" mark';
-        document.getElementById("fEmailMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fEmailMistake").style.color = "var(--darkBlue)";
         return false;
     }
     else {
-        document.getElementById("fEmail").style.backgroundColor = "var(--bgContainerColor)";
+        document.getElementById("fEmail").style.backgroundColor = "var(--white)";
         document.getElementById("fEmailMistake").innerHTML = "OK";
-        document.getElementById("fEmailMistake").style.color = "green";
+        document.getElementById("fEmailMistake").style.color = "var(--green)";
         return true;
     }
 }
@@ -135,38 +135,38 @@ function checkPassword() {
     var password = document.getElementById("fPWD").value;
     var confPassword = document.getElementById("fConfPWD").value;
     if (password == "") {
-        document.getElementById("fPWD").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fPWD").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fPWDMistake").innerHTML = "Please enter password";
-        document.getElementById("fPWDMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fPWDMistake").style.color = "var(--darkBlue)";
         return false;
     }
     if (password != confPassword && confPassword != "") {
-        document.getElementById("fConfPWD").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fConfPWD").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fConfPWDMistake").innerHTML = "Passwords do not match";
-        document.getElementById("fConfPWDMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fConfPWDMistake").style.color = "var(--darkBlue)";
     }
     if (password.length < 8 && password != "") {
-        document.getElementById("fPWD").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fPWD").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fPWDMistake").innerHTML = "Put at least 6 characters";
-        document.getElementById("fPWDMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fPWDMistake").style.color = "var(--darkBlue)";
         return false;
     }
     if (!password.match(/[A-z]/g) || !password.match(/[0-9]/g) || !password.match(/[\,\.\!\?\-\_\*\'\"\`]/g)) {
-        document.getElementById("fPWD").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fPWD").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fPWDMistake").innerHTML = "Allowed letters, numbers, punctuation";
-        document.getElementById("fPWDMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fPWDMistake").style.color = "var(--darkBlue)";
         return false;
     }
     if (password.match(/[\s\t]/g)) {
-        document.getElementById("fPWD").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fPWD").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fPWDMistake").innerHTML = "Whitespaces not allowed";
-        document.getElementById("fPWDMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fPWDMistake").style.color = "var(--darkBlue)";
         return false;
     }
     else {
-        document.getElementById("fPWD").style.backgroundColor = "var(--bgContainerColor)";
+        document.getElementById("fPWD").style.backgroundColor = "var(--white)";
         document.getElementById("fPWDMistake").innerHTML = "OK";
-        document.getElementById("fPWDMistake").style.color = "green";
+        document.getElementById("fPWDMistake").style.color = "var(--green)";
         return true;
     }
 }
@@ -177,33 +177,33 @@ function checkConfirmPassword() {
     var confPassword = document.getElementById("fConfPWD").value;
     var password = document.getElementById("fPWD").value;
     if (!checkPassword() && confPassword == "") {
-        document.getElementById("fConfPWD").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fConfPWD").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fConfPWDMistake").innerHTML = "";
-        document.getElementById("fConfPWDMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fConfPWDMistake").style.color = "var(--darkBlue)";
         return true;
     }
     if (checkPassword() && confPassword == "") {
-        document.getElementById("fConfPWD").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fConfPWD").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fConfPWDMistake").innerHTML = "Confirm password";
-        document.getElementById("fConfPWDMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fConfPWDMistake").style.color = "var(--darkBlue)";
         return false;
     }
     if (!checkPassword() && confPassword != "") {
-        document.getElementById("fConfPWD").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fConfPWD").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fConfPWDMistake").innerHTML = "Not correct";
-        document.getElementById("fConfPWDMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fConfPWDMistake").style.color = "var(--darkBlue)";
         return false;
     }
     if (checkPassword() && password != confPassword) {
-        document.getElementById("fConfPWD").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fConfPWD").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fConfPWDMistake").innerHTML = "Passwords do not match";
-        document.getElementById("fConfPWDMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fConfPWDMistake").style.color = "var(--darkBlue)";
         return false;
     }
     else {
-        document.getElementById("fConfPWD").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fConfPWD").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fConfPWDMistake").innerHTML = "OK";
-        document.getElementById("fConfPWDMistake").style.color = "green";
+        document.getElementById("fConfPWDMistake").style.color = "var(--green)";
         return true;
     }
 }
@@ -220,7 +220,7 @@ function checkBirthdayAndGender() {
     }
     else {
         document.getElementById("fBirthdayAndGenderMistake").innerHTML = "OK";
-        document.getElementById("fBirthdayAndGenderMistake").style.color = "green";
+        document.getElementById("fBirthdayAndGenderMistake").style.color = "var(--green)";
         return true;
     }
 }
@@ -235,7 +235,7 @@ function checkCountry() {
     }
     else {
         document.getElementById("fCountryMistake").innerHTML = "OK";
-        document.getElementById("fCountryMistake").style.color = "green";
+        document.getElementById("fCountryMistake").style.color = "var(--green)";
         return true;
     }
 }
@@ -245,20 +245,20 @@ document.getElementById("fCity").oninput = function () { checkCity() };
 function checkCity() {
     var city = document.getElementById("fCity").value;
     if (city == "") {
-        document.getElementById("fCity").style.backgroundColor = "var(--bgContainerColor)";
+        document.getElementById("fCity").style.backgroundColor = "var(--white)";
         document.getElementById("fCityMistake").innerHTML = "";
         return true;
     }
     if (!city.match("^[A-Za-z\,\.\-]+$")) {
-        document.getElementById("fCity").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fCity").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fCityMistake").innerHTML = "Allowed letters, punctuation";
-        document.getElementById("fCityMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fCityMistake").style.color = "var(--darkBlue)";
         return false;
     }
     else {
-        document.getElementById("fCity").style.backgroundColor = "rgba(212, 237, 247, 0.8)";
+        document.getElementById("fCity").style.backgroundColor = "var(--lightBlue)";
         document.getElementById("fCityMistake").innerHTML = "OK";
-        document.getElementById("fCityMistake").style.color = "green";
+        document.getElementById("fCityMistake").style.color = "var(--green)";
         return true;
     }
 }
@@ -272,7 +272,7 @@ function checkTerms() {
     }
     else {
         document.getElementById("fTermsMistake").innerHTML = "Please accept Terms of Use"
-        document.getElementById("fTermsMistake").style.color = "rgba(39, 93, 114, 1)";
+        document.getElementById("fTermsMistake").style.color = "var(--darkBlue)";
         return false;
     }
 }

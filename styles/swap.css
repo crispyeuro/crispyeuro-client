@@ -21,7 +21,7 @@
 }
 
 #myRequestsName:hover, #othersRequestsName:hover, #manageSwapName:hover {
-    color: rgba(52, 123, 152, 1);
+    color: var(--blue);
 }
 
 .swapOthersRequests, .swapMyRequests, .swapManageOffer {
@@ -31,7 +31,7 @@
 }
 
 #othersRequests {
-    color: rgba(52, 123, 152, 1);
+    color: var(--blue);
 }
 
 .swapUserRequest, .swapMyRequest {
@@ -52,14 +52,14 @@
 
 .swapUserRequestName, .swapMyRequestName {
     text-align: left;
-    color: rgba(46, 56, 77, 1);
+    color: var(--darkerBlue);
     font-weight: 400;
     cursor: pointer;
     margin: 5px 0;
 }
 
 .swapUserRequestName:hover, .swapMyRequestName:hover {
-    color: rgba(52, 123, 152, 1);
+    color: var(--blue);
 }
 
 .swapUserRequestContainer, .swapMyRequestContainer {
@@ -81,7 +81,7 @@
     flex-direction: column;
     width: 300px;
     height: 150px;
-    border: 1px solid rgba(135, 152, 173, 0.6);
+    border: 1px solid var(--grey);
     border-radius: 3px;
     margin-bottom: 1%;
     margin-right: 5px;
@@ -98,7 +98,7 @@
     width: 100%;
     font-size: 15px;
     font-weight: 400;
-    color: rgba(52, 123, 152, 1);
+    color: var(--blue);
 }
 
 .myCointContent {
@@ -114,7 +114,7 @@
     align-items: center;
     min-width: 110px;
     min-height: 110px;
-    border: 1px solid rgba(52, 123, 152, 1);
+    border: 1px solid var(--blue);
     border-radius: 50%;
     margin: 5px;
     background-color: rgba(220, 220, 220, 0.6);
@@ -125,7 +125,7 @@
     flex-direction: column;
     align-items: flex-start;
     font-size: 15px;
-    color: rgba(39, 93, 114, 1);
+    color: var(--darkBlue);
     padding-left: 10%;
 }
 
@@ -134,11 +134,11 @@
 }
 
 .coinDescription a {
-    color: rgba(39, 93, 114, 1);
+    color: var(--darkBlue);
 }
 
 .coinDescription a:hover {
-    color: rgba(52, 123, 152, 1);
+    color: var(--blue);
 }
 
 .forContainer {
@@ -157,12 +157,12 @@
     align-items: flex-start;
     width: 100%;
     min-height: 50px;
-    border: 1px solid rgba(135, 152, 173, 0.6);
+    border: 1px solid var(--grey);
     border-radius: 3px;
     margin-bottom: 1%;
     padding: 1%;
     background-color: transparent;
-    color: rgba(39, 93, 114, 1);
+    color: var(--darkBlue);
 }
 
 .swapOfferDetails, .swapWrittenReply {
@@ -170,13 +170,12 @@
     align-items: flex-start;
     width: 100%;
     min-height: 50px;
-    border: 1px solid rgba(135, 152, 173, 0.6);
+    border: 1px solid var(--grey);
     border-radius: 3px;
     margin-bottom: 1%;
     padding: 1%;
     background-color: transparent;
-    color: rgba(39, 93, 114, 1);
-    font-weight: 300;
+    color: var(--darkBlue);
 }
 
 .swapReplyRequestContainer {
@@ -188,12 +187,12 @@
 
 .swapReplyInput {
     resize: none;
-    border-color: rgba(135, 152, 173, 0.6);
+    border-color: var(--grey);
 }
 
 .swapReplyInput:focus {
     outline: none;
-    box-shadow: 0 0 0 1px rgba(135, 152, 173, 0.6);
+    box-shadow: 0 0 0 1px var(--grey);
 }
 
 .swapSendMessageBtn {
@@ -223,14 +222,12 @@
     justify-content: center;
     width: 80%;
     padding: 10px;
-    border: 1px solid rgba(135, 152, 173, 0.6);
+    border: 1px solid var(--grey);
     border-radius: 3px;
     margin: 5px;
 }
 
-.coinSwapSettings:hover {
-    background-color: rgba(135, 152, 173, 0.3);
-}
+/*.coinSwapSettings:hover {}*/
 
 .coinSwapSettingsOrder {
     width: 10%;
@@ -258,8 +255,9 @@
 }
 
 .coinSwapSettingsHeader {
-    font-weight: 400;
-    background-color: rgba(135, 152, 173, 0.3);
+    font-weight: bold;
+    color: var(--darkBlue);
+    background-color: var(--lightOrange);
 }
 
 .swapManageCloseBtnContainer {
@@ -270,7 +268,7 @@
 
 .swapManageCloseBtnContainer:hover>.swapManageCloseBtn, .swapManageCloseBtnContainer:hover>.swapManageCloseBtn::after {
     /*border-color: white;*/
-    border-color: rgb(39, 93, 114);
+    border-color: var(--darkBlue);
 }
 
 .swapManageCloseBtn {
@@ -301,9 +299,5 @@
 }
 
 .swapRequestChangesName:hover {
-    color: rgba(52, 123, 152, 1);
-}
-
-.swapRequestChanges {
-    font-weight: 300;
+    color: var(--blue);
 }

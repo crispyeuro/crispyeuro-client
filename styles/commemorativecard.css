@@ -5,7 +5,6 @@
     grid-template-columns: 1fr;
     grid-template-areas: 'goBack' 'cardName' 'description' 'coins';
     font-size: 14px;
-    font-weight: 300;
 }
 
 .goBack {
@@ -20,14 +19,14 @@
     align-items: center;
     padding-left: 10px;
     font-weight: bold;
-    border: 1px solid rgba(125, 179, 199, 1);
     border-radius: 4px;
-    background-color: rgba(212, 237, 247, 1);
+    border: 1px solid var(--grey);
+    background-color: var(--lightBlue);
 }
 
 .cardDescription {
     grid-area: description;
-    border-bottom: 1px solid rgba(125, 179, 199, 1);
+    border-bottom: 1px solid var(--grey);
 }
 
 .coins {
@@ -44,8 +43,8 @@ button {
 }
 
 .containerName {
-    font-size: 18px;
-    color: rgba(39, 93, 114, 1);
+    font-size: 16px;
+    color: var(--darkBlue);
 }
 
 .coinsContainer {
@@ -60,13 +59,17 @@ button {
     flex-wrap: wrap;
     width: 150px;
     height: 150px;
-    border: rgb(255, 255, 255);
     border-radius: 4px;
     margin: 5px 10px 5px 0;
 }
 
 .coin:hover {
-    background-color: rgba(231, 243, 248, 1);
+    background-color: var(--lightBlue);
+}
+
+.coin:hover .coinPic {
+    background-color: var(--lightOrange);
+    color: var(--black);
 }
 
 .coinPic {
@@ -75,12 +78,9 @@ button {
     justify-content: center;
     width: 110px;
     height: 110px;
-    border: 1px solid rgba(211, 211, 211, 1);
     border-radius: 50%;
-}
-
-.coinPic {
-    background-color: rgb(255, 255, 255);
+    border: 1px solid var(--orange);
+    color: var(--darkBlue);
 }
 
 .coin a {

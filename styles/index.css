@@ -1,23 +1,23 @@
 @import "main.css";
 .categoriesContainerNameRow {
-    margin: 0 2%;
     display: flex;
     flex-wrap: wrap;
+    margin: 0 2%;
 }
 
 .categoriesContainerName {
     display: flex;
     justify-content: center;
-    text-align: center;
     align-items: flex-end;
+    margin-bottom: 2%;
+    text-align: center;
     font-size: 22px;
     color: rgba(45, 60, 86, 1);
-    margin-bottom: 2%;
 }
 
 .categoriesNameRowLeft, .categoriesNameRowRight {
-    flex: 1;
     display: flex;
+    flex: 1;
     justify-content: flex-end;
     margin-top: 4px;
 }
@@ -25,12 +25,12 @@
 .categoriesNameRowBtn {
     height: min-content;
     margin-bottom: 2%;
-    color: rgba(39, 93, 114, 1);
+    color: rgba(52, 123, 152, 1);
     cursor: pointer;
 }
 
 .categoriesNameRowBtn:hover {
-    color: rgba(52, 123, 152, 1);
+    color: rgba(39, 93, 114, 1);
 }
 
 .countries, .denominations, .commemorative, .colored, .silver, .gold {
@@ -45,7 +45,7 @@
 }
 
 .countries:hover, .denominations:hover, .commemorative:hover, .colored:hover, .silver:hover, .gold:hover {
-    background-color: rgba(249, 254, 255, 1);
+    background-color: rgba(231, 243, 248, 1);
 }
 
 .contentContainer {
@@ -56,11 +56,9 @@
 }
 
 .categoryHeader {
-    color: rgba(46, 56, 77, 1);
-    font-family: 'Rubik', sans-serif;
-    font-weight: 400;
     text-transform: uppercase;
     font-size: 15px;
+    color: rgba(46, 56, 77, 1);
     cursor: pointer;
 }
 
@@ -70,16 +68,15 @@
     margin: 3px;
     padding: 0;
     font-size: 14px;
-    background-color: rgb(255, 255, 255);
-    color: rgba(52, 123, 152, 1);
-    font-family: 'Rubik', sans-serif;
-    font-weight: 400;
-    border: 1px solid rgba(135, 152, 173, 0.6);
     border-radius: 4px;
+    border: 1px solid rgba(135, 152, 173, 0.6);
+    color: rgba(52, 123, 152, 1);
+    background-color: rgb(255, 255, 255);
     cursor: pointer;
 }
 
 .country:hover {
     color: rgba(46, 56, 77, 1);
-    background-color: rgba(214, 228, 234, 1);
+    color: rgba(52, 123, 152, 1);
+    background-color: rgb(241, 150, 46);
 }

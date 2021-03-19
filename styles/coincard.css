@@ -5,7 +5,6 @@
     grid-template-columns: 3fr 1fr;
     grid-template-areas: 'goBack goBack' 'cardName cardName' 'specification picture' 'mintage mintage' 'addCollection addCollection' 'swap swap';
     font-size: 14px;
-    font-weight: 300;
 }
 
 .goBack {
@@ -29,9 +28,9 @@ button {
     align-items: center;
     padding-left: 10px;
     font-weight: bold;
-    border: 1px solid rgba(125, 179, 199, 1);
     border-radius: 4px;
-    background-color: rgba(212, 237, 247, 1);
+    border: 1px solid var(--grey);
+    background-color: var(--lightBlue);
 }
 
 .specification {
@@ -47,19 +46,21 @@ button {
     height: 250px;
     margin: 10%;
     padding: 10px;
-    border: 1px solid rgba(125, 179, 199, 1);
+    border: 1px solid var(--orange);
+    background-color: var(--lightOrange);
+    color: var(--darkBlue);
     border-radius: 50%;
 }
 
 .mintage {
     grid-area: mintage;
-    border-top: 1px solid rgba(125, 179, 199, 1);
-    border-bottom: 1px solid rgba(125, 179, 199, 1);
+    border-top: 1px solid var(--grey);
+    border-bottom: 1px solid var(--grey);
 }
 
 .addCollection {
     grid-area: addCollection;
-    border-bottom: 1px solid rgba(125, 179, 199, 1);
+    border-bottom: 1px solid var(--grey);
     overflow-x: auto;
 }
 
@@ -72,7 +73,7 @@ button {
 }
 
 table, th, td {
-    border: 1px solid rgba(135, 152, 173, 0.6);
+    border: 1px solid var(--grey);
     border-collapse: collapse;
 }
 
@@ -93,12 +94,12 @@ td {
 }
 
 .mintageTableHeader, .specificationTableHeader {
-    background-color: rgba(135, 152, 173, 0.3);
-    font-weight: 400;
+    color: var(--darkBlue);
 }
 
 .mintageTable th {
-    font-weight: 400;
+    font-weight: bold;
+    color: var(--darkBlue);
 }
 
 .collapse {
@@ -123,7 +124,7 @@ input[type="checkbox"]:checked+.collapsed {
 
 .containerName {
     font-size: 16px;
-    color: rgba(39, 93, 114, 1);
+    color: var(--darkBlue);
 }
 
 /*Added coins section*/
@@ -150,17 +151,16 @@ input[type="checkbox"]:checked+.collapsed {
     min-width: 500px;
     width: 100%;
     padding: 5px;
-    border: 1px solid rgba(135, 152, 173, 0.6);
+    border: 1px solid var(--grey);
     border-radius: 3px;
     margin-bottom: 5px;
 }
 
 .coincardAddedCoins:hover {
-    background-color: rgba(135, 152, 173, 0.3);
+    background-color: var(--lightBlue);
 }
 
 /*When added coins table hovered, change checkbox background color*/
-
 .coincardAddedCoins:hover>.coincardAddedSwap .checkboxContainer .fCheckbox {
     background-color: transparent;
 }
@@ -183,7 +183,7 @@ input[type="checkbox"]:checked+.collapsed {
 
 .coincardAddedDataBtn a {
     text-decoration: none;
-    color: rgb(39, 93, 114);
+    color: var(--darkBlue);
 }
 
 .coincardAddedDataBtn a:hover {
@@ -219,8 +219,13 @@ input[type="checkbox"]:checked+.collapsed {
 }
 
 .coincardAddedCoinsHeader {
-    font-weight: 400;
-    background-color: rgba(135, 152, 173, 0.3);
+    font-weight: bold;
+    color: var(--darkBlue);
+    background-color: var(--lightOrange);
+}
+
+.coincardAddedCoinsHeader:hover {
+    background-color: var(--lightOrange);
 }
 
 .deleteBtnContainer {
@@ -231,7 +236,7 @@ input[type="checkbox"]:checked+.collapsed {
 }
 
 .deleteBtnContainer:hover>.deleteBtn, .deleteBtnContainer:hover>.deleteBtn::after {
-    border-color: rgb(39, 93, 114);
+    border-color: var(--darkBlue);
 }
 
 .deleteBtn {
@@ -266,7 +271,7 @@ input[type="checkbox"]:checked+.collapsed {
 
 .coincardUserSwapOffer {
     margin: 5px 20px 5px 0;
-    color: rgba(39, 93, 114, 1);
+    color: var(--darkBlue);
     font-weight: 400;
     cursor: pointer;
 }

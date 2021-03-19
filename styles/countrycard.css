@@ -5,7 +5,6 @@
     grid-template-columns: 1fr;
     grid-template-areas: 'goBack' 'cardName' 'description' 'coins';
     font-size: 14px;
-    font-weight: 300;
 }
 
 .goBack {
@@ -20,14 +19,14 @@
     align-items: center;
     padding-left: 10px;
     font-weight: bold;
-    border: 1px solid rgba(125, 179, 199, 1);
     border-radius: 4px;
-    background-color: rgba(212, 237, 247, 1);
+    border: 1px solid var(--grey);
+    background-color: var(--lightBlue);
 }
 
 .cardDescription {
     grid-area: description;
-    border-bottom: 1px solid rgba(125, 179, 199, 1);
+    border-bottom: 1px solid var(--grey);
 }
 
 .coins {
@@ -44,13 +43,8 @@ button {
 }
 
 .containerName {
-    font-size: 18px;
-    color: rgba(39, 93, 114, 1);
-}
-
-table, th, td {
-    border: 1px solid rgba(211, 211, 211, 1);
-    border-collapse: collapse;
+    font-size: 16px;
+    color: var(--darkBlue);
 }
 
 table {
@@ -63,10 +57,6 @@ th, td {
 
 th, td {
     width: 11.11%;
-}
-
-tr:nth-child(even) {
-    background-color: rgba(231, 243, 248, 1);
 }
 
 .rowYear {

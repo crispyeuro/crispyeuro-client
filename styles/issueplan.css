@@ -1,21 +1,16 @@
+@import "main";
 .issueContainerName {
     font-size: 3vh;
+    margin-bottom: 2%;
     color: rgba(45, 60, 86, 1);
-    margin-bottom: 5%;
 }
 
 table {
     width: 100%;
 }
 
-table, th, td {
-    border: 1px solid rgba(135, 152, 173, 0.6);
-    border-collapse: collapse;
-}
-
 .tableHeader {
-    color: rgba(45, 60, 86, 1);
-    background-color: rgba(214, 228, 234, 1);
+    color: rgba(39, 93, 114, 1);
 }
 
 .rowColor {
