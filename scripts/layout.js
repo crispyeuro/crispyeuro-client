@@ -31,22 +31,23 @@ window.onload = function () {
     /*document.getElementsByClassName("navBtnContainer")[0].onclick = function() {showMenu()};*/
 
     document.getElementsByClassName("menu")[0].innerHTML =
-        `
-        <div class="sideNav" id="pcSideNavLinksContainer">
-            <br>
+        `<div class="sideNav" id="pcSideNavLinksContainer">
             <div class="sideNavBtnContainer" onclick="showSideNav()">
                 <div class="sideNavText">Menu</div>
                 <div class="sideNavBtn" id="sideNavBtnAction"></div>
             </div>
-            <div class="sideNavUsername">
-                Hello,
-                <br>
-                <a href="settings.html">[testUsername] </a>!
+
+            <div class="sideNavUserContainer" onclick="location.href='settings.html';">
+                <div class="sideNavUserIconContainer">
+                    <div class="userIcon">Us</div>
+                </div>
+                <div class="sideNavUserText">[Username]</div>
             </div>
+
             <div class="sideNavMeterName">720 coins collected</div>
-            <div class="myCoinsAmountMeter">
-                <div class="myCoinsAmountProgress">45%</div>
-            </div><br>
+            <div class="sideNavMeter">
+                <div class="sideNavMeterProgress">45%</div>
+            </div>
 
             <ul class="sideNavLinks" id="sideNavLinksContainer">
                 <li><a class="menuLink" href="statistics.html">Statistics</a></li>
