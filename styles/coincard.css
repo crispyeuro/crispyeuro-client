@@ -123,6 +123,8 @@ input[type="checkbox"]:checked+.collapsed {
 }
 
 .containerName {
+    display: flex;
+    align-items: center;
     font-size: 16px;
     color: var(--darkBlue);
 }

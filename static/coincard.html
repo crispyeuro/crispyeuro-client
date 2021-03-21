@@ -6,6 +6,7 @@
     <title>Coin [Denomination][Year][Country]</title>
     <script src="../scripts/layout.js"></script>
     <script src="../scripts/data.js"></script>
+    <script src="../scripts/coincard.js"></script>
     <link rel="stylesheet" href="../styles/layout.css">
     <link rel="stylesheet" href="../styles/coincard.css">
     <link rel="stylesheet" href="../styles/modal.css">
@@ -17,29 +18,33 @@
     <div class="menu"></div>
 
     <div class="content">
+        <script type="text/javascript">
+            checkCoincardHash();
+        </script>
         <div class="goBack">
             <button onclick="window.history.back()">Go back</button>
         </div>
         <div class="cardName">
-            <div class="containerName">[Denomination][Year][Country]</div>
+            <div class="containerName"><div class="viewCoincardName">[Denomination][Year][Denomination]</div></div>
         </div>
         <div class="coinPicture">
             PIC
         </div>
         <div class="specification">
             <div class="containerName">Specification</div><br><br>
+            <div class="testCoin"></div>
             <table>
                 <tr>
                     <th class="specificationTableHeader">Value</th>
-                    <td>[Denomination]</td>
+                    <td><div class="viewCoinDenomination">[Denomination]</div></td>
                 </tr>
                 <tr>
                     <th class="specificationTableHeader">Year</th>
-                    <td>[Year]</td>
+                    <td><div class="viewCoinYear">[Year]</div></td>
                 </tr>
                 <tr>
                     <th class="specificationTableHeader">Country</th>
-                    <td>[Country]</td>
+                    <td><div class="viewCoinCountry">[Country]</div></td>
                 </tr>
             </table>
             <br>
@@ -49,24 +54,24 @@
             <div class="collapsed">
                 <table>
                     <tr>
-                        <th class="specificationTableHeader">Diameter (mm)</th>
-                        <td>[Diameter]</td>
+                        <th class="specificationTableHeader">Diameter</th>
+                        <td><div class="viewCoinDiameter">[Diameter]</div></td>
                     </tr>
                     <tr>
-                        <th class="specificationTableHeader">Thickness (mm)</th>
-                        <td>[Thickness]</td>
+                        <th class="specificationTableHeader">Thickness</th>
+                        <td><div class="viewCoinThickness">[Thickness]</div></td>
                     </tr>
                     <tr>
-                        <th class="specificationTableHeader">Mass (g)</th>
-                        <td>[Mass]</td>
+                        <th class="specificationTableHeader">Mass</th>
+                        <td><div class="viewCoinMass">[Mass]</div></td>
                     </tr>
                     <tr>
                         <th class="specificationTableHeader">Composition</th>
-                        <td>[Composition]</td>
+                        <td><div class="viewCoinComposition">[Composition]</div></td>
                     </tr>
                     <tr>
                         <th class="specificationTableHeader">Edge</th>
-                        <td>[Edge]</td>
+                        <td><div class="viewCoinEdge">[Edge]</div></td>
                     </tr>
                 </table>
                 <br>
@@ -75,11 +80,11 @@
             <table>
                 <tr>
                     <th class="specificationTableHeader">Feature</th>
-                    <td>[Feature]</td>
+                    <td><div class="viewCoinFeature">[Feature]</div></td>
                 </tr>
                 <tr>
                     <th class="specificationTableHeader">Description</th>
-                    <td>[Description]</td>
+                    <td><div class="viewCoinDesciprtion">[Description]</div></td>
                 </tr>
             </table>
         </div>
@@ -383,6 +388,5 @@
 </body>
 
 <script src="../scripts/modal.js"></script>
-<script src="../scripts/coincard.js"></script>
 
 </html>
