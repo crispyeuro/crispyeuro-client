@@ -63,8 +63,13 @@
 }
 
 .country {
-    width: 100px;
-    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*width: 100px;*/
+    width: 64px;
+    /*height: 50px;*/
+    height: 41px;
     margin: 3px;
     padding: 0;
     font-size: 14px;
@@ -75,8 +80,14 @@
     cursor: pointer;
 }
 
+.country img {
+    border-radius: 4px;
+}
+
 .country:hover {
     color: rgba(46, 56, 77, 1);
     color: rgba(52, 123, 152, 1);
-    background-color: rgb(241, 150, 46);
+    /*background-color: rgb(241, 150, 46);*/
+    border-color: rgb(241, 150, 46);
+    opacity: 0.8;
 }

@@ -366,15 +366,17 @@ function checkHash() {
 function loadCountries() {
     var countryList = document.getElementById("countriesList");
     for (country = 0; country <= countryArray.length - 1; country++) {
-        var element = document.createElement("button");
-        element.className = "country";
+        var countryBtn = document.createElement("img");
+        countryBtn.src = countryArray[country].flagImage;
+        countryBtn.width = "64";
+        countryBtn.alt = countryArray[country].name;
+        countryBtn.setAttribute("title", countryArray[country].title);
+        countryBtn.className = "country";
         var onClickAttr = document.createAttribute("onclick");
-        onClickAttr.value = 'location.href="countrycard.html#' + countryArray[country].replace(/\s/g, '') + '"';
-        element.setAttributeNode(onClickAttr);
-        element.addEventListener('click', event => event.stopPropagation());
-        var textNode = document.createTextNode(countryArray[country]);
-        element.appendChild(textNode);
-        countryList.appendChild(element);
+        onClickAttr.value = 'location.href="countrycard.html?country=' + countryArray[country].name.replace(/\s/g, '') + '"';
+        countryBtn.setAttributeNode(onClickAttr);
+        countryBtn.addEventListener('click', event => event.stopPropagation());
+        countryList.appendChild(countryBtn);
     }
 }
 
@@ -384,7 +386,7 @@ function loadOrdinaryCoins() {
         var element = document.createElement("button");
         element.className = "country";
         var onClickAttr = document.createAttribute("onclick");
-        onClickAttr.value = 'location.href="nominalcard.html#' + (coins[i].coin).replace(/\s/g, '') + '"';
+        onClickAttr.value = 'location.href="nominalcard.html?denomination=' + coins[i].value + '"';
         element.setAttributeNode(onClickAttr);
         element.addEventListener('click', event => event.stopPropagation());
         var textNode = document.createTextNode(coins[i].coin);
@@ -403,7 +405,7 @@ function checkOtherCoins() {
             var element = document.createElement("button");
             element.className = "country";
             var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="nominalcard.html#' + (allCoins[i].coin).replace(/\s/g, '') + '"';
+            onClickAttr.value = 'location.href="nominalcard.html?denomination=' + allCoins[i].value + '"';
             element.setAttributeNode(onClickAttr);
             element.addEventListener('click', event => event.stopPropagation());
             var textNode = document.createTextNode(allCoins[i].coin);
@@ -437,11 +439,19 @@ function loadIssues() {
             var element = document.createElement("button");
             element.className = "country";
             var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="commemorativecard.html#' + (allIssues[i].coin).replace(/\s/g, '') + '"';
+            if (allIssues[i].coin == "2007 TOR" || allIssues[i].coin == "2009 EMU" || allIssues[i].coin == "2012 10YE" || allIssues[i].coin == "2015 30YF") {
+                onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + allIssues[i].year + 
+                '&coin_type=commemorative_common"';
+                var textNode = document.createTextNode(allIssues[i].coin);
+                element.appendChild(textNode);
+            } else {
+                onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + allIssues[i].year + 
+                '&coin_type=commemorative"';
+                var textNode = document.createTextNode(allIssues[i].coin);
+                element.appendChild(textNode);
+            }
             element.setAttributeNode(onClickAttr);
             element.addEventListener('click', event => event.stopPropagation());
-            var textNode = document.createTextNode(allIssues[i].coin);
-            element.appendChild(textNode);
             issuesList.appendChild(element);
         }
         return true;
@@ -455,9 +465,10 @@ function loadIssues() {
             var element = document.createElement("button");
             element.className = "country";
             var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="commemorativecard.html#' + (issues[i].coin).replace(/\s/g, '') + '"';
+            onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + issues[i].year + 
+            '&coin_type=commemorative' + '"';
             element.setAttributeNode(onClickAttr);
-            element.addEventListener('click', () => location.href = 'commemorativecard.html');
+            /*element.addEventListener('click', () => location.href = 'commemorativecard.html');*/
             element.addEventListener('click', event => event.stopPropagation());
             var textNode = document.createTextNode(issues[i].coin);
             element.appendChild(textNode);
@@ -470,16 +481,19 @@ function loadIssues() {
             commonIssuesLabel.className += " disabled";
             commonIssuesCB.disabled = true;
         }
-        for (i = 0; i <= countryArray.length - 1; i++) {
-            var element = document.createElement("button");
-            element.className = "country";
+        for (country = 0; country <= countryArray.length - 1; country++) {
+            var countryBtn = document.createElement("img");
+            countryBtn.src = countryArray[country].flagImage;
+            countryBtn.width = "64";
+            countryBtn.alt = countryArray[country].name;
+            countryBtn.setAttribute("title", countryArray[country].title);
+            countryBtn.className = "country";
             var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="commemorativecard.html#' + (countryArray[i]).replace(/\s/g, '') + '"';
-            element.setAttributeNode(onClickAttr);
-            element.addEventListener('click', event => event.stopPropagation());
-            var textNode = document.createTextNode(countryArray[i]);
-            element.appendChild(textNode);
-            issuesList.appendChild(element);
+            onClickAttr.value = 'location.href="commemorativecard.html?country=' + countryArray[country].name.replace(/\s/g, '') + 
+            '&coin_type=commemorative"';
+            countryBtn.setAttributeNode(onClickAttr);
+            countryBtn.addEventListener('click', event => event.stopPropagation());
+            issuesList.appendChild(countryBtn);
         }
         return false;
     }
@@ -500,7 +514,8 @@ function loadColored() {
             var element = document.createElement("button");
             element.className = "country";
             var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="countrycard.html#Colored-' + issues[i].coin + '"';
+            onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + issues[i].coin + 
+            '&coin_type=colorized"';
             element.setAttributeNode(onClickAttr);
             element.addEventListener('click', event => event.stopPropagation());
             var textNode = document.createTextNode(issues[i].coin);
@@ -508,16 +523,19 @@ function loadColored() {
             coloredList.appendChild(element);
         }
     } if (coloredByCountryRadio.checked == true) {
-        for (i = 0; i <= countryArray.length - 1; i++) {
-            var element = document.createElement("button");
-            element.className = "country";
+        for (country = 0; country <= countryArray.length - 1; country++) {
+            var countryBtn = document.createElement("img");
+            countryBtn.src = countryArray[country].flagImage;
+            countryBtn.width = "64";
+            countryBtn.alt = countryArray[country].name;
+            countryBtn.setAttribute("title", countryArray[country].title);
+            countryBtn.className = "country";
             var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="countrycard.html#Colored-' + countryArray[i].replace(/\s/g, '') + '"';
-            element.setAttributeNode(onClickAttr);
-            element.addEventListener('click', event => event.stopPropagation());
-            var textNode = document.createTextNode(countryArray[i]);
-            element.appendChild(textNode);
-            coloredList.appendChild(element);
+            onClickAttr.value = 'location.href="commemorativecard.html?country=' + countryArray[country].name.replace(/\s/g, '') + 
+            '&coin_type=colorized"';
+            countryBtn.setAttributeNode(onClickAttr);
+            countryBtn.addEventListener('click', event => event.stopPropagation());
+            coloredList.appendChild(countryBtn);
         }
     }
 }
@@ -532,7 +550,8 @@ function loadSilver() {
             var element = document.createElement("button");
             element.className = "country";
             var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="countrycard.html#Silver-' + issues[i].coin + '"';
+            onClickAttr.value = 'location.href="countrycard.html?year=' + issues[i].coin + 
+            '&coin_type=silver"';
             element.setAttributeNode(onClickAttr);
             element.addEventListener('click', event => event.stopPropagation());
             var textNode = document.createTextNode(issues[i].coin);
@@ -540,16 +559,19 @@ function loadSilver() {
             silverList.appendChild(element);
         }
     } if (silverByCountryRadio.checked == true) {
-        for (i = 0; i <= countryArray.length - 1; i++) {
-            var element = document.createElement("button");
-            element.className = "country";
+        for (country = 0; country <= countryArray.length - 1; country++) {
+            var countryBtn = document.createElement("img");
+            countryBtn.src = countryArray[country].flagImage;
+            countryBtn.width = "64";
+            countryBtn.alt = countryArray[country].name;
+            countryBtn.setAttribute("title", countryArray[country].title);
+            countryBtn.className = "country";
             var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="countrycard.html#Silver-' + countryArray[i].replace(/\s/g, '') + '"';
-            element.setAttributeNode(onClickAttr);
-            element.addEventListener('click', event => event.stopPropagation());
-            var textNode = document.createTextNode(countryArray[i]);
-            element.appendChild(textNode);
-            silverList.appendChild(element);
+            onClickAttr.value = 'location.href="commemorativecard.html?country=' + countryArray[country].name.replace(/\s/g, '') + 
+            '&coin_type=silver"';
+            countryBtn.setAttributeNode(onClickAttr);
+            countryBtn.addEventListener('click', event => event.stopPropagation());
+            silverList.appendChild(countryBtn);
         }
     }
 }
@@ -564,7 +586,8 @@ function loadGold() {
             var element = document.createElement("button");
             element.className = "country";
             var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="countrycard.html#Gold-' + issues[i].coin + '"';
+            onClickAttr.value = 'location.href="countrycard.html?year=' + issues[i].coin + 
+            '&coin_type=gold"';
             element.setAttributeNode(onClickAttr);
             element.addEventListener('click', event => event.stopPropagation());
             var textNode = document.createTextNode(issues[i].coin);
@@ -572,16 +595,19 @@ function loadGold() {
             goldList.appendChild(element);
         }
     } if (goldByCountryRadio.checked == true) {
-        for (i = 0; i <= countryArray.length - 1; i++) {
-            var element = document.createElement("button");
-            element.className = "country";
+        for (country = 0; country <= countryArray.length - 1; country++) {
+            var countryBtn = document.createElement("img");
+            countryBtn.src = countryArray[country].flagImage;
+            countryBtn.width = "64";
+            countryBtn.alt = countryArray[country].name;
+            countryBtn.setAttribute("title", countryArray[country].title);
+            countryBtn.className = "country";
             var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="countrycard.html#Gold-' + countryArray[i].replace(/\s/g, '') + '"';
-            element.setAttributeNode(onClickAttr);
-            element.addEventListener('click', event => event.stopPropagation());
-            var textNode = document.createTextNode(countryArray[i]);
-            element.appendChild(textNode);
-            goldList.appendChild(element);
+            onClickAttr.value = 'location.href="commemorativecard.html?country=' + countryArray[country].name.replace(/\s/g, '') + 
+            '&coin_type=gold"';
+            countryBtn.setAttributeNode(onClickAttr);
+            countryBtn.addEventListener('click', event => event.stopPropagation());
+            goldList.appendChild(countryBtn);
         }
     }
 }
