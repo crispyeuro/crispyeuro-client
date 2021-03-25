@@ -436,23 +436,26 @@ function loadIssues() {
         }
         var allIssues = sortAllIssues();
         for (i = 0; i <= allIssues.length - 1; i++) {
-            var element = document.createElement("button");
-            element.className = "country";
-            var onClickAttr = document.createAttribute("onclick");
-            if (allIssues[i].coin == "2007 TOR" || allIssues[i].coin == "2009 EMU" || allIssues[i].coin == "2012 10YE" || allIssues[i].coin == "2015 30YF") {
-                onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + allIssues[i].year + 
-                '&coin_type=commemorative_common"';
-                var textNode = document.createTextNode(allIssues[i].coin);
-                element.appendChild(textNode);
-            } else {
-                onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + allIssues[i].year + 
-                '&coin_type=commemorative"';
-                var textNode = document.createTextNode(allIssues[i].coin);
-                element.appendChild(textNode);
+            if (allIssues[i].coin != "1999" && allIssues[i].coin != "2000" && allIssues[i].coin != "2001" && allIssues[i].coin != "2002" && allIssues[i].coin != "2003") {
+                var element = document.createElement("button");
+                element.className = "country";
+                var onClickAttr = document.createAttribute("onclick");
+                if (allIssues[i].coin == "2007 TOR" || allIssues[i].coin == "2009 EMU" || allIssues[i].coin == "2012 10YE" || allIssues[i].coin == "2015 30YF") {
+                    onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + allIssues[i].year + 
+                    '&coin_type=commemorative_common"';
+                    var textNode = document.createTextNode(allIssues[i].coin);
+                    element.appendChild(textNode);
+                } else {
+                    onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + allIssues[i].year + 
+                    '&coin_type=commemorative"';
+                    var textNode = document.createTextNode(allIssues[i].coin);
+                    element.appendChild(textNode);
+                }
+                element.setAttributeNode(onClickAttr);
+                element.addEventListener('click', event => event.stopPropagation());
+                issuesList.appendChild(element);
             }
-            element.setAttributeNode(onClickAttr);
-            element.addEventListener('click', event => event.stopPropagation());
-            issuesList.appendChild(element);
+
         }
         return true;
     }
@@ -462,17 +465,19 @@ function loadIssues() {
             commonIssuesCB.disabled = false;
         }
         for (i = 0; i <= issues.length - 1; i++) {
-            var element = document.createElement("button");
-            element.className = "country";
-            var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + issues[i].year + 
-            '&coin_type=commemorative' + '"';
-            element.setAttributeNode(onClickAttr);
-            /*element.addEventListener('click', () => location.href = 'commemorativecard.html');*/
-            element.addEventListener('click', event => event.stopPropagation());
-            var textNode = document.createTextNode(issues[i].coin);
-            element.appendChild(textNode);
-            issuesList.appendChild(element);
+            if (issues[i].coin != "1999" && issues[i].coin != "2000" && issues[i].coin != "2001" && issues[i].coin != "2002" && issues[i].coin != "2003") {
+                var element = document.createElement("button");
+                element.className = "country";
+                var onClickAttr = document.createAttribute("onclick");
+                onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + issues[i].year + 
+                '&coin_type=commemorative' + '"';
+                element.setAttributeNode(onClickAttr);
+                /*element.addEventListener('click', () => location.href = 'commemorativecard.html');*/
+                element.addEventListener('click', event => event.stopPropagation());
+                var textNode = document.createTextNode(issues[i].coin);
+                element.appendChild(textNode);
+                issuesList.appendChild(element);
+            }
         }
         return true;
     }

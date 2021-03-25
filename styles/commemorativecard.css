@@ -42,7 +42,13 @@ button {
     padding: 10px;
 }
 
+.cardName {
+    display: flex;
+    align-content: center;
+}
 .containerName {
+    display: flex;
+    align-items: center;
     font-size: 16px;
     color: var(--darkBlue);
 }
@@ -57,6 +63,7 @@ button {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    flex-direction: column;
     width: 150px;
     height: 150px;
     border-radius: 4px;
@@ -69,7 +76,7 @@ button {
 
 .coin:hover .coinPic {
     background-color: var(--lightOrange);
-    color: var(--black);
+    color: var(--darkerBlue);
 }
 
 .coinPic {
@@ -87,4 +94,12 @@ button {
     position: absolute;
     height: 150px;
     width: 150px;
+}
+
+.coinDescription {
+    padding-top: 2%;
+    text-align: center;
+    width: 100%;
+    color: var(--darkerBlue);
+    font-weight: bold;
 }

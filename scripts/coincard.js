@@ -40,6 +40,7 @@ function displayCoinVariables(obj) {
         } else {
             denominationStr += " euro";
         }
+        document.title = "Coin " + denominationStr + " " + obj[0].issue_year + " " + obj[0].country;
         document.getElementsByClassName("viewCoincardName")[0].innerHTML = denominationStr + " " + obj[0].issue_year + " " + obj[0].country;
         document.getElementsByClassName("viewCoinDenomination")[0].innerHTML = denominationStr;
         document.getElementsByClassName("viewCoinYear")[0].innerHTML = obj[0].issue_year;
@@ -51,4 +52,55 @@ function displayCoinVariables(obj) {
         document.getElementsByClassName("viewCoinEdge")[0].innerHTML = obj[0].edge;
         document.getElementsByClassName("viewCoinFeature")[0].innerHTML = obj[0].feature;
         document.getElementsByClassName("viewCoinDesciprtion")[0].innerHTML = obj[0].coin_description;
+}
+
+async function getCommemorativecardUrlValues() {
+    const apiPath = `/api/commemorativeCountryRequest${window.location.search}`;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        displayCommemorativecardVariables(obj);
+    } catch (err) {
+        alert(err);
+    }
+}
+
+function displayCommemorativecardVariables(obj) {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('issue_year')) {
+        document.getElementsByClassName("containerName")[0].innerHTML += " - " + obj[0].issue_year;
+        document.title = "Commemorative 2 euro - " + obj[0].issue_year;
+    } else {
+        document.getElementsByClassName("containerName")[0].innerHTML += " - " + obj[0].country;
+        document.title = "Commemorative 2 euro - " + obj[0].country;
+    }
+    if (urlParams.has('issue_year')) {
+        document.getElementsByClassName("cardDescriptionText")[0].innerHTML = "Total " + obj.length + " coins were issued in " + obj[0].issue_year + ".";
+    } else {
+        document.getElementsByClassName("cardDescriptionText")[0].innerHTML = obj[0].country + " issued " + obj.length + " coins.";
+    }
+    for(i=0; i < obj.length; i++) {
+        let coinHTML = `
+            <div class="coin">
+            <a href="coincard.html?coin_id=` + obj[i].coin_id + `"></a>
+            <div class="coinPic">PIC</div>
+            <div class="coinDescription">
+        `;
+        if (urlParams.has('issue_year')) {
+            coinHTML += obj[i].country + `</div>
+            </div>
+            `;
+        } else {
+            if (obj[i].coin_type == 'commemorative_common' && !urlParams.has('issue_year')) {
+                coinHTML += obj[i].issue_year + ` Common</div>
+                </div>
+                `;
+            } else {
+                coinHTML += obj[i].issue_year + `</div>
+            </div>
+            `;
+        }
+        }
+        document.getElementsByClassName("coinsContainer")[0].innerHTML += coinHTML;
+    }
 }
