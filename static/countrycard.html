@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <title>Country [Country]</title>
     <script src="../scripts/layout.js"></script>
+    <script src="../scripts/coincard.js"></script>
+    <script src="../scripts/data.js"></script>
     <link rel="stylesheet" href="../styles/layout.css">
     <link rel="stylesheet" href="../styles/countrycard.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +17,9 @@
     <div class="menu"></div>
 
     <div class="content">
+        <script type="text/javascript">
+            getCountrycardUrlValues();
+        </script>
         <div class="goBack">
             <button onclick="window.history.back()">Go back</button>
         </div>
@@ -23,15 +28,16 @@
         </div>
         <div class="cardDescription">
             <div class="containerName">Description</div>
-            <br><br>
-            [Description]
-            <br><br>
+            <div class="descriptionContainer">
+                <div class="countryFlag">..</div>
+                <div class="cardDescriptionText"></div>
+            </div>
         </div>
         <div class="coins">
             <div class="containerName">Coins</div>
-            <br><br>
+            <br>
             <div class="tableName">Ordinary</div>
-            <table>
+            <table class="viewOrdinaryCoins">
                 <tr>
                     <th>Year</th>
                     <th>1 cent</th>
@@ -43,17 +49,7 @@
                     <th>1 euro</th>
                     <th>2 euro</th>
                 </tr>
-                <tr>
-                    <td>.</td>
-                    <td><a href="coincard.html">.</a></td>
-                    <td><a href="coincard.html">.</a></td>
-                    <td><a href="coincard.html">.</a></td>
-                    <td><a href="coincard.html">.</a></td>
-                    <td><a href="coincard.html">.</a></td>
-                    <td><a href="coincard.html">.</a></td>
-                    <td><a href="coincard.html">.</a></td>
-                    <td><a href="coincard.html">.</a></td>
-                </tr>
+                
             </table><br>
 
             <div class="tableName">Commamorative 2 euro</div>

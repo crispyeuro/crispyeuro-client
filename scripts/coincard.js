@@ -104,3 +104,83 @@ function displayCommemorativecardVariables(obj) {
         document.getElementsByClassName("coinsContainer")[0].innerHTML += coinHTML;
     }
 }
+
+async function getCountrycardUrlValues() {
+    const apiPath = `/api/countryRequest${window.location.search}`;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        displayCountryVariables(obj);
+    } catch (err) {
+        alert(err);
+    }
+}
+
+function displayCountryVariables(obj) {
+    document.title = "Coins of " + obj[0].country;
+    document.getElementsByClassName("containerName")[0].innerHTML = "Coins of " + obj[0].country;
+    let ordinaryCoins = [];
+    let ordinaryCoinsYears = [];
+    for(i = 0; i < obj.length; i++) {
+        if(obj[i].coin_type == "ordinary") {
+            ordinaryCoins.push(obj[i]);
+            ordinaryCoinsYears.push(obj[i].issue_year);
+        }
+    }
+    let uniqueYears = (uniq(ordinaryCoinsYears));
+    let x = [];
+    for(i = 0; i < uniqueYears.length; i++) {
+        x.push([uniqueYears[i], []]);
+    }
+    for(i = 0; i < uniqueYears.length; i++) {
+        for(j = 0; j < ordinaryCoins.length; j++) {
+            if (uniqueYears[i] == ordinaryCoins[j].issue_year) {
+                x[i][1].push(ordinaryCoins[j]);
+            }
+        }
+    }
+    console.log(x);
+    for(i = 0; i < x.length; i++) {
+        let sortedCoins = x[i][1].sort(function (a, b) {
+            return a.denomination - b.denomination;
+        });
+        let tableRow = 
+        `
+        <tr >
+        <td class="tableColumnCell">` + x[i][0] + `</td>`
+        let denominations = [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2];
+        for(k = 0; k < denominations.length; k++) {
+            let row = `<td class="tableEmptyCell"></td>`;
+            for(l = 0; l < sortedCoins.length; l++) {
+                if (denominations[k] == sortedCoins[l].denomination) {
+                    row = `<td><a href="coincard.html?coin_id=` + sortedCoins[l].coin_id + `">View</a></td>`;
+                }
+            }
+            tableRow += row;
+        }
+        tableRow += `</tr>`
+        document.getElementsByClassName("viewOrdinaryCoins")[0].innerHTML += tableRow;
+    }
+    
+    let commemorativeCoins = [];
+    for(i = 0; i < obj.length; i++) {
+        if(obj[i].coin_type == "commemorative" || obj[i].coin_type == "commemorative_common") {
+            commemorativeCoins.push(obj[i]);
+        }
+    }
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const urlCountry = urlParams.get('country')
+    for(m = 0; m < countryArray.length; m++) {
+        if(urlCountry == countryArray[m].name) {
+            document.getElementsByClassName("countryFlag")[0].innerHTML = '<img src="' + countryArray[m].flagImage + '" alt="' + countryArray[m].name + '" title="' + countryArray[m].title + '" width="64">';
+            break;
+        }
+    }
+    let description = obj[0].country + " issued " + ordinaryCoins.length + " ordinary coins and " + commemorativeCoins.length + " commemorative coins."
+    document.getElementsByClassName("cardDescriptionText")[0].innerHTML = description;
+}
+
+function uniq(ordinaryCoinsYears) {
+    return Array.from(new Set(ordinaryCoinsYears));
+ }
