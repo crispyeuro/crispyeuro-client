@@ -110,15 +110,17 @@ async function getCountrycardUrlValues() {
     const response = await fetch(apiPath);
     const obj = await response.json();
     try {
-        displayCountryVariables(obj);
+        displayCountrycardVariables(obj);
     } catch (err) {
         alert(err);
     }
 }
 
-function displayCountryVariables(obj) {
+function displayCountrycardVariables(obj) {
     document.title = "Coins of " + obj[0].country;
     document.getElementsByClassName("containerName")[0].innerHTML = "Coins of " + obj[0].country;
+
+    /*Push ordinary coins in array and ordinary coins' issue years in array*/
     let ordinaryCoins = [];
     let ordinaryCoinsYears = [];
     for(i = 0; i < obj.length; i++) {
@@ -127,26 +129,72 @@ function displayCountryVariables(obj) {
             ordinaryCoinsYears.push(obj[i].issue_year);
         }
     }
+
+    /*Display a table of ordinary coins in HTML*/
     let uniqueYears = (uniq(ordinaryCoinsYears));
-    let x = [];
-    for(i = 0; i < uniqueYears.length; i++) {
-        x.push([uniqueYears[i], []]);
+    let ordinaryCoinsSortedByYears = countrycardOrdinaryCoinsByYears(uniqueYears, ordinaryCoins);
+    countrycardDisplayOrdinaryCoins(ordinaryCoinsSortedByYears);
+    
+    /*Push commemorative coins in an array*/
+    let commemorativeCoins = [];
+    for(i = 0; i < obj.length; i++) {
+        if(obj[i].coin_type == "commemorative" || obj[i].coin_type == "commemorative_common") {
+            commemorativeCoins.push(obj[i]);
+        }
     }
+
+    /*Display a table of commemorative coins in HTML*/
+    let sortedCommemorativeCoins = commemorativeCoins.sort((a, b) => a.issue_year - b.issue_year);
+    countrycardDisplayCommemorativeCoins(sortedCommemorativeCoins);
+
+     /*Display country flag in 'countrycard.html'*/
+    countrycardDsiplayFlag();
+
+    /*Display country description in HTML*/
+    let description = obj[0].country + " issued " + ordinaryCoins.length + " ordinary coins and " + commemorativeCoins.length + " commemorative coins."
+    document.getElementsByClassName("cardDescriptionText")[0].innerHTML = description;
+}
+
+function uniq(ordinaryCoinsYears) {
+    return Array.from(new Set(ordinaryCoinsYears));
+ }
+
+ function countrycardOrdinaryCoinsByYears(uniqueYears, ordinaryCoins) {
+    let sortedOrdinaryCoins = [];
+    /*Push an array of issue years and empty array in two-dimensional array*/
+    for(i = 0; i < uniqueYears.length; i++) {
+        sortedOrdinaryCoins.push([uniqueYears[i], []]);
+    }
+    /*Push an array of ordinary coins according issue year in two-dimensional array*/
     for(i = 0; i < uniqueYears.length; i++) {
         for(j = 0; j < ordinaryCoins.length; j++) {
             if (uniqueYears[i] == ordinaryCoins[j].issue_year) {
-                x[i][1].push(ordinaryCoins[j]);
+                sortedOrdinaryCoins[i][1].push(ordinaryCoins[j]);
             }
         }
     }
-    console.log(x);
+    return sortedOrdinaryCoins;
+ }
+
+ /*Display country flag in 'countrycard.html'*/
+ function countrycardDsiplayFlag() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const urlCountry = urlParams.get('country')
+    for(m = 0; m < countryArray.length; m++) {
+        if(urlCountry == countryArray[m].name) {
+            document.getElementsByClassName("countryFlag")[0].innerHTML = '<img src="' + countryArray[m].flagImage + '" alt="' + countryArray[m].name + '" title="' + countryArray[m].title + '" width="64">';
+            break;
+        }
+    }
+ }
+
+/*Display a table of ordinary coins in 'countrycard.html'*/
+ function countrycardDisplayOrdinaryCoins(x) {
     for(i = 0; i < x.length; i++) {
-        let sortedCoins = x[i][1].sort(function (a, b) {
-            return a.denomination - b.denomination;
-        });
+        let sortedCoins = x[i][1].sort((a, b) => a.denomination - b.denomination);
         let tableRow = 
-        `
-        <tr >
+        `<tr>
         <td class="tableColumnCell">` + x[i][0] + `</td>`
         let denominations = [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2];
         for(k = 0; k < denominations.length; k++) {
@@ -161,26 +209,26 @@ function displayCountryVariables(obj) {
         tableRow += `</tr>`
         document.getElementsByClassName("viewOrdinaryCoins")[0].innerHTML += tableRow;
     }
-    
-    let commemorativeCoins = [];
-    for(i = 0; i < obj.length; i++) {
-        if(obj[i].coin_type == "commemorative" || obj[i].coin_type == "commemorative_common") {
-            commemorativeCoins.push(obj[i]);
-        }
-    }
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const urlCountry = urlParams.get('country')
-    for(m = 0; m < countryArray.length; m++) {
-        if(urlCountry == countryArray[m].name) {
-            document.getElementsByClassName("countryFlag")[0].innerHTML = '<img src="' + countryArray[m].flagImage + '" alt="' + countryArray[m].name + '" title="' + countryArray[m].title + '" width="64">';
-            break;
-        }
-    }
-    let description = obj[0].country + " issued " + ordinaryCoins.length + " ordinary coins and " + commemorativeCoins.length + " commemorative coins."
-    document.getElementsByClassName("cardDescriptionText")[0].innerHTML = description;
-}
+ }
 
-function uniq(ordinaryCoinsYears) {
-    return Array.from(new Set(ordinaryCoinsYears));
+/*Display a table of commemorative coins in 'countrycard.html'*/
+ function countrycardDisplayCommemorativeCoins(commemorativeCoins) {
+    for(i = 0; i < commemorativeCoins.length; i++) {
+        let tableRow = 
+        `<tr>
+            <td class="commemorativeOrderRow">` + (i+1) + `</td>
+            <td class="commemorativeYearRow"><a href="coincard.html?coin_id=` + commemorativeCoins[i].coin_id + `">` + commemorativeCoins[i].issue_year + `</a></td>
+            <td class="commemorativeFeatureRow"><a href="coincard.html?coin_id=` + commemorativeCoins[i].coin_id + `">`;
+        
+        if (commemorativeCoins[i].coin_type == "commemorative_common") {
+            tableRow += `<div class="boldText">Common issue.</div> ` + commemorativeCoins[i].feature + `</a></td>
+                <td class="commemorativeMintageRow"><a href="coincard.html?coin_id=` + commemorativeCoins[i].coin_id + `">...</a></td>
+            </tr>`;
+        } else {
+            tableRow += commemorativeCoins[i].feature + `</a></td>
+                <td class="commemorativeMintageRow"><a href="coincard.html?coin_id=` + commemorativeCoins[i].coin_id + `">...</a></td>
+            </tr>`;
+        }
+        document.getElementsByClassName("viewCommemorativeCoins")[0].innerHTML += tableRow;
+    }
  }

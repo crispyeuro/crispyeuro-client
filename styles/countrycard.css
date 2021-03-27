@@ -69,6 +69,7 @@ table {
 }
 
 table a {
+    text-decoration: none;
     color: var(--blue);
 }
 
@@ -84,20 +85,36 @@ th, td {
     width: 11.11%;
 }
 
-.rowYear {
-    width: 10%;
+.commemorativeOrderRow, .nominalRow {
+    width: 11.11%;
+    background-color: var(--lightOrange);
+    font-weight: bold;
 }
 
-.rowFeature {
-    width: 60%;
+.commemorativeYearRow, .yearRow {
+    width: 11.11%;
 }
 
-.rowMintage {
-    width: 15%;
+.commemorativeFeatureRow, .featureRow {
+    width: 55.56%;
+    text-align: left;
 }
 
-.rowInCollection {
-    width: 15%;
+.commemorativeMintageRow, .mintageRow {
+    width: 22.22%;
+}
+
+.viewCommemorativeCoins tr:hover > td a {
+    color: var(--darkestBlue);
+}
+
+.viewOrdinaryCoins tr > td:hover a {
+    color: var(--darkestBlue);
+}
+
+.boldText {
+    display: inline-block;
+    font-weight: bold;
 }
 
 .tableColumnCell {
