@@ -71,7 +71,12 @@ button {
 }
 
 .coin:hover {
-    background-color: var(--lightBlue);
+    /*background-color: var(--lightBlue);*/
+    border: 1px solid var(--lightBlue);
+}
+
+.coin:hover .coinDescription {
+    color: var(--darkerBlue);
 }
 
 .coin:hover .coinPic {
@@ -83,11 +88,24 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 110px;
-    height: 110px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     border: 1px solid var(--orange);
     color: var(--darkBlue);
+}
+
+.coinPicContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    height: 110px;
+}
+
+.coinPicContainer img {
+    width: 110px;
+    height: 110px;
 }
 
 .coin a {
@@ -100,6 +118,6 @@ button {
     padding-top: 2%;
     text-align: center;
     width: 100%;
-    color: var(--darkerBlue);
+    color: var(--blue);
     font-weight: bold;
 }

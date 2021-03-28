@@ -38,18 +38,45 @@ button {
 }
 
 .coinPicture {
-    grid-area: picture;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 250px;
-    height: 250px;
-    margin: 10%;
-    padding: 10px;
+    width: 100%;
+    height: 100%;
     border: 1px solid var(--orange);
     background-color: var(--lightOrange);
     color: var(--darkBlue);
     border-radius: 50%;
+}
+
+.coinPictureContainer {
+    grid-area: picture;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10%;
+    width: 250px;
+    height: 250px;
+}
+
+.coinPictureContainer img {
+    width: 90%;
+    height: 90%;
+}
+
+.coincardImageSource {
+    color: var(--darkerBlue);
+    margin-top: 15px;
+}
+
+.coincardImageSource a{
+    color: var(--darkerBlue);
+    text-decoration: none;
+}
+
+.coincardImageSource a:hover{
+    color: var(--darkerBlue);
+    text-decoration: underline;
 }
 
 .mintage {

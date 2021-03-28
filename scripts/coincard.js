@@ -52,6 +52,12 @@ function displayCoinVariables(obj) {
         document.getElementsByClassName("viewCoinEdge")[0].innerHTML = obj[0].edge;
         document.getElementsByClassName("viewCoinFeature")[0].innerHTML = obj[0].feature;
         document.getElementsByClassName("viewCoinDesciprtion")[0].innerHTML = obj[0].coin_description;
+        if (obj[0].obverse_image_path != null) {
+            document.getElementsByClassName("coinPictureContainer")[0].innerHTML = `<img src="` + 
+            obj[0].obverse_image_path + `" title="Image source: ` + obj[0].obverse_image_path + `">`;
+            document.getElementsByClassName("coincardImageSource")[0].innerHTML = `Coin image source:  <a href="` + 
+            obj[0].obverse_image_path + `">` + obj[0].obverse_image_path + `</a>.`;
+        }
 }
 
 async function getCommemorativecardUrlValues() {
@@ -82,16 +88,26 @@ function displayCommemorativecardVariables(obj) {
     for(i=0; i < obj.length; i++) {
         let coinHTML = `
             <div class="coin">
-            <a href="coincard.html?coin_id=` + obj[i].coin_id + `"></a>
-            <div class="coinPic">PIC</div>
-            <div class="coinDescription">
+            <a href="coincard.html?coin_id=` + obj[i].coin_id + `"></a>`;
+        if(obj[i].obverse_image_path != null) {
+            coinHTML += `<div class="coinPicContainer"><img src="` + obj[i].obverse_image_path + `" title="Image source: `+ obj[i].obverse_image_path + `"></div>`;
+        } else {
+            coinHTML += `<div class="coinPicContainer"><div class="coinPic">PIC</div></div>`;
+        }
+        coinHTML +=`<div class="coinDescription">
         `;
         if (urlParams.has('issue_year')) {
-            coinHTML += obj[i].country + `</div>
-            </div>
-            `;
+            if (obj[i].coin_type == 'commemorative_common') {
+                coinHTML += obj[i].country + ` Common</div>
+                </div>
+                `;
+            } else {
+                coinHTML += obj[i].country + `</div>
+                </div>
+                `;
+            }
         } else {
-            if (obj[i].coin_type == 'commemorative_common' && !urlParams.has('issue_year')) {
+            if (obj[i].coin_type == 'commemorative_common') {
                 coinHTML += obj[i].issue_year + ` Common</div>
                 </div>
                 `;
