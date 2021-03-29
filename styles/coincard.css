@@ -85,6 +85,20 @@ button {
     border-bottom: 1px solid var(--grey);
 }
 
+.coincardMint {
+    display: inline-block;
+}
+
+.coincardIssueDate {
+    display: inline-block;
+}
+
+.textColorDarkBlue {
+    display: inline-block;
+    font-weight: bold;
+    color: var(--darkerBlue);
+}
+
 .addCollection {
     grid-area: addCollection;
     border-bottom: 1px solid var(--grey);

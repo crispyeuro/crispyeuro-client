@@ -55,8 +55,48 @@ function displayCoinVariables(obj) {
         if (obj[0].obverse_image_path != null) {
             document.getElementsByClassName("coinPictureContainer")[0].innerHTML = `<img src="` + 
             obj[0].obverse_image_path + `" title="Image source: ` + obj[0].obverse_image_path + `">`;
-            document.getElementsByClassName("coincardImageSource")[0].innerHTML = `Coin image source:  <a href="` + 
-            obj[0].obverse_image_path + `">` + obj[0].obverse_image_path + `</a>.`;
+            document.getElementsByClassName("coincardImageSource")[0].innerHTML = `<div class="textColorDarkBlue">Coin image source:&nbsp</div><a href="` + 
+            obj[0].obverse_image_path + `">` + obj[0].obverse_image_path + `</a>`;
+        }
+
+        let mintageHTML = `
+        <tr>
+            <th>`;
+        if (obj[0].mintage_total != null) {
+            mintageHTML += obj[0].mintage_total + `</th>
+            <td>`;
+        } else {
+            mintageHTML += `No data</th>
+            <td>`;
+        }
+        if (obj[0].uncirculated != null) {
+            mintageHTML += obj[0].uncirculated + `</th>
+            <td>`;
+        } else {
+            mintageHTML += `No data</th>
+            <td>`;
+        }
+        if (obj[0].brilliant_uncirculated != null) {
+            mintageHTML += obj[0].brilliant_uncirculated + `</th>
+            <td>`;
+        } else {
+            mintageHTML += `No data</th>
+            <td>`;
+        }
+        if (obj[0].proof != null) {
+            mintageHTML += obj[0].proof + `</th>`;
+        } else {
+            mintageHTML += `No data</th>`;
+        }
+        document.getElementsByClassName("mintageTable")[0].innerHTML += mintageHTML;
+        if (obj[0].mint != null) {
+            document.getElementsByClassName("coincardMint")[0].innerHTML = `  ` + obj[0].mint;
+        }
+        if (obj[0].issue_date != null) {
+            document.getElementsByClassName("coincardIssueDate")[0].innerHTML = ` ` + obj[0].issue_date;
+        }
+        if (obj[0].mintage_description != null) {
+            document.getElementsByClassName("coincardAdditionalInfo")[0].innerHTML = `<div class="textColorDarkBlue">Additional information:&nbsp</div>` + obj[0].mintage_description;
         }
 }
 
