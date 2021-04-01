@@ -104,11 +104,11 @@ th, td {
     width: 22.22%;
 }
 
-.viewCommemorativeCoins tr:hover > td a {
+.viewCommemorativeCoins tr:hover>td a {
     color: var(--darkestBlue);
 }
 
-.viewOrdinaryCoins tr > td:hover a {
+.viewOrdinaryCoins tr>td:hover a {
     color: var(--darkestBlue);
 }
 
@@ -124,4 +124,8 @@ th, td {
 
 .tableEmptyCell {
     background-color: rgba(135, 152, 173, 0.1);
+}
+
+.textItalic {
+    font-style: italic;
 }
