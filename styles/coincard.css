@@ -69,12 +69,12 @@ button {
     margin-top: 15px;
 }
 
-.coincardImageSource a{
+.coincardImageSource a {
     color: var(--darkerBlue);
     text-decoration: none;
 }
 
-.coincardImageSource a:hover{
+.coincardImageSource a:hover {
     color: var(--darkerBlue);
     text-decoration: underline;
 }
@@ -97,6 +97,10 @@ button {
     display: inline-block;
     font-weight: bold;
     color: var(--darkerBlue);
+}
+
+.textItalic {
+    font-style: italic;
 }
 
 .addCollection {
@@ -204,6 +208,7 @@ input[type="checkbox"]:checked+.collapsed {
 }
 
 /*When added coins table hovered, change checkbox background color*/
+
 .coincardAddedCoins:hover>.coincardAddedSwap .checkboxContainer .fCheckbox {
     background-color: transparent;
 }

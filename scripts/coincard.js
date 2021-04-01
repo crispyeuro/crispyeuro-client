@@ -63,30 +63,30 @@ function displayCoinVariables(obj) {
         <tr>
             <th>`;
         if (obj[0].mintage_total != null) {
-            mintageHTML += obj[0].mintage_total + `</th>
+            mintageHTML += obj[0].mintage_total.toLocaleString() + `</th>
             <td>`;
         } else {
-            mintageHTML += `No data</th>
+            mintageHTML += `<span class="textItalic">No data</span></th>
             <td>`;
         }
         if (obj[0].uncirculated != null) {
-            mintageHTML += obj[0].uncirculated + `</th>
+            mintageHTML += obj[0].uncirculated.toLocaleString() + `</th>
             <td>`;
         } else {
-            mintageHTML += `No data</th>
+            mintageHTML += `</th>
             <td>`;
         }
         if (obj[0].brilliant_uncirculated != null) {
-            mintageHTML += obj[0].brilliant_uncirculated + `</th>
+            mintageHTML += obj[0].brilliant_uncirculated.toLocaleString() + `</th>
             <td>`;
         } else {
-            mintageHTML += `No data</th>
+            mintageHTML += `</th>
             <td>`;
         }
         if (obj[0].proof != null) {
-            mintageHTML += obj[0].proof + `</th>`;
+            mintageHTML += obj[0].proof.toLocaleString() + `</th>`;
         } else {
-            mintageHTML += `No data</th>`;
+            mintageHTML += `</th>`;
         }
         document.getElementsByClassName("mintageTable")[0].innerHTML += mintageHTML;
         if (obj[0].mint != null) {
@@ -270,19 +270,27 @@ function uniq(ordinaryCoinsYears) {
 /*Display a table of commemorative coins in 'countrycard.html'*/
  function countrycardDisplayCommemorativeCoins(commemorativeCoins) {
     for(i = 0; i < commemorativeCoins.length; i++) {
+        let mintageString = commemorativeCoins[i].mintage_total;
+        if (commemorativeCoins[i].mintage_total != null) {
+            mintageString = commemorativeCoins[i].mintage_total.toLocaleString();
+        }
         let tableRow = 
         `<tr>
             <td class="commemorativeOrderRow">` + (i+1) + `</td>
-            <td class="commemorativeYearRow"><a href="coincard.html?coin_id=` + commemorativeCoins[i].coin_id + `">` + commemorativeCoins[i].issue_year + `</a></td>
+            <td class="commemorativeYearRow">` + commemorativeCoins[i].issue_year + `</td>
             <td class="commemorativeFeatureRow"><a href="coincard.html?coin_id=` + commemorativeCoins[i].coin_id + `">`;
-        
         if (commemorativeCoins[i].coin_type == "commemorative_common") {
             tableRow += `<div class="boldText">Common issue.</div> ` + commemorativeCoins[i].feature + `</a></td>
-                <td class="commemorativeMintageRow"><a href="coincard.html?coin_id=` + commemorativeCoins[i].coin_id + `">...</a></td>
-            </tr>`;
+                <td class="commemorativeMintageRow">`;
         } else {
             tableRow += commemorativeCoins[i].feature + `</a></td>
-                <td class="commemorativeMintageRow"><a href="coincard.html?coin_id=` + commemorativeCoins[i].coin_id + `">...</a></td>
+                <td class="commemorativeMintageRow">`;
+        }
+        if (commemorativeCoins[i].mintage_total != null) {
+            tableRow += mintageString + `</td>
+            </tr>`;
+        } else {
+            tableRow += `<span class="textItalic">No data</span></td>
             </tr>`;
         }
         document.getElementsByClassName("viewCommemorativeCoins")[0].innerHTML += tableRow;
