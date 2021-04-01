@@ -296,3 +296,86 @@ function uniq(ordinaryCoinsYears) {
         document.getElementsByClassName("viewCommemorativeCoins")[0].innerHTML += tableRow;
     }
  }
+
+ async function checkDenominationcardUrlValues() {
+    const apiPath = `/api/denominationRequest${window.location.search}`;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        separateDenominationValues(obj);
+    } catch (err) {
+        alert(err);
+    }
+}
+
+function separateDenominationValues(result) {
+    let denominationYears = [];
+    for (l = 0; l < result.length; l++) {
+        denominationYears.push(result[l].issue_year);
+    }
+    let uniqueDenominationYears = (uniq(denominationYears));
+    let sortedUniqueDenominationYears = uniqueDenominationYears.sort((a, b) => a - b);
+
+    let denominationCountries = [];
+    for (l = 0; l < result.length; l++) {
+        denominationCountries.push(result[l].country);
+    }
+    let uniqueDenominationCountries = (uniq(denominationCountries));
+    let sortedUniqueDenominationCountries = uniqueDenominationCountries.sort();
+    
+    let table = `
+    <table>
+        <tr>
+            <th class="columnWidth">Country/Year</th>`;
+    for (i = 0; i < sortedUniqueDenominationYears.length; i++) {
+        table += `<th>` + sortedUniqueDenominationYears[i] + `</th>`;
+    }
+    table += `
+    </tr>
+    `;
+    table += `<tr>`;
+    for (i = 0; i < sortedUniqueDenominationCountries.length; i++) {
+        table += `<th>` + sortedUniqueDenominationCountries[i] + `</th>`;
+        for (k = 0; k < sortedUniqueDenominationYears.length; k++) {
+            let cell = `<td class="tableEmptyCell"></td>`;
+            for(m = 0; m < result.length; m++) {
+                if (sortedUniqueDenominationCountries[i] == result[m].country && sortedUniqueDenominationYears[k] == result[m].issue_year) {
+                    cell = `<td class="tableCellCenter"><a href="coincard.html?coin_id=` + result[m].coin_id + `">+</a></td>`;
+                }
+            }
+            table += cell;
+        }
+        table += `</tr>`;
+
+    }
+    table += `</tr></table>`;
+    document.getElementsByClassName("denominationTable")[0].innerHTML = table;
+
+    let denomination = denominationString(result[0].denomination);
+    document.title = denomination + " coins";
+    document.getElementsByClassName("containerName")[0].innerHTML = denomination + " coins";
+    document.getElementsByClassName("cardDescription")[0].innerHTML = "There are " + result.length + " coins with the value of " + denomination + ".";
+}
+
+function denominationString(denomination) {
+    let denominationStr = denomination;
+    if (denominationStr.includes(".")) {
+        const separated = (denominationStr).split(".");
+        if (separated.length == 2) {
+            if (separated[0] == "0") {
+                if (separated[1].charAt(0) == "0") {
+                    denominationStr = separated[1].substring(1) + " cent";
+                } else {
+                    denominationStr = separated[1] + "0  cent";
+                }
+            } else {
+                denominationStr = denominationStr + " euro";
+            }
+        } else {
+            console.log("Denomination value mistake");
+        }
+    } else {
+        denominationStr += " euro";
+    }
+    return denominationStr;
+}

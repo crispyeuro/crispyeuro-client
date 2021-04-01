@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <title>Nominal [Nominal]</title>
     <script src="../scripts/layout.js"></script>
+    <script src="../scripts/data.js"></script>
+    <script src="../scripts/coincard.js"></script>
     <link rel="stylesheet" href="../styles/layout.css">
     <link rel="stylesheet" href="../styles/nominalcard.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +17,9 @@
     <div class="menu"></div>
 
     <div class="content"><br><br>
+        <script type="text/javascript">
+            checkDenominationcardUrlValues();
+        </script>
         <div class="goBack">
             <button onclick="window.history.back()">Go back</button>
         </div>
@@ -23,51 +28,13 @@
         </div>
         <div class="cardDescription">
             <div class="containerName">Description</div>
-            <br><br>
-            [Description]
-            <br><br>
+            
         </div>
 
         <div class="coins">
             <div class="containerName">Coins</div><br>
+            <div class="denominationTable"></div>
 
-            <table>
-                <tr>
-                    <th>Country/nominal</th>
-                    <th>Mintage</th>
-                    <th>In collection</th>
-                </tr>
-                <tr>
-                    <th>Andorra</th>
-                    <td>.</td>
-                    <td>.</td>
-                </tr>
-                <tr>
-                    <th>Austria</th>
-                    <td>.</td>
-                    <td>.</td>
-                </tr>
-                <tr>
-                    <th>Belgium</th>
-                    <td>.</td>
-                    <td>.</td>
-                </tr>
-                <tr>
-                    <th>Cyprus</th>
-                    <td>.</td>
-                    <td>.</td>
-                </tr>
-                <tr>
-                    <th>Estonia</th>
-                    <td>.</td>
-                    <td>.</td>
-                </tr>
-                <tr>
-                    <th>.</th>
-                    <td>.</td>
-                    <td>.</td>
-                </tr>
-            </table>
         </div>
     </div>
 

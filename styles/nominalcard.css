@@ -55,3 +55,32 @@ th, td {
     padding: 5px;
     width: 33.33%;
 }
+
+.tableEmptyCell {
+    background-color: rgba(135, 152, 173, 0.1);
+}
+
+table tr>td:hover a {
+    color: var(--darkestBlue);
+}
+
+table tr>th:hover a {
+    color: var(--darkestBlue);
+}
+
+table a {
+    text-decoration: none;
+    color: var(--blue);
+}
+
+.tableCellCenter {
+    text-align: center;
+}
+
+.cardDescription {
+    padding: 20px 10px;
+}
+
+.columnWidth {
+    min-width: 120px;
+}
