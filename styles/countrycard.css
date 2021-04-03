@@ -85,6 +85,14 @@ th, td {
     width: 11.11%;
 }
 
+.tableCellCenter {
+    text-align: center;
+}
+
+table tr>.tableCellCenter:hover {
+    background-color: var(--orange);
+}
+
 .commemorativeOrderRow, .nominalRow {
     width: 11.11%;
     background-color: var(--lightOrange);

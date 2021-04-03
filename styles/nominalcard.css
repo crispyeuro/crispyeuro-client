@@ -64,6 +64,10 @@ table tr>td:hover a {
     color: var(--darkestBlue);
 }
 
+table tr>.tableCellCenter:hover {
+    background-color: var(--orange);
+}
+
 table tr>th:hover a {
     color: var(--darkestBlue);
 }
@@ -83,4 +87,11 @@ table a {
 
 .columnWidth {
     min-width: 120px;
+}
+
+.denominationEmptyTableText {
+    text-align: center;
+    font-size: 22px;
+    color: var(--orange);
+    font-weight: bold;
 }

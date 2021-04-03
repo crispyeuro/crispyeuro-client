@@ -22,82 +22,82 @@ async function checkCoincardHash() {
 
 function displayCoinVariables(obj) {
     var denominationStr = obj[0].denomination;
-        if (denominationStr.includes(".")) {
-            const separated = (denominationStr).split(".");
-            if (separated.length == 2) {
-                if (separated[0] == "0") {
-                    if (separated[1].charAt(0) == "0") {
-                        denominationStr = separated[1].substring(1) + " cent";
-                    } else {
-                        denominationStr = separated[1] + "0  cent";
-                    }
+    if (denominationStr.includes(".")) {
+        const separated = (denominationStr).split(".");
+        if (separated.length == 2) {
+            if (separated[0] == "0") {
+                if (separated[1].charAt(0) == "0") {
+                    denominationStr = separated[1].substring(1) + " cent";
                 } else {
-                    denominationStr = obj[0].denomination + " euro";
+                    denominationStr = separated[1] + "0  cent";
                 }
             } else {
-                console.log("Denomination value mistake")
+                denominationStr = obj[0].denomination + " euro";
             }
         } else {
-            denominationStr += " euro";
+            console.log("Denomination value mistake")
         }
-        document.title = "Coin " + denominationStr + " " + obj[0].issue_year + " " + obj[0].country;
-        document.getElementsByClassName("viewCoincardName")[0].innerHTML = denominationStr + " " + obj[0].issue_year + " " + obj[0].country;
-        document.getElementsByClassName("viewCoinDenomination")[0].innerHTML = denominationStr;
-        document.getElementsByClassName("viewCoinYear")[0].innerHTML = obj[0].issue_year;
-        document.getElementsByClassName("viewCoinCountry")[0].innerHTML = obj[0].country;
-        document.getElementsByClassName("viewCoinDiameter")[0].innerHTML = obj[0].diameter + " mm";
-        document.getElementsByClassName("viewCoinThickness")[0].innerHTML = obj[0].thickness + " mm";
-        document.getElementsByClassName("viewCoinMass")[0].innerHTML = obj[0].mass + " g";
-        document.getElementsByClassName("viewCoinComposition")[0].innerHTML = obj[0].composition;
-        document.getElementsByClassName("viewCoinEdge")[0].innerHTML = obj[0].edge;
-        document.getElementsByClassName("viewCoinFeature")[0].innerHTML = obj[0].feature;
-        document.getElementsByClassName("viewCoinDesciprtion")[0].innerHTML = obj[0].coin_description;
-        if (obj[0].obverse_image_path != null) {
-            document.getElementsByClassName("coinPictureContainer")[0].innerHTML = `<img src="` + 
+    } else {
+        denominationStr += " euro";
+    }
+    document.title = "Coin " + denominationStr + " " + obj[0].issue_year + " " + obj[0].country;
+    document.getElementsByClassName("viewCoincardName")[0].innerHTML = denominationStr + " " + obj[0].issue_year + " " + obj[0].country;
+    document.getElementsByClassName("viewCoinDenomination")[0].innerHTML = denominationStr;
+    document.getElementsByClassName("viewCoinYear")[0].innerHTML = obj[0].issue_year;
+    document.getElementsByClassName("viewCoinCountry")[0].innerHTML = obj[0].country;
+    document.getElementsByClassName("viewCoinDiameter")[0].innerHTML = obj[0].diameter + " mm";
+    document.getElementsByClassName("viewCoinThickness")[0].innerHTML = obj[0].thickness + " mm";
+    document.getElementsByClassName("viewCoinMass")[0].innerHTML = obj[0].mass + " g";
+    document.getElementsByClassName("viewCoinComposition")[0].innerHTML = obj[0].composition;
+    document.getElementsByClassName("viewCoinEdge")[0].innerHTML = obj[0].edge;
+    document.getElementsByClassName("viewCoinFeature")[0].innerHTML = obj[0].feature;
+    document.getElementsByClassName("viewCoinDesciprtion")[0].innerHTML = obj[0].coin_description;
+    if (obj[0].obverse_image_path != null) {
+        document.getElementsByClassName("coinPictureContainer")[0].innerHTML = `<img src="` +
             obj[0].obverse_image_path + `" title="Image source: ` + obj[0].obverse_image_path + `">`;
-            document.getElementsByClassName("coincardImageSource")[0].innerHTML = `<div class="textColorDarkBlue">Coin image source:&nbsp</div><a href="` + 
+        document.getElementsByClassName("coincardImageSource")[0].innerHTML = `<div class="textColorDarkBlue">Coin image source:&nbsp</div><a href="` +
             obj[0].obverse_image_path + `">` + obj[0].obverse_image_path + `</a>`;
-        }
+    }
 
-        let mintageHTML = `
+    let mintageHTML = `
         <tr>
             <th>`;
-        if (obj[0].mintage_total != null) {
-            mintageHTML += obj[0].mintage_total.toLocaleString() + `</th>
+    if (obj[0].mintage_total != null) {
+        mintageHTML += obj[0].mintage_total.toLocaleString() + `</th>
             <td>`;
-        } else {
-            mintageHTML += `<span class="textItalic">No data</span></th>
+    } else {
+        mintageHTML += `<span class="textItalic">No data</span></th>
             <td>`;
-        }
-        if (obj[0].uncirculated != null) {
-            mintageHTML += obj[0].uncirculated.toLocaleString() + `</th>
+    }
+    if (obj[0].uncirculated != null) {
+        mintageHTML += obj[0].uncirculated.toLocaleString() + `</th>
             <td>`;
-        } else {
-            mintageHTML += `</th>
+    } else {
+        mintageHTML += `</th>
             <td>`;
-        }
-        if (obj[0].brilliant_uncirculated != null) {
-            mintageHTML += obj[0].brilliant_uncirculated.toLocaleString() + `</th>
+    }
+    if (obj[0].brilliant_uncirculated != null) {
+        mintageHTML += obj[0].brilliant_uncirculated.toLocaleString() + `</th>
             <td>`;
-        } else {
-            mintageHTML += `</th>
+    } else {
+        mintageHTML += `</th>
             <td>`;
-        }
-        if (obj[0].proof != null) {
-            mintageHTML += obj[0].proof.toLocaleString() + `</th>`;
-        } else {
-            mintageHTML += `</th>`;
-        }
-        document.getElementsByClassName("mintageTable")[0].innerHTML += mintageHTML;
-        if (obj[0].mint != null) {
-            document.getElementsByClassName("coincardMint")[0].innerHTML = `  ` + obj[0].mint;
-        }
-        if (obj[0].issue_date != null) {
-            document.getElementsByClassName("coincardIssueDate")[0].innerHTML = ` ` + obj[0].issue_date;
-        }
-        if (obj[0].mintage_description != null) {
-            document.getElementsByClassName("coincardAdditionalInfo")[0].innerHTML = `<div class="textColorDarkBlue">Additional information:&nbsp</div>` + obj[0].mintage_description;
-        }
+    }
+    if (obj[0].proof != null) {
+        mintageHTML += obj[0].proof.toLocaleString() + `</th>`;
+    } else {
+        mintageHTML += `</th>`;
+    }
+    document.getElementsByClassName("mintageTable")[0].innerHTML += mintageHTML;
+    if (obj[0].mint != null) {
+        document.getElementsByClassName("coincardMint")[0].innerHTML = `  ` + obj[0].mint;
+    }
+    if (obj[0].issue_date != null) {
+        document.getElementsByClassName("coincardIssueDate")[0].innerHTML = ` ` + obj[0].issue_date;
+    }
+    if (obj[0].mintage_description != null) {
+        document.getElementsByClassName("coincardAdditionalInfo")[0].innerHTML = `<div class="textColorDarkBlue">Additional information:&nbsp</div>` + obj[0].mintage_description;
+    }
 }
 
 async function getCommemorativecardUrlValues() {
@@ -125,16 +125,16 @@ function displayCommemorativecardVariables(obj) {
     } else {
         document.getElementsByClassName("cardDescriptionText")[0].innerHTML = obj[0].country + " issued " + obj.length + " coins.";
     }
-    for(i=0; i < obj.length; i++) {
+    for (i = 0; i < obj.length; i++) {
         let coinHTML = `
             <div class="coin">
             <a href="coincard.html?coin_id=` + obj[i].coin_id + `"></a>`;
-        if(obj[i].obverse_image_path != null) {
-            coinHTML += `<div class="coinPicContainer"><img src="` + obj[i].obverse_image_path + `" title="Image source: `+ obj[i].obverse_image_path + `"></div>`;
+        if (obj[i].obverse_image_path != null) {
+            coinHTML += `<div class="coinPicContainer"><img src="` + obj[i].obverse_image_path + `" title="Image source: ` + obj[i].obverse_image_path + `"></div>`;
         } else {
             coinHTML += `<div class="coinPicContainer"><div class="coinPic">PIC</div></div>`;
         }
-        coinHTML +=`<div class="coinDescription">
+        coinHTML += `<div class="coinDescription">
         `;
         if (urlParams.has('issue_year')) {
             if (obj[i].coin_type == 'commemorative_common') {
@@ -155,7 +155,7 @@ function displayCommemorativecardVariables(obj) {
                 coinHTML += obj[i].issue_year + `</div>
             </div>
             `;
-        }
+            }
         }
         document.getElementsByClassName("coinsContainer")[0].innerHTML += coinHTML;
     }
@@ -179,8 +179,8 @@ function displayCountrycardVariables(obj) {
     /*Push ordinary coins in array and ordinary coins' issue years in array*/
     let ordinaryCoins = [];
     let ordinaryCoinsYears = [];
-    for(i = 0; i < obj.length; i++) {
-        if(obj[i].coin_type == "ordinary") {
+    for (i = 0; i < obj.length; i++) {
+        if (obj[i].coin_type == "ordinary") {
             ordinaryCoins.push(obj[i]);
             ordinaryCoinsYears.push(obj[i].issue_year);
         }
@@ -190,11 +190,11 @@ function displayCountrycardVariables(obj) {
     let uniqueYears = (uniq(ordinaryCoinsYears));
     let ordinaryCoinsSortedByYears = countrycardOrdinaryCoinsByYears(uniqueYears, ordinaryCoins);
     countrycardDisplayOrdinaryCoins(ordinaryCoinsSortedByYears);
-    
+
     /*Push commemorative coins in an array*/
     let commemorativeCoins = [];
-    for(i = 0; i < obj.length; i++) {
-        if(obj[i].coin_type == "commemorative" || obj[i].coin_type == "commemorative_common") {
+    for (i = 0; i < obj.length; i++) {
+        if (obj[i].coin_type == "commemorative" || obj[i].coin_type == "commemorative_common") {
             commemorativeCoins.push(obj[i]);
         }
     }
@@ -203,7 +203,7 @@ function displayCountrycardVariables(obj) {
     let sortedCommemorativeCoins = commemorativeCoins.sort((a, b) => a.issue_year - b.issue_year);
     countrycardDisplayCommemorativeCoins(sortedCommemorativeCoins);
 
-     /*Display country flag in 'countrycard.html'*/
+    /*Display country flag in 'countrycard.html'*/
     countrycardDsiplayFlag();
 
     /*Display country description in HTML*/
@@ -213,51 +213,51 @@ function displayCountrycardVariables(obj) {
 
 function uniq(ordinaryCoinsYears) {
     return Array.from(new Set(ordinaryCoinsYears));
- }
+}
 
- function countrycardOrdinaryCoinsByYears(uniqueYears, ordinaryCoins) {
+function countrycardOrdinaryCoinsByYears(uniqueYears, ordinaryCoins) {
     let sortedOrdinaryCoins = [];
     /*Push an array of issue years and empty array in two-dimensional array*/
-    for(i = 0; i < uniqueYears.length; i++) {
+    for (i = 0; i < uniqueYears.length; i++) {
         sortedOrdinaryCoins.push([uniqueYears[i], []]);
     }
     /*Push an array of ordinary coins according issue year in two-dimensional array*/
-    for(i = 0; i < uniqueYears.length; i++) {
-        for(j = 0; j < ordinaryCoins.length; j++) {
+    for (i = 0; i < uniqueYears.length; i++) {
+        for (j = 0; j < ordinaryCoins.length; j++) {
             if (uniqueYears[i] == ordinaryCoins[j].issue_year) {
                 sortedOrdinaryCoins[i][1].push(ordinaryCoins[j]);
             }
         }
     }
     return sortedOrdinaryCoins;
- }
+}
 
- /*Display country flag in 'countrycard.html'*/
- function countrycardDsiplayFlag() {
+/*Display country flag in 'countrycard.html'*/
+function countrycardDsiplayFlag() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const urlCountry = urlParams.get('country')
-    for(m = 0; m < countryArray.length; m++) {
-        if(urlCountry == countryArray[m].name) {
+    for (m = 0; m < countryArray.length; m++) {
+        if (urlCountry == countryArray[m].name) {
             document.getElementsByClassName("countryFlag")[0].innerHTML = '<img src="' + countryArray[m].flagImage + '" alt="' + countryArray[m].name + '" title="' + countryArray[m].title + '" width="64">';
             break;
         }
     }
- }
+}
 
 /*Display a table of ordinary coins in 'countrycard.html'*/
- function countrycardDisplayOrdinaryCoins(x) {
-    for(i = 0; i < x.length; i++) {
+function countrycardDisplayOrdinaryCoins(x) {
+    for (i = 0; i < x.length; i++) {
         let sortedCoins = x[i][1].sort((a, b) => a.denomination - b.denomination);
-        let tableRow = 
-        `<tr>
+        let tableRow =
+            `<tr>
         <td class="tableColumnCell">` + x[i][0] + `</td>`
         let denominations = [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2];
-        for(k = 0; k < denominations.length; k++) {
+        for (k = 0; k < denominations.length; k++) {
             let row = `<td class="tableEmptyCell"></td>`;
-            for(l = 0; l < sortedCoins.length; l++) {
+            for (l = 0; l < sortedCoins.length; l++) {
                 if (denominations[k] == sortedCoins[l].denomination) {
-                    row = `<td><a href="coincard.html?coin_id=` + sortedCoins[l].coin_id + `">View</a></td>`;
+                    row = `<td class="tableCellCenter"><a href="coincard.html?coin_id=` + sortedCoins[l].coin_id + `">View</a></td>`;
                 }
             }
             tableRow += row;
@@ -265,18 +265,18 @@ function uniq(ordinaryCoinsYears) {
         tableRow += `</tr>`
         document.getElementsByClassName("viewOrdinaryCoins")[0].innerHTML += tableRow;
     }
- }
+}
 
 /*Display a table of commemorative coins in 'countrycard.html'*/
- function countrycardDisplayCommemorativeCoins(commemorativeCoins) {
-    for(i = 0; i < commemorativeCoins.length; i++) {
+function countrycardDisplayCommemorativeCoins(commemorativeCoins) {
+    for (i = 0; i < commemorativeCoins.length; i++) {
         let mintageString = commemorativeCoins[i].mintage_total;
         if (commemorativeCoins[i].mintage_total != null) {
             mintageString = commemorativeCoins[i].mintage_total.toLocaleString();
         }
-        let tableRow = 
-        `<tr>
-            <td class="commemorativeOrderRow">` + (i+1) + `</td>
+        let tableRow =
+            `<tr>
+            <td class="commemorativeOrderRow">` + (i + 1) + `</td>
             <td class="commemorativeYearRow">` + commemorativeCoins[i].issue_year + `</td>
             <td class="commemorativeFeatureRow"><a href="coincard.html?coin_id=` + commemorativeCoins[i].coin_id + `">`;
         if (commemorativeCoins[i].coin_type == "commemorative_common") {
@@ -295,9 +295,9 @@ function uniq(ordinaryCoinsYears) {
         }
         document.getElementsByClassName("viewCommemorativeCoins")[0].innerHTML += tableRow;
     }
- }
+}
 
- async function checkDenominationcardUrlValues() {
+async function checkDenominationcardUrlValues() {
     const apiPath = `/api/denominationRequest${window.location.search}`;
     const response = await fetch(apiPath);
     const obj = await response.json();
@@ -309,52 +309,57 @@ function uniq(ordinaryCoinsYears) {
 }
 
 function separateDenominationValues(result) {
-    let denominationYears = [];
-    for (l = 0; l < result.length; l++) {
-        denominationYears.push(result[l].issue_year);
-    }
-    let uniqueDenominationYears = (uniq(denominationYears));
-    let sortedUniqueDenominationYears = uniqueDenominationYears.sort((a, b) => a - b);
-
-    let denominationCountries = [];
-    for (l = 0; l < result.length; l++) {
-        denominationCountries.push(result[l].country);
-    }
-    let uniqueDenominationCountries = (uniq(denominationCountries));
-    let sortedUniqueDenominationCountries = uniqueDenominationCountries.sort();
-    
-    let table = `
-    <table>
-        <tr>
-            <th class="columnWidth">Country/Year</th>`;
-    for (i = 0; i < sortedUniqueDenominationYears.length; i++) {
-        table += `<th>` + sortedUniqueDenominationYears[i] + `</th>`;
-    }
-    table += `
-    </tr>
-    `;
-    table += `<tr>`;
-    for (i = 0; i < sortedUniqueDenominationCountries.length; i++) {
-        table += `<th>` + sortedUniqueDenominationCountries[i] + `</th>`;
-        for (k = 0; k < sortedUniqueDenominationYears.length; k++) {
-            let cell = `<td class="tableEmptyCell"></td>`;
-            for(m = 0; m < result.length; m++) {
-                if (sortedUniqueDenominationCountries[i] == result[m].country && sortedUniqueDenominationYears[k] == result[m].issue_year) {
-                    cell = `<td class="tableCellCenter"><a href="coincard.html?coin_id=` + result[m].coin_id + `">+</a></td>`;
-                }
-            }
-            table += cell;
+    if (result == "") {
+        document.getElementsByClassName("denominationTable")[0].innerHTML =
+            `<div class="denominationEmptyTableText">There are no coins in this section`;
+    } else {
+        let denominationYears = [];
+        for (l = 0; l < result.length; l++) {
+            denominationYears.push(result[l].issue_year);
         }
-        table += `</tr>`;
+        let uniqueDenominationYears = (uniq(denominationYears));
+        let sortedUniqueDenominationYears = uniqueDenominationYears.sort((a, b) => a - b);
 
+        let denominationCountries = [];
+        for (l = 0; l < result.length; l++) {
+            denominationCountries.push(result[l].country);
+        }
+        let uniqueDenominationCountries = (uniq(denominationCountries));
+        let sortedUniqueDenominationCountries = uniqueDenominationCountries.sort();
+
+        let table = `
+        <table>
+            <tr>
+                <th class="columnWidth">Country/Year</th>`;
+        for (i = 0; i < sortedUniqueDenominationYears.length; i++) {
+            table += `<th>` + sortedUniqueDenominationYears[i] + `</th>`;
+        }
+        table += `
+        </tr>
+        `;
+        table += `<tr>`;
+        for (i = 0; i < sortedUniqueDenominationCountries.length; i++) {
+            table += `<th>` + sortedUniqueDenominationCountries[i].replace("-", " ") + `</th>`;
+            for (k = 0; k < sortedUniqueDenominationYears.length; k++) {
+                let cell = `<td class="tableEmptyCell"></td>`;
+                for (m = 0; m < result.length; m++) {
+                    if (sortedUniqueDenominationCountries[i] == result[m].country && sortedUniqueDenominationYears[k] == result[m].issue_year) {
+                        cell = `<td class="tableCellCenter"><a href="coincard.html?coin_id=` + result[m].coin_id + `">+</a></td>`;
+                    }
+                }
+                table += cell;
+            }
+            table += `</tr>`;
+
+        }
+        table += `</tr></table>`;
+        document.getElementsByClassName("denominationTable")[0].innerHTML = table;
+
+        let denomination = denominationString(result[0].denomination);
+        document.title = denomination + " coins";
+        document.getElementsByClassName("containerName")[0].innerHTML = denomination + " coins";
+        document.getElementsByClassName("cardDescription")[0].innerHTML = "There are " + result.length + " coins with the value of " + denomination + ".";
     }
-    table += `</tr></table>`;
-    document.getElementsByClassName("denominationTable")[0].innerHTML = table;
-
-    let denomination = denominationString(result[0].denomination);
-    document.title = denomination + " coins";
-    document.getElementsByClassName("containerName")[0].innerHTML = denomination + " coins";
-    document.getElementsByClassName("cardDescription")[0].innerHTML = "There are " + result.length + " coins with the value of " + denomination + ".";
 }
 
 function denominationString(denomination) {
