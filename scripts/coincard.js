@@ -267,6 +267,54 @@ function countrycardDisplayOrdinaryCoins(x) {
     }
 }
 
+function countrycardContainerClicked(containerName) {
+    if (containerName == "ordinary") {
+        if (document.getElementById("countrycardOrdinaryContainer").className == "opened") {
+            document.getElementById("countrycardOrdinaryContainer").className = "closed";
+            document.getElementById("countrycardOrdinaryName").innerHTML = "+ Ordinary";
+        } else {
+            document.getElementById("countrycardOrdinaryContainer").className = "opened";
+            document.getElementById("countrycardOrdinaryName").innerHTML = "- Ordinary";
+        }
+    }
+    if (containerName == "commemorative") {
+        if (document.getElementById("countrycardCommemorativeContainer").className == "opened") {
+            document.getElementById("countrycardCommemorativeContainer").className = "closed";
+            document.getElementById("countrycardCommemorativeName").innerHTML = "+ Commamorative 2 euro";
+        } else {
+            document.getElementById("countrycardCommemorativeContainer").className = "opened";
+            document.getElementById("countrycardCommemorativeName").innerHTML = "- Commamorative 2 euro";
+        }
+    }
+    if (containerName == "otherDenominations") {
+        if (document.getElementById("countrycardOtherDenominationsContainer").className == "opened") {
+            document.getElementById("countrycardOtherDenominationsContainer").className = "closed";
+            document.getElementById("countrycardOtherDenominationsName").innerHTML = "+ Other denominations";
+        } else {
+            document.getElementById("countrycardOtherDenominationsContainer").className = "opened";
+            document.getElementById("countrycardOtherDenominationsName").innerHTML = "- Other denominations";
+        }
+    }
+    if (containerName == "silver") {
+        if (document.getElementById("countrycardSilverContainer").className == "opened") {
+            document.getElementById("countrycardSilverContainer").className = "closed";
+            document.getElementById("countrycardSilverName").innerHTML = "+ Silver coins";
+        } else {
+            document.getElementById("countrycardSilverContainer").className = "opened";
+            document.getElementById("countrycardSilverName").innerHTML = "- Silver coins";
+        }
+    }
+    if (containerName == "gold") {
+        if (document.getElementById("countrycardGoldContainer").className == "opened") {
+            document.getElementById("countrycardGoldContainer").className = "closed";
+            document.getElementById("countrycardGoldName").innerHTML = "+ Gold coins";
+        } else {
+            document.getElementById("countrycardGoldContainer").className = "opened";
+            document.getElementById("countrycardGoldName").innerHTML = "- Gold coins";
+        }
+    }
+}
+
 /*Display a table of commemorative coins in 'countrycard.html'*/
 function countrycardDisplayCommemorativeCoins(commemorativeCoins) {
     for (i = 0; i < commemorativeCoins.length; i++) {

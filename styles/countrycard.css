@@ -59,7 +59,7 @@ button {
 }
 
 .containerName {
-    font-size: 18px;
+    font-size: 20px;
     color: var(--darkBlue);
 }
 
@@ -93,6 +93,10 @@ table tr>.tableCellCenter:hover {
     background-color: var(--orange);
 }
 
+.viewOrdinaryCoins tr>td:hover a {
+    color: var(--darkestBlue);
+}
+
 .commemorativeOrderRow, .nominalRow {
     width: 11.11%;
     background-color: var(--lightOrange);
@@ -116,10 +120,6 @@ table tr>.tableCellCenter:hover {
     color: var(--darkestBlue);
 }
 
-.viewOrdinaryCoins tr>td:hover a {
-    color: var(--darkestBlue);
-}
-
 .boldText {
     display: inline-block;
     font-weight: bold;
@@ -136,4 +136,27 @@ table tr>.tableCellCenter:hover {
 
 .textItalic {
     font-style: italic;
+}
+
+.opened {
+    display: block;
+}
+
+.closed {
+    display: none;
+}
+
+.tableName {
+    cursor: pointer;
+    margin: 15px 0 5px 0;
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.tableName:hover {
+    color: var(--darkBlue);
+}
+
+#countrycardOrdinaryContainer, #countrycardCommemorativeContainer, #countrycardOtherDenominationsContainer, #countrycardSilverContainer, #countrycardGoldContainer {
+    margin-bottom: 25px;
 }
