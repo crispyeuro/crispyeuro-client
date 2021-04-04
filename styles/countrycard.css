@@ -160,3 +160,17 @@ table tr>.tableCellCenter:hover {
 #countrycardOrdinaryContainer, #countrycardCommemorativeContainer, #countrycardOtherDenominationsContainer, #countrycardSilverContainer, #countrycardGoldContainer {
     margin-bottom: 25px;
 }
+
+#displayOrdinaryCoins0, #displayOrdinaryCoins1, #displayOrdinaryCoins2, #displayOrdinaryCoins3 {
+    margin-bottom: 15px;
+}
+
+.tableNameGermany {
+    cursor: pointer;
+    margin: 15px 0 5px 0;
+    color: var(--blue);
+}
+
+.tableNameGermany:hover {
+    color: var(--darkBlue);
+}
