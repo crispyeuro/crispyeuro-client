@@ -380,46 +380,80 @@ function loadCountries() {
     }
 }
 
-function loadOrdinaryCoins() {
-    var denomList = document.getElementById("denomList");
-    for (i = 0; i <= coins.length - 1; i++) {
-        var element = document.createElement("button");
-        element.className = "country";
-        var onClickAttr = document.createAttribute("onclick");
-        onClickAttr.value = 'location.href="nominalcard.html?denomination=' + coins[i].value + '"';
-        element.setAttributeNode(onClickAttr);
-        element.addEventListener('click', event => event.stopPropagation());
-        var textNode = document.createTextNode(coins[i].coin);
-        element.appendChild(textNode);
-        denomList.appendChild(element);
+function separateNominalsCoinsIndex(obj) {
+    let nominals = [];
+    for(i = 0; i < obj.length; i++) {
+        nominals.push(obj[i].denomination);
+    }
+    let uniqNominals = sortAsc(uniq(nominals));
+    let uniqNominalsText = uniqNominalsSortText(uniqNominals);
+    loadNominalsIndex(uniqNominals, uniqNominalsText);
+}
+
+function uniqNominalsSortText(uniqNominals) {
+    let uniqNominalsText = [];
+    for(i = 0; i < uniqNominals.length; i++) {
+        let nominalText = "";
+        if (uniqNominals[i].includes(".")) {
+            const separated = (uniqNominals[i]).split(".");
+            if (separated.length == 2) {
+                if (separated[0] == "0") {
+                    if (separated[1].charAt(0) == "0") {
+                        nominalText = separated[1].substring(1) + " cent";
+                    } else {
+                        nominalText = separated[1] + "0 cent";
+                    }
+                } else {
+                    nominalText = uniqNominals[i] + " euro";
+                }
+            } else {
+                console.log("Denomination value mistake")
+            }
+        } else {
+            nominalText += uniqNominals[i] +  " euro";
+        }
+        uniqNominalsText.push(nominalText);
+    }
+    return uniqNominalsText;
+}
+
+function loadNominalsIndex(uniqNominals, uniqNominalsText) {
+    let denomCheckBox = document.getElementById("allDenom");
+    let denomList = document.getElementById("denomList");
+    denomList.textContent = "";
+    for (i = 0; i <= uniqNominals.length - 1; i++) {
+        if (denomCheckBox.checked != true) {
+            if (uniqNominals[i] == "0.01" || uniqNominals[i] == "0.02" || uniqNominals[i] == "0.05" ||
+            uniqNominals[i] == "0.1" || uniqNominals[i] == "0.2" || uniqNominals[i] == "0.5"||
+            uniqNominals[i] == "1" || uniqNominals[i] == "2") {
+                showNominalsIndex(denomList, uniqNominals[i], uniqNominalsText[i]);
+            }
+        }
+        if (denomCheckBox.checked == true) {
+            showNominalsIndex(denomList, uniqNominals[i], uniqNominalsText[i]);
+        }
     }
 }
 
-function checkOtherCoins() {
-    var denomCheckBox = document.getElementById("allDenom");
-    var denomList = document.getElementById("denomList");
-    denomList.textContent = "";
-    if (denomCheckBox.checked == true) {
-        var allCoins = sortAllCoins();
-        for (i = 0; i <= allCoins.length - 1; i++) {
-            var element = document.createElement("button");
-            element.className = "country";
-            var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="nominalcard.html?denomination=' + allCoins[i].value + '"';
-            element.setAttributeNode(onClickAttr);
-            element.addEventListener('click', event => event.stopPropagation());
-            var textNode = document.createTextNode(allCoins[i].coin);
-            element.appendChild(textNode);
-            document.getElementById("denomList").appendChild(element);
-        }
-    } else {
-        loadOrdinaryCoins();
-    }
+function showNominalsIndex(denomList, uniqNominal, uniqNominalText) {
+    let element = document.createElement("button");
+    element.className = "country";
+    let onClickAttr = document.createAttribute("onclick");
+    onClickAttr.value = 'location.href="nominalcard.html?denomination=' + uniqNominal + '"';
+    element.setAttributeNode(onClickAttr);
+    element.addEventListener('click', event => event.stopPropagation());
+    let textNode = document.createTextNode(uniqNominalText);
+    element.appendChild(textNode);
+    denomList.appendChild(element);
 }
 
 function sortAllCoins() {
-    var allCoins = coins.concat(otherCoins);
+    let allCoins = coins.concat(otherCoins);
     return allCoins.sort((a, b) => parseFloat(a.value) - parseFloat(b.value));
+}
+
+function sortAsc(coinsArray) {
+    return coinsArray.sort((a, b) => parseFloat(a) - parseFloat(b));
 }
 
 function loadIssues() {
@@ -557,6 +591,7 @@ async function getCoinsIndex() {
 }
 
 function separateCoinsIndex(obj) {
+    separateNominalsCoinsIndex(obj);
     separateCollectorCoinsIndex("silver", obj);
     separateCollectorCoinsIndex("gold", obj);
 }
