@@ -118,13 +118,13 @@
                 <div class="floatRight">
                     <label for="silverByYearRadio" class="radioContainer displayInline" onclick="stopParent(event)">By
                         Year
-                        <input type="radio" id="silverByYearRadio" name="silver" value="byYear" onclick="loadSilver()">
+                        <input type="radio" id="silverByYearRadio" name="silver" value="byYear" onclick="getCoinsIndex()">
                         <div class="fRadio"></div>
                     </label>
                     <label for="silverByCountryRadio" class="radioContainer displayInline"
                         onclick="stopParent(event)">By Country
                         <input type="radio" id="silverByCountryRadio" name="silver" value="byCountry" checked
-                            onclick="loadSilver()">
+                            onclick="getCoinsIndex()">
                         <div class="fRadio"></div>
                     </label>
                 </div>
@@ -132,7 +132,7 @@
             </div>
             <div id="silverList" class="contentContainer">
                 <script type="text/javascript">
-                    loadSilver();
+                    getCoinsIndex();
                 </script>
             </div>
         </div>
@@ -143,13 +143,13 @@
                 <div class="floatRight">
                     <label for="goldByYearRadio" class="radioContainer displayInline" onclick="stopParent(event)">By
                         Year
-                        <input type="radio" id="goldByYearRadio" name="gold" value="byYear" onclick="loadGold()">
+                        <input type="radio" id="goldByYearRadio" name="gold" value="byYear" onclick="getCoinsIndex()">
                         <div class="fRadio"></div>
                     </label>
                     <label for="goldByCountryRadio" class="radioContainer displayInline" onclick="stopParent(event)">By
                         Country
                         <input type="radio" id="goldByCountryRadio" name="gold" value="byCountry" checked
-                            onclick="loadGold()">
+                            onclick="getCoinsIndex()">
                         <div class="fRadio"></div>
                     </label>
                 </div>
@@ -157,7 +157,7 @@
             </div>
             <div id="goldList" class="contentContainer">
                 <script type="text/javascript">
-                    loadGold();
+                    getCoinsIndex();
                 </script>
             </div>
         </div>

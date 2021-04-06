@@ -545,74 +545,80 @@ function loadColored() {
     }
 }
 
-function loadSilver() {
-    var silverByYearRadio = document.getElementById("silverByYearRadio");
-    var silverByCountryRadio = document.getElementById("silverByCountryRadio");
-    var silverList = document.getElementById("silverList");
-    silverList.textContent = "";
-    if (silverByYearRadio.checked == true) {
-        for (i = 0; i <= issues.length - 1; i++) {
-            var element = document.createElement("button");
-            element.className = "country";
-            var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="countrycard.html?year=' + issues[i].coin + 
-            '&coin_type=silver"';
-            element.setAttributeNode(onClickAttr);
-            element.addEventListener('click', event => event.stopPropagation());
-            var textNode = document.createTextNode(issues[i].coin);
-            element.appendChild(textNode);
-            silverList.appendChild(element);
-        }
-    } if (silverByCountryRadio.checked == true) {
-        for (country = 0; country <= countryArray.length - 1; country++) {
-            var countryBtn = document.createElement("img");
-            countryBtn.src = countryArray[country].flagImage;
-            countryBtn.width = "64";
-            countryBtn.alt = countryArray[country].name;
-            countryBtn.setAttribute("title", countryArray[country].title);
-            countryBtn.className = "country";
-            var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="commemorativecard.html?country=' + countryArray[country].name.replace(/\s/g, '') + 
-            '&coin_type=silver"';
-            countryBtn.setAttributeNode(onClickAttr);
-            countryBtn.addEventListener('click', event => event.stopPropagation());
-            silverList.appendChild(countryBtn);
-        }
+async function getCoinsIndex() {
+    const apiPath = `/api/indexCoinsRequest${window.location.search}`;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        separateCoinsIndex(obj);
+    } catch (err) {
+        alert(err);
     }
 }
 
-function loadGold() {
-    var goldByYearRadio = document.getElementById("goldByYearRadio");
-    var goldByCountryRadio = document.getElementById("goldByCountryRadio");
-    var goldList = document.getElementById("goldList");
-    goldList.textContent = "";
-    if (goldByYearRadio.checked == true) {
-        for (i = 0; i <= issues.length - 1; i++) {
-            var element = document.createElement("button");
+function separateCoinsIndex(obj) {
+    separateCollectorCoinsIndex("silver", obj);
+    separateCollectorCoinsIndex("gold", obj);
+}
+
+function separateCollectorCoinsIndex(coinMetal, obj) {
+    /*Push coins into array according coin metal*/
+    let coins = [];
+    for (i = 0; i < obj.length; i++) {
+        if (obj[i].coin_type == coinMetal) {
+            coins.push(obj[i]);
+        }
+    }
+    /*Push coin Countries and Years into separate arrays*/
+    let coinsCountries = [];
+    let coinsYears = [];
+    for(i = 0; i < coins.length; i++) {
+        coinsCountries.push(coins[i].country);
+        coinsYears.push(coins[i].issue_year);
+    }
+    /*load collector coins in Index.html by coin Metal, uniq Years, uniq Countries*/
+    loadCollectorCoinsIndex(coinMetal, uniq(coinsYears), uniq(coinsCountries));
+}
+
+function uniq(coinValues) {
+    return Array.from(new Set(coinValues));
+}
+
+function loadCollectorCoinsIndex(coinMetal, years, countries) {
+    let coinsByYearRadio = document.getElementById(coinMetal + "ByYearRadio");
+    let coinsByCountryRadio = document.getElementById(coinMetal + "ByCountryRadio");
+    let coinsList = document.getElementById(coinMetal + "List");
+    coinsList.textContent = "";
+    if (coinsByYearRadio.checked == true) {
+        for (i = 0; i <= years.length - 1; i++) {
+            let element = document.createElement("button");
             element.className = "country";
-            var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="countrycard.html?year=' + issues[i].coin + 
-            '&coin_type=gold"';
+            let onClickAttr = document.createAttribute("onclick");
+            onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + years[i] + '&coin_type=' + coinMetal + '"';
             element.setAttributeNode(onClickAttr);
             element.addEventListener('click', event => event.stopPropagation());
-            var textNode = document.createTextNode(issues[i].coin);
+            let textNode = document.createTextNode(years[i]);
             element.appendChild(textNode);
-            goldList.appendChild(element);
+            coinsList.appendChild(element);
         }
-    } if (goldByCountryRadio.checked == true) {
-        for (country = 0; country <= countryArray.length - 1; country++) {
-            var countryBtn = document.createElement("img");
-            countryBtn.src = countryArray[country].flagImage;
-            countryBtn.width = "64";
-            countryBtn.alt = countryArray[country].name;
-            countryBtn.setAttribute("title", countryArray[country].title);
-            countryBtn.className = "country";
-            var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="commemorativecard.html?country=' + countryArray[country].name.replace(/\s/g, '') + 
-            '&coin_type=gold"';
-            countryBtn.setAttributeNode(onClickAttr);
-            countryBtn.addEventListener('click', event => event.stopPropagation());
-            goldList.appendChild(countryBtn);
+    } if (coinsByCountryRadio.checked == true) {
+        for(k = 0; k < countries.length; k++) {
+            for (country = 0; country <= countryArray.length - 1; country++) {
+                if (countries[k] == countryArray[country].name) {
+                    let countryBtn = document.createElement("img");
+                    countryBtn.src = countryArray[country].flagImage;
+                    countryBtn.width = "64";
+                    countryBtn.alt = countryArray[country].name;
+                    countryBtn.setAttribute("title", countryArray[country].title);
+                    countryBtn.className = "country";
+                    let onClickAttr = document.createAttribute("onclick");
+                    onClickAttr.value = 'location.href="commemorativecard.html?country=' + countryArray[country].name.replace(/\s/g, '') + 
+                    '&coin_type=' + coinMetal + '"';
+                    countryBtn.setAttributeNode(onClickAttr);
+                    countryBtn.addEventListener('click', event => event.stopPropagation());
+                    coinsList.appendChild(countryBtn);
+                }
+            }
         }
     }
 }
