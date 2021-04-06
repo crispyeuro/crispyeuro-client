@@ -117,17 +117,30 @@ function displayCommemorativecardVariables(obj) {
         if (urlParams.get('coin_type') == "commemorative_common") {
             document.getElementsByClassName("containerName")[0].innerHTML = "Commemorative common 2 euro " + obj[0].issue_year;
             document.title = "Commemorative common 2 euro " + obj[0].issue_year;
-        } else {
+        } if (urlParams.get('coin_type') == "commemorative") {
             document.getElementsByClassName("containerName")[0].innerHTML = "Commemorative 2 euro " + obj[0].issue_year;
             document.title = "Commemorative 2 euro " + obj[0].issue_year;
+        } if (urlParams.get('coin_type') == "silver") {
+            document.getElementsByClassName("containerName")[0].innerHTML = "Silver coins of " + obj[0].issue_year;
+            document.title = "Silver coins of " + obj[0].issue_year;
+        } if (urlParams.get('coin_type') == "gold") {
+            document.getElementsByClassName("containerName")[0].innerHTML = "Gold coins of " + obj[0].issue_year;
+            document.title = "Gold coins of " + obj[0].issue_year;
         }
-    } else {
+    }
+    if (urlParams.has('coin_type') && urlParams.has('country')) {
         if (urlParams.has('coin_type') && urlParams.get('coin_type') == "commemorative_common") {
             document.getElementsByClassName("containerName")[0].innerHTML = "Commemorative common 2 euro " + obj[0].country;
             document.title = "Commemorative 2 euro " + obj[0].country;
-        } else {
+        } if (urlParams.get('coin_type') == "commemorative") {
             document.getElementsByClassName("containerName")[0].innerHTML = "Commemorative 2 euro " + obj[0].country;
             document.title = "Commemorative 2 euro " + obj[0].country;
+        } if (urlParams.get('coin_type') == "silver") {
+            document.getElementsByClassName("containerName")[0].innerHTML = "Silver coins of " + obj[0].country;
+            document.title = "Silver coins of " + obj[0].country;
+        } if (urlParams.get('coin_type') == "gold") {
+            document.getElementsByClassName("containerName")[0].innerHTML = "Gold coins of " + obj[0].country;
+            document.title = "Gold coins of " + obj[0].country;
         }
     }
     let commemorativeCoinTypeResult = displayCommemorativeCoinType(obj, urlParams);
@@ -457,7 +470,7 @@ function separateDenominationValues(result) {
             <tr>
                 <th class="columnWidth">Country/Year</th>`;
         for (i = 0; i < sortedUniqueDenominationYears.length; i++) {
-            table += `<th>` + sortedUniqueDenominationYears[i] + `</th>`;
+            table += `<th class="columnYearsWidth">` + sortedUniqueDenominationYears[i] + `</th>`;
         }
         table += `
         </tr>
@@ -470,7 +483,7 @@ function separateDenominationValues(result) {
             for (k = 0; k < sortedUniqueDenominationYears.length; k++) {
                 let cell = `<td class="tableEmptyCell"></td>`;
                 for (m = 0; m < result.length; m++) {
-                    if(result[m].coin_type != 'commemorative') {
+                    if (result[m].coin_type != 'commemorative') {
                         if (sortedUniqueDenominationCountries[i] == result[m].country && sortedUniqueDenominationYears[k] == result[m].issue_year) {
                             cell = `<td class="tableCellCenter"><a href="coincard.html?coin_id=` + result[m].coin_id + `">+</a></td>`;
                             totalCoinsAmount++;
