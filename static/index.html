@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Main page</title>
+    <title>Coin categories</title>
     <script src="../scripts/layout.js"></script>
     <script src="../scripts/data.js"></script>
     <link rel="stylesheet" href="../styles/layout.css">
@@ -16,26 +16,26 @@
     <div class="menu"></div>
 
     <div class="content">
+        <script type="text/javascript">
+            getCoinsIndex();
+        </script>
+
         <div class="categoriesContainerNameRow">
             <div class="categoriesNameRowLeft"></div>
             <div class="categoriesContainerName">Coin categories</div>
             <div class="categoriesNameRowRight">
-                <div class="categoriesNameRowBtn categoriesMisingCoinsSetup" id="categoriesNameRowBtnId"
-                    onclick="missingCoinsIndexBtnClick()">
-                    Showing missing coins</div>
+                <div class="categoriesNameRowBtn categoriesAllCoinsSetup" id="categoriesNameRowBtnId"
+                    onclick="missingCoinsIndexBtnClick()">Showing all coins</div>
             </div>
         </div>
-        <div class="countries" id="countries" onclick="countries('check')">
+        <div class="countries" id="countries" onclick="countries('click')">
             <div class="floatLeft categoryHeader">Countries</div><br>
-            <div id="countriesList" class="contentContainer">
-                <script type="text/javascript">
-                    loadCountries();
-                </script>
-            </div>
+            <div id="countriesList" class="contentContainer"></div>
         </div>
 
-        <div class="denominations hideDenominations" id="denominations" onclick="denominations('check')">
-            <div class="displayInline hideDenominationsCheckbox" id="denominationsHeader">
+        <div class="denominations hideDenominations" id="denominations"
+            onclick="categoryActionIndex('denominations', 'click')">
+            <div class="displayInline hideDenominationsCB" id="denominationsHeader">
                 <div class="floatLeft categoryHeader">Denominations</div>
                 <div class="floatRight">
                     <label for="allDenom" class="checkboxContainer" onclick="stopParent(event)">Show all
@@ -46,79 +46,47 @@
                 </div>
                 <br>
             </div>
-            <div id="denomList" class="contentContainer">
-                <!--<script type="text/javascript">
-                    checkOtherCoins();
-                </script>-->
-            </div>
+            <div id="denomList" class="contentContainer"></div>
         </div>
 
-        <div class="commemorative hideCommemorative" id="commemorative" onclick="commemorative('check')">
-            <div class="displayInline hideCommemorativeCheckbox" id="commemorativeHeader">
+        <div class="commemorative hideCommemorative" id="commemorative"
+            onclick="categoryActionIndex('commemorative', 'click')">
+            <div class="displayInline hideCommemorativeCB" id="commemorativeHeader">
                 <div class="floatLeft categoryHeader">Commemorative</div>
                 <div class="floatRight">
                     <label id="commonIssuesLabel" for="commonIssuesCB" class="checkboxContainer displayInline"
                         onclick="stopParent(event)">Common issues
                         <input type="checkbox" id="commonIssuesCB" name="commCommonIssues" value="commonIssues" checked
-                            onclick="loadIssues()">
+                            onclick="getCoinsIndex()">
                         <div class="fCheckbox"></div>
                     </label>
 
                     <label for="commemoByYearCB" class="radioContainer displayInline" onclick="stopParent(event)">By
                         Year
                         <input type="radio" id="commemoByYearCB" name="commemorative" value="byYear" checked
-                            onclick="loadIssues()">
+                            onclick="getCoinsIndex()">
                         <div class="fRadio"></div>
                     </label>
                     <label for="commemoByCountryCB" class="radioContainer displayInline" onclick="stopParent(event)">By
                         Country
                         <input type="radio" id="commemoByCountryCB" name="commemorative" value="byCountry"
-                            onclick="loadIssues()">
+                            onclick="getCoinsIndex()">
                         <div class="fRadio"></div>
                     </label>
                 </div>
                 <br>
             </div>
-            <div id="issuesList" class="contentContainer">
-                <script type="text/javascript">
-                    loadIssues();
-                </script>
-            </div>
+            <div id="issuesList" class="contentContainer"></div>
         </div>
 
-        <div class="colored hideColored" id="colored" onclick="colored('check')">
-            <div class="displayInline hideColoredCB" id="coloredHeader">
-                <div class="floatLeft categoryHeader">Colorized coins</div>
-                <div class="floatRight">
-                    <label for="coloredByYearRadio" class="radioContainer displayInline" onclick="stopParent(event)">By
-                        Year
-                        <input type="radio" id="coloredByYearRadio" name="colored" value="byYear"
-                            onclick="loadColored()">
-                        <div class="fRadio"></div>
-                    </label>
-                    <label for="coloredByCountryRadio" class="radioContainer displayInline"
-                        onclick="stopParent(event)">By Country
-                        <input type="radio" id="coloredByCountryRadio" name="colored" value="byCountry" checked
-                            onclick="loadColored()">
-                        <div class="fRadio"></div>
-                    </label>
-                </div>
-                <br>
-            </div>
-            <div id="coloredList" class="contentContainer">
-                <script type="text/javascript">
-                    loadColored();
-                </script>
-            </div>
-        </div>
-
-        <div class="silver hideSilver" id="silver" onclick="silver('check')">
+        <div class="silver hideSilver" id="silver" onclick="categoryActionIndex('silver', 'click')">
             <div class="displayInline hideSilverCB" id="silverHeader">
                 <div class="floatLeft categoryHeader">Silver coins</div>
                 <div class="floatRight">
                     <label for="silverByYearRadio" class="radioContainer displayInline" onclick="stopParent(event)">By
                         Year
-                        <input type="radio" id="silverByYearRadio" name="silver" value="byYear" onclick="getCoinsIndex()">
+                        <input type="radio" id="silverByYearRadio" name="silver" value="byYear"
+                            onclick="getCoinsIndex()">
                         <div class="fRadio"></div>
                     </label>
                     <label for="silverByCountryRadio" class="radioContainer displayInline"
@@ -130,14 +98,10 @@
                 </div>
                 <br>
             </div>
-            <div id="silverList" class="contentContainer">
-                <script type="text/javascript">
-                    getCoinsIndex();
-                </script>
-            </div>
+            <div id="silverList" class="contentContainer"></div>
         </div>
 
-        <div class="gold hideGold" id="gold" onclick="gold('check')">
+        <div class="gold hideGold" id="gold" onclick="categoryActionIndex('gold', 'click')">
             <div class="displayInline hideGoldCB" id="goldHeader">
                 <div class="floatLeft categoryHeader">Gold coins</div>
                 <div class="floatRight">
@@ -155,15 +119,9 @@
                 </div>
                 <br>
             </div>
-            <div id="goldList" class="contentContainer">
-                <script type="text/javascript">
-                    getCoinsIndex();
-                </script>
-            </div>
+            <div id="goldList" class="contentContainer"></div>
         </div>
 
-    </div>
-    <div>
     </div>
 
     <footer id="footer"></footer>

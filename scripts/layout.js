@@ -53,13 +53,12 @@ window.onload = function () {
                 <li><a class="menuLink" href="statistics.html">Statistics</a></li>
                 <li><a class="menuLink" href="issueplan.html">Issue plan</a></li>
                 <div class="hiddenLinks">
-                    <li class="sideNavCategories"><a class="menuLink" href="#" onclick="openAll();return false;">Coin categories</a></li>
-                    <li class="sideNavHidden"><a class="menuLink" href="#" onclick="openCountries();return false;">Countries</a></li>
-                    <li class="sideNavHidden"><a class="menuLink" href="#" onclick="openDenominations();return false;">Denominations</a></li>
-                    <li class="sideNavHidden"><a class="menuLink" href="#" onclick="openCommemorative();return false;">Commemorative</a></li>
-                    <li class="sideNavHidden"><a class="menuLink" href="#" onclick="openColored();return false;">Colorized coins</a></li>
-                    <li class="sideNavHidden"><a class="menuLink" href="#" onclick="openSilver();return false;">Silver coins</a></li>
-                    <li class="sideNavHidden"><a class="menuLink" href="#" onclick="openGold();return false;">Gold coins</a></li>
+                    <li class="sideNavCategories"><a class="menuLink" href="#" onclick="openCategory('all');return false;">Coin categories</a></li>
+                    <li class="sideNavHidden"><a class="menuLink" href="#" onclick="openCategory('countries');return false;">Countries</a></li>
+                    <li class="sideNavHidden"><a class="menuLink" href="#" onclick="openCategory('denominations');return false;">Denominations</a></li>
+                    <li class="sideNavHidden"><a class="menuLink" href="#" onclick="openCategory('commemorative');return false;">Commemorative</a></li>
+                    <li class="sideNavHidden"><a class="menuLink" href="#" onclick="openCategory('silver');return false;">Silver coins</a></li>
+                    <li class="sideNavHidden"><a class="menuLink" href="#" onclick="openCategory('gold');return false;">Gold coins</a></li>
                 </div>
             </ul>
         </div>`;
@@ -71,8 +70,8 @@ window.onload = function () {
 }
 
 function showNavLinks() {
-    var navBtnAction = document.getElementById("navBtnAction");
-    var menuAction = document.getElementById("navLinksContainer");
+    let navBtnAction = document.getElementById("navBtnAction");
+    let menuAction = document.getElementById("navLinksContainer");
     if (menuAction.className == "navLinks") {
         menuAction.className = "navLinksOnMobile";
         navBtnAction.className = "navCloseBtn";
@@ -84,8 +83,8 @@ function showNavLinks() {
 }
 
 function showSideNav() {
-    var sideNavBtnAction = document.getElementById("sideNavBtnAction");
-    var sideNavAction = document.getElementById("sideNavLinksContainer");
+    let sideNavBtnAction = document.getElementById("sideNavBtnAction");
+    let sideNavAction = document.getElementById("sideNavLinksContainer");
     if (sideNavAction.className == "sideNavLinks") {
         sideNavAction.className = "sideNavLinksOnMobile";
         sideNavBtnAction.className = "sideNavCloseBtn";
@@ -101,7 +100,7 @@ function stopParent(event) {
 }
 
 function countries(x) {
-    var countries = document.getElementById("countries");
+    let countries = document.getElementById("countries");
     if (x == "open") {
         if (countries.className == "countries hideCountries") {
             countries.className = "countries";
@@ -112,7 +111,7 @@ function countries(x) {
             countries.className = "countries hideCountries";
             return true;
         }
-    } if (x == "check") {
+    } if (x == "click") {
         if (countries.className == "countries") {
             countries.className = "countries hideCountries";
             return true;
@@ -123,178 +122,36 @@ function countries(x) {
     }
 }
 
-function denominations(x) {
-    var denominations = document.getElementById("denominations");
-    var denominationsHeader = document.getElementById("denominationsHeader");
-    if (x == "open") {
-        if (denominations.className == "denominations hideDenominations") {
-            denominations.className = "denominations";
-            denominationsHeader.className = "displayInline";
+function categoryActionIndex(categoryName, action) {
+    let category = document.getElementById(categoryName);
+    let categoryHeader = document.getElementById(categoryName + "Header");
+    if (action == "open") {
+        if (category.className == categoryName + " hide" + categoryName.charAt(0).toUpperCase() + categoryName.slice(1)) {
+            category.className = categoryName;
+            categoryHeader.className = "displayInline";
             return true;
         }
-    } if (x == "close") {
-        if (denominations.className == "denominations") {
-            denominations.className = "denominations hideDenominations";
-            denominationsHeader.className = "displayInline hideDenominationsCheckbox";
+    } if (action == "close") {
+        if (category.className == categoryName) {
+            category.className = categoryName + " hide" + categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
+            categoryHeader.className = "displayInline hide" + categoryName.charAt(0).toUpperCase() + categoryName.slice(1) + "CB";
             return true;
         }
-    } if (x == "check") {
-        if (denominations.className == "denominations") {
-            denominations.className = "denominations hideDenominations";
-            denominationsHeader.className = "displayInline hideDenominationsCheckbox";
+    } if (action == "click") {
+        if (category.className == categoryName) {
+            category.className = categoryName + " hide" + categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
+            categoryHeader.className = "displayInline hide" + categoryName.charAt(0).toUpperCase() + categoryName.slice(1) + "CB";
             return true;
         } else {
-            denominations.className = "denominations";
-            denominationsHeader.className = "displayInline";
+            category.className = categoryName;
+            categoryHeader.className = "displayInline";
             return true;
         }
     }
 }
 
-function commemorative(x) {
-    var commemorative = document.getElementById("commemorative");
-    var commemorativeHeader = document.getElementById("commemorativeHeader");
-    if (x == "open") {
-        if (commemorative.className == "commemorative hideCommemorative") {
-            commemorative.className = "commemorative";
-            commemorativeHeader.className = "displayInline";
-            return true;
-        }
-    } if (x == "close") {
-        if (commemorative.className == "commemorative") {
-            commemorative.className = "commemorative hideCommemorative";
-            commemorativeHeader.className = "displayInline hideCommemorativeCheckbox";
-            return true;
-        }
-    } if (x == "check") {
-        if (commemorative.className == "commemorative") {
-            commemorative.className = "commemorative hideCommemorative";
-            commemorativeHeader.className = "displayInline hideCommemorativeCheckbox";
-            return true;
-        } else {
-            commemorative.className = "commemorative";
-            commemorativeHeader.className = "displayInline";
-            return true;
-        }
-    }
-}
-
-function colored(x) {
-    var colored = document.getElementById("colored");
-    var coloredHeader = document.getElementById("coloredHeader");
-    if (x == "open") {
-        if (colored.className == "colored hideColored") {
-            colored.className = "colored";
-            coloredHeader.className = "displayInline";
-            return true;
-        }
-    } if (x == "close") {
-        if (colored.className == "colored") {
-            colored.className = "colored hideColored";
-            coloredHeader.className = "displayInline hideColoredCB";
-            return true;
-        }
-    } if (x == "check") {
-        if (colored.className == "colored") {
-            colored.className = "colored hideColored";
-            coloredHeader.className = "displayInline hideColoredCB";
-            return true;
-        } else {
-            colored.className = "colored";
-            coloredHeader.className = "displayInline";
-            return true;
-        }
-    }
-}
-
-function silver(x) {
-    var silver = document.getElementById("silver");
-    var silverHeader = document.getElementById("silverHeader");
-    if (x == "open") {
-        if (silver.className == "silver hideSilver") {
-            silver.className = "silver";
-            silverHeader.className = "displayInline";
-            return true;
-        }
-    } if (x == "close") {
-        if (silver.className == "silver") {
-            silver.className = "silver hideSilver";
-            silverHeader.className = "displayInline hideSilverCB";
-            return true;
-        }
-    } if (x == "check") {
-        if (silver.className == "silver") {
-            silver.className = "silver hideSilver";
-            silverHeader.className = "displayInline hideSilverCB";
-            return true;
-        } else {
-            silver.className = "silver";
-            silverHeader.className = "displayInline";
-            return true;
-        }
-    }
-}
-
-function gold(x) {
-    var gold = document.getElementById("gold");
-    var goldHeader = document.getElementById("goldHeader");
-    if (x == "open") {
-        if (gold.className == "gold hideGold") {
-            gold.className = "gold";
-            goldHeader.className = "displayInline";
-            return true;
-        }
-    } if (x == "close") {
-        if (gold.className == "gold") {
-            gold.className = "gold hideGold";
-            goldHeader.className = "displayInline hideGoldCB";
-            return true;
-        }
-    } if (x == "check") {
-        if (gold.className == "gold") {
-            gold.className = "gold hideGold";
-            goldHeader.className = "displayInline hideGoldCB";
-            return true;
-        } else {
-            gold.className = "gold";
-            goldHeader.className = "displayInline";
-            return true;
-        }
-    }
-}
-
-function openAll() {
-    window.open("index.html#all", "_self");
-    checkHash();
-}
-
-function openCountries() {
-    window.open("index.html#countries", "_self");
-    checkHash();
-}
-
-function openDenominations() {
-    window.open("index.html#denominations", "_self");
-    checkHash();
-}
-
-function openCommemorative() {
-    window.open("index.html#commemorative", "_self");
-    checkHash();
-}
-
-function openColored() {
-    window.open("index.html#colored", "_self");
-    checkHash();
-}
-
-function openSilver() {
-    window.open("index.html#silver", "_self");
-    checkHash();
-}
-
-function openGold() {
-    window.open("index.html#gold", "_self");
+function openCategory(category) {
+    window.open("index.html#" + category, "_self");
     checkHash();
 }
 
@@ -302,87 +159,79 @@ function checkHash() {
     const x = window.location.hash.substr(1);
     if (x == "all") {
         countries("open");
-        denominations("open");
-        commemorative("open");
-        colored("open");
-        silver("open");
-        gold("open");
+        categoryActionIndex('denominations', 'open');
+        categoryActionIndex('commemorative', 'open');
+        categoryActionIndex('silver', 'open');
+        categoryActionIndex('gold', 'open');
         return true;
-    }
-    if (x == "countries") {
+    } if (x == "countries") {
         countries("open");
-        denominations("close");
-        commemorative("close");
-        colored("close");
-        silver("close");
-        gold("close");
+        categoryActionIndex('denominations', 'close');
+        categoryActionIndex('commemorative', 'close');
+        categoryActionIndex('silver', 'close');
+        categoryActionIndex('gold', 'close');
         return true;
-    }
-    if (x == "denominations") {
+    } if (x == "denominations") {
         countries("close");
-        denominations("open");
-        commemorative("close");
-        colored("close");
-        silver("close");
-        gold("close");
+        categoryActionIndex('denominations', 'open');
+        categoryActionIndex('commemorative', 'close');
+        categoryActionIndex('silver', 'close');
+        categoryActionIndex('gold', 'close');
         return true;
     } if (x == "commemorative") {
         countries("close");
-        denominations("close");
-        commemorative("open");
-        colored("close");
-        silver("close");
-        gold("close");
+        categoryActionIndex('denominations', 'close');
+        categoryActionIndex('commemorative', 'open');
+        categoryActionIndex('silver', 'close');
+        categoryActionIndex('gold', 'close');
         return true;
-    } if (x == "colored") {
+    } if (x == "silver") {
         countries("close");
-        denominations("close");
-        commemorative("close");
-        colored("open");
-        silver("close");
-        gold("close");
+        categoryActionIndex('denominations', 'close');
+        categoryActionIndex('commemorative', 'close');
+        categoryActionIndex('silver', 'open');
+        categoryActionIndex('gold', 'close');
         return true;
-    }
-    if (x == "silver") {
+    } if (x == "gold") {
         countries("close");
-        denominations("close");
-        commemorative("close");
-        colored("close");
-        silver("open");
-        gold("close");
-        return true;
-    }
-    if (x == "gold") {
-        countries("close");
-        denominations("close");
-        commemorative("close");
-        colored("close");
-        silver("close");
-        gold("open");
+        categoryActionIndex('denominations', 'close');
+        categoryActionIndex('commemorative', 'close');
+        categoryActionIndex('silver', 'close');
+        categoryActionIndex('gold', 'open');
         return true;
     }
 }
 
-function loadCountries() {
-    var countryList = document.getElementById("countriesList");
-    for (country = 0; country <= countryArray.length - 1; country++) {
-        var countryBtn = document.createElement("img");
-        countryBtn.src = countryArray[country].flagImage;
-        countryBtn.width = "64";
-        countryBtn.alt = countryArray[country].name;
-        countryBtn.setAttribute("title", countryArray[country].title);
-        countryBtn.className = "country";
-        var onClickAttr = document.createAttribute("onclick");
-        onClickAttr.value = 'location.href="countrycard.html?country=' + countryArray[country].name.replace(/\s/g, '') + '"';
-        countryBtn.setAttributeNode(onClickAttr);
-        countryBtn.addEventListener('click', event => event.stopPropagation());
-        countryList.appendChild(countryBtn);
+function separateCountriesCoinsIndex(obj) {
+    let countries = [];
+    for (i = 0; i < obj.length; i++) {
+        countries.push(obj[i].country);
+    }
+    let countriesUniq = uniq(countries);
+    document.getElementById("countriesList").innerHTML = "";
+    let countryList = document.getElementById("countriesList");
+    for (i = 0; i < countriesUniq.length; i++) {
+        for (k = 0; k < countryArray.length; k++) {
+            if (countriesUniq[i] == countryArray[k].name) {
+                let countryBtn = document.createElement("img");
+                countryBtn.src = countryArray[k].flagImage;
+                countryBtn.width = "64";
+                countryBtn.alt = (countryArray[k].name).replace("-", " ");
+                countryBtn.setAttribute("title", (countryArray[k].name).replace("-", " "));
+                countryBtn.className = "country";
+                let onClickAttr = document.createAttribute("onclick");
+                onClickAttr.value = 'location.href="countrycard.html?country=' + countryArray[k].name + '"';
+                countryBtn.setAttributeNode(onClickAttr);
+                countryBtn.addEventListener('click', event => event.stopPropagation());
+                countryList.appendChild(countryBtn);
+            }
+        }
     }
 }
 
 function separateNominalsCoinsIndex(obj) {
     let nominals = [];
-    for(i = 0; i < obj.length; i++) {
+    for (i = 0; i < obj.length; i++) {
         nominals.push(obj[i].denomination);
     }
     let uniqNominals = sortAsc(uniq(nominals));
@@ -392,7 +241,7 @@ function separateNominalsCoinsIndex(obj) {
 
 function uniqNominalsSortText(uniqNominals) {
     let uniqNominalsText = [];
-    for(i = 0; i < uniqNominals.length; i++) {
+    for (i = 0; i < uniqNominals.length; i++) {
         let nominalText = "";
         if (uniqNominals[i].includes(".")) {
             const separated = (uniqNominals[i]).split(".");
@@ -410,7 +259,7 @@ function uniqNominalsSortText(uniqNominals) {
                 console.log("Denomination value mistake")
             }
         } else {
-            nominalText += uniqNominals[i] +  " euro";
+            nominalText += uniqNominals[i] + " euro";
         }
         uniqNominalsText.push(nominalText);
     }
@@ -424,8 +273,8 @@ function loadNominalsIndex(uniqNominals, uniqNominalsText) {
     for (i = 0; i <= uniqNominals.length - 1; i++) {
         if (denomCheckBox.checked != true) {
             if (uniqNominals[i] == "0.01" || uniqNominals[i] == "0.02" || uniqNominals[i] == "0.05" ||
-            uniqNominals[i] == "0.1" || uniqNominals[i] == "0.2" || uniqNominals[i] == "0.5"||
-            uniqNominals[i] == "1" || uniqNominals[i] == "2") {
+                uniqNominals[i] == "0.1" || uniqNominals[i] == "0.2" || uniqNominals[i] == "0.5" ||
+                uniqNominals[i] == "1" || uniqNominals[i] == "2") {
                 showNominalsIndex(denomList, uniqNominals[i], uniqNominalsText[i]);
             }
         }
@@ -447,134 +296,115 @@ function showNominalsIndex(denomList, uniqNominal, uniqNominalText) {
     denomList.appendChild(element);
 }
 
-function sortAllCoins() {
-    let allCoins = coins.concat(otherCoins);
-    return allCoins.sort((a, b) => parseFloat(a.value) - parseFloat(b.value));
-}
-
 function sortAsc(coinsArray) {
     return coinsArray.sort((a, b) => parseFloat(a) - parseFloat(b));
 }
 
-function loadIssues() {
-    var issuesList = document.getElementById("issuesList");
-    var commonIssuesCB = document.getElementById("commonIssuesCB");
-    var commemoByYearCB = document.getElementById("commemoByYearCB");
-    var commemoByCountryCB = document.getElementById("commemoByCountryCB");
-    var commonIssuesLabel = document.getElementById("commonIssuesLabel");
-    issuesList.textContent = "";
-    if (commonIssuesCB.checked == true && commemoByYearCB.checked == true) {
-        if (commonIssuesLabel.className == "checkboxContainer displayInline disabled") {
-            commonIssuesLabel.className = "checkboxContainer displayInline";
-            commonIssuesCB.disabled = false;
+function separateCommemorativeCoinsIndex(obj) {
+    let coinsYears = [];
+    let coinsCountries = [];
+    for (i = 0; i < obj.length; i++) {
+        if (obj[i].coin_type == "commemorative") {
+            coinsYears.push(obj[i].issue_year + "");
+            coinsCountries.push(obj[i].country);
         }
-        var allIssues = sortAllIssues();
-        for (i = 0; i <= allIssues.length - 1; i++) {
-            if (allIssues[i].coin != "1999" && allIssues[i].coin != "2000" && allIssues[i].coin != "2001" && allIssues[i].coin != "2002" && allIssues[i].coin != "2003") {
-                var element = document.createElement("button");
-                element.className = "country";
-                var onClickAttr = document.createAttribute("onclick");
-                if (allIssues[i].coin == "2007 TOR" || allIssues[i].coin == "2009 EMU" || allIssues[i].coin == "2012 10YE" || allIssues[i].coin == "2015 30YF") {
-                    onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + allIssues[i].year + 
-                    '&coin_type=commemorative_common"';
-                    var textNode = document.createTextNode(allIssues[i].coin);
-                    element.appendChild(textNode);
-                } else {
-                    onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + allIssues[i].year + 
-                    '&coin_type=commemorative"';
-                    var textNode = document.createTextNode(allIssues[i].coin);
-                    element.appendChild(textNode);
-                }
-                element.setAttributeNode(onClickAttr);
-                element.addEventListener('click', event => event.stopPropagation());
-                issuesList.appendChild(element);
-            }
+        if (obj[i].coin_type == "commemorative_common") {
+            coinsYears.push(obj[i].issue_year + " Common");
+            coinsCountries.push(obj[i].country);
+        }
+    }
+    let coinsYearsUniq = sortAsc(uniq(coinsYears));
+    let coinsCountriesUniq = sortAsc(uniq(coinsCountries));
+    loadCommemorativeCoinsIndex(coinsYearsUniq, coinsCountriesUniq);
+}
 
-        }
+function loadCommemorativeCoinsIndex(years, countries) {
+    let issuesList = document.getElementById("issuesList");
+    let commonIssuesCB = document.getElementById("commonIssuesCB");
+    let commemoByYearCB = document.getElementById("commemoByYearCB");
+    let commemoByCountryCB = document.getElementById("commemoByCountryCB");
+    let commonIssuesLabel = document.getElementById("commonIssuesLabel");
+    issuesList.textContent = "";
+    if (commonIssuesCB.checked && commemoByYearCB.checked) {
+        showCommemorativeCommonByYear(years, issuesList, commonIssuesCB, commonIssuesLabel);
         return true;
     }
-    if (commemoByYearCB.checked == true) {
-        if (commonIssuesLabel.className == "checkboxContainer displayInline disabled") {
-            commonIssuesLabel.className = "checkboxContainer displayInline";
-            commonIssuesCB.disabled = false;
-        }
-        for (i = 0; i <= issues.length - 1; i++) {
-            if (issues[i].coin != "1999" && issues[i].coin != "2000" && issues[i].coin != "2001" && issues[i].coin != "2002" && issues[i].coin != "2003") {
-                var element = document.createElement("button");
-                element.className = "country";
-                var onClickAttr = document.createAttribute("onclick");
-                onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + issues[i].year + 
-                '&coin_type=commemorative' + '"';
-                element.setAttributeNode(onClickAttr);
-                /*element.addEventListener('click', () => location.href = 'commemorativecard.html');*/
-                element.addEventListener('click', event => event.stopPropagation());
-                var textNode = document.createTextNode(issues[i].coin);
-                element.appendChild(textNode);
-                issuesList.appendChild(element);
-            }
-        }
+    if (commemoByYearCB.checked) {
+        showCommemorativeByYear(years, issuesList, commonIssuesCB, commonIssuesLabel);
         return true;
     }
-    if (commemoByCountryCB.checked == true) {
-        if (commonIssuesLabel.className == "checkboxContainer displayInline") {
-            commonIssuesLabel.className += " disabled";
-            commonIssuesCB.disabled = true;
-        }
-        for (country = 0; country <= countryArray.length - 1; country++) {
-            var countryBtn = document.createElement("img");
-            countryBtn.src = countryArray[country].flagImage;
-            countryBtn.width = "64";
-            countryBtn.alt = countryArray[country].name;
-            countryBtn.setAttribute("title", countryArray[country].title);
-            countryBtn.className = "country";
-            var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="commemorativecard.html?country=' + countryArray[country].name.replace(/\s/g, '') + 
-            '&coin_type=commemorative"';
-            countryBtn.setAttributeNode(onClickAttr);
-            countryBtn.addEventListener('click', event => event.stopPropagation());
-            issuesList.appendChild(countryBtn);
-        }
+    if (commemoByCountryCB.checked) {
+        showCommemorativeByCountry(countries, issuesList, commonIssuesCB, commonIssuesLabel);
         return false;
     }
 }
 
-function sortAllIssues() {
-    var allIssues = issues.concat(commonIssues);
-    return allIssues.sort((a, b) => parseFloat(a.year) - parseFloat(b.year));
+function showCommemorativeCommonByYear(years, issuesList, commonIssuesCB, commonIssuesLabel) {
+    if (commonIssuesLabel.className == "checkboxContainer displayInline disabled") {
+        commonIssuesLabel.className = "checkboxContainer displayInline";
+        commonIssuesCB.disabled = false;
+    }
+    for (i = 0; i < years.length; i++) {
+        let element = document.createElement("button");
+        element.className = "country";
+        let onClickAttr = document.createAttribute("onclick");
+        if (years[i].includes(" Common")) {
+            onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + years[i].replace(" Common", "") +
+                '&coin_type=commemorative_common"';
+        } else {
+            onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + years[i] +
+                '&coin_type=commemorative"';
+        }
+        let textNode = document.createTextNode(years[i]);
+        element.appendChild(textNode);
+        element.setAttributeNode(onClickAttr);
+        element.addEventListener('click', event => event.stopPropagation());
+        issuesList.appendChild(element);
+    }
 }
 
-function loadColored() {
-    var coloredByYearRadio = document.getElementById("coloredByYearRadio");
-    var coloredByCountryRadio = document.getElementById("coloredByCountryRadio");
-    var coloredList = document.getElementById("coloredList");
-    coloredList.textContent = "";
-    if (coloredByYearRadio.checked == true) {
-        for (i = 0; i <= issues.length - 1; i++) {
-            var element = document.createElement("button");
+function showCommemorativeByYear(years, issuesList, commonIssuesCB, commonIssuesLabel) {
+    if (commonIssuesLabel.className == "checkboxContainer displayInline disabled") {
+        commonIssuesLabel.className = "checkboxContainer displayInline";
+        commonIssuesCB.disabled = false;
+    }
+    for (i = 0; i < years.length; i++) {
+        if (!years[i].includes(" Common")) {
+            let element = document.createElement("button");
             element.className = "country";
-            var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + issues[i].coin + 
-            '&coin_type=colorized"';
+            let onClickAttr = document.createAttribute("onclick");
+            onClickAttr.value = 'location.href="commemorativecard.html?issue_year=' + years[i] +
+                '&coin_type=commemorative"';
             element.setAttributeNode(onClickAttr);
             element.addEventListener('click', event => event.stopPropagation());
-            var textNode = document.createTextNode(issues[i].coin);
+            let textNode = document.createTextNode(years[i]);
             element.appendChild(textNode);
-            coloredList.appendChild(element);
+            issuesList.appendChild(element);
         }
-    } if (coloredByCountryRadio.checked == true) {
-        for (country = 0; country <= countryArray.length - 1; country++) {
-            var countryBtn = document.createElement("img");
-            countryBtn.src = countryArray[country].flagImage;
-            countryBtn.width = "64";
-            countryBtn.alt = countryArray[country].name;
-            countryBtn.setAttribute("title", countryArray[country].title);
-            countryBtn.className = "country";
-            var onClickAttr = document.createAttribute("onclick");
-            onClickAttr.value = 'location.href="commemorativecard.html?country=' + countryArray[country].name.replace(/\s/g, '') + 
-            '&coin_type=colorized"';
-            countryBtn.setAttributeNode(onClickAttr);
-            countryBtn.addEventListener('click', event => event.stopPropagation());
-            coloredList.appendChild(countryBtn);
+    }
+}
+
+function showCommemorativeByCountry(countries, issuesList, commonIssuesCB, commonIssuesLabel) {
+    if (commonIssuesLabel.className == "checkboxContainer displayInline") {
+        commonIssuesLabel.className += " disabled";
+        commonIssuesCB.disabled = true;
+    }
+    for (i = 0; i < countries.length; i++) {
+        for (k = 0; k < countryArray.length; k++) {
+            if (countries[i] == countryArray[k].name) {
+                let countryBtn = document.createElement("img");
+                countryBtn.src = countryArray[k].flagImage;
+                countryBtn.width = "64";
+                countryBtn.alt = countryArray[k].name;
+                countryBtn.setAttribute("title", countryArray[k].title);
+                countryBtn.className = "country";
+                let onClickAttr = document.createAttribute("onclick");
+                onClickAttr.value = 'location.href="commemorativecard.html?country=' + countryArray[k].name.replace(/\s/g, '') +
+                    '&coin_type=commemorative"';
+                countryBtn.setAttributeNode(onClickAttr);
+                countryBtn.addEventListener('click', event => event.stopPropagation());
+                issuesList.appendChild(countryBtn);
+            }
         }
     }
 }
@@ -591,7 +421,9 @@ async function getCoinsIndex() {
 }
 
 function separateCoinsIndex(obj) {
+    separateCountriesCoinsIndex(obj);
     separateNominalsCoinsIndex(obj);
+    separateCommemorativeCoinsIndex(obj);
     separateCollectorCoinsIndex("silver", obj);
     separateCollectorCoinsIndex("gold", obj);
 }
@@ -607,7 +439,7 @@ function separateCollectorCoinsIndex(coinMetal, obj) {
     /*Push coin Countries and Years into separate arrays*/
     let coinsCountries = [];
     let coinsYears = [];
-    for(i = 0; i < coins.length; i++) {
+    for (i = 0; i < coins.length; i++) {
         coinsCountries.push(coins[i].country);
         coinsYears.push(coins[i].issue_year);
     }
@@ -637,7 +469,7 @@ function loadCollectorCoinsIndex(coinMetal, years, countries) {
             coinsList.appendChild(element);
         }
     } if (coinsByCountryRadio.checked == true) {
-        for(k = 0; k < countries.length; k++) {
+        for (k = 0; k < countries.length; k++) {
             for (country = 0; country <= countryArray.length - 1; country++) {
                 if (countries[k] == countryArray[country].name) {
                     let countryBtn = document.createElement("img");
@@ -647,8 +479,8 @@ function loadCollectorCoinsIndex(coinMetal, years, countries) {
                     countryBtn.setAttribute("title", countryArray[country].title);
                     countryBtn.className = "country";
                     let onClickAttr = document.createAttribute("onclick");
-                    onClickAttr.value = 'location.href="commemorativecard.html?country=' + countryArray[country].name.replace(/\s/g, '') + 
-                    '&coin_type=' + coinMetal + '"';
+                    onClickAttr.value = 'location.href="commemorativecard.html?country=' + countryArray[country].name.replace(/\s/g, '') +
+                        '&coin_type=' + coinMetal + '"';
                     countryBtn.setAttributeNode(onClickAttr);
                     countryBtn.addEventListener('click', event => event.stopPropagation());
                     coinsList.appendChild(countryBtn);
@@ -663,14 +495,14 @@ window.onclick = function (event) {
     if (event.target === document.getElementsByClassName("navLinksOnMobile")[0]) {
         showNavLinks();
     }
-    var navSearchBtn = document.getElementById("navSearchBtn");
+    let navSearchBtn = document.getElementById("navSearchBtn");
     if (!navSearchBtn.contains(event.target) && navSearchBtn.className == "navSearchBtn navSearchBtnExpanded") {
         expandNavSearch();
     }
 }
 
 function missingCoinsIndexBtnClick() {
-    var btn = document.getElementById("categoriesNameRowBtnId");
+    let btn = document.getElementById("categoriesNameRowBtnId");
     if (btn.className == "categoriesNameRowBtn categoriesMisingCoinsSetup") {
         btn.className = "categoriesNameRowBtn categoriesAllCoinsSetup";
         btn.innerHTML = "Showing all coins";
@@ -686,9 +518,9 @@ function missingCoinsIndexBtnClick() {
 }
 
 function expandNavSearch() {
-    var searchBtn = document.getElementById("navSearchBtn");
-    var searchInputContainer = document.getElementById("navSearchInputContainer");
-    var navSearchInput = document.getElementById("navSearchInput");
+    let searchBtn = document.getElementById("navSearchBtn");
+    let searchInputContainer = document.getElementById("navSearchInputContainer");
+    let navSearchInput = document.getElementById("navSearchInput");
     if (searchBtn.className == "navSearchBtn") {
         searchBtn.className = "navSearchBtn navSearchBtnExpanded";
         searchInputContainer.style.display = "flex";

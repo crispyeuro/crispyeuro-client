@@ -372,7 +372,10 @@ nav a:hover, .navSearchBtn:hover {
     background-color: var(--white);
 }
 
-.hideCountries>.contentContainer, .hideDenominations>.contentContainer, .hideDenominationsCheckbox>.floatRight, .hideCommemorative>.contentContainer, .hideCommemorativeCheckbox>.floatRight, .hideColored>.contentContainer, .hideColoredCB>.floatRight, .hideSilver>.contentContainer, .hideSilverCB>.floatRight, .hideGold>.contentContainer, .hideGoldCB>.floatRight {
+.hideCountries>.contentContainer, .hideDenominations>.contentContainer, .hideDenominationsCB>.floatRight, 
+.hideCommemorative>.contentContainer, .hideCommemorativeCB>.floatRight, .hideColored>.contentContainer, 
+.hideColoredCB>.floatRight, .hideSilver>.contentContainer, .hideSilverCB>.floatRight, 
+.hideGold>.contentContainer, .hideGoldCB>.floatRight {
     display: none;
 }
 
@@ -535,11 +538,9 @@ input[type=checkbox]:checked~.fCheckbox {
         grid-template-rows: 40px auto 1fr 40px;
         grid-template-columns: 1fr;
     }
-
     .content {
         border: none;
     }
-
     /*Side navigation*/
     .menu {
         position: relative;
@@ -550,7 +551,6 @@ input[type=checkbox]:checked~.fCheckbox {
         border-radius: 0;
         border-bottom: 1px solid var(--grey);
     }
-
     .sideNav {
         display: flex;
         justify-content: center;
@@ -559,7 +559,6 @@ input[type=checkbox]:checked~.fCheckbox {
         padding: 0;
         margin: 0;
     }
-
     .sideNavMeter {
         width: 40%;
         max-width: 200px;
@@ -568,12 +567,10 @@ input[type=checkbox]:checked~.fCheckbox {
         border-radius: 3px;
         background-color: var(--grey);
     }
-
     .sideNavMeterProgress {
         border-top-left-radius: 3px;
         border-bottom-left-radius: 3px;
     }
-
     .sideNav ul {
         width: 100%;
         margin: 0;
