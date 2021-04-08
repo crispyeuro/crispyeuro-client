@@ -97,13 +97,13 @@ table tr>.tableCellCenter:hover {
     color: var(--darkestBlue);
 }
 
-.commemorativeOrderRow, .nominalRow {
+.commemorativeOrderRow, .yearRow {
     width: 11.11%;
     background-color: var(--lightOrange);
     font-weight: bold;
 }
 
-.commemorativeYearRow, .yearRow {
+.commemorativeYearRow, .nominalRow {
     width: 11.11%;
 }
 

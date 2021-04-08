@@ -21,25 +21,8 @@ async function checkCoincardHash() {
 }
 
 function displayCoinVariables(obj) {
-    var denominationStr = obj[0].denomination;
-    if (denominationStr.includes(".")) {
-        const separated = (denominationStr).split(".");
-        if (separated.length == 2) {
-            if (separated[0] == "0") {
-                if (separated[1].charAt(0) == "0") {
-                    denominationStr = separated[1].substring(1) + " cent";
-                } else {
-                    denominationStr = separated[1] + "0  cent";
-                }
-            } else {
-                denominationStr = obj[0].denomination + " euro";
-            }
-        } else {
-            console.log("Denomination value mistake")
-        }
-    } else {
-        denominationStr += " euro";
-    }
+    let denominationStr = coinNominalText(obj[0].denomination);
+
     document.title = "Coin " + denominationStr + " " + obj[0].issue_year + " " + obj[0].country;
     document.getElementsByClassName("viewCoincardName")[0].innerHTML = denominationStr + " " + obj[0].issue_year + " " + obj[0].country;
     document.getElementsByClassName("viewCoinDenomination")[0].innerHTML = denominationStr;
@@ -152,11 +135,12 @@ function displayCommemorativecardVariables(obj) {
 }
 
 function displayCommemorativeCoinType(obj, urlParams) {
+    console.log(obj);
     let coinsAmount = 0;
     let commonIssueName = "";
     if (urlParams.has('coin_type')) {
         for (i = 0; i < obj.length; i++) {
-            if (obj[i].coin_type == urlParams.get('coin_type')) {
+            if (obj[i].coin_type == urlParams.get('coin_type') || (obj[i].coin_type).includes(urlParams.get('coin_type'))) {
                 let coinHTML = `
                 <div class="coin">
                 <a href="coincard.html?coin_id=` + obj[i].coin_id + `"></a>`;
@@ -172,9 +156,15 @@ function displayCommemorativeCoinType(obj, urlParams) {
                     </div>
                     `;
                 } else {
-                    coinHTML += obj[i].issue_year + `</div>
-                    </div>
-                    `;
+                    if (obj[i].coin_type == "commemorative_common") {
+                        coinHTML += obj[i].issue_year + ` Common </div>
+                        </div>
+                        `;
+                    } else {
+                        coinHTML += obj[i].issue_year + `</div>
+                        </div>
+                        `;
+                    }
                 }
                 document.getElementsByClassName("coinsContainer")[0].innerHTML += coinHTML;
                 coinsAmount++;
@@ -208,23 +198,38 @@ function displayCountrycardVariables(obj) {
     /*Push ordinary coins in array and ordinary coins' issue years in array*/
     let ordinaryCoins = [];
     let ordinaryCoinsYears = [];
+    let otherCoins = [];
+    let gold = [];
+    let silver = [];
     for (i = 0; i < obj.length; i++) {
         if (obj[i].coin_type == "ordinary") {
             ordinaryCoins.push(obj[i]);
             ordinaryCoinsYears.push(obj[i].issue_year);
         }
+        if (obj[i].coin_type == "other") {
+            otherCoins.push(obj[i]);
+        }
+        if (obj[i].coin_type == "silver") {
+            silver.push(obj[i]);
+        }
+        if (obj[i].coin_type == "gold") {
+            gold.push(obj[i]);
+        }
     }
+    countrycardDisplayOtherCoins(otherCoins, "OtherDenominations");
+    countrycardDisplayOtherCoins(silver, "Silver");
+    countrycardDisplayOtherCoins(gold, "Gold");
 
     /*Display a table of ordinary coins in HTML*/
     let uniqueYears = (uniq(ordinaryCoinsYears));
     let ordinaryCoinsSortedByYears = countrycardOrdinaryCoinsByYears(uniqueYears, ordinaryCoins);
     if (urlParams.get('country') == "Germany") {
         document.getElementById("countrycardOrdinaryContainer").innerHTML = "";
-        countrycardDisplayOrdinaryCoinsGermany(ordinaryCoinsSortedByYears, 0, 'Germany-"A"');
-        countrycardDisplayOrdinaryCoinsGermany(ordinaryCoinsSortedByYears, 1, 'Germany-"D"');
-        countrycardDisplayOrdinaryCoinsGermany(ordinaryCoinsSortedByYears, 2, 'Germany-"F"');
-        countrycardDisplayOrdinaryCoinsGermany(ordinaryCoinsSortedByYears, 3, 'Germany-"G"');
-        countrycardDisplayOrdinaryCoinsGermany(ordinaryCoinsSortedByYears, 4, 'Germany-"J"');
+        countrycardDisplayOrdinaryCoinsGermany(ordinaryCoinsSortedByYears, 0, 'Germany-"A"', 'open', 'opened');
+        countrycardDisplayOrdinaryCoinsGermany(ordinaryCoinsSortedByYears, 1, 'Germany-"D"', 'close', 'closed');
+        countrycardDisplayOrdinaryCoinsGermany(ordinaryCoinsSortedByYears, 2, 'Germany-"F"', 'close', 'closed');
+        countrycardDisplayOrdinaryCoinsGermany(ordinaryCoinsSortedByYears, 3, 'Germany-"G"', 'close', 'closed');
+        countrycardDisplayOrdinaryCoinsGermany(ordinaryCoinsSortedByYears, 4, 'Germany-"J"', 'close', 'closed');
     } else {
         countrycardDisplayOrdinaryCoins(ordinaryCoinsSortedByYears);
     }
@@ -305,10 +310,10 @@ function countrycardDisplayOrdinaryCoins(x) {
     }
 }
 
-function countrycardDisplayOrdinaryCoinsGermany(x, tableNumber, coinMint) {
+function countrycardDisplayOrdinaryCoinsGermany(x, tableNumber, coinMint, click, clicked) {
     document.getElementById("countrycardOrdinaryContainer").innerHTML += `
-    <div id="tableName` + tableNumber + `" class="tableNameGermany open" onclick="countrycardTableGermanyClicked(` + tableNumber + `)">` + coinMint.replace("-", " ") + `</div>
-    <div id="displayOrdinaryCoins` + tableNumber + `" class="opened">
+    <div id="tableName` + tableNumber + `" class="tableNameGermany ` + click + `" onclick="countrycardTableGermanyClicked(` + tableNumber + `)">` + coinMint.replace("-", " ") + `</div>
+    <div id="displayOrdinaryCoins` + tableNumber + `" class="` + clicked + `">
     <table class="viewOrdinaryCoins">
         <tr>
             <th>Year</th>
@@ -343,6 +348,7 @@ function countrycardDisplayOrdinaryCoinsGermany(x, tableNumber, coinMint) {
     document.getElementById("countrycardOrdinaryContainer").innerHTML += `</table></div>`;
 }
 
+/*Display or hide a table of German ordinary coins in 'countrycard.html'*/
 function countrycardTableGermanyClicked(tableNumber) {
     if (document.getElementById("tableName" + tableNumber).className == "tableNameGermany open") {
         document.getElementById("displayOrdinaryCoins" + tableNumber).className = "closed";
@@ -353,51 +359,14 @@ function countrycardTableGermanyClicked(tableNumber) {
     }
 }
 
+/*Display or hide a table of coins in 'countrycard.html'*/
 function countrycardContainerClicked(containerName) {
-    if (containerName == "ordinary") {
-        if (document.getElementById("countrycardOrdinaryContainer").className == "opened") {
-            document.getElementById("countrycardOrdinaryContainer").className = "closed";
-            document.getElementById("countrycardOrdinaryName").innerHTML = "+ Ordinary";
-        } else {
-            document.getElementById("countrycardOrdinaryContainer").className = "opened";
-            document.getElementById("countrycardOrdinaryName").innerHTML = "- Ordinary";
-        }
-    }
-    if (containerName == "commemorative") {
-        if (document.getElementById("countrycardCommemorativeContainer").className == "opened") {
-            document.getElementById("countrycardCommemorativeContainer").className = "closed";
-            document.getElementById("countrycardCommemorativeName").innerHTML = "+ Commamorative 2 euro";
-        } else {
-            document.getElementById("countrycardCommemorativeContainer").className = "opened";
-            document.getElementById("countrycardCommemorativeName").innerHTML = "- Commamorative 2 euro";
-        }
-    }
-    if (containerName == "otherDenominations") {
-        if (document.getElementById("countrycardOtherDenominationsContainer").className == "opened") {
-            document.getElementById("countrycardOtherDenominationsContainer").className = "closed";
-            document.getElementById("countrycardOtherDenominationsName").innerHTML = "+ Other denominations";
-        } else {
-            document.getElementById("countrycardOtherDenominationsContainer").className = "opened";
-            document.getElementById("countrycardOtherDenominationsName").innerHTML = "- Other denominations";
-        }
-    }
-    if (containerName == "silver") {
-        if (document.getElementById("countrycardSilverContainer").className == "opened") {
-            document.getElementById("countrycardSilverContainer").className = "closed";
-            document.getElementById("countrycardSilverName").innerHTML = "+ Silver coins";
-        } else {
-            document.getElementById("countrycardSilverContainer").className = "opened";
-            document.getElementById("countrycardSilverName").innerHTML = "- Silver coins";
-        }
-    }
-    if (containerName == "gold") {
-        if (document.getElementById("countrycardGoldContainer").className == "opened") {
-            document.getElementById("countrycardGoldContainer").className = "closed";
-            document.getElementById("countrycardGoldName").innerHTML = "+ Gold coins";
-        } else {
-            document.getElementById("countrycardGoldContainer").className = "opened";
-            document.getElementById("countrycardGoldName").innerHTML = "- Gold coins";
-        }
+    if (document.getElementById("countrycard" + containerName + "Container").className == "opened") {
+        document.getElementById("countrycard" + containerName + "Container").className = "closed";
+        document.getElementById("countrycard" + containerName + "NameSign").innerHTML = "+";
+    } else {
+        document.getElementById("countrycard" + containerName + "Container").className = "opened";
+        document.getElementById("countrycard" + containerName + "NameSign").innerHTML = "-";
     }
 }
 
@@ -429,6 +398,55 @@ function countrycardDisplayCommemorativeCoins(commemorativeCoins) {
         }
         document.getElementsByClassName("viewCommemorativeCoins")[0].innerHTML += tableRow;
     }
+}
+
+function countrycardDisplayOtherCoins(coins, metal) {
+    if (coins.length == 0) {
+        document.getElementsByClassName("countrycard" + metal)[0].innerHTML = "";
+    } else {
+        for (i = 0; i < coins.length; i++) {
+            let tableRow =
+                `
+            <tr>
+                <td class="yearRow">` + coins[i].issue_year + `</td>
+                <td class="nominalRow">` + coinNominalText(coins[i].denomination) + `</td>
+                <td class="featureRow"><a href="coincard.html?coin_id=` + coins[i].coin_id + `">` + coins[i].feature + `</a></td>
+                <td class="mintageRow">`;
+            if (coins[i].mintage_total != null) {
+                let mintageString = coins[i].mintage_total;
+                mintageString = coins[i].mintage_total.toLocaleString();
+                tableRow += mintageString + `</td>
+                </tr>`;
+            } else {
+                tableRow += `<span class="textItalic">No data</span></td>
+                </tr>`;
+            }
+            document.getElementsByClassName("countrycard" + metal + "Table")[0].innerHTML += tableRow;
+        }
+    }
+}
+
+function coinNominalText(nominal) {
+    let nominalText = "";
+    if (nominal.includes(".")) {
+        const separated = nominal.split(".");
+        if (separated.length == 2) {
+            if (separated[0] == "0") {
+                if (separated[1].charAt(0) == "0") {
+                    nominalText = separated[1].substring(1) + " cent";
+                } else {
+                    nominalText = separated[1] + "0 cent";
+                }
+            } else {
+                nominalText = nominal + " euro";
+            }
+        } else {
+            console.log("Denomination value mistake")
+        }
+    } else {
+        nominalText += nominal + " euro";
+    }
+    return nominalText;
 }
 
 async function checkDenominationcardUrlValues() {

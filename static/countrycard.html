@@ -39,8 +39,9 @@
         <div class="coins">
             <div class="containerName">Coins</div>
 
-            <div id="countrycardOrdinaryName" class="tableName" onclick="countrycardContainerClicked('ordinary')">-
-                Ordinary</div>
+            <div id="countrycardOrdinaryName" class="tableName" onclick="countrycardContainerClicked('Ordinary')">
+                <span id="countrycardOrdinaryNameSign">-</span> Ordinary
+            </div>
             <div id="countrycardOrdinaryContainer" class="opened">
                 <table class="viewOrdinaryCoins">
                     <tr>
@@ -58,7 +59,9 @@
             </div>
 
             <div id="countrycardCommemorativeName" class="tableName"
-                onclick="countrycardContainerClicked('commemorative')">- Commamorative 2 euro</div>
+                onclick="countrycardContainerClicked('Commemorative')">
+                <span id="countrycardCommemorativeNameSign">-</span> Commamorative 2 euro
+            </div>
             <div id="countrycardCommemorativeContainer" class="opened">
                 <table class="viewCommemorativeCoins">
                     <tr>
@@ -70,61 +73,54 @@
                 </table>
             </div>
 
-            <div id="countrycardOtherDenominationsName" class="tableName"
-                onclick="countrycardContainerClicked('otherDenominations')">- Other denominations</div>
-            <div id="countrycardOtherDenominationsContainer" class="opened">
-                <table>
-                    <tr>
-                        <th class="nominalRow">Nominal</th>
-                        <th class="yearRow">Year</th>
-                        <th class="featureRow">Feature</th>
-                        <th class="mintageRow">Mintage</th>
-                    </tr>
-                    <tr>
-                        <td class="nominalRow">.</td>
-                        <td class="yearRow">.</td>
-                        <td class="featureRow">.</td>
-                        <td class="mintageRow">.</td>
-                    </tr>
-                </table>
+            <div class="countrycardOtherDenominations">
+                <div id="countrycardOtherDenominationsName" class="tableName"
+                    onclick="countrycardContainerClicked('OtherDenominations')">
+                    <span id="countrycardOtherDenominationsNameSign">-</span> Other denominations
+                </div>
+                <div id="countrycardOtherDenominationsContainer" class="opened">
+                    <table class="countrycardOtherDenominationsTable">
+                        <tr>
+                            <th class="yearRow">Year</th>
+                            <th class="nominalRow">Nominal</th>
+                            <th class="featureRow">Feature</th>
+                            <th class="mintageRow">Mintage</th>
+                        </tr>
+                    </table>
+                </div>
             </div>
 
-            <div id="countrycardSilverName" class="tableName" onclick="countrycardContainerClicked('silver')">- Silver
-                coins</div>
-            <div id="countrycardSilverContainer" class="opened">
-                <table>
-                    <tr>
-                        <th class="nominalRow">Nominal</th>
-                        <th class="yearRow">Year</th>
-                        <th class="featureRow">Feature</th>
-                        <th class="mintageRow">Mintage</th>
-                    </tr>
-                    <tr>
-                        <td class="nominalRow">.</td>
-                        <td class="yearRow">.</td>
-                        <td class="featureRow">.</td>
-                        <td class="mintageRow">.</td>
-                    </tr>
-                </table>
+            <div class="countrycardSilver">
+                <div id="countrycardSilverName" class="tableName" onclick="countrycardContainerClicked('Silver')">
+                    <span id="countrycardSilverNameSign">-</span> Silver
+                    coins
+                </div>
+                <div id="countrycardSilverContainer" class="opened">
+                    <table class="countrycardSilverTable">
+                        <tr>
+                            <th class="yearRow">Year</th>
+                            <th class="nominalRow">Nominal</th>
+                            <th class="featureRow">Feature</th>
+                            <th class="mintageRow">Mintage</th>
+                        </tr>
+                    </table>
+                </div>
             </div>
 
-            <div id="countrycardGoldName" class="tableName" onclick="countrycardContainerClicked('gold')">- Gold coins
-            </div>
-            <div id="countrycardGoldContainer" class="opened">
-                <table>
-                    <tr>
-                        <th class="nominalRow">Nominal</th>
-                        <th class="yearRow">Year</th>
-                        <th class="featureRow">Feature</th>
-                        <th class="mintageRow">Mintage</th>
-                    </tr>
-                    <tr>
-                        <td class="nominalRow">.</td>
-                        <td class="yearRow">.</td>
-                        <td class="featureRow">.</td>
-                        <td class="mintageRow">.</td>
-                    </tr>
-                </table>
+            <div class="countrycardGold">
+                <div id="countrycardGoldName" class="tableName" onclick="countrycardContainerClicked('Gold')">
+                    <span id="countrycardGoldNameSign">-</span> Gold coins
+                </div>
+                <div id="countrycardGoldContainer" class="opened">
+                    <table class="countrycardGoldTable">
+                        <tr>
+                            <th class="yearRow">Year</th>
+                            <th class="nominalRow">Nominal</th>
+                            <th class="featureRow">Feature</th>
+                            <th class="mintageRow">Mintage</th>
+                        </tr>
+                    </table>
+                </div>
             </div>
 
         </div>
