@@ -117,7 +117,7 @@ input[type=text], input[type=password], input[type=email] {
     background-color: rgba(32, 41, 60, 1);
 }
 
-input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, select:focus, input[type=date]:focus {
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
     color: rgba(52, 123, 152, 1);
 }
 
@@ -138,7 +138,7 @@ label {
     color: rgba(255, 255, 255, 1);
 }
 
-button, input[type=submit] {
+button, input[type=button] {
     padding: 8px 12px;
     width: 30%;
     min-width: 125px;
@@ -254,53 +254,12 @@ input[type=checkbox]:checked~.fCheckbox {
     background-color: rgba(32, 42, 65, 1);
 }
 
-/*Radio
-.radioContainer {
-    position: relative;
-    padding-left: 20px;
-    padding-right: 10px;
-    display: flex;
+.signupUnsuccessfulShowMistake {
+    line-height: 15px;
+    font-size: 15px;
+    color: rgb(171, 242, 255);
+    padding-bottom: 10px;
 }
-
-.radioContainer input {
-    position: absolute;
-    opacity: 0;
-}
-
-.fRadio {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    left: 0;
-    height: 16px;
-    width: 16px;
-    cursor: pointer;
-    background-color: rgba(45, 60, 86, 1);
-    border: 1px solid rgba(52, 123, 152, 1);
-    border-radius: 50%;
-}
-
-.fRadio:active, label[class=radioContainer]:active > .fRadio {
-    box-shadow: 0 0 0 1px rgba(52, 123, 152, 1) inset;
-    background-color:  rgba(32, 42, 65, 1);
-}
-
-.fRadio:after {
-    content: "";
-    display: none;
-    top: 6px;
-    left: 6px;
-    height: 8px;
-    width: 8px;
-    border-radius: 100%;
-    background-color: rgba(152, 167, 185, 1);
-}
-
-.radioContainer input[type=radio]:checked ~ .fRadio:after { display: block; }
-
-input[type=radio]:checked ~ .fRadio{ background-color: rgba(32, 42, 65, 1); }*/
 
 footer {
     grid-area: footer;
@@ -344,26 +303,39 @@ footer {
 }
 
 @media only screen and (max-width: 768px) {
+    .signUpTop {
+        font-size: 2.5vw;
+    }
+    .signUpCenter {
+        width: 60%;
+        justify-self: center;
+    }
     .signUpForm {
-        width: 50%;
+        width: 100%;
     }
     .signUpFormContainer {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
     }
     input[type=text], input[type=password], input[type=email] {
         width: 100%;
         max-width: 100%;
     }
     .formRow {
-        display: block;
+        flex-direction: column;
+        align-items: flex-end;
     }
     #fUsernameMistake, #fEmailMistake, #fPWDMistake, #fConfPWDMistake, #fTermsMistake, #fRequiredFiend {
+        display: flex;
+        justify-content: right;
         width: 100%;
+        font-size: 14px;
     }
     .recuiredField {
-        float: left;
+        display: flex;
+        width: 100%;
     }
     .formTermsRow, .formSubmitRow, .goBackBtnRow {
         width: 100%;
@@ -371,11 +343,18 @@ footer {
 }
 
 @media only screen and (max-width: 600px) {
+    .signUpCenter {
+        width: 85%;
+        justify-self: center;
+    }
     .signUpTop {
-        font-size: 3vw;
+        font-size: 3.3vw;
     }
     .signUpForm {
-        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
     }
     input[type=text], input[type=password], input[type=email] {
         max-width: 100%;

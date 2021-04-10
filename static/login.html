@@ -24,6 +24,7 @@
             <div class="loginFormContainer">
                 <form name="loginForm" action="/login" class="logInForm" method="post">
                     <span class="pleaseLogIn">Please LOG IN</span>
+                    <span class="loginUnsuccessfulShowMistake"></span>
                     <label for="username">Username</label>
                     <input type="text" id="fLoginUsername" placeholder="Enter Username" name="username" required
                         autocomplete="off" autofocus>
@@ -60,7 +61,7 @@
                     <div id="fForgotPassEmailError" class="inputError"></div>
 
                     <div class="forgotPassBtnContainer">
-                        <input class="emailSendBtn" value="Send">
+                        <input type="button" class="emailSendBtn" value="Send">
                     </div>
 
                     <div class=forgotPassword>

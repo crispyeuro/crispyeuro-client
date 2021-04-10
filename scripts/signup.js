@@ -8,7 +8,7 @@ function setUp() {
     document.getElementById("fUsername").oninput = function () { checkUsername('fUsername', 'fUsernameMistake') };
     document.getElementById("fEmail").oninput = function () { checkEmail('fEmail', 'fEmailMistake') };
     document.getElementById("fPWD").oninput = function () { checkPassword('fPWD', 'fPWDMistake') };
-    document.getElementById("fConfPWD").oninput = function () { checkConfirmPassword('fConfPWD', 'fConfPWDMistake') };
+    document.getElementById("fConfPWD").oninput = function () { checkConfirmPassword('fConfPWD', 'fConfPWDMistake', 'fPWD') };
     document.getElementById("fTerms").oninput = function () { checkTerms('fTerms', 'fTermsMistake') };
     setUpGoBackButton();
     setUpSignUpButton();
@@ -27,7 +27,7 @@ async function setUpSignUpButton() {
         if (validateSignUpForm()) {
             const error = await sendForm('.signUpForm');
             if (error) {
-                console.log(error);
+                document.querySelector('.signupUnsuccessfulShowMistake').innerHTML =  error.error + '<br>';
             } else {
                 showSignUpSuccess();
             }
@@ -40,7 +40,7 @@ function validateSignUpForm() {
         checkUsername('fUsername', 'fUsernameMistake'),
         checkEmail('fEmail', 'fEmailMistake'),
         checkPassword('fPWD', 'fPWDMistake'),
-        checkConfirmPassword('fConfPWD', 'fConfPWDMistake'),
+        checkConfirmPassword('fConfPWD', 'fConfPWDMistake', 'fPWD'),
         checkTerms('fTerms', 'fTermsMistake')
     ].every(x => x);
 }

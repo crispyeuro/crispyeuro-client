@@ -76,6 +76,7 @@ function setUpLoginButton() {
         if (validateLogInForm()) {
             const error = await sendForm('.logInForm');
             if (error) {
+                document.querySelector('.loginUnsuccessfulShowMistake').innerHTML = error.error;
                 console.log(error);
             }
         }

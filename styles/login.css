@@ -150,6 +150,7 @@ input:invalid {
     font-size: 14px;
     text-align: right;
     height: 14px;
+    margin-bottom: 5px;
 }
 
 .forgotPassword {
@@ -173,7 +174,7 @@ input:invalid {
     margin: 0;
 }
 
-button, input[type=submit] {
+button, input[type=button] {
     padding: 8px 12px;
     width: 60%;
     min-width: 100px;
@@ -186,7 +187,7 @@ button, input[type=submit] {
     background-color: rgba(52, 123, 152, 1);
 }
 
-button:hover, input[type=submit]:hover {
+button:hover, input[type=button]:hover {
     opacity: 0.9;
 }
 
@@ -318,6 +319,12 @@ input[type=checkbox]:checked~.fCheckbox {
     background-color: rgba(32, 42, 65, 1);
 }
 
+.loginUnsuccessfulShowMistake {
+    line-height: 15px;
+    font-size: 15px;
+    color: rgb(171, 242, 255);
+}
+
 footer {
     grid-area: footer;
     border-top: 3px solid rgba(37, 48, 66, 1);
@@ -335,8 +342,8 @@ footer {
     .logInForm {
         width: 80%;
     }
-    button[type=submit] {
-        width: 130px;
+    input[type=button] {
+        width: 40%;
     }
     .lineContainer {
         display: flex;
