@@ -23,7 +23,7 @@
         <div class="signUpCenter">
             <div class="signUpFormContainer">
                 <div class="signUpFormName">Sign up</div>
-                <form class="signUpForm" name="signupForm" action="#" onsubmit="return validateSignUpForm()"
+                <form class="signUpForm" name="signupForm" action="/signUp"
                     method="post">
                     <div class="formRow">
                         <div class="formRightArea"></div>
@@ -72,14 +72,14 @@
                     <div class="formRow">
                         <div class="formRightArea"></div>
                         <div class="formSubmitRow">
-                            <input type="submit" value="Sign up">
+                            <input class="signUpBtn" type="button" value="Sign up">
                         </div>
                     </div>
 
                     <div class="formRow">
                         <div class="formRightArea"></div>
                         <div class="goBackBtnRow">
-                            <a href=# onclick="goBack()">Go back</a>
+                            <a class="goBackBtn" href=#">Go back</a>
                         </div>
                     </div>
 
@@ -89,7 +89,7 @@
             <div class="signUpSuccess">
                 <div class="signUpFormName">Sign up</div>
                 <div class="signUpSuccessText">Account has been successfully created.</div>
-                <button onclick="location.href='login.html'">Continue</button>
+                <button onclick="location.href='index.html'">Continue</button>
             </div>
         </div>
 
@@ -101,6 +101,6 @@
     </footer>
 </body>
 
-<script src="../scripts/signup.js"></script>
+<script type="module" src="../scripts/signup.js"></script>
 
 </html>

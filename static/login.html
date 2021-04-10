@@ -22,8 +22,7 @@
 
         <div class="loginCenter">
             <div class="loginFormContainer">
-                <form name="loginForm" action="index.html" class="logInForm" onsubmit="return validateLogInForm()"
-                    method="post">
+                <form name="loginForm" action="/login" class="logInForm" method="post">
                     <span class="pleaseLogIn">Please LOG IN</span>
                     <label for="username">Username</label>
                     <input type="text" id="fLoginUsername" placeholder="Enter Username" name="username" required
@@ -46,34 +45,33 @@
                     </div>
 
                     <div class="logInBtnContainer">
-                        <button type="submit" class="logInBtn">Log In</button>
+                        <input type="button" class="logInBtn" value="Log in">
                     </div>
 
                     <div class=forgotPassword>
-                        <a href=# onclick="showForgotPassForm()">Forgot password?</a>
+                        <a class="forgotPasswordBtn" href=#>Forgot password?</a>
                     </div>
                 </form>
 
-                <form name="forgotPassForm" action="#" class="forgotPassForm" onsubmit="return validateForgotPassForm()"
-                    method="post">
+                <form name="forgotPassForm" action="/recover" class="forgotPassForm">
                     <span class="findYourAccount">Find your account</span>
                     <label for="email">Email</label>
                     <input type="email" id="fForgotPassEmail" placeholder="Enter email" name="email" autocomplete="off">
                     <div id="fForgotPassEmailError" class="inputError"></div>
 
                     <div class="forgotPassBtnContainer">
-                        <input type="submit" class="forgotPassBtn" value="Send">
+                        <input class="emailSendBtn" value="Send">
                     </div>
 
                     <div class=forgotPassword>
-                        <a href=# onclick="showLoginForm()">Go back</a>
+                        <a class="goBackToLoginFormBtn" href=#>Go back</a>
                     </div>
                 </form>
 
                 <div class="recoverAccountForm">
                     <span class="findYourAccount">Find your account</span>
                     <span class="recoverAccountText">An email with instructions was sent.</span>
-                    <button onclick="showLoginForm()">Log in</button>
+                    <button class="recoverLogInBtn">Log in</button>
                 </div>
             </div>
 
@@ -99,6 +97,6 @@
     </footer>
 </body>
 
-<script src="../scripts/login.js"></script>
+<script type="module" src="../scripts/login.js"></script>
 
 </html>

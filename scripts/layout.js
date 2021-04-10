@@ -24,7 +24,7 @@ window.onload = function () {
                 <li><a href="messages.html">Messages</a></li>
                 <li><a href="swap.html">Swap</a></li>
                 <li><a href="settings.html">Settings</a></li>
-                <li><a href="login.html">Log out</a></li>
+                <li><form action="/logout" method="get"><input type="submit" name="logout" value="Log out" /></form></li>
             </ul>
         </nav>`;
 
@@ -41,7 +41,7 @@ window.onload = function () {
                 <div class="sideNavUserIconContainer">
                     <div class="userIcon">Us</div>
                 </div>
-                <div class="sideNavUserText">[Username]</div>
+                <div class="sideNavUserText"></div>
             </div>
 
             <div class="sideNavMeterName">720 coins collected</div>
@@ -66,6 +66,8 @@ window.onload = function () {
     document.getElementById("footer").innerHTML =
         `Crispyeuro 2020-2021`;
 
+    /*getUserData();
+    checkLoggedIn();*/
     checkHash();
 }
 
