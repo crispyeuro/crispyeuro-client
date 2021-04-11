@@ -24,7 +24,7 @@ window.onload = function () {
                 <li><a href="messages.html">Messages</a></li>
                 <li><a href="swap.html">Swap</a></li>
                 <li><a href="settings.html">Settings</a></li>
-                <li><form action="/logout" method="get"><input type="submit" name="logout" value="Log out" /></form></li>
+                <li><form class="logoutForm" action="/logout" method="get"><input type="submit" name="logout" value="Log out" /></form></li>
             </ul>
         </nav>`;
 
@@ -39,14 +39,14 @@ window.onload = function () {
 
             <div class="sideNavUserContainer" onclick="location.href='settings.html';">
                 <div class="sideNavUserIconContainer">
-                    <div class="userIcon">Us</div>
+                    <div class="userIcon"></div>
                 </div>
                 <div class="sideNavUserText"></div>
             </div>
 
-            <div class="sideNavMeterName">720 coins collected</div>
+            <div class="sideNavMeterName"></div>
             <div class="sideNavMeter">
-                <div class="sideNavMeterProgress">45%</div>
+                <div class="sideNavMeterProgress"></div>
             </div>
 
             <ul class="sideNavLinks" id="sideNavLinksContainer">
@@ -68,6 +68,8 @@ window.onload = function () {
 
     /*getUserData();
     checkLoggedIn();*/
+    checkUsername();
+    coinCollectionProgress();
     checkHash();
 }
 
@@ -553,4 +555,56 @@ function validateNavSearchSubmitKey(event) {
     if (event.keyCode === 13) {
         document.getElementsByClassName("navSearchSubmitContainer")[0].click();
     }
+}
+
+async function checkUsername() {
+    const apiPath = `/api/layoutUsername${window.location.search}`;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        showUsernameLayout(obj);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+function showUsernameLayout(obj) {
+    if (obj != undefined && obj.length > 0 && 'username' in obj[0]) {
+        document.querySelector('.sideNavUserText').innerHTML = obj[0].username;
+        document.querySelector('.userIcon').innerHTML = obj[0].username.slice(0, 2).toUpperCase();
+    }
+}
+
+async function checkAddedCoinsAmount() {
+    const apiPath = `/api/layoutAddedCoins${window.location.search}`;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        return obj;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function coinsAmount() {
+    const apiPath = `/api/coinsAmount${window.location.search}`;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        return obj;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function coinCollectionProgress() {
+    let addedCoinsAmount;
+    let coins;
+    let collectedCoinsPercent;
+    addedCoinsAmount = await checkAddedCoinsAmount();
+    coins = await coinsAmount();
+    collectedCoinsPercent = parseFloat((addedCoinsAmount[0].count/coins[0].count)*100).toFixed(1) + '%';
+    document.querySelector('.sideNavMeterName').innerHTML = addedCoinsAmount[0].count + ' coins collected';
+    document.querySelector('.sideNavMeterProgress').innerHTML = collectedCoinsPercent;
+    document.querySelector('.sideNavMeterProgress').style.width = collectedCoinsPercent;
 }

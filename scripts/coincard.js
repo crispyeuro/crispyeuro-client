@@ -16,7 +16,7 @@ async function checkCoincardHash() {
     try {
         displayCoinVariables(obj);
     } catch (err) {
-        alert("Can't find any coin with these parameters!")
+        console.log(`Can't find any coin with these parameters.`);
     }
 }
 
@@ -81,6 +81,8 @@ function displayCoinVariables(obj) {
     if (obj[0].mintage_description != null) {
         document.getElementsByClassName("coincardAdditionalInfo")[0].innerHTML = `<div class="textColorDarkBlue">Additional information:&nbsp</div>` + obj[0].mintage_description;
     }
+
+    document.querySelector('.addedCoinCoincardNameModal').innerHTML = denominationStr + ' ' + obj[0].issue_year + ' ' + obj[0].country;
 }
 
 async function getCommemorativecardUrlValues() {
@@ -543,4 +545,114 @@ function denominationString(denomination) {
         denominationStr += " euro";
     }
     return denominationStr;
+}
+
+async function getAddedCoins() {
+    const apiPath = `/api/userAddedCoins${window.location.search}`;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        if (obj.length > 0) {
+            loadAddedCoinsCoincard(obj);
+        }
+    } catch (err) {
+        console.log('Failed to load added coin.');
+    }
+}
+
+function loadAddedCoinsCoincard(obj) {
+    document.querySelector('.addedCoinsTable').innerHTML =
+        `
+    <div class="coincardAddedCoins coincardAddedCoinsHeader">
+        <div class="coincardAddedId">ID</div>
+        <div class="coincardAddedGrade">Grade</div>
+        <div class="coincardAddedAmount">Amount</div>
+        <div class="coincardAddedDataBtn">More data</div>
+        <div class="coincardAddedSwap">Swap availability</div>
+        <div class="coincardAddedDeleteBtn">Delete</div>
+    </div>
+    `;
+
+    for (i = 0; i < obj.length; i++) {
+        let row =
+            `
+        <div class="coincardAddedCoins">
+            <div class="coincardAddedId">` + obj[i].added_coin_id + `</div>
+            <div class="coincardAddedGrade">`;
+        if (obj[i].grade === null) {
+            row += `<span class="textItalic">No data</span>`;
+        } else {
+            row += obj[i].grade;
+        }
+        row +=
+            `
+            </div>
+            <div class="coincardAddedAmount">` + obj[i].amount + `</div>
+            <div class="coincardAddedDataBtn"><a href="#" onclick="loadAddedCoinModalData(` +
+            obj[i].added_coin_id + `,'` + obj[i].grade + `',` + obj[i].amount + `,'` + obj[i].coin_value + `','` +
+            obj[i].comment + `','` + obj[i].design + `','` + obj[i].image_path + `','` + obj[i].in_set +
+            `',` + obj[i].swap_availability + `); showAddedCoinDataModal(); return false;">View</a>
+            </div>
+            <div class="coincardAddedSwap">
+                <label for="coincardAddedSwapCB" class="checkboxContainer coincardAddedSwapDisable"
+                    id="coincardSwapCheckbox">
+                    <input type="checkbox" class="coincardAddedSwapCB" id="coincardAddedSwapCB"
+                        name="userCoinSwapAvailable" value="addedCoinAvailable">
+                    <div class="fCheckbox"></div>
+                </label>
+            </div>
+            <div class="coincardAddedDeleteBtn">
+                <div class="deleteBtnContainer">
+                    <div class="deleteBtn"></div>
+                </div>
+            </div>
+        </div>
+        `;
+        document.querySelector('.addedCoinsTable').innerHTML += row;
+    }
+}
+
+function loadAddedCoinModalData(coinId, grade, amount, value, comment, design, imagePath, inSet, swapAvailability) {
+    document.querySelector('.addedCoinModalCoinId').value = coinId;
+
+    document.querySelector('.addedCoinIdModal').innerHTML = '. Id: ' + coinId;
+    document.querySelector('.addedCoinAmount').value = amount;
+    if (grade === "null") {
+        document.querySelector('.addedCoinGrade').value = "";
+    } else {
+        document.querySelector('.addedCoinGrade').value = grade;
+    }
+    if (value === "null") {
+        document.querySelector('.addedCoinValue').value = "";
+    } else {
+        document.querySelector('.addedCoinValue').value = value;
+    }
+    if (design === "null") {
+        document.querySelector('.addedCoinDesign').value = "";
+    } else {
+        document.querySelector('.addedCoinDesign').value = design;
+    }
+    if (inSet === "null") {
+        document.querySelector('.addedCoinInSet').value = "";
+    } else {
+        document.querySelector('.addedCoinInSet').value = inSet;
+    }
+    if (comment === "null") {
+        document.querySelector('.addedCoinComment').value = "";
+    } else {
+        document.querySelector('.addedCoinComment').value = comment;
+    }
+}
+
+async function sendForm(formSelectorQuery) {
+    const form = document.querySelector(formSelectorQuery);
+    const body = new URLSearchParams(new FormData(form)).toString();
+    const response = await fetch(form.action, {
+        method: 'post',
+        body,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+    });
+    return true;
 }

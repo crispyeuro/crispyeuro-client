@@ -15,7 +15,7 @@ function showAddCoinContainer() {
     document.getElementById("modalSendUserOffer").style.display = "none";
 }
 
-function showAddedCoinData() {
+function showAddedCoinDataModal() {
     modalContent.style.display = "flex";
 
     document.getElementById("modalAddCoinName").style.display = "none";
