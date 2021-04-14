@@ -554,6 +554,8 @@ async function getAddedCoins() {
     try {
         if (obj.length > 0) {
             loadAddedCoinsCoincard(obj);
+        } else {
+            document.querySelector('.addedCoinsTable').innerHTML = "";
         }
     } catch (err) {
         console.log('Failed to load added coin.');
@@ -601,11 +603,12 @@ function loadAddedCoinsCoincard(obj) {
                     <div class="fCheckbox"></div>
                 </label>
             </div>
-            <div class="coincardAddedDeleteBtn">
+            <form class="coincardAddedDeleteBtn deleteAddedCoinForm` + obj[i].added_coin_id + `" name="deleteAddedCoin" action="/deleteAddedCoin" method="post">
+                <input class="addedCoinIdToDelete" name="addedCoinIdToDeleteId" type="number" value="`+ obj[i].added_coin_id + `">
                 <div class="deleteBtnContainer">
-                    <div class="deleteBtn"></div>
-                </div>
-            </div>
+                        <div class="deleteBtn"></div>
+                    </div>
+            </form>
         </div>
         `;
         document.querySelector('.addedCoinsTable').innerHTML += row;
@@ -642,6 +645,9 @@ function loadAddedCoinModalData(coinId, grade, amount, value, comment, design, i
     } else {
         document.querySelector('.addedCoinComment').value = comment;
     }
+    if (imagePath === "null") {
+        document.querySelector('.addedCoinPictureUrl').value = "";
+    } else document.querySelector('.addedCoinPictureUrl').value = imagePath;
 }
 
 async function sendForm(formSelectorQuery) {
@@ -655,4 +661,22 @@ async function sendForm(formSelectorQuery) {
         },
     });
     return true;
+}
+
+function emptyAddedCoinModalData() {
+    document.querySelector('.addedCoinModalCoinId').value = 0;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.has('coin_id')) {
+        document.querySelector('.coinIdModalCoinId').value = urlParams.get('coin_id');
+    }
+
+    document.querySelector('.addedCoinIdModal').innerHTML = '';
+    document.querySelector('.addedCoinAmount').value = 1;
+    document.querySelector('.addedCoinGrade').value = "";
+    document.querySelector('.addedCoinValue').value = "";
+    document.querySelector('.addedCoinDesign').value = "";
+    document.querySelector('.addedCoinInSet').value = "";
+    document.querySelector('.addedCoinComment').value = "";
+    document.querySelector('.addedCoinPictureUrl').value = "";
 }

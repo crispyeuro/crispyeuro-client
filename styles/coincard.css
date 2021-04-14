@@ -295,11 +295,14 @@ input[type="checkbox"]:checked+.collapsed {
     left: 2.5px;
     transform: rotate(45deg);
     border-bottom: 3px solid rgb(189, 189, 189);
+    background-color: rgb(189, 189, 189);
+    padding: 0;
+    border-radius: 0px;
 }
 
 .deleteBtn::after {
-    content: "";
     position: absolute;
+    content: "";
     width: 100%;
     top: 0;
     left: 0;
@@ -307,6 +310,7 @@ input[type="checkbox"]:checked+.collapsed {
     transform: rotate(-90deg);
     border-bottom: 3px solid rgb(189, 189, 189);
 }
+
 
 .coincardSwapOfferSName {
     font-size: 16px;
@@ -328,7 +332,7 @@ input[type="checkbox"]:checked+.collapsed {
     text-decoration: underline;
 }
 
-.addedCoinModalCoinId {
+.addedCoinModalCoinId, .coinIdModalCoinId, .addedCoinIdToDelete {
     display: none;
 }
 

@@ -139,7 +139,7 @@
                     coin</button>
             </div>
             <div class="addedCoinsTable"></div>
-            <button onclick="showAddCoinContainer()">Add new coin</button>
+            <button onclick="emptyAddedCoinModalData(); showAddCoinContainer()">Add new coin</button>
             <br><br>
         </div>
         <div class="swap">
@@ -177,9 +177,9 @@
             <span class="modalNameRow" id="modalCoinUserSwap">User [username] offer</span>
             <div class="coinNameRow"><span class="addedCoinCoincardNameModal">[Denomination][Year][Country].
                 </span><span class="addedCoinIdModal"></span></div><br>
-            <form class="addCoinModalForm" name="AddCoinForm" action="/addCoin" method="post"
-                enctype="multipart/form-data">
-                <input class="addedCoinModalCoinId" name="coinId" type="number" value="0">
+            <form class="addCoinModalForm" name="AddCoinForm" action="/addCoin" method="post">
+                <input class="addedCoinModalCoinId" name="addedCoinId" type="number" value="0">
+                <input class="coinIdModalCoinId" name="coinId" type="number" value="0">
                 <div class="inputContainer">
                     <div class="formLeftSide">
                         <label for="grade">Grade</label>
@@ -189,44 +189,47 @@
                             <option value="BU">BU</option>
                             <option value="Proof">Proof</option>
                             <option value="VF">VF</option>
-                            <option value="other">Other</option>
+                            <option value="Circulation">Circulation</option>
+                            <option value="Other">Other</option>
                         </select><br>
 
                         <label for="value">Value</label>
-                        <input class="addedCoinValue" type="text" name="value"><br>
+                        <input class="addedCoinValue" type="text" name="value" placeholder="e.g. 4 euro"><br>
 
                         <label for="amount">Amount</label>
-                        <input class="addedCoinAmount" type="text" name="amount"><br>
+                        <input class="addedCoinAmount" type="number" name="amount" min="1" value="1" placeholder="min 1" required><br>
                     </div>
                     <div class="formRightSide">
                         <label for="design">Design</label>
                         <select class="addedCoinDesign" name="design">
                             <option value="" disabled selected>Not selected</option>
+                            <option value="noDesign">None</option>
                             <option value="colorized">Colorized</option>
                             <option value="gilded">Gilded</option>
                             <option value="plated">Plated</option>
                             <option value="other">Other</option>
                         </select><br>
 
-                        <label for="inSet">In set</label>
+                        <label for="inSet">Set</label>
                         <select class="addedCoinInSet" name="inSet">
                             <option value="" disabled selected>Not selected</option>
+                            <option value="noSet">None</option>
                             <option value="setPart">Part of a set</option>
                             <option value="coincard">Coincard</option>
                             <option value="box">Box</option>
                             <option value="folder">Folder</option>
+                            <option value="other">Other</option>
                         </select><br>
 
-                        <label>Coin picture</label>
-                        <label for="file" class="fileInputLabel">
-                            Choose picture
-                        </label>
-                        <input type="file" id="file" name="file" class="fileInput" accept=".jpg, .png, jpeg, .gif">
+                        <label for="pictureUrl">Picture</label>
+                        <!--<label for="file" class="fileInputLabel">Choose picture</label>-->
+                        <input type="text" class="addedCoinPictureUrl" name="picturePath" placeholder="e.g. .../somePicrute.jpg">
+                        <!--<input type="file" id="file" name="file" class="fileInput" accept=".jpg, .png, jpeg, .gif">-->
                     </div>
                 </div>
                 <label for="comment">Comment</label>
-                <textarea class="addedCoinComment" name="comment" rows="2" cols="30"></textarea><br>
-                <input id="modalAddCoinBtn" type="submit" value="Add coin">
+                <textarea class="addedCoinComment" name="comment" rows="2" cols="30" placeholder="Enter a comment about this coin..."></textarea><br>
+                <input id="modalAddCoinBtn" type="button" onclick="sendForm('.addCoinModalForm'); hideAddCoinContainer(); getAddedCoins();" value="Add coin">
                 <input type="button" id="modalSaveCoinBtn" onclick="sendForm('.addCoinModalForm'); hideAddCoinContainer(); getAddedCoins();" value="Save">
                 <button onclick="hideAddCoinContainer(); return false;" id="modalSendUserOffer">Accept offer</button>
             </form>

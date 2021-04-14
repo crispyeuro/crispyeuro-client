@@ -104,7 +104,7 @@ label {
     flex-direction: column;
 }
 
-.modal input[type=text], .modal select {
+.modal input[type=text], .modal input[type=number] , .modal select {
     width: 70%;
     margin-bottom: 5px;
     border-color: rgba(135, 152, 173, 0.6);
@@ -117,7 +117,7 @@ label {
     resize: none;
 }
 
-.modal input[type=submit], .modal #modalSaveCoinBtn, .modal #modalSendUserOffer, .modal #modalSendMyOffer {
+.modal input[type=submit], .modal #modalSaveCoinBtn, .modal #modalAddCoinBtn, .modal #modalSendUserOffer, .modal #modalSendMyOffer {
     width: 20%;
     min-width: 150px;
     align-self: flex-end;
@@ -127,7 +127,7 @@ label {
     border: none;
 }
 
-.modal input[type=text]:focus, .modal select:focus, .modal textarea:focus, .modal input[type=file]:focus, .fileInputLabel:focus, .modalUserMyOffer textarea:focus {
+.modal input[type=text]:focus, .modal input[type=number]:focus, .modal select:focus, .modal textarea:focus, .modal input[type=file]:focus, .fileInputLabel:focus, .modalUserMyOffer textarea:focus {
     outline: none;
     box-shadow: 0 0 0 1px rgba(135, 152, 173, 0.6);
 }
