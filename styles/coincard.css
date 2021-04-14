@@ -311,6 +311,14 @@ input[type="checkbox"]:checked+.collapsed {
     border-bottom: 3px solid rgb(189, 189, 189);
 }
 
+.deleteBtnContainer input[type=button] {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0px;
+    height: 100%;
+    width: 21px;
+    border: none;
+}
 
 .coincardSwapOfferSName {
     font-size: 16px;

@@ -607,6 +607,7 @@ function loadAddedCoinsCoincard(obj) {
                 <input class="addedCoinIdToDelete" name="addedCoinIdToDeleteId" type="number" value="`+ obj[i].added_coin_id + `">
                 <div class="deleteBtnContainer">
                         <div class="deleteBtn"></div>
+                        <input type="button" class="deleteInput" onclick="sendForm('.deleteAddedCoinForm` + obj[i].added_coin_id + `'); getAddedCoins();">
                     </div>
             </form>
         </div>
