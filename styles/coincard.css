@@ -340,7 +340,7 @@ input[type="checkbox"]:checked+.collapsed {
     text-decoration: underline;
 }
 
-.addedCoinModalCoinId, .coinIdModalCoinId, .addedCoinIdToDelete {
+.addedCoinModalCoinId, .coinIdModalCoinId, .addedCoinIdToDelete, .addedCoinToSwapId {
     display: none;
 }
 

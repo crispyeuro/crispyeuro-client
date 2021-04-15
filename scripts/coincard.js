@@ -1,4 +1,4 @@
-function checkCoincardAvailableSwap() {
+/*function checkCoincardAvailableSwap() {
     if (document.getElementById("coincardAvailableSwap").checked == true) {
         document.getElementsByClassName("coincardAddedSwapCB")[0].disabled = true;
         document.getElementsByClassName("coincardAddedSwapDisable")[0].style.opacity = "0.3";
@@ -6,7 +6,7 @@ function checkCoincardAvailableSwap() {
         document.getElementsByClassName("coincardAddedSwapCB")[0].disabled = false;
         document.getElementsByClassName("coincardAddedSwapDisable")[0].style.opacity = "1";
     }
-}
+}*/
 
 async function checkCoincardHash() {
     const apiPath = `/api/lala${window.location.search}`;
@@ -558,7 +558,7 @@ async function getAddedCoins() {
             document.querySelector('.addedCoinsTable').innerHTML = "";
         }
     } catch (err) {
-        console.log('Failed to load added coin.');
+        console.log(err);
     }
 }
 
@@ -566,7 +566,7 @@ function loadAddedCoinsCoincard(obj) {
     document.querySelector('.addedCoinsTable').innerHTML =
         `
     <div class="coincardAddedCoins coincardAddedCoinsHeader">
-        <div class="coincardAddedId">ID</div>
+        <div class="coincardAddedId">Record ID</div>
         <div class="coincardAddedGrade">Grade</div>
         <div class="coincardAddedAmount">Amount</div>
         <div class="coincardAddedDataBtn">More data</div>
@@ -595,14 +595,20 @@ function loadAddedCoinsCoincard(obj) {
             obj[i].comment + `','` + obj[i].design + `','` + obj[i].image_path + `','` + obj[i].in_set +
             `',` + obj[i].swap_availability + `); showAddedCoinDataModal(); return false;">View</a>
             </div>
-            <div class="coincardAddedSwap">
-                <label for="coincardAddedSwapCB" class="checkboxContainer coincardAddedSwapDisable"
+            <form class="coincardAddedSwap coincardAddedSwapCBForm` + obj[i].added_coin_id + `" name="coincardAddedSwap" action="/checkboxAddedCoin" method="post">
+                <label for="coincardAddedSwapCB` + obj[i].added_coin_id + `" class="checkboxContainer coincardAddedSwapDisable"
                     id="coincardSwapCheckbox">
-                    <input type="checkbox" class="coincardAddedSwapCB" id="coincardAddedSwapCB"
-                        name="userCoinSwapAvailable" value="addedCoinAvailable">
+                    <input class="addedCoinToSwapId" name="addedCoinToSwapId" type="number" value="`+ obj[i].added_coin_id + `">
+                    <input type="checkbox" class="coincardAddedSwapCB" id="coincardAddedSwapCB` + obj[i].added_coin_id + `"
+                        name="userCoinSwapAvailable" value="addedCoinAvailable" onclick="sendForm('.coincardAddedSwapCBForm` + obj[i].added_coin_id + `');"`;
+        if (obj[i].swap_availability == true) {
+            row += ` checked`;
+        }
+        row +=    
+                        `>
                     <div class="fCheckbox"></div>
                 </label>
-            </div>
+            </form>
             <form class="coincardAddedDeleteBtn deleteAddedCoinForm` + obj[i].added_coin_id + `" name="deleteAddedCoin" action="/deleteAddedCoin" method="post">
                 <input class="addedCoinIdToDelete" name="addedCoinIdToDeleteId" type="number" value="`+ obj[i].added_coin_id + `">
                 <div class="deleteBtnContainer">
@@ -616,7 +622,7 @@ function loadAddedCoinsCoincard(obj) {
     }
 }
 
-function loadAddedCoinModalData(coinId, grade, amount, value, comment, design, imagePath, inSet, swapAvailability) {
+function loadAddedCoinModalData(coinId, grade, amount, value, comment, design, imagePath, inSet) {
     document.querySelector('.addedCoinModalCoinId').value = coinId;
 
     document.querySelector('.addedCoinIdModal').innerHTML = '. Id: ' + coinId;
