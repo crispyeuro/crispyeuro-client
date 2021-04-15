@@ -186,6 +186,7 @@ async function getCountrycardUrlValues() {
     const response = await fetch(apiPath);
     const obj = await response.json();
     try {
+        console.log(obj);
         displayCountrycardVariables(obj);
     } catch (err) {
         alert(err);
@@ -302,7 +303,11 @@ function countrycardDisplayOrdinaryCoins(x) {
             let row = `<td class="tableEmptyCell"></td>`;
             for (l = 0; l < sortedCoins.length; l++) {
                 if (denominations[k] == sortedCoins[l].denomination) {
-                    row = `<td class="tableCellCenter"><a href="coincard.html?coin_id=` + sortedCoins[l].coin_id + `">View</a></td>`;
+                    if (sortedCoins[l].coin_id == sortedCoins[l].coin_id_added) {
+                        row = `<td class="tableCellCenterCoinAdded"><a href="coincard.html?coin_id=` + sortedCoins[l].coin_id + `">View</a></td>`;
+                    } else {
+                        row = `<td class="tableCellCenter"><a href="coincard.html?coin_id=` + sortedCoins[l].coin_id + `">View</a></td>`;
+                    }
                 }
             }
             tableRow += row;
@@ -339,7 +344,11 @@ function countrycardDisplayOrdinaryCoinsGermany(x, tableNumber, coinMint, click,
             let row = `<td class="tableEmptyCell"></td>`;
             for (l = 0; l < sortedCoins.length; l++) {
                 if (denominations[k] == sortedCoins[l].denomination && sortedCoins[l].country == coinMint) {
-                    row = `<td class="tableCellCenter"><a href="coincard.html?coin_id=` + sortedCoins[l].coin_id + `">View</a></td>`;
+                    if (sortedCoins[l].coin_id == sortedCoins[l].coin_id_added) {
+                        row = `<td class="tableCellCenterCoinAdded"><a href="coincard.html?coin_id=` + sortedCoins[l].coin_id + `">View</a></td>`;
+                    } else {
+                        row = `<td class="tableCellCenter"><a href="coincard.html?coin_id=` + sortedCoins[l].coin_id + `">View</a></td>`;
+                    }
                 }
             }
             tableRow += row;
@@ -381,16 +390,32 @@ function countrycardDisplayCommemorativeCoins(commemorativeCoins) {
         }
         let tableRow =
             `<tr>
-            <td class="commemorativeOrderRow">` + (i + 1) + `</td>
-            <td class="commemorativeYearRow">` + commemorativeCoins[i].issue_year + `</td>
-            <td class="commemorativeFeatureRow"><a href="coincard.html?coin_id=` + commemorativeCoins[i].coin_id + `">`;
-        if (commemorativeCoins[i].coin_type == "commemorative_common") {
-            tableRow += `<div class="boldText">Common issue.</div> ` + commemorativeCoins[i].feature + `</a></td>
-                <td class="commemorativeMintageRow">`;
+            <td class="commemorativeOrderRow tableColumnCell">` + (i + 1) + `</td>`;
+
+        if (commemorativeCoins[i].coin_id == commemorativeCoins[i].coin_id_added) {
+            tableRow += `<td class="commemorativeYearRow tableCellCenterCoinAdded">` + commemorativeCoins[i].issue_year + `</td>`;
         } else {
-            tableRow += commemorativeCoins[i].feature + `</a></td>
-                <td class="commemorativeMintageRow">`;
+            tableRow += `<td class="commemorativeYearRow">` + commemorativeCoins[i].issue_year + `</td>`;
         }
+
+        if (commemorativeCoins[i].coin_id == commemorativeCoins[i].coin_id_added) {
+            tableRow += `<td class="commemorativeFeatureRow tableCellCenterCoinAdded"><a href="coincard.html?coin_id=` + commemorativeCoins[i].coin_id + `">`;
+        } else {
+            tableRow += `<td class="commemorativeFeatureRow"><a href="coincard.html?coin_id=` + commemorativeCoins[i].coin_id + `">`;
+        }
+
+        if (commemorativeCoins[i].coin_type == "commemorative_common") {
+            tableRow += `<div class="boldText">Common issue.</div> ` + commemorativeCoins[i].feature + `</a></td>`;
+        } else {
+            tableRow += commemorativeCoins[i].feature + `</a></td>`;
+        }
+
+        if (commemorativeCoins[i].coin_id == commemorativeCoins[i].coin_id_added) {
+            tableRow += `<td class="commemorativeMintageRow tableCellCenterCoinAdded">`;
+        } else {
+            tableRow += `<td class="commemorativeMintageRow">`;
+        }
+
         if (commemorativeCoins[i].mintage_total != null) {
             tableRow += mintageString + `</td>
             </tr>`;
@@ -410,10 +435,18 @@ function countrycardDisplayOtherCoins(coins, metal) {
             let tableRow =
                 `
             <tr>
-                <td class="yearRow">` + coins[i].issue_year + `</td>
+                <td class="yearRow tableColumnCell">` + coins[i].issue_year + `</td>`;
+            if (coins[i].coin_id == coins[i].coin_id_added) {
+                tableRow += `
+                <td class="nominalRow tableCellCenterCoinAdded">` + coinNominalText(coins[i].denomination) + `</td>
+                <td class="featureRow tableCellCenterCoinAdded"><a href="coincard.html?coin_id=` + coins[i].coin_id + `">` + coins[i].feature + `</a></td>
+                <td class="mintageRow tableCellCenterCoinAdded">`;
+            } else {
+                tableRow += `
                 <td class="nominalRow">` + coinNominalText(coins[i].denomination) + `</td>
                 <td class="featureRow"><a href="coincard.html?coin_id=` + coins[i].coin_id + `">` + coins[i].feature + `</a></td>
                 <td class="mintageRow">`;
+            }
             if (coins[i].mintage_total != null) {
                 let mintageString = coins[i].mintage_total;
                 mintageString = coins[i].mintage_total.toLocaleString();
@@ -604,8 +637,8 @@ function loadAddedCoinsCoincard(obj) {
         if (obj[i].swap_availability == true) {
             row += ` checked`;
         }
-        row +=    
-                        `>
+        row +=
+            `>
                     <div class="fCheckbox"></div>
                 </label>
             </form>
@@ -674,7 +707,7 @@ function emptyAddedCoinModalData() {
     document.querySelector('.addedCoinModalCoinId').value = 0;
 
     const urlParams = new URLSearchParams(window.location.search);
-    if(urlParams.has('coin_id')) {
+    if (urlParams.has('coin_id')) {
         document.querySelector('.coinIdModalCoinId').value = urlParams.get('coin_id');
     }
 

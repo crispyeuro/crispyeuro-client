@@ -557,6 +557,7 @@ function validateNavSearchSubmitKey(event) {
     }
 }
 
+/*Check for username*/
 async function checkUsername() {
     const apiPath = `/api/layoutUsername${window.location.search}`;
     const response = await fetch(apiPath);
@@ -568,6 +569,7 @@ async function checkUsername() {
     }
 }
 
+/*Show username in the sidemenu*/
 function showUsernameLayout(obj) {
     if (obj != undefined && obj.length > 0 && 'username' in obj[0]) {
         document.querySelector('.sideNavUserText').innerHTML = obj[0].username;
@@ -575,6 +577,7 @@ function showUsernameLayout(obj) {
     }
 }
 
+/*Get amount of unic added coin records for user*/
 async function checkAddedCoinsAmount() {
     const apiPath = `/api/layoutAddedCoins${window.location.search}`;
     const response = await fetch(apiPath);
@@ -586,6 +589,7 @@ async function checkAddedCoinsAmount() {
     }
 }
 
+/*Get amount of coins*/
 async function coinsAmount() {
     const apiPath = `/api/coinsAmount${window.location.search}`;
     const response = await fetch(apiPath);
@@ -597,13 +601,14 @@ async function coinsAmount() {
     }
 }
 
+/*Display collected coins pgrogress bar in the sidemenu*/
 async function coinCollectionProgress() {
     let addedCoinsAmount;
     let coins;
     let collectedCoinsPercent;
     addedCoinsAmount = await checkAddedCoinsAmount();
     coins = await coinsAmount();
-    collectedCoinsPercent = parseFloat((addedCoinsAmount[0].count/coins[0].count)*100).toFixed(1) + '%';
+    collectedCoinsPercent = parseFloat((addedCoinsAmount[0].count / coins[0].count) * 100).toFixed(1) + '%';
     document.querySelector('.sideNavMeterName').innerHTML = addedCoinsAmount[0].count + ' coins collected';
     document.querySelector('.sideNavMeterProgress').innerHTML = collectedCoinsPercent;
     document.querySelector('.sideNavMeterProgress').style.width = collectedCoinsPercent;

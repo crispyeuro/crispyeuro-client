@@ -70,7 +70,7 @@ table {
 
 table a {
     text-decoration: none;
-    color: var(--blue);
+    color: var(--darkerBlue);
 }
 
 table a:hover {
@@ -93,8 +93,13 @@ table tr>.tableCellCenter:hover {
     background-color: var(--orange);
 }
 
+.tableCellCenterCoinAdded {
+    text-align: center;
+    background-color: var(--lightGreen);
+}
+
 .viewOrdinaryCoins tr>td:hover a {
-    color: var(--darkestBlue);
+    color: var(--white);
 }
 
 .commemorativeOrderRow, .yearRow {
