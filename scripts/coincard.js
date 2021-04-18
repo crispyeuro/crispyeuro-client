@@ -143,9 +143,14 @@ function displayCommemorativeCoinType(obj, urlParams) {
     if (urlParams.has('coin_type')) {
         for (i = 0; i < obj.length; i++) {
             if (obj[i].coin_type == urlParams.get('coin_type') || (obj[i].coin_type).includes(urlParams.get('coin_type'))) {
-                let coinHTML = `
-                <div class="coin">
-                <a href="coincard.html?coin_id=` + obj[i].coin_id + `"></a>`;
+                let coinHTML = ``;
+                if (obj[i].coin_id == obj[i].coin_id_added) {
+                    coinHTML += `<div class="coin coinAdded">`;
+                } else {
+                    coinHTML += `<div class="coin">`;
+                }
+
+                coinHTML += `<a href="coincard.html?coin_id=` + obj[i].coin_id + `"></a>`;
                 if (obj[i].obverse_image_path != null) {
                     coinHTML += `<div class="coinPicContainer"><img src="` + obj[i].obverse_image_path + `" title="Image source: ` + obj[i].obverse_image_path + `"></div>`;
                 } else {
@@ -489,6 +494,7 @@ async function checkDenominationcardUrlValues() {
     const response = await fetch(apiPath);
     const obj = await response.json();
     try {
+        console.log(obj);
         separateDenominationValues(obj);
     } catch (err) {
         alert(err);
@@ -532,13 +538,17 @@ function separateDenominationValues(result) {
 
         let totalCoinsAmount = 0;
         for (i = 0; i < sortedUniqueDenominationCountries.length; i++) {
-            table += `<th>` + sortedUniqueDenominationCountries[i].replace("-", " ") + `</th>`;
+            table += `<th class="tableColumnCell">` + sortedUniqueDenominationCountries[i].replace("-", " ") + `</th>`;
             for (k = 0; k < sortedUniqueDenominationYears.length; k++) {
                 let cell = `<td class="tableEmptyCell"></td>`;
                 for (m = 0; m < result.length; m++) {
-                    if (result[m].coin_type != 'commemorative') {
+                    if (result[m].coin_type != 'commemorative' && result[m].coin_type != 'commemorative_common') {
                         if (sortedUniqueDenominationCountries[i] == result[m].country && sortedUniqueDenominationYears[k] == result[m].issue_year) {
-                            cell = `<td class="tableCellCenter"><a href="coincard.html?coin_id=` + result[m].coin_id + `">+</a></td>`;
+                            if (result[m].coin_id == result[m].coin_id_added) {
+                                cell = `<td class="tableCellCenterCoinAdded"><a href="coincard.html?coin_id=` + result[m].coin_id + `">+</a></td>`;
+                            } else {
+                                cell = `<td class="tableCellCenter"><a href="coincard.html?coin_id=` + result[m].coin_id + `">+</a></td>`;
+                            }
                             totalCoinsAmount++;
                         }
                     }

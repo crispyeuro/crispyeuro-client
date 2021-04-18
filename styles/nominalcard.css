@@ -62,26 +62,36 @@ th, td {
 }
 
 table tr>td:hover a {
-    color: var(--darkestBlue);
+    /*color: var(--darkestBlue);*/
+    color: var(--white);
 }
 
 table tr>.tableCellCenter:hover {
     background-color: var(--orange);
 }
 
-table tr>th:hover a {
-    color: var(--darkestBlue);
+.tableColumnCell {
+    background-color: var(--lightOrange);
+    font-weight: bold;
 }
 
 table a {
     text-decoration: none;
-    color: var(--blue);
+    /*color: var(--blue);*/
+    color: var(--darkerBlue);
 }
 
 .tableCellCenter {
     text-align: center;
     width: 50px;
 }
+
+.tableCellCenterCoinAdded {
+    text-align: center;
+    width: 50px;
+    background-color: var(--lightGreen);
+}
+
 
 .cardDescription {
     padding: 20px 10px;

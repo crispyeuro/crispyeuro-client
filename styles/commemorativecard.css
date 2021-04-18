@@ -75,6 +75,14 @@ button {
     border: 1px solid var(--lightBlue);
 }
 
+.coinAdded {
+    border: 2px solid var(--lightGreen);
+}
+
+.coinAdded:hover {
+    border: 2px solid var(--green);
+}
+
 .coin:hover .coinDescription {
     color: var(--darkerBlue);
 }
