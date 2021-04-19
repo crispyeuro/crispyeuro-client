@@ -260,7 +260,18 @@
     background-color: var(--lightOrange);
 }
 
+.coinSwapSettingsHeader:hover {
+    background-color: var(--lightOrange);
+}
+
+.swapManageCloseBtnContainer input[type=button] {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+}
+
 .swapManageCloseBtnContainer {
+    position: relative;
     width: 30px;
     height: 30px;
     cursor: pointer;
@@ -272,7 +283,7 @@
 }
 
 .swapManageCloseBtn {
-    position: relative;
+    position: absolute;
     width: 20px;
     height: 3px;
     top: 13px;
@@ -300,4 +311,8 @@
 
 .swapRequestChangesName:hover {
     color: var(--blue);
+}
+
+.addedCoinToSwapId {
+    display: none;
 }
