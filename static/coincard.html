@@ -20,6 +20,7 @@
     <div class="content">
         <script type="text/javascript">
             checkCoincardHash();
+            getWantedCoin();
             getAddedCoins();
         </script>
         <div class="goBack">
@@ -133,11 +134,19 @@
         <div class="addCollection">
             <div class="containerName">My collection</div>
             <br>
+
             <div class="wantThisCoinBtnContainer">
-                <button class="wantCoinBtn" onclick="showWantThisCoinContainer()">Want this coin</button>
-                <button class="notWantCoinBtn" onclick="wantThisCoinBtnContainerChange('deleted')">Don't want this
-                    coin</button>
+                <form class="coincardWantThisCoinForm" name="coincardWantThisCoinForm" action="/addWantedCoin"
+                    method="post">
+                    <!--<button class="wantCoinBtn" onclick="showWantThisCoinContainer();">Want this coin</button>--->
+                    <input type="number" name="wantThisCoinId" class="wantThisCoinId" value="0">
+                    <input type="button" class="wantCoinBtn"
+                        onclick="sendForm('.coincardWantThisCoinForm');getWantedCoin();showWantThisCoinContainer();"
+                        value="Want this coin">
+                </form>
+                <button class="changeWantedCoin" onclick="showChangeWantedCoinContainer();">Change wanted coin</button>
             </div>
+
             <div class="addedCoinsTable"></div>
             <button onclick="emptyAddedCoinModalData(); showAddCoinContainer()">Add new coin</button>
             <br><br>
@@ -198,7 +207,8 @@
                         <input class="addedCoinValue" type="text" name="value" placeholder="e.g. 4 euro"><br>
 
                         <label for="amount">Amount</label>
-                        <input class="addedCoinAmount" type="number" name="amount" min="1" value="1" placeholder="min 1" required><br>
+                        <input class="addedCoinAmount" type="number" name="amount" min="1" value="1" placeholder="min 1"
+                            required><br>
                     </div>
                     <div class="formRightSide">
                         <label for="design">Design</label>
@@ -224,14 +234,18 @@
 
                         <label for="pictureUrl">Picture</label>
                         <!--<label for="file" class="fileInputLabel">Choose picture</label>-->
-                        <input type="text" class="addedCoinPictureUrl" name="picturePath" placeholder="e.g. .../somePicrute.jpg">
+                        <input type="text" class="addedCoinPictureUrl" name="picturePath"
+                            placeholder="e.g. .../somePicrute.jpg">
                         <!--<input type="file" id="file" name="file" class="fileInput" accept=".jpg, .png, jpeg, .gif">-->
                     </div>
                 </div>
                 <label for="comment">Comment</label>
-                <textarea class="addedCoinComment" name="comment" rows="2" cols="30" placeholder="Enter a comment about this coin..."></textarea><br>
-                <input id="modalAddCoinBtn" type="button" onclick="sendForm('.addCoinModalForm'); hideAddCoinContainer(); getAddedCoins();" value="Add coin">
-                <input type="button" id="modalSaveCoinBtn" onclick="sendForm('.addCoinModalForm'); hideAddCoinContainer(); getAddedCoins();" value="Save">
+                <textarea class="addedCoinComment" name="comment" rows="2" cols="30"
+                    placeholder="Enter a comment about this coin..."></textarea><br>
+                <input id="modalAddCoinBtn" type="button"
+                    onclick="sendForm('.addCoinModalForm'); hideAddCoinContainer(); getAddedCoins();" value="Add coin">
+                <input type="button" id="modalSaveCoinBtn"
+                    onclick="sendForm('.addCoinModalForm'); hideAddCoinContainer(); getAddedCoins();" value="Save">
                 <button onclick="hideAddCoinContainer(); return false;" id="modalSendUserOffer">Accept offer</button>
             </form>
         </div>
@@ -320,64 +334,76 @@
                 <div class="coinNameRow">This coin is added to your wanted coins list</div><br>
                 <div class="modalWantThisCoinText">Would you also want to create a coin swap request?</div>
                 <div class="modalWantThisCoinBtnContainer">
-                    <button
-                        onclick="showCreateSwapRequest(); wantThisCoinBtnContainerChange('added'); return false;">Yes</button>
-                    <button
-                        onclick="hideContentWantThisCoin(); wantThisCoinBtnContainerChange('added'); return false;">No</button>
+                    <button onclick="showCreateSwapRequest();">Yes</button>
+                    <button onclick="hideContentWantThisCoin();">No</button>
                 </div>
             </div>
-            <form class="modalWantThisCoinSwapRequest">
-                <span class="modalNameRow">[Denomination][Year][Country] coin swap request</span><br>
-                <div class="coinNameRow">Choose coin parameters</div><br>
-                <div class="modalWantThisCoinSwapParemeters">
-                    <div class="modalWantThisCoinParamRow">
-                        <label for="grade">Grade</label>
-                        <select name="grade">
-                            <option value="" disabled selected>Not specified</option>
-                            <option value="unc">UNC</option>
-                            <option value="BU">BU</option>
-                            <option value="Proof">Proof</option>
-                            <option value="VF">VF</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="modalWantThisCoinParamRow">
-                        <label for="amount">Amount</label>
-                        <div class="wantThisCoinRangeRow">
-                            <div class="wantThisCoinRangeValue">1</div>
-                            <input id="wantThisCoinRangeInput" type="range" name="amount" min="1" max="10"
-                                oninput="getWantThisCoinRangeValue();">
+            <div class="modalWantThisCoinSwapRequestContainer">
+                <form class="modalWantThisCoinSwapRequest" name=modalWantThisCoinSwapRequest action="/changeWantedCoin"
+                    method="post">
+                    <span class="modalNameRow userWantThisCoinSwapRequestName">[Denomination][Year][Country] coin swap
+                        request</span><br>
+                    <div class="coinNameRow">Choose coin parameters</div><br>
+                    <div class="modalWantThisCoinSwapParemeters">
+                        <input type="number" class="wantThisCoinChangeId" name="wantThisCoinId" value="0">
+                        <div class="modalWantThisCoinParamRow">
+                            <label for="grade">Grade</label>
+                            <select class="wantedCoinGrade" name="grade">
+                                <option value="" disabled selected>Not specified</option>
+                                <option value="UNC">UNC</option>
+                                <option value="BU">BU</option>
+                                <option value="Proof">Proof</option>
+                                <option value="VF">VF</option>
+                                <option value="Circulation">Circulation</option>
+                                <option value="Other">Other</option>
+                            </select>
                         </div>
+                        <div class="modalWantThisCoinParamRow">
+                            <label for="amount">Amount</label>
+                            <input class="wantedCoinAmount" type="number" name="amount" min="1" value="1"
+                                placeholder="min 1" required><br>
+                        </div>
+                        <div class="modalWantThisCoinParamRow">
+                            <label for="design">Design</label>
+                            <select class="wantedCoinDesign" name="design">
+                                <option value="" disabled selected>Not specified</option>
+                                <option value="noDesign">None</option>
+                                <option value="colorized">Colorized</option>
+                                <option value="gilded">Gilded</option>
+                                <option value="plated">Plated</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="modalWantThisCoinParamRow">
+                            <label for="inSet">Set</label>
+                            <select class="wantedCoinSet" name="inSet">
+                                <option value="" disabled selected>Not specified</option>
+                                <option value="noSet">None</option>
+                                <option value="setPart">Part of a set</option>
+                                <option value="coincard">Coincard</option>
+                                <option value="box">Box</option>
+                                <option value="folder">Folder</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <label>Comment</label>
+                        <textarea class="wantedCoinComment" name="comment" rows="2" cols="30"
+                            placeholder="Enter a comment about this coin..."></textarea><br>
                     </div>
-                    <div class="modalWantThisCoinParamRow">
-                        <label for="design">Design</label>
-                        <select name="design">
-                            <option value="" disabled selected>Not specified</option>
-                            <option value="colorized">Colorized</option>
-                            <option value="gilded">Gilded</option>
-                            <option value="plated">Plated</option>
-                            <option value="other">Other</option>
-                        </select>
+                    <div class="modalWantThisCoinBtnContainer">
+                        <input type="button"
+                            onclick="sendForm('.modalWantThisCoinSwapRequest');hideContentWantThisCoin();getWantedCoin();"
+                            value="Done">
+                        <button onclick="hideContentWantThisCoin(); return false;">Cancel</button>
                     </div>
-                    <div class="modalWantThisCoinParamRow">
-                        <label for="inSet">In set</label>
-                        <select name="inSet">
-                            <option value="" disabled selected>Not specified</option>
-                            <option value="setPart">Part of a set</option>
-                            <option value="coincard">Coincard</option>
-                            <option value="box">Box</option>
-                            <option value="folder">Folder</option>
-                            <option value="folder">Other</option>
-                        </select>
-                    </div>
-                    <label>Comment</label>
-                    <textarea name="comment" rows="2" cols="30"></textarea><br>
-                </div>
-                <div class="modalWantThisCoinBtnContainer">
-                    <button onclick="hideContentWantThisCoin(); return false;">Done</button>
-                    <button onclick="hideContentWantThisCoin(); return false;">Cancel</button>
-                </div>
-            </form>
+                </form>
+                <form class="wantedCoinDeleteForm" name="wantedCoinDeleteForm" action="/deleteWantedCoin" method="post">
+                    <input type="number" class="wantThisCoinDeleteId" name="wantedCoinId" value="0">
+                    <input type="button"
+                        onclick="sendForm('.wantedCoinDeleteForm');hideContentWantThisCoin();getWantedCoin();"
+                        value="Delete">
+                </form>
+            </div>
         </div>
     </div>
 

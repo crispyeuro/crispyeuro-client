@@ -83,6 +83,9 @@ function displayCoinVariables(obj) {
     }
 
     document.querySelector('.addedCoinCoincardNameModal').innerHTML = denominationStr + ' ' + obj[0].issue_year + ' ' + obj[0].country;
+    document.querySelector('.wantThisCoinId').value = obj[0].coin_id;
+    document.querySelector('.wantThisCoinChangeId').value = obj[0].coin_id;
+    document.querySelector('.userWantThisCoinSwapRequestName').innerHTML = denominationStr + ' ' + obj[0].issue_year + ' ' + obj[0].country + ' coin swap request';
 }
 
 async function getCommemorativecardUrlValues() {
@@ -701,6 +704,7 @@ function loadAddedCoinModalData(coinId, grade, amount, value, comment, design, i
 }
 
 async function sendForm(formSelectorQuery) {
+    console.log("todelete");
     const form = document.querySelector(formSelectorQuery);
     const body = new URLSearchParams(new FormData(form)).toString();
     const response = await fetch(form.action, {
@@ -729,4 +733,45 @@ function emptyAddedCoinModalData() {
     document.querySelector('.addedCoinInSet').value = "";
     document.querySelector('.addedCoinComment').value = "";
     document.querySelector('.addedCoinPictureUrl').value = "";
+}
+
+function showChangeWantedCoinContainer() {
+    document.querySelector('.modalContentWantThisCoin').style.display = 'flex';
+    document.querySelector('.modalWantThisCoinConfirm').style.display = 'none';
+    document.querySelector('.modalWantThisCoinSwapRequestContainer').style.display = 'flex';
+}
+
+async function getWantedCoin() {
+    const apiPath = `/api/userWantedCoin${window.location.search}`;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        if (obj.length > 0) {
+            console.log(obj);
+            document.querySelector('.changeWantedCoin').style.display = 'block';
+            document.querySelector('.coincardWantThisCoinForm').style.display = 'none';
+            loadWantedCoin(obj);
+        } else {
+            document.querySelector('.changeWantedCoin').style.display = 'none';
+            document.querySelector('.coincardWantThisCoinForm').style.display = 'block';
+            console.log("no wanted coin");
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+function loadWantedCoin(result) {
+    document.querySelector('.wantThisCoinChangeId').value = result[0].coin_id;
+    document.querySelector('.wantedCoinGrade').value = result[0].grade;
+    let amount = document.querySelector('.wantedCoinAmount').value;
+    if (amount < 1) {
+        amount = 1;
+    }
+    document.querySelector('.wantedCoinAmount').value = amount;
+    document.querySelector('.wantedCoinDesign').value = result[0].design;
+    document.querySelector('.wantedCoinSet').value = result[0].in_set;
+    document.querySelector('.wantedCoinComment').value = result[0].comment;
+
+    document.querySelector('.wantThisCoinDeleteId').value = result[0].wanted_coin_id;
 }

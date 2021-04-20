@@ -180,10 +180,6 @@ input[type="checkbox"]:checked+.collapsed {
     margin: 5px 0;
 }
 
-.notWantCoinBtn {
-    display: none;
-}
-
 .addedCoinsTable {
     width: 100%;
     overflow-x: auto;
@@ -320,6 +316,10 @@ input[type="checkbox"]:checked+.collapsed {
     border: none;
 }
 
+.modalWantThisCoinBtnContainer input[type=button], .wantedCoinDeleteForm input[type=button] {
+    min-width: 100px;
+}
+
 .coincardSwapOfferSName {
     font-size: 16px;
 }
@@ -340,7 +340,11 @@ input[type="checkbox"]:checked+.collapsed {
     text-decoration: underline;
 }
 
-.addedCoinModalCoinId, .coinIdModalCoinId, .addedCoinIdToDelete, .addedCoinToSwapId {
+.addedCoinModalCoinId, .coinIdModalCoinId, .addedCoinIdToDelete, .addedCoinToSwapId, .wantThisCoinId, .wantThisCoinChangeId, .wantThisCoinDeleteId {
+    display: none;
+}
+
+.coincardWantThisCoinForm, .changeWantedCoin {
     display: none;
 }
 

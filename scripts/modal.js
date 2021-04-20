@@ -194,17 +194,17 @@ function hideAddNewContactModal() {
 function showWantThisCoinContainer() {
     document.getElementsByClassName("modalContentWantThisCoin")[0].style.display = "flex";
     document.getElementsByClassName("modalWantThisCoinConfirm")[0].style.display = "flex";
-    document.getElementsByClassName("modalWantThisCoinSwapRequest")[0].style.display = "none";
+    document.getElementsByClassName("modalWantThisCoinSwapRequestContainer")[0].style.display = "none";
 }
 
 function hideContentWantThisCoin() {
     document.getElementsByClassName("modalContentWantThisCoin")[0].style.display = "none";
-    document.getElementsByClassName("modalWantThisCoinSwapRequest")[0].style.display = "none";
+    document.getElementsByClassName("modalWantThisCoinSwapRequestContainer")[0].style.display = "none";
 }
 
 function showCreateSwapRequest() {
     document.getElementsByClassName("modalWantThisCoinConfirm")[0].style.display = "none";
-    document.getElementsByClassName("modalWantThisCoinSwapRequest")[0].style.display = "flex";
+    document.getElementsByClassName("modalWantThisCoinSwapRequestContainer")[0].style.display = "flex";
 }
 
 function getWantThisCoinRangeValue() {
@@ -212,7 +212,7 @@ function getWantThisCoinRangeValue() {
     document.getElementsByClassName("wantThisCoinRangeValue")[0].innerHTML = wantThisCoinRangeValue;
 }
 
-function wantThisCoinBtnContainerChange(action) {
+function fshowCreateSwapRequest(action) {
     if (action == "added") {
         document.getElementsByClassName("wantCoinBtn")[0].style.display = "none";
         document.getElementsByClassName("notWantCoinBtn")[0].style.display = "block";

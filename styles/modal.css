@@ -1,5 +1,6 @@
 @import "main.css";
 /*Coincard modal*/
+
 .modalContent {
     /*display: flex*/
     display: none;
@@ -104,7 +105,7 @@ label {
     flex-direction: column;
 }
 
-.modal input[type=text], .modal input[type=number] , .modal select {
+.modal input[type=text], .modal input[type=number], .modal select {
     width: 70%;
     margin-bottom: 5px;
     border-color: rgba(135, 152, 173, 0.6);
@@ -181,12 +182,31 @@ label {
     min-width: 100px;
 }
 
-.modalWantThisCoinConfirm, .modalWantThisCoinSwapRequest {
+.modalWantThisCoinConfirm, .modalWantThisCoinSwapRequestContainer {
     display: none;
     flex-direction: column;
     width: 100%;
     justify-content: flex-start;
     text-align: left;
+}
+
+.modalWantThisCoinSwapRequest {
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.wantedCoinDeleteForm {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: -35px;
+    margin-right: 5px;
+    width: min-content;
+}
+
+.wantedCoinDeleteForm input[type=button] {
+    display: flex;
 }
 
 .modalWantThisCoinSwapParemeters {

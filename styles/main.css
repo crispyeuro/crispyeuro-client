@@ -63,7 +63,7 @@ label {
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
-button:hover, input[type=submit]:hover, input[type=button] {
+button:hover, input[type=submit]:hover, input[type=button]:hover {
     opacity: 0.9;
 }
 
