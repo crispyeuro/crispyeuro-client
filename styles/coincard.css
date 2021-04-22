@@ -340,12 +340,19 @@ input[type="checkbox"]:checked+.collapsed {
     text-decoration: underline;
 }
 
-.addedCoinModalCoinId, .coinIdModalCoinId, .addedCoinIdToDelete, .addedCoinToSwapId, .wantThisCoinId, .wantThisCoinChangeId, .wantThisCoinDeleteId {
+.addedCoinModalCoinId, .coinIdModalCoinId, .addedCoinIdToDelete, .addedCoinToSwapId, .wantThisCoinId, 
+.wantThisCoinChangeId, .wantThisCoinDeleteId, .myOfferCoinId, .myOfferWantedCoinId {
     display: none;
 }
 
 .coincardWantThisCoinForm, .changeWantedCoin {
     display: none;
+}
+
+.textBold {
+    text-transform: none;
+    font-weight: bold;
+    display: inline-block;
 }
 
 @media only screen and (max-width: 1300px) {
