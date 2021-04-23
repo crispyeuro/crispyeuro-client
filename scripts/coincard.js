@@ -83,6 +83,7 @@ function displayCoinVariables(obj) {
     }
 
     document.querySelector('.addedCoinCoincardNameModal').innerHTML = denominationStr + ' ' + obj[0].issue_year + ' ' + obj[0].country;
+    document.querySelector('.addedCoinCoincardOfferName').innerHTML = denominationStr + ' ' + obj[0].issue_year + ' ' + obj[0].country;
     document.querySelector('.wantThisCoinId').value = obj[0].coin_id;
     document.querySelector('.wantThisCoinChangeId').value = obj[0].coin_id;
     document.querySelector('.userWantThisCoinSwapRequestName').innerHTML = denominationStr + ' ' + obj[0].issue_year + ' ' + obj[0].country + ' coin swap request';
@@ -599,7 +600,6 @@ async function getAddedCoins() {
     const response = await fetch(apiPath);
     const obj = await response.json();
     try {
-        console.log(obj);
         if (obj.length > 0) {
             loadAddedCoinsCoincard(obj);
         } else {
@@ -782,11 +782,10 @@ async function getSwapWantedCoins() {
     const response = await fetch(apiPath);
     const obj = await response.json();
     try {
-        console.log(obj);
         if (obj.length > 0) {
             loadSwapWantedCoins(obj);
         } else {
-            
+            document.querySelector('.coincardOtherUsersRequests').innerHTML = 'No requests';
         }
     } catch (err) {
         console.log(err);
@@ -844,7 +843,7 @@ function loadCoincardMyOffer(coinId, wantedCoinId, username, grade, amount, desi
     }
     document.querySelector('.myOfferModalInComment').value = comment;
     document.querySelector('.modalWantThisCoinSwapBtnNext').onclick = function() {
-        getSwapCoinsOtherUser(); 
+        getSwapCoinsOtherUser(wantedCoinId); 
         getSwapCoinsListOffer("'" + wantedCoinId + "'"); 
         showCreateMyOfferContainer('create');
     }
@@ -922,12 +921,11 @@ function loadCoincardSwapCoinsListOffer(result) {
     }
 }
 
-async function getSwapCoinsOtherUser() {
-    const apiPath = `/api/getOtherUserCoinsToSwap?wanted_coin_id=15`;
+async function getSwapCoinsOtherUser(wanted_coin_id) {
+    const apiPath = `/api/getOtherUserCoinsToSwap?wanted_coin_id=` + wanted_coin_id;
     const response = await fetch(apiPath);
     const obj = await response.json();
     try {
-        console.log(obj);
         loadCoincardOtherUserSwapCoinsListOffer(obj);
     } catch (err) {
         console.log(err);
@@ -994,5 +992,207 @@ function checkNullTableField(field) {
         return '';
     } else {
         return field;
+    }
+}
+
+async function getSwapOfferedCoins() {
+    const apiPath = `/api/coincardSwapOfferedCoins${window.location.search}`;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        if (obj.length > 0) {
+            loadSwapOfferedCoins(obj);
+        } else {
+            document.querySelector('.coincardOtherUsersOffers').innerHTML = 'No offers';
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+function loadSwapOfferedCoins(result) {
+    const urlParams = new URLSearchParams(window.location.search);
+    let coincardCoinId = 0;
+    if (urlParams.has('coin_id')) {
+        coincardCoinId = urlParams.get('coin_id');
+    }
+
+    for (i = 0; i < result.length; i++) {
+        if (result[i].coin_id == coincardCoinId) {
+            console.log(result[i].coin_value);
+            let row = 
+        `
+        <div class="coincardUserSwapOffer" onclick="showCoincardMyRequest(); showCreateMyRequestContainer('goBack'); loadCoincardOtherUserOffer('` + result[i].coin_id + `', '` + 
+        result[i].added_coin_id + `', '` + result[i].username + `', '` + result[i].grade + `', '` + 
+        result[i].coin_value + `', '` + result[i].amount + `', '` + result[i].design + `', '` + 
+        result[i].in_set + `', '` + result[i].image_path + `', '` + result[i].comment + `')">` + result[i].username + `</div>
+        `;
+        document.querySelector('.coincardOtherUsersOffers').innerHTML += row;
+        }
+    }
+}
+
+function loadCoincardOtherUserOffer(coinId, addedCoinId, username, grade, value, amount, design, inSet, imagePath, comment) {
+    document.querySelector('.addedCoinCoincardOfferNameMonal').innerHTML = `User <div class="textBold">` + username + `</div> offer`;
+    document.querySelector('.myRequestOtherUserCoinsToSWapName').innerHTML = `User <div class="textBold">` + username + `</div> wanted coins list`;
+    document.querySelector('.coinRequestOfferedCoinId').value = addedCoinId;
+
+    if (grade === "null") {
+        document.querySelector('.offeredCoinGrade').value = "";
+    } else {
+        document.querySelector('.offeredCoinGrade').value = grade;
+    }
+    if (value === "null") {
+        document.querySelector('.offeredCoinValue').value = "";
+    } else {
+        document.querySelector('.offeredCoinValue').value = value;
+    }
+    document.querySelector('.offeredCoinAmount').value = amount;
+    if (design === "null") {
+        document.querySelector('.offeredCoinDesign').value = "";
+    } else {
+        document.querySelector('.offeredCoinDesign').value = design;
+    }
+    if (inSet === "null") {
+        document.querySelector('.offeredCoinInSet').value = "";
+    } else {
+        document.querySelector('.offeredCoinInSet').value = inSet;
+    }
+    if (comment === "null") {
+        document.querySelector('.offeredCoinComment').value = "";
+    } else {
+        document.querySelector('.offeredCoinComment').value = comment;
+    }
+    if (imagePath === "null") {
+        document.querySelector('.offeredCoinPictureUrl').value = "";
+    } else {
+        document.querySelector('.offeredCoinPictureUrl').value = imagePath;
+    }
+    document.querySelector('.modalRequestThisCoinSwapBtnNext').onclick = function() {
+        getWantedCoinsOtherUser(addedCoinId);
+        getAddedCoinsToSwap();
+        showCreateMyRequestContainer('create');
+    }
+}
+
+async function getWantedCoinsOtherUser(added_coin_id) {
+    const apiPath = `/api/getOtherUserWantedCoins?added_coin_id=` + added_coin_id;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        loadCoincardOtherUserWantedCoinsList(obj);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+function loadCoincardOtherUserWantedCoinsList(result) {
+    let count = 0;
+    document.getElementById('modalOtherUserReuestList').innerHTML = 
+    `
+    <br>
+    <div class="coinSwapSettings coinSwapSettingsHeader">
+        <div class="coinSwapSettingsName">Coin</div>
+        <div class="coinSwapSettingsGrade">Grade</div>
+        <div class="coinSwapSettingsAmount">Amount</div>
+        <div class="coinSwapSettingsDesign">Design</div>
+        <div class="coinSwapSettingsSet">Set</div>
+        <div class="coinSwapSettingsImage"></div>
+        <div class="coinSwapSettingsAvailability"></div>
+    </div>
+    `;
+    for (i = 0; i < result.length; i++) {
+        let coinType = (result[i].coin_type).charAt(0).toUpperCase() + (result[i].coin_type).slice(1);
+        coinType = coinType.replace('_', ' ');
+
+        let row = 
+            `
+            <div class="coinSwapSettings" id="swapSettingsCoin` + i + `">
+                <div class="coinSwapSettingsName"><div class=textBold>` + coinNominalText(result[i].denomination) + ` ` + 
+                result[i].issue_year + ` ` + result[i].country + 
+                `</div><br>` + coinType + 
+                `</div>
+                <div class="coinSwapSettingsGrade">` + checkNullTableField(result[i].grade) + `</div>
+                <div class="coinSwapSettingsAmount">` + checkNullTableField(result[i].amount) + `</div>
+                <div class="coinSwapSettingsDesign">` + checkNullTableField(result[i].design) + `</div>
+                <div class="coinSwapSettingsSet">` + checkNullTableField(result[i].in_set) + `</div>
+                <div class="coinSwapSettingsImage"></div>
+                <div class="coinSwapSettingsAvailability"></div>
+            </div>
+            `;
+        document.getElementById('modalOtherUserReuestList').innerHTML += row;
+        count++;
+    }
+    if (count == 0) {
+        document.getElementById('modalOtherUserReuestList').innerHTML = 'User has no wanted coins. Write an offer in a comment field.';
+    }
+}
+
+async function getAddedCoinsToSwap() {
+    const apiPath = `/api/getCoinsToSwap`;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        console.log(obj);
+        loadCoincardAddedCoinsToSwap(obj);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+function loadCoincardAddedCoinsToSwap(result) {
+    let count = 0;
+    document.querySelector('.coinSwapSettingsHead').innerHTML = 
+    `
+    <br>
+    <div class="coinSwapSettings coinSwapSettingsHeader">
+        <div class="coinSwapSettingsName">Coin</div>
+        <div class="coinSwapSettingsGrade">Grade</div>
+        <div class="coinSwapSettingsAmount">Amount</div>
+        <div class="coinSwapSettingsDesign">Design</div>
+        <div class="coinSwapSettingsSet">Set</div>
+        <div class="coinSwapSettingsImage">Image</div>
+        <div class="coinSwapSettingsAvailability">To offer</div>
+    </div>
+    `;
+
+    document.querySelector('.coinSwapSettingsBody').innerHTML = '';
+    for (i = 0; i < result.length; i++) {
+        let coinType = (result[i].coin_type).charAt(0).toUpperCase() + (result[i].coin_type).slice(1);
+        coinType = coinType.replace('_', ' ');
+
+        let imagePath;
+        if (result[i].image_path != null && result[i].image_path != 'null' && result[i].image_path != '') {
+            imagePath = `<a href="` + result[i].image_path + `" target="_blank">View</a>`
+        } else {
+            imagePath = ``;
+        }
+
+        let row = 
+            `
+            <div class="coinSwapSettings" id="swapSettingsCoin` + i + `">
+                <div class="coinSwapSettingsName"><div class=textBold>` + coinNominalText(result[i].denomination) + ` ` + 
+                result[i].issue_year + ` ` + result[i].country + 
+                `</div><br>` + coinType + 
+                `</div>
+                <div class="coinSwapSettingsGrade">` + checkNullTableField(result[i].grade) + `</div>
+                <div class="coinSwapSettingsAmount">` + checkNullTableField(result[i].amount) + `</div>
+                <div class="coinSwapSettingsDesign">` + checkNullTableField(result[i].design) + `</div>
+                <div class="coinSwapSettingsSet">` + checkNullTableField(result[i].in_set) + `</div>
+                <div class="coinSwapSettingsImage">` + imagePath + `</div>
+                <div class="coinSwapSettingsAvailability">
+                    <label for="modalChooseMyCoin` + result[i].added_coin_id + `" class="checkboxContainer" id="modalSwapCheckbox">
+                        <input type="checkbox" class="modalChooseMyCoin" id="modalChooseMyCoin` + result[i].added_coin_id + `" name="coinsToGet"
+                            value="` + result[i].added_coin_id + `">
+                        <div class="fCheckbox"></div>
+                    </label>
+                </div>
+            </div>
+            `;
+        document.querySelector('.coinSwapSettingsBody').innerHTML += row;
+        count++;
+    }
+    if (count == 0) {
+        document.getElementById('modalMyCoinsToOfferForRequestList').innerHTML = 'You have no coins to swap. Write your offer in a comment field.';
     }
 }

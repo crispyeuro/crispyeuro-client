@@ -1,7 +1,7 @@
 @import "main.css";
 /*Coincard modal*/
 
-.modalContent {
+.modalContent, .modalContentMyRequest {
     /*display: flex*/
     display: none;
     justify-content: center;
@@ -13,7 +13,7 @@
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.modal {
+.modal, .modalUserMyRequest {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -87,38 +87,40 @@ label {
     text-align: left;
 }
 
-.modal form {
+.modal form , .offeredCoinRequestContainer{
     width: 100%;
     padding: 5px;
     display: flex;
     flex-direction: column;
 }
 
-.modal .inputContainer {
+.modal .inputContainer, .offeredCoinRequestContainer .inputContainer {
     display: flex;
     flex-direction: row;
 }
-
 .formLeftSide, .formRightSide {
     width: 50%;
     display: flex;
     flex-direction: column;
 }
 
-.modal input[type=text], .modal input[type=number], .modal select {
+.modal input[type=text], .modal input[type=number], .modal select, 
+.modalUserMyRequest input[type=text], .modalUserMyRequest input[type=number], .modalUserMyRequest select {
     width: 70%;
     margin-bottom: 5px;
     border-color: rgba(135, 152, 173, 0.6);
 }
 
-.modal textarea, .modalUserMyOffer textarea {
+.modal textarea, .modalUserMyOffer textarea,
+.offeredCoinComment, .coinRequestContainer textarea{
     width: 100%;
     margin-bottom: 5px;
     border-color: rgba(135, 152, 173, 0.6);
     resize: none;
 }
 
-.modal input[type=submit], .modal #modalSaveCoinBtn, .modal #modalAddCoinBtn, .modal #modalSendUserOffer, .modal #modalSendMyOffer {
+.modal input[type=submit], .modal #modalSaveCoinBtn, .modal #modalAddCoinBtn, .modal #modalSendUserOffer, .modal #modalSendMyOffer,
+.modalUserMyRequest input[type=submit] {
     width: 20%;
     min-width: 150px;
     align-self: flex-end;
@@ -128,7 +130,9 @@ label {
     border: none;
 }
 
-.modal input[type=text]:focus, .modal input[type=number]:focus, .modal select:focus, .modal textarea:focus, .modal input[type=file]:focus, .fileInputLabel:focus, .modalUserMyOffer textarea:focus {
+.modal input[type=text]:focus, .modal input[type=number]:focus, .modal select:focus, .modal textarea:focus, 
+.modal input[type=file]:focus, .fileInputLabel:focus, .modalUserMyOffer textarea:focus, 
+.modalUserMyRequest input[type=text]:focus, .modalUserMyRequest input[type=number], .modalUserMyRequest select:focus, .modalUserMyRequest textarea:focus {
     outline: none;
     box-shadow: 0 0 0 1px rgba(135, 152, 173, 0.6);
 }
@@ -177,7 +181,7 @@ label {
     width: 100%;
 }
 
-.modalWantThisCoinBtnContainer button {
+.modalWantThisCoinBtnContainer button, .modalWantThisCoinBtnContainer input[type=button] {
     margin-left: 10px;
     min-width: 100px;
 }
@@ -298,50 +302,55 @@ label {
     background-color: rgba(230, 244, 241, 1);
 }
 
-.coinSwapSettingsOrder {
-    width: 10%;
+
+.coinSwapSettingsName {
+    width: 30%;
 }
 
-.coinSwapSettingsId {
-    width: 10%;
+.coinSwapSettingsAmount, .coinSwapSettingsGrade, .coinSwapSettingsDesign, .coinSwapSettingsSet, .coinSwapSettingsImage {
+    width: 11.6%;
 }
 
-.coinSwapSettingsId a {
+.coinSwapSettingsImage a {
     text-decoration: none;
     color: rgb(76, 84, 95);
     font-weight: 400;
 }
 
-.coinSwapSettingsId a:hover {
+.coinSwapSettingsImage a:hover {
     text-decoration: underline;
-}
-
-.coinSwapSettingsType {
-    width: 20%;
-}
-
-.coinSwapSettingsName {
-    width: 40%;
 }
 
 .coinSwapSettingsAvailability {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20%;
+    width: 11.6%;
 }
 
-.coinSwapSettingsHeader {
+.coinSwapSettingsHeader, .coinSwapSettingsHeader:hover {
     font-weight: bold;
     color: rgba(39, 93, 114, 1);
     background-color: var(--lightOrange);
 }
 
-#modalMyCoinsToOfferList {
+#modalMyCoinsToOfferList, #modalOtherUserOfferList, #modalOtherUserReuestList, #modalMyCoinsToOfferForRequestList {
     width: 100%;
     display: flex;
     flex-direction: column;
     padding-right: 5px;
+}
+
+.coinSwapSettingsBody {
+    max-height: 25vh;
+    overflow-y: auto;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.modalUserMyRequest {
+    max-height: 100vh;
+    overflow-y: auto;
 }
 
 #modalMyCoinsToOfferChangeList {
@@ -376,7 +385,7 @@ label {
     width: 100%;
 }
 
-.modalUserMyOfferCoinToChoose {
+.modalUserMyOfferCoinToChoose, .modalUserMyRequestCoinToChoose, .coinRequestContainer {
     /*display: flex;*/
     display: none;
     width: 100%;
@@ -412,6 +421,11 @@ label {
 
 .modalMyCoinsCommentLabel {
     padding: 4px;
+}
+
+.modalOfferedCoinCommentLabel {
+    padding: 4px;
+    width: 100%;
 }
 
 #modalSendMyOffer {
@@ -652,6 +666,10 @@ label {
     background-color: #47c088;
 }
 
+.modalUserMyRequestCoinToChoose {
+    display: none;
+}
+
 @media only screen and (max-width: 992px) {
     .modal, .swapModal {
         width: 60%;
@@ -659,8 +677,8 @@ label {
 }
 
 @media only screen and (max-width: 768px) {
-    .modal {
-        width: 90%;
+    .modal, .modalUserMyRequest {
+        width: 99%;
     }
     .modalUserMyOffer, .modalWantThisCoin {
         width: 98%;

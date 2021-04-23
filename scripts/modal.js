@@ -23,6 +23,7 @@ function showAddedCoinDataModal() {
 
     document.getElementById("modalAddCoinBtn").style.display = "none";
     document.getElementById("modalSaveCoinBtn").style.display = "block";
+    document.querySelector('.modalUserMyRequestCoinToChoose').style.display = 'none';
 
     document.getElementById("modalCoinUserSwap").style.display = "none";
     document.getElementById("modalSendUserOffer").style.display = "none";
@@ -36,9 +37,16 @@ function showCoincardUserOffer() {
 
     document.getElementById("modalAddCoinBtn").style.display = "none";
     document.getElementById("modalSaveCoinBtn").style.display = "none";
+    document.querySelector('.modalUserMyRequestCoinToChoose').style.display = 'none';
 
     document.getElementById("modalCoinUserSwap").style.display = "block";
     document.getElementById("modalSendUserOffer").style.display = "block";
+}
+
+function showCoincardMyRequest() {
+    document.querySelector('.modalContentMyRequest').style.display = 'flex';
+    document.querySelector('.offeredCoinRequestContainer').style.display = 'block';
+    document.querySelector('.coinRequestContainer').style.display = 'none';
 }
 
 function showCoincardMyOffer() {
@@ -54,6 +62,10 @@ function hideModalContentMyOffer() {
 
 function hideAddCoinContainer() {
     modalContent.style.display = "none";
+}
+
+function hideMyRequestContainer() {
+    document.querySelector('.modalContentMyRequest').style.display = "none";
 }
 
 /*Close modal when clicked outside modal*/
@@ -198,5 +210,16 @@ function showCreateMyOfferContainer(action) {
     if (action == "goBack") {
         document.getElementsByClassName("modalUserMyOfferViewUserRequest")[0].style.display = "flex";
         document.getElementsByClassName("modalUserMyOfferCoinToChoose")[0].style.display = "none";
+    }
+}
+
+function showCreateMyRequestContainer(action) {
+    if (action == "create") {
+        document.querySelector('.offeredCoinRequestContainer').style.display = 'none';
+        document.querySelector('.coinRequestContainer').style.display = 'flex';
+    }
+    if (action == "goBack") {
+        document.querySelector('.offeredCoinRequestContainer').style.display = 'flex';
+        document.querySelector('.coinRequestContainer').style.display = 'none';
     }
 }

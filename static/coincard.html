@@ -23,6 +23,7 @@
             getWantedCoin();
             getAddedCoins();
             getSwapWantedCoins();
+            getSwapOfferedCoins();
         </script>
         <div class="goBack">
             <button onclick="window.history.back()">Go back</button>
@@ -167,10 +168,7 @@
             </div>
             <br>
             <span class="coincardSwapOfferSName">Users who offer this coin</span>
-            <div class="coincardOtherUsersOffers">
-                <div class="coincardUserSwapOffer" onclick="showCoincardUserOffer()">[user6549]</div>
-                <div class="coincardUserSwapOffer" onclick="showCoincardUserOffer()">[user729]</div>
-            </div>
+            <div class="coincardOtherUsersOffers"></div>
             <br>
         </div>
     </div>
@@ -182,7 +180,6 @@
             </div>
             <span class="modalNameRow" id="modalAddCoinName">Add new coin</span><br>
             <span class="modalNameRow" id="modalCoinDataName">Coin data</span><br>
-            <span class="modalNameRow" id="modalCoinUserSwap">User [username] offer</span>
             <div class="coinNameRow"><span class="addedCoinCoincardNameModal">[Denomination][Year][Country].
                 </span><span class="addedCoinIdModal"></span></div><br>
             <form class="addCoinModalForm" name="AddCoinForm" action="/addCoin" method="post">
@@ -231,10 +228,7 @@
                         </select><br>
 
                         <label for="pictureUrl">Picture</label>
-                        <!--<label for="file" class="fileInputLabel">Choose picture</label>-->
-                        <input type="text" class="addedCoinPictureUrl" name="picturePath"
-                            placeholder="e.g. .../somePicrute.jpg">
-                        <!--<input type="file" id="file" name="file" class="fileInput" accept=".jpg, .png, jpeg, .gif">-->
+                        <input type="text" class="addedCoinPictureUrl" name="picturePath" placeholder="e.g. .../somePicrute.jpg">
                     </div>
                 </div>
                 <label for="comment">Comment</label>
@@ -244,8 +238,92 @@
                     onclick="sendForm('.addCoinModalForm'); hideAddCoinContainer(); getAddedCoins();" value="Add coin">
                 <input type="button" id="modalSaveCoinBtn"
                     onclick="sendForm('.addCoinModalForm'); hideAddCoinContainer(); getAddedCoins();" value="Save">
-                <button onclick="hideAddCoinContainer(); return false;" id="modalSendUserOffer">Accept offer</button>
             </form>
+        </div>
+    </div>
+
+    <div class="modalContentMyRequest">
+        <div class="modalUserMyRequest">
+            <div class="closeBtnContainer" onclick="hideMyRequestContainer()">
+                <div class="closeBtn"></div>
+            </div>
+            <span class="modalNameRow addedCoinCoincardOfferNameMonal" id="modalCoinUserSwap">User [username] offer</span>
+            <div class="coinNameRow"><span class="addedCoinCoincardOfferName">[Denomination][Year][Country]</div><br>
+                
+            <div class="offeredCoinRequestContainer">
+                <div class="inputContainer">
+                    <div class="formLeftSide">
+                        <label for="grade">Grade</label>
+                        <select class="offeredCoinGrade" name="grade" disabled>
+                            <option value="" disabled selected>Not selected</option>
+                            <option value="UNC">UNC</option>
+                            <option value="BU">BU</option>
+                            <option value="Proof">Proof</option>
+                            <option value="VF">VF</option>
+                            <option value="Circulation">Circulation</option>
+                            <option value="Other">Other</option>
+                        </select><br>
+
+                        <label for="value">Value</label>
+                        <input class="offeredCoinValue" type="text" name="value" placeholder="e.g. 4 euro" disabled><br>
+
+                        <label for="amount">Amount</label>
+                        <input class="offeredCoinAmount" type="number" name="amount" min="1" value="1" placeholder="min 1" required disabled><br>
+                    </div>
+                    <div class="formRightSide">
+                        <label for="design">Design</label>
+                        <select class="offeredCoinDesign" name="design" disabled>
+                            <option value="" disabled selected>Not selected</option>
+                            <option value="noDesign">None</option>
+                            <option value="colorized">Colorized</option>
+                            <option value="gilded">Gilded</option>
+                            <option value="plated">Plated</option>
+                            <option value="other">Other</option>
+                        </select><br>
+
+                        <label for="inSet">Set</label>
+                        <select class="offeredCoinInSet" name="inSet" disabled>
+                            <option value="" disabled selected>Not selected</option>
+                            <option value="noSet">None</option>
+                            <option value="setPart">Part of a set</option>
+                            <option value="coincard">Coincard</option>
+                            <option value="box">Box</option>
+                            <option value="folder">Folder</option>
+                            <option value="other">Other</option>
+                        </select><br>
+
+                        <label for="pictureUrl">Picture</label>
+                        <input type="text" class="offeredCoinPictureUrl" name="picturePath" placeholder="e.g. .../somePicrute.jpg" disabled>
+                    </div>
+                </div>
+                <label class="offeredCoinCommentLabel" for="comment">Comment</label>
+                <textarea class="offeredCoinComment" name="comment" rows="2" cols="30" placeholder="Enter a comment about this coin..." disabled></textarea><br>
+                <div class="modalWantThisCoinBtnContainer">
+                    <button class="modalRequestThisCoinSwapBtnNext" id="modalSendUserOffer">Next</button>
+                </div>
+            </div>
+
+            <form class="coinRequestContainer" name="coinRequestContainer" action="/sendUserRequest" method="post">
+                <div class="coinNameRow myRequestOtherUserCoinsToSWapName">User [username] wanted coins list</div>
+                <input class="coinRequestOfferedCoinId" name="offeredCoinId" type="number" value="0">
+                <div id="modalOtherUserReuestList"></div><br>
+
+                <div class="coinNameRow rowMarginTop">Pick a coin to offer</div><br>
+                <div id="modalMyCoinsToOfferForRequestList">
+                    <div class="coinSwapSettingsHead"></div>
+                    <div class="coinSwapSettingsBody"></div>
+                </div><br><br>
+
+                <label>Comment</label>
+                <br>
+                <textarea name="comment" rows="2" cols="30" placeholder="Write a comment about request..."></textarea><br>
+                <div class="modalWantThisCoinBtnContainer">
+                    <button onclick="showCreateMyRequestContainer('goBack'); return false;">Back</button>
+                    <input type="button" onclick="sendForm('.coinRequestContainer'); hideMyRequestContainer();" id="modalSendMyRequest" value="Send request">
+                    <button onclick="hideMyRequestContainer(); return false;">Cancel</button>
+                </div>
+            </form>
+
         </div>
     </div>
 
@@ -302,7 +380,7 @@
                     <label>Comment</label>
                     <textarea class="myOfferModalInComment" name="comment" rows="2" cols="30" placeholder="No comment..." disabled></textarea><br>
                     <div class="modalWantThisCoinBtnContainer">
-                        <button class="modalWantThisCoinSwapBtnNext" onclick="getSwapCoinsOtherUser(); getSwapCoinsListOffer(); showCreateMyOfferContainer('create');">Next</button>
+                        <button class="modalWantThisCoinSwapBtnNext">Next</button>
                         <button onclick="hideModalContentMyOffer(); return false;">Cancel</button>
                     </div>
                 </div>

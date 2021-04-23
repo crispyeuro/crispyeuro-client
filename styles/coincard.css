@@ -341,7 +341,8 @@ input[type="checkbox"]:checked+.collapsed {
 }
 
 .addedCoinModalCoinId, .coinIdModalCoinId, .addedCoinIdToDelete, .addedCoinToSwapId, .wantThisCoinId, 
-.wantThisCoinChangeId, .wantThisCoinDeleteId, .myOfferCoinId, .myOfferWantedCoinId, .myOfferOtherUserUsername {
+.wantThisCoinChangeId, .wantThisCoinDeleteId, .myOfferCoinId, .myOfferWantedCoinId, .myOfferOtherUserUsername, 
+.myReuestOtherUserUsername, .coinRequestOfferedCoinId {
     display: none;
 }
 
