@@ -341,7 +341,7 @@ input[type="checkbox"]:checked+.collapsed {
 }
 
 .addedCoinModalCoinId, .coinIdModalCoinId, .addedCoinIdToDelete, .addedCoinToSwapId, .wantThisCoinId, 
-.wantThisCoinChangeId, .wantThisCoinDeleteId, .myOfferCoinId, .myOfferWantedCoinId {
+.wantThisCoinChangeId, .wantThisCoinDeleteId, .myOfferCoinId, .myOfferWantedCoinId, .myOfferOtherUserUsername {
     display: none;
 }
 
@@ -353,6 +353,10 @@ input[type="checkbox"]:checked+.collapsed {
     text-transform: none;
     font-weight: bold;
     display: inline-block;
+}
+
+.rowMarginTop {
+    margin-top: 10px;
 }
 
 @media only screen and (max-width: 1300px) {
