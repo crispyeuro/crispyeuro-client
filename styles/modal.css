@@ -341,7 +341,7 @@ label {
     padding-right: 5px;
 }
 
-.coinSwapSettingsBody {
+.coinSwapSettingsBody, .coinSwapOtherUserOfferListBody {
     max-height: 25vh;
     overflow-y: auto;
     width: 100%;

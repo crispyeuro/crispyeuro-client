@@ -108,6 +108,21 @@
     width: 100%;
 }
 
+.coinPicContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 110px;
+    max-height: 110px;
+    margin: 5px;
+}
+
+.coinPicContainer img {
+    max-width: 110px;
+    max-height: 110px;
+    border: 1px solid var(--blue);
+}
+
 .coinPic {
     display: flex;
     justify-content: center;
@@ -315,4 +330,10 @@
 
 .addedCoinToSwapId {
     display: none;
+}
+
+.textBold {
+    text-transform: none;
+    font-weight: bold;
+    display: inline-block;
 }

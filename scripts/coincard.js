@@ -934,7 +934,7 @@ async function getSwapCoinsOtherUser(wanted_coin_id) {
 
 function loadCoincardOtherUserSwapCoinsListOffer(result) {
     let count = 0;
-    document.getElementById('modalOtherUserOfferList').innerHTML = 
+    document.querySelector('.coinSwapOtherUserOfferListHead').innerHTML = 
     `
     <br>
     <div class="coinSwapSettings coinSwapSettingsHeader">
@@ -979,7 +979,7 @@ function loadCoincardOtherUserSwapCoinsListOffer(result) {
                 </div>
             </div>
             `;
-        document.getElementById('modalOtherUserOfferList').innerHTML += row;
+        document.querySelector('.coinSwapOtherUserOfferListBody').innerHTML += row;
         count++;
     }
     if (count == 0) {

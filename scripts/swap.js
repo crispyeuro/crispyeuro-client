@@ -154,7 +154,7 @@ async function getUserCoinsToSwap() {
 
 function loadUserCoinsToSwap(result) {
     document.getElementById("swapManageOffers").innerHTML =
-    `
+        `
     <br>
     <div class="coinSwapSettings coinSwapSettingsHeader">
         <div class="coinSwapSettingsOrder">Order</div>
@@ -166,13 +166,13 @@ function loadUserCoinsToSwap(result) {
     `;
     for (i = 0; i < result.length; i++) {
         let coinType = result[i].coin_type.charAt(0).toUpperCase() + result[i].coin_type.slice(1);
-        let row = 
-        `
+        let row =
+            `
         <div class="coinSwapSettings" id="swapSettingsCoin` + result[i].coin_id_added + `">
             <div class="coinSwapSettingsOrder">` + (i + 1) + `</div>
             <div class="coinSwapSettingsId">` + result[i].coin_id_added + `</div>
             <div class="coinSwapSettingsType">` + coinType.replace('_', ' ') + `</div>
-            <div class="coinSwapSettingsName">` + denominationString(result[i].denomination) + ' ' + 
+            <div class="coinSwapSettingsName">` + denominationString(result[i].denomination) + ' ' +
             result[i].issue_year + ' ' + result[i].country.replace('-', ' ') + `</div>
             <form class="coinSwapSettingsAvailability coinSwapSettingsAvailability` + result[i].coin_id_added + `" name="coinSwapSettings" action="/deleteUserCoinToSwap" method="post">
                 <input class="addedCoinToSwapId" name="addedCoinToSwapId" type="number" value="` + result[i].coin_id_added + `">
@@ -221,4 +221,147 @@ async function sendForm(formSelectorQuery) {
         },
     });
     return true;
+}
+
+async function getSentSwapRequests() {
+    const apiPath = `/api/getSentSwapRequests${window.location.search}`;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        console.log(obj);
+        if (obj.length > 0) {
+            loadSentSwapRequests(obj);
+        } else {
+            document.querySelector('.swapMyRequests').innerHTML = "You have no any sent requests.";
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function loadSentSwapRequests(result) {
+    for (i = 0; i < result.length; i++) {
+        let request =
+            `
+        <div class="swapMyRequest">
+            <div class="swapMyRequestName" onclick="swapMyRequestShow('myRequsetContainer` + result[i].swap_request_id + `')">Your coin swap request to <div class="textBold">` + result[i].receiver_username + `</div></div>
+            <div class="swapMyRequestContainer closed" id="myRequsetContainer` + result[i].swap_request_id + `">
+                You want to swap your coin
+                <div class="swapUserRequestCoinContainer">`;
+        for (m = 0; m < (result[i].sender_coins).length; m++) {
+            request += await loadSenderCoin((result[i].sender_coins)[m]);
+        }
+        request +=
+            `<div class="forContainer">
+                        for
+                    </div>
+
+                    <div class="myCoinContainer">
+                        <div class="myCoinContainerName">[ Commemorative 2 euro Latvia 2015]</div>
+                        <div class="myCointContent">
+                            <div class="coinPic">PIC</div>
+                            <div class="coinDescription">
+                                <span>Condition: UNC</span><br><br>
+                                <span><a href="coincard.html">Open coin</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                Offer details
+                <div class="swapOfferDetails">` + result[i].comment + `</div>
+                <span class="swapRepliesName" id="swapRepliesName0">Conversion</span>
+                <div class="swapReplies" id="swapReplies0"></div>
+                <div class="swapReplyRequestContainer" id="swapReplyRequestContainer0">
+                    Reply to this offer
+                    <textarea class="swapReplyInput" id="swapReplyInputValue0"
+                        placeholder="Write your message here..."></textarea>
+                </div>
+                <div class="swapUserRequestButtons">
+                    <button class="swapSendMessageBtn" id="swapSendMessageBtn0"
+                        onclick="swapSendReplyBtnClick(0)">Send message</button>
+                    <button class="swapReplyRequestBtn" id="swapReplyRequestBtn0"
+                        onclick="swapReplyBtnClick(0)">Reply</button>
+                    <button class="swapChangeOffer" id="swapChangeOffer" onclick="showSwapChangeOfferModal()">Change
+                        offer</button>
+                    <button onclick="showSwapCloseConfirmation('swapModalCancel')">Cancel offer</button>
+                    <button>Swapped</button>
+                </div>
+                <div class="swapRequestChangesName opened" id="swapRequestChangesShow0"
+                    onclick="swapRequestChangesBtnClick(0, 'open')">See offer previous request changes</div>
+                <div class="swapRequestChangesName closed" id="swapRequestChangesClose0"
+                    onclick="swapRequestChangesBtnClick(0, 'close')">Close offer previous request changes</div>
+                <div class="swapRequestChanges closed" id="swapRequestChanges0">No offer changes</div>
+            </div>
+        </div>
+        `
+        document.querySelector('.swapMyRequests').innerHTML += request;
+    }
+}
+
+async function getAddedCoin(coinId) {
+    const apiPath = `/api/getSwapAddedCoin?added_coin_id=` + coinId;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        return obj;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function loadSenderCoin(coinId) {
+    let coin = await getAddedCoin(coinId);
+    if (coin.length > 0) {
+        let nominal = await coinNominalText(coin[0].denomination);
+        let coinType = ((coin[0].coin_type).charAt(0).toUpperCase() + (coin[0].coin_type).slice(1)).replace('_', ' ');
+
+        let addedCoin = "";
+        addedCoin =
+            `
+        <div class="myCoinContainer">
+            <div class="myCoinContainerName">` + coinType + `<br><div class="textBold"> ` + nominal + ` ` + coin[0].country + ` ` + coin[0].issue_year + `</div></div>
+            <div class="myCointContent">`;
+        if (coin[0].obverse_image_path != null) {
+            addedCoin += `<div class="coinPicContainer"><img src="` + coin[0].obverse_image_path + `"></div>`
+        } else {
+            addedCoin += `<div class="coinPic">PIC</div>`;
+        }
+        addedCoin +=
+            `
+                <div class="coinDescription">
+                    <span>ID <div class="textBold">` + coin[0].added_coin_id + `</div> in my collection</span><br><br>
+                    <span>Grade: ` + coin[0].grade + `</span><br><br>
+                    <span><a href="coincard.html">View details</a></span>
+                </div>
+            </div>
+        </div>
+        `;
+        return addedCoin;
+    } else {
+        return "Something else";
+    }
+
+}
+
+async function coinNominalText(nominal) {
+    let nominalText = "";
+    if (nominal.includes(".")) {
+        const separated = nominal.split(".");
+        if (separated.length == 2) {
+            if (separated[0] == "0") {
+                if (separated[1].charAt(0) == "0") {
+                    nominalText = separated[1].substring(1) + " cent";
+                } else {
+                    nominalText = separated[1] + "0 cent";
+                }
+            } else {
+                nominalText = nominal + " euro";
+            }
+        } else {
+            console.log("Denomination value mistake")
+        }
+    } else {
+        nominalText += nominal + " euro";
+    }
+    return nominalText;
 }
