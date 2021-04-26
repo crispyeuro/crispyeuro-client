@@ -230,6 +230,7 @@ async function getSentSwapRequests() {
     try {
         console.log(obj);
         if (obj.length > 0) {
+            document.querySelector('.swapMyRequests').innerHTML = '';
             loadSentSwapRequests(obj);
         } else {
             document.querySelector('.swapMyRequests').innerHTML = "You have no any sent requests.";
@@ -248,25 +249,21 @@ async function loadSentSwapRequests(result) {
             <div class="swapMyRequestContainer closed" id="myRequsetContainer` + result[i].swap_request_id + `">
                 You want to swap your coin
                 <div class="swapUserRequestCoinContainer">`;
+
         for (m = 0; m < (result[i].sender_coins).length; m++) {
             request += await loadSenderCoin((result[i].sender_coins)[m]);
         }
+        
         request +=
             `<div class="forContainer">
                         for
-                    </div>
+                    </div>`;
 
-                    <div class="myCoinContainer">
-                        <div class="myCoinContainerName">[ Commemorative 2 euro Latvia 2015]</div>
-                        <div class="myCointContent">
-                            <div class="coinPic">PIC</div>
-                            <div class="coinDescription">
-                                <span>Condition: UNC</span><br><br>
-                                <span><a href="coincard.html">Open coin</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        for (l = 0; l < (result[i].receiver_coins).length; l++) {
+            request += await loadReceiverCoin((result[i].receiver_coins)[l]);
+        }
+        request +=
+                `</div>
                 Offer details
                 <div class="swapOfferDetails">` + result[i].comment + `</div>
                 <span class="swapRepliesName" id="swapRepliesName0">Conversion</span>
@@ -340,8 +337,115 @@ async function loadSenderCoin(coinId) {
     } else {
         return "Something else";
     }
-
 }
+
+async function loadReceiverCoin(coinId) {
+    let coin = await getAddedCoin(coinId);
+    if (coin.length > 0) {
+        let nominal = await coinNominalText(coin[0].denomination);
+        let coinType = ((coin[0].coin_type).charAt(0).toUpperCase() + (coin[0].coin_type).slice(1)).replace('_', ' ');
+
+        let addedCoin = "";
+        addedCoin =
+            `
+        <div class="myCoinContainer">
+            <div class="myCoinContainerName">` + coinType + `<br><div class="textBold"> ` + nominal + ` ` + coin[0].country + ` ` + coin[0].issue_year + `</div></div>
+            <div class="myCointContent">`;
+        if (coin[0].obverse_image_path != null) {
+            addedCoin += `<div class="coinPicContainer"><img src="` + coin[0].obverse_image_path + `"></div>`
+        } else {
+            addedCoin += `<div class="coinPic">PIC</div>`;
+        }
+        addedCoin +=
+            `
+                <div class="coinDescription">
+                    <br>
+                    <span>Grade: ` + coin[0].grade + `</span><br><br>
+                    <span><a href="coincard.html">View details</a></span>
+                </div>
+            </div>
+        </div>
+        `;
+        return addedCoin;
+    } else {
+        return "Something else";
+    }
+}
+
+async function getReceivedSwapRequests() {
+    const apiPath = `/api/getReceivedSwapRequests${window.location.search}`;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        console.log(obj);
+        if (obj.length > 0) {
+            document.querySelector('.swapOthersRequests').innerHTML = '';
+            loadReceivedSwapRequests(obj);
+        } else {
+            document.querySelector('.swapOthersRequests').innerHTML = "You have no any received requests.";
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function loadReceivedSwapRequests(result) {
+    for (i = 0; i < result.length; i++) {
+        offer = 
+        `
+        <div class="swapUserRequest">
+                <div class="swapUserRequestName" onclick="swapOthersRequestShow('firstRequset` + result[i].swap_request_id + `')">Swap request from 
+                <div class="textBold">` + result[i].sender_username + `</div></div>
+                <div class="swapUserRequestContainer closed" id="firstRequset` + result[i].swap_request_id + `">
+                    Wants to swap your coin
+                    <div class="swapUserRequestCoinContainer">`;
+        
+        for (m = 0; m < (result[i].receiver_coins).length; m++) {
+            offer += await loadSenderCoin((result[i].receiver_coins)[m]);
+        }
+                        
+        offer +=
+                        `<div class="forContainer">
+                            for
+                        </div>`;
+
+        for (l = 0; l < (result[i].sender_coins).length; l++) {
+            offer += await loadReceiverCoin((result[i].sender_coins)[l]);
+        }
+
+        offer += 
+                    `</div>
+                    Offer details
+                    <div class="swapOfferDetails">
+                        Some details.
+                    </div>
+                    <span class="swapRepliesName" id="swapRepliesName1">Conversion</span>
+                    <div class="swapReplies" id="swapReplies1"></div>
+                    <div class="swapReplyRequestContainer" id="swapReplyRequestContainer1">
+                        Reply to this offer
+                        <textarea class="swapReplyInput" id="swapReplyInputValue1"
+                            placeholder="Write your message here..."></textarea>
+                    </div>
+                    <div class="swapUserRequestButtons" id="swapUserRequestButtons1">
+                        <button class="swapSendMessageBtn" id="swapSendMessageBtn1"
+                            onclick="swapSendReplyBtnClick(1)">Send message</button>
+                        <button class="swapReplyRequestBtn" id="swapReplyRequestBtn1"
+                            onclick="swapReplyBtnClick(1)">Reply</button>
+                        <button onclick="showSwapCloseConfirmation('swapModalDismiss')">Dismiss</button>
+                        <button>Swapped</button>
+                    </div>
+                    <div class="swapRequestChangesName opened" id="swapRequestChangesShow1"
+                        onclick="swapRequestChangesBtnClick(1, 'open')">See offer previous request changes</div>
+                    <div class="swapRequestChangesName closed" id="swapRequestChangesClose1"
+                        onclick="swapRequestChangesBtnClick(1, 'close')">Close offer previous request changes</div>
+                    <div class="swapRequestChanges closed" id="swapRequestChanges0">No offer changes</div>
+                </div>
+            </div>
+        `;
+        document.querySelector('.swapOthersRequests').innerHTML += offer;
+    }
+}
+
 
 async function coinNominalText(nominal) {
     let nominalText = "";
