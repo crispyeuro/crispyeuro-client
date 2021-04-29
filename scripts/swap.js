@@ -487,4 +487,69 @@ function getDateToLocalDate(dateISO) {
     return localDate.split('.')[0];
 }
 
+async function getUserCoinsToSwapChangeOffer(swapRequestId) {
+    const apiPath = `/api/userCoinsToSwapRequest${window.location.search}`;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        if (obj.length > 0) {
+            loadSwapCoinsListChangeOffer(obj, swapRequestId);
+        } else {
+            document.getElementById("modalMyCoinsToOfferChangeList").innerHTML = '<br><br>Your list of coins available for swap is empty!';
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
 
+function loadSwapCoinsListChangeOffer(result, swapRequestId) {
+    document.querySelector('.swapChangeOfferModalContent').innerHTML = 
+    `
+    <form class="swapChangeOfferModal swapChangeOfferModal` + swapRequestId + `" action="/sendChangeRequestForm" method="post">
+        <div class="closeBtnContainer" onclick="hideSwapChangeOfferModal(); return false;">
+            <div class="closeBtn"></div>
+        </div>
+        <div class="coinNameRow">Change your coin swap offer</div><br>
+        <input name="swapRequestId" type="number" class="swapRequestIdHidden" value="` + swapRequestId + `">
+        <div id="modalMyCoinsToOfferChangeList"></div>
+        <br>
+        <div class="modalWantThisCoinBtnContainer">
+            <input type="button" onclick="sendForm('.swapChangeOfferModal` + swapRequestId + `');hideSwapChangeOfferModal();getSentSwapRequests();" value="Save offer">
+            <button onclick="hideSwapChangeOfferModal(); return false;">Cancel</button>
+        </div>
+    </form>
+    `;
+
+    document.getElementById("modalMyCoinsToOfferChangeList").innerHTML =
+        `
+    <br>
+    <div class="coinSwapSettings coinSwapSettingsHeader">
+        <div class="coinSwapSettingsOrder">Order</div>
+        <div class="coinSwapSettingsId">Record ID</div>
+        <div class="coinSwapSettingsType">Type</div>
+        <div class="coinSwapSettingsName">Name</div>
+        <div class="coinSwapSettingsAvailability">Coin to offer</div>
+    </div>
+    `;
+    for (i = 0; i < result.length; i++) {
+        let coinType = result[i].coin_type.charAt(0).toUpperCase() + result[i].coin_type.slice(1);
+        let row = 
+        `
+        <div class="coinSwapSettings" id="swapSettingsCoin` + result[i].coin_id_added + `">
+            <div class="coinSwapSettingsOrder">` + (i + 1) + `</div>
+            <div class="coinSwapSettingsId">` + result[i].coin_id_added + `</div>
+            <div class="coinSwapSettingsType">` + coinType.replace('_', ' ') + `</div>
+            <div class="coinSwapSettingsName">` + denominationString(result[i].denomination) + ' ' +
+            result[i].issue_year + ' ' + result[i].country.replace('-', ' ') + `</div>
+            <div class="coinSwapSettingsAvailability">
+                <label for="modalMyCoinForSwap`+ result[i].coin_id_added + `" class="checkboxContainer" id="modalMyCoinForSwap">
+                    <input type="checkbox" class="modalChooseMyCoin"` +  
+                    `" name="coinsToSwap" id="modalMyCoinForSwap`+ result[i].coin_id_added + `" value="` + result[i].coin_id_added + `">
+                    <div class="fCheckbox"></div>
+                </label>
+            </div>
+        </div>
+        `;
+        document.getElementById('modalMyCoinsToOfferChangeList').innerHTML += row;
+    }
+}

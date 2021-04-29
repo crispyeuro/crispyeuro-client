@@ -245,11 +245,11 @@
 /*.coinSwapSettings:hover {}*/
 
 .coinSwapSettingsOrder {
-    width: 10%;
+    width: 8%;
 }
 
 .coinSwapSettingsId {
-    width: 10%;
+    width: 12%;
 }
 
 .coinSwapSettingsType {
@@ -336,4 +336,17 @@
     text-transform: none;
     font-weight: bold;
     display: inline-block;
+}
+
+.textGrey {
+    display: inline-block;
+    color: var(--grey);
+}
+
+.swapUserRequestName:hover .textGrey, .swapMyRequestName:hover .textGrey{
+    color: var(--lighterGrey);
+}
+
+.swapRequestIdHidden {
+    display: none;
 }
