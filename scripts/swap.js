@@ -242,10 +242,14 @@ async function getSentSwapRequests() {
 
 async function loadSentSwapRequests(result) {
     for (i = 0; i < result.length; i++) {
+        let date = getDateToLocalDate(new Date(result[i].created_date));
+
         let request =
             `
         <div class="swapMyRequest">
-            <div class="swapMyRequestName" onclick="swapMyRequestShow('myRequsetContainer` + result[i].swap_request_id + `')">Your coin swap request to <div class="textBold">` + result[i].receiver_username + `</div></div>
+            <div class="swapMyRequestName" onclick="swapMyRequestShow('myRequsetContainer` + 
+            result[i].swap_request_id + `')">Your coin swap request to <div class="textBold">` + 
+            result[i].receiver_username + `</div> <div class="textGrey">on ` + date + `</div></div>
             <div class="swapMyRequestContainer closed" id="myRequsetContainer` + result[i].swap_request_id + `">
                 You want to swap your coin
                 <div class="swapUserRequestCoinContainer">`;
@@ -278,7 +282,7 @@ async function loadSentSwapRequests(result) {
                         onclick="swapSendReplyBtnClick(0)">Send message</button>
                     <button class="swapReplyRequestBtn" id="swapReplyRequestBtn0"
                         onclick="swapReplyBtnClick(0)">Reply</button>
-                    <button class="swapChangeOffer" id="swapChangeOffer" onclick="showSwapChangeOfferModal()">Change
+                    <button class="swapChangeOffer" id="swapChangeOffer" onclick="getUserCoinsToSwapChangeOffer('` + result[i].swap_request_id + `'); showSwapChangeOfferModal()">Change
                         offer</button>
                     <button onclick="showSwapCloseConfirmation('swapModalCancel')">Cancel offer</button>
                     <button>Swapped</button>
@@ -391,11 +395,13 @@ async function getReceivedSwapRequests() {
 
 async function loadReceivedSwapRequests(result) {
     for (i = 0; i < result.length; i++) {
+        let date = getDateToLocalDate(new Date(result[i].created_date));
+
         offer = 
         `
         <div class="swapUserRequest">
                 <div class="swapUserRequestName" onclick="swapOthersRequestShow('firstRequset` + result[i].swap_request_id + `')">Swap request from 
-                <div class="textBold">` + result[i].sender_username + `</div></div>
+                <div class="textBold">` + result[i].sender_username + `</div> <div class="textGrey">on ` + date + `</div></div> 
                 <div class="swapUserRequestContainer closed" id="firstRequset` + result[i].swap_request_id + `">
                     Wants to swap your coin
                     <div class="swapUserRequestCoinContainer">`;
@@ -469,3 +475,16 @@ async function coinNominalText(nominal) {
     }
     return nominalText;
 }
+
+function getDateToLocalDate(dateISO) {
+    /*Time zone offset in milliseconds*/
+    let timeZoneOffet = dateISO.getTimezoneOffset() * 60000;
+
+    let localDate = new Date(dateISO - timeZoneOffet).toISOString();
+    localDate = localDate.replaceAll('-', '/');
+    localDate = localDate.replace('T', ' ');
+
+    return localDate.split('.')[0];
+}
+
+
