@@ -1,4 +1,5 @@
 window.onload = function () {
+    checkUsername();
     document.getElementById("header").innerHTML =
         `<div class="logo"><a href="index.html">Crispyeuro</a></div>
         <nav>
@@ -66,10 +67,6 @@ window.onload = function () {
     document.getElementById("footer").innerHTML =
         `Crispyeuro 2020-2021`;
 
-    /*getUserData();
-    checkLoggedIn();*/
-    checkUsername();
-    coinCollectionProgress();
     checkHash();
 }
 
@@ -563,7 +560,14 @@ async function checkUsername() {
     const response = await fetch(apiPath);
     const obj = await response.json();
     try {
-        showUsernameLayout(obj);
+        if (obj.length == 0) {
+            location.href = "/static/login.html";
+            return false;
+        } else {
+            showUsernameLayout(obj);
+            coinCollectionProgress();
+            return true;
+        }
     } catch (err) {
         console.log(err);
     }
