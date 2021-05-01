@@ -322,10 +322,15 @@
     margin: 10px 0 5px 0;
     color: rgba(135, 152, 173);
     cursor: pointer;
+    font-weight: bold;
 }
 
 .swapRequestChangesName:hover {
     color: var(--blue);
+}
+
+.swapRequestChanges {
+    padding-left: 10px;
 }
 
 .addedCoinToSwapId {
@@ -347,6 +352,26 @@
     color: var(--lighterGrey);
 }
 
+.textDarksestBlue {
+    display: inline-block;
+    color: var(--darksestBlue);
+}
+
 .swapRequestIdHidden {
     display: none;
+}
+
+.swapChangesCoinContainer {
+    padding-left: 10px;
+    color: var(--blue);
+    display: inline-block;
+}
+
+.swapChangesContainer {
+    width: 100%;
+    border: 1px solid var(--grey);
+    border-radius: 3px;
+    margin-bottom: 1%;
+    padding: 1%;
+    background-color: transparent;
 }

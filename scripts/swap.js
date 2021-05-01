@@ -287,11 +287,11 @@ async function loadSentSwapRequests(result) {
                     <button onclick="showSwapCloseConfirmation('swapModalCancel')">Cancel offer</button>
                     <button>Swapped</button>
                 </div>
-                <div class="swapRequestChangesName opened" id="swapRequestChangesShow0"
-                    onclick="swapRequestChangesBtnClick(0, 'open')">See offer previous request changes</div>
-                <div class="swapRequestChangesName closed" id="swapRequestChangesClose0"
-                    onclick="swapRequestChangesBtnClick(0, 'close')">Close offer previous request changes</div>
-                <div class="swapRequestChanges closed" id="swapRequestChanges0">No offer changes</div>
+                <div class="swapRequestChangesName opened" id="swapRequestChangesShow` + result[i].swap_request_id + `"
+                    onclick="getSwapRequestChanges('` + result[i].swap_request_id + `');swapRequestChangesBtnClick('` + result[i].swap_request_id + `', 'open')">See offer previous request changes</div>
+                <div class="swapRequestChangesName closed" id="swapRequestChangesClose` + result[i].swap_request_id + `"
+                    onclick="swapRequestChangesBtnClick('` + result[i].swap_request_id + `', 'close')">Close offer previous request changes</div>
+                <div class="swapRequestChanges closed" id="swapRequestChanges` + result[i].swap_request_id + `">No request changes</div>
             </div>
         </div>
         `
@@ -440,11 +440,11 @@ async function loadReceivedSwapRequests(result) {
                         <button onclick="showSwapCloseConfirmation('swapModalDismiss')">Dismiss</button>
                         <button>Swapped</button>
                     </div>
-                    <div class="swapRequestChangesName opened" id="swapRequestChangesShow1"
-                        onclick="swapRequestChangesBtnClick(1, 'open')">See offer previous request changes</div>
-                    <div class="swapRequestChangesName closed" id="swapRequestChangesClose1"
-                        onclick="swapRequestChangesBtnClick(1, 'close')">Close offer previous request changes</div>
-                    <div class="swapRequestChanges closed" id="swapRequestChanges0">No offer changes</div>
+                    <div class="swapRequestChangesName opened" id="swapRequestChangesShow` + result[i].swap_request_id + `"
+                        onclick="getSwapRequestChanges('` + result[i].swap_request_id + `');swapRequestChangesBtnClick('` + result[i].swap_request_id + `', 'open')">See offer previous request changes</div>
+                    <div class="swapRequestChangesName closed" id="swapRequestChangesClose` + result[i].swap_request_id + `"
+                        onclick="swapRequestChangesBtnClick(` + result[i].swap_request_id + `, 'close')">Close offer previous request changes</div>
+                    <div class="swapRequestChanges closed" id="swapRequestChanges` + result[i].swap_request_id + `">No request changes</div>
                 </div>
             </div>
         `;
@@ -551,5 +551,56 @@ function loadSwapCoinsListChangeOffer(result, swapRequestId) {
         </div>
         `;
         document.getElementById('modalMyCoinsToOfferChangeList').innerHTML += row;
+    }
+}
+
+async function getSwapRequestChanges(swapRequestId) {
+    const apiPath = `/api/getSwapRequestChanges?swap_request_id=` + swapRequestId;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        console.log(obj);
+        if (obj.length > 0) {
+            loadSwapRequestChanges(swapRequestId, obj);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function loadSwapRequestChanges(swapRequestId, result) {
+    document.getElementById('swapRequestChanges' + swapRequestId).innerHTML = ``;
+    for(i = 0; i < result.length; i++) {
+        let date = getDateToLocalDate(new Date(result[i].changed_date));
+        let row = 
+        `Offered coins changed on <div class="textDarksestBlue">` + date + `</div> to <br>`;
+        console.log(result[i].sender_new_coins);
+        if (result[i].sender_new_coins != undefined && (result[i].sender_new_coins).length > 0) {
+            console.log((result[i].sender_new_coins).length);
+            for (m = 0; m < (result[i].sender_new_coins).length; m++) {
+                let coin = await getAddedCoin((result[i].sender_new_coins)[m]);
+                let nominal = await coinNominalText(coin[0].denomination);
+                if (coin.length > 0) {
+                    row += `<div class="swapChangesCoinContainer">` + 
+                    (coin[0].coin_type).charAt(0).toUpperCase() + (coin[0].coin_type).slice(1) + 
+                    ` <div class="textBold">` + 
+                    nominal + 
+                    ` ` + 
+                    coin[0].country + 
+                    ` ` 
+                    + 
+                    coin[0].issue_year + 
+                    `</div></div>`;
+                } else {
+                    row = `<div class="swapChangesCoinContainer">` + (m + 1) + `. No coin data</div>`;
+                }
+                
+            }
+        } else {
+            row += `<div class="swapChangesCoinContainer">No offered coins</div>`;
+        }
+
+        row += `<br><br>`;
+        document.getElementById('swapRequestChanges' + swapRequestId).innerHTML += row;
     }
 }
