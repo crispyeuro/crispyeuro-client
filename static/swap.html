@@ -49,19 +49,21 @@
             <div class="swapModalDismissContainer" id="swapModalDismiss">
                 <span class="swapModalNameRow">Coin swap</span><br>
                 <div class="swapDismissConfirmationText">Do you want to dismiss this swap request offer?</div>
-                <div class="swapModalBtnRow">
-                    <button class="swapModalBtn" onclick="hideSwapModalContainer()">Yes</button>
+                <form class="swapModalBtnRow swapModalDismissForm" action="/dismissSwapRequest" method="post">
+                    <input class="swapModalDismissRequestId" name="dismissSwapRequestId" type="number" value="0">
+                    <input type="button" class="swapModalBtn" onclick="sendForm('.swapModalDismissForm');hideSwapModalContainer();getReceivedSwapRequests();" value="Yes">
                     <button class="swapModalBtn" onclick="hideSwapModalContainer()">No</button>
-                </div>
+                </form>
             </div>
 
             <div class="swapModalCancelContainer" id="swapModalCancel">
                 <span class="swapModalNameRow">Coin swap</span><br>
                 <div class="swapCancelConfirmationText">Do you want to cancel your request for swap?</div>
-                <div class="swapModalBtnRow">
-                    <button class="swapModalBtn" onclick="hideSwapModalContainer()">Yes</button>
+                <form class="swapModalBtnRow swapModalCancelForm" action="/cancelSwapRequest" method="post">
+                    <input class="swapModalCancelRequestId" name="cancelSwapRequestId" type="number" value="0">
+                    <input type="button" class="swapModalBtn" onclick="sendForm('.swapModalCancelForm');hideSwapModalContainer();getSentSwapRequests();" value="Yes">
                     <button class="swapModalBtn" onclick="hideSwapModalContainer()">No</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>

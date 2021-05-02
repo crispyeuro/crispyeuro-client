@@ -375,3 +375,7 @@
     padding: 1%;
     background-color: transparent;
 }
+
+.swapModalCancelRequestId, .swapModalDismissRequestId {
+    display: none;
+}

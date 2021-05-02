@@ -284,7 +284,7 @@ async function loadSentSwapRequests(result) {
                         onclick="swapReplyBtnClick(0)">Reply</button>
                     <button class="swapChangeOffer" id="swapChangeOffer" onclick="getUserCoinsToSwapChangeOffer('` + result[i].swap_request_id + `'); showSwapChangeOfferModal()">Change
                         offer</button>
-                    <button onclick="showSwapCloseConfirmation('swapModalCancel')">Cancel offer</button>
+                    <button onclick="loadswapModalCancel('` + result[i].swap_request_id + `');showSwapCloseConfirmation('swapModalCancel')">Cancel offer</button>
                     <button>Swapped</button>
                 </div>
                 <div class="swapRequestChangesName opened" id="swapRequestChangesShow` + result[i].swap_request_id + `"
@@ -386,7 +386,7 @@ async function getReceivedSwapRequests() {
             document.querySelector('.swapOthersRequests').innerHTML = '';
             loadReceivedSwapRequests(obj);
         } else {
-            document.querySelector('.swapOthersRequests').innerHTML = "You have no any received requests.";
+            document.querySelector('.swapOthersRequests').innerHTML = `You have no any received requests.`;
         }
     } catch (error) {
         console.log(error);
@@ -422,9 +422,8 @@ async function loadReceivedSwapRequests(result) {
         offer += 
                     `</div>
                     Offer details
-                    <div class="swapOfferDetails">
-                        Some details.
-                    </div>
+                    <div class="swapOfferDetails">` + result[i].comment + 
+                    `</div>
                     <span class="swapRepliesName" id="swapRepliesName1">Conversion</span>
                     <div class="swapReplies" id="swapReplies1"></div>
                     <div class="swapReplyRequestContainer" id="swapReplyRequestContainer1">
@@ -437,7 +436,7 @@ async function loadReceivedSwapRequests(result) {
                             onclick="swapSendReplyBtnClick(1)">Send message</button>
                         <button class="swapReplyRequestBtn" id="swapReplyRequestBtn1"
                             onclick="swapReplyBtnClick(1)">Reply</button>
-                        <button onclick="showSwapCloseConfirmation('swapModalDismiss')">Dismiss</button>
+                        <button onclick="loadswapModalDismiss('` + result[i].swap_request_id + `');showSwapCloseConfirmation('swapModalDismiss')">Dismiss</button>
                         <button>Swapped</button>
                     </div>
                     <div class="swapRequestChangesName opened" id="swapRequestChangesShow` + result[i].swap_request_id + `"
@@ -603,4 +602,12 @@ async function loadSwapRequestChanges(swapRequestId, result) {
         row += `<br><br>`;
         document.getElementById('swapRequestChanges' + swapRequestId).innerHTML += row;
     }
+}
+
+function loadswapModalCancel(swapRequestId) {
+    document.querySelector('.swapModalCancelRequestId').value = swapRequestId;
+}
+
+function loadswapModalDismiss(swapRequestId) {
+    document.querySelector('.swapModalDismissRequestId').value = swapRequestId;
 }
