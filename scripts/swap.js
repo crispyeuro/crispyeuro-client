@@ -233,7 +233,7 @@ async function getSentSwapRequests() {
             document.querySelector('.swapMyRequests').innerHTML = '';
             loadSentSwapRequests(obj);
         } else {
-            document.querySelector('.swapMyRequests').innerHTML = "You have no any sent requests.";
+            document.querySelector('.swapMyRequests').innerHTML = `<div class="noRequestsContainer">You have no any sent requests.</div>`;
         }
     } catch (error) {
         console.log(error);
@@ -386,7 +386,7 @@ async function getReceivedSwapRequests() {
             document.querySelector('.swapOthersRequests').innerHTML = '';
             loadReceivedSwapRequests(obj);
         } else {
-            document.querySelector('.swapOthersRequests').innerHTML = `You have no any received requests.`;
+            document.querySelector('.swapOthersRequests').innerHTML = `<div class="noRequestsContainer">You have no any received requests.</div>`;
         }
     } catch (error) {
         console.log(error);

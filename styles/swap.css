@@ -331,6 +331,7 @@
 
 .swapRequestChanges {
     padding-left: 10px;
+    padding-top: 5px;
 }
 
 .addedCoinToSwapId {
@@ -348,7 +349,7 @@
     color: var(--grey);
 }
 
-.swapUserRequestName:hover .textGrey, .swapMyRequestName:hover .textGrey{
+.swapUserRequestName:hover .textGrey, .swapMyRequestName:hover .textGrey {
     color: var(--lighterGrey);
 }
 
@@ -378,4 +379,10 @@
 
 .swapModalCancelRequestId, .swapModalDismissRequestId {
     display: none;
+}
+
+.noRequestsContainer {
+    padding: 2% 0;
+    color: var(--grey);
+    font-style: italic;
 }
