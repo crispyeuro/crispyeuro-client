@@ -36,8 +36,7 @@
 
                 <div class="formRow">
                     <label class="formLabel" for="fUsername #7db3c7">Username</label>
-                    <input type="text" id="fUsername" name="username" placeholder="Username*" autocomplete="off"
-                        value="[testUsername]" disabled>
+                    <input type="text" id="fUsername" name="username" placeholder="Username*" autocomplete="off" disabled>
                     <div class="mistakeRow" id="fUsernameMistake"></div>
                 </div>
 
@@ -61,40 +60,8 @@
                 </div>
 
                 <div class="formRow">
-                    <label class="formLabel" class="labelBirthday" for="fBirthday">Birthday</label>
-                    <input type="date" id="fBirthday" name="birthday">
-                    <div class="mistakeRow" id="fBirthdayAndGenderMistake"></div>
-                </div>
-
-                <div class="formRow">
-                    <label class="formLabel">Gender</label>
-                    <div class="genderRow">
-                        <label for="fMale" class="radioContainer displayInline radioDisabled">Male
-                            <input type="radio" id="fMale" name="gender" value="male" checked disabled>
-                            <div class="fRadio"></div>
-                        </label>
-                        <label for="fFemale" class="radioContainer displayInline radioDisabled">Female
-                            <input type="radio" id="fFemale" name="gender" value="female" disabled>
-                            <div class="fRadio"></div>
-                        </label>
-                    </div>
-                    <div class="mistakeRow" id="fBirthdayAndGenderMistake"></div>
-                </div>
-
-                <div class="formRow">
-                    <label class="formLabel" for="fCountry">Country</label>
-                    <select id="fCountry" name="country">
-                        <option value="" disabled selected>Country</option>
-                        <option value="estonia">Estonia</option>
-                        <option value="latvia">Latvia</option>
-                        <option value="lithuania">Lithuania</option>
-                    </select>
-                    <div class="mistakeRow" id="fCountryMistake"></div>
-                </div>
-
-                <div class="formRow">
-                    <label class="formLabel" for="fCity">City</label>
-                    <input type="text" id="fCity" name="city" placeholder="City" autocomplete="off">
+                    <label class="formLabel" for="fCity">Address</label>
+                    <input type="text" id="fAddress" name="city" placeholder="City" autocomplete="off">
                     <div class="mistakeRow" id="fCityMistake"></div>
                 </div>
 
@@ -170,7 +137,7 @@
     <footer id="footer"></footer>
 </body>
 
-<script src="../scripts/app.js"></script>
 <script src="../scripts/settings.js"></script>
+<script type="module" src="../scripts/app.js"></script>
 
 </html>
