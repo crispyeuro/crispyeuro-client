@@ -52,7 +52,7 @@
                 <form class="swapModalBtnRow swapModalDismissForm" action="/dismissSwapRequest" method="post">
                     <input class="swapModalDismissRequestId" name="dismissSwapRequestId" type="number" value="0">
                     <input type="button" class="swapModalBtn" onclick="sendForm('.swapModalDismissForm');hideSwapModalContainer();getReceivedSwapRequests();" value="Yes">
-                    <button class="swapModalBtn" onclick="hideSwapModalContainer()">No</button>
+                    <input type="button" class="swapModalBtn" onclick="hideSwapModalContainer();" value="No">
                 </form>
             </div>
 
@@ -62,7 +62,7 @@
                 <form class="swapModalBtnRow swapModalCancelForm" action="/cancelSwapRequest" method="post">
                     <input class="swapModalCancelRequestId" name="cancelSwapRequestId" type="number" value="0">
                     <input type="button" class="swapModalBtn" onclick="sendForm('.swapModalCancelForm');hideSwapModalContainer();getSentSwapRequests();" value="Yes">
-                    <button class="swapModalBtn" onclick="hideSwapModalContainer()">No</button>
+                    <input type="button" class="swapModalBtn" onclick="hideSwapModalContainer()" value="No">
                 </form>
             </div>
         </div>

@@ -242,6 +242,7 @@ async function getSentSwapRequests() {
 
 async function loadSentSwapRequests(result) {
     for (i = 0; i < result.length; i++) {
+        console.log(i + " swap request id " + result[i].swap_request_id);
         let date = getDateToLocalDate(new Date(result[i].created_date));
 
         let request =
@@ -266,22 +267,38 @@ async function loadSentSwapRequests(result) {
         for (l = 0; l < (result[i].receiver_coins).length; l++) {
             request += await loadReceiverCoin((result[i].receiver_coins)[l]);
         }
-        request +=
-                `</div>
-                Offer details
-                <div class="swapOfferDetails">` + result[i].comment + `</div>
-                <span class="swapRepliesName" id="swapRepliesName0">Conversion</span>
-                <div class="swapReplies" id="swapReplies0"></div>
-                <div class="swapReplyRequestContainer" id="swapReplyRequestContainer0">
-                    Reply to this offer
-                    <textarea class="swapReplyInput" id="swapReplyInputValue0"
-                        placeholder="Write your message here..."></textarea>
-                </div>
+
+        request += `</div>`;
+        if (result[i].comment == null || result[i].comment == undefined || result[i].comment == "") {
+            request += 
+                `Offer details
+                <div class="swapOfferDetails">
+                    <div class="swapEmptyOfferComment">No details provided</div>
+                </div>`;
+        } else {
+            request += 
+                `Offer details
+                <div class="swapOfferDetails">` + result[i].comment + `</div>`;
+        }
+
+        getSwapMessages(result[i].swap_request_id);
+
+        request += 
+                `<span class="swapRepliesName" id="swapRepliesName` + result[i].swap_request_id + `">Conversion</span>
+                <div class="swapReplies" id="swapReplies` + result[i].swap_request_id + `"></div>
+                <form class="swapReplyRequestContainer swapMessageForm` + result[i].swap_request_id + `" 
+                    id="swapReplyRequestContainer` + result[i].swap_request_id + `" action="/swapSendMessage" method="post">
+                    New message
+                    <input class="swapRequestIdHidden" type="number" name="swapRequestId" value="` + result[i].swap_request_id + `">
+                    <input class="swapMessageReceiverHidden" type="text" name="receiverUsername" value="` + result[i].receiver_username + `">
+                    <textarea class="swapReplyInput" id="swapReplyInputValue` + result[i].swap_request_id + `" name="message" 
+                        placeholder="Your message..."></textarea>
+                </form>
                 <div class="swapUserRequestButtons">
-                    <button class="swapSendMessageBtn" id="swapSendMessageBtn0"
-                        onclick="swapSendReplyBtnClick(0)">Send message</button>
-                    <button class="swapReplyRequestBtn" id="swapReplyRequestBtn0"
-                        onclick="swapReplyBtnClick(0)">Reply</button>
+                    <input type="button" class="swapSendMessageBtn" id="swapSendMessageBtn` + result[i].swap_request_id + `"
+                        onclick="sendForm('.swapMessageForm` + result[i].swap_request_id +`'); getSwapMessages(` + result[i].swap_request_id + `);" value="Send message">
+                    <button class="swapReplyRequestBtn" id="swapReplyRequestBtn` + result[i].swap_request_id + `"
+                        onclick="swapReplyBtnClick(` + result[i].swap_request_id + `)">Reply</button>
                     <button class="swapChangeOffer" id="swapChangeOffer" onclick="getUserCoinsToSwapChangeOffer('` + result[i].swap_request_id + `'); showSwapChangeOfferModal()">Change
                         offer</button>
                     <button onclick="loadswapModalCancel('` + result[i].swap_request_id + `');showSwapCloseConfirmation('swapModalCancel')">Cancel offer</button>
@@ -419,23 +436,38 @@ async function loadReceivedSwapRequests(result) {
             offer += await loadReceiverCoin((result[i].sender_coins)[l]);
         }
 
-        offer += 
-                    `</div>
-                    Offer details
-                    <div class="swapOfferDetails">` + result[i].comment + 
-                    `</div>
-                    <span class="swapRepliesName" id="swapRepliesName1">Conversion</span>
-                    <div class="swapReplies" id="swapReplies1"></div>
-                    <div class="swapReplyRequestContainer" id="swapReplyRequestContainer1">
-                        Reply to this offer
-                        <textarea class="swapReplyInput" id="swapReplyInputValue1"
-                            placeholder="Write your message here..."></textarea>
-                    </div>
-                    <div class="swapUserRequestButtons" id="swapUserRequestButtons1">
-                        <button class="swapSendMessageBtn" id="swapSendMessageBtn1"
-                            onclick="swapSendReplyBtnClick(1)">Send message</button>
-                        <button class="swapReplyRequestBtn" id="swapReplyRequestBtn1"
-                            onclick="swapReplyBtnClick(1)">Reply</button>
+        console.log(result[i].comment);
+        offer += `</div>`;
+        if (result[i].comment == null || result[i].comment == undefined || result[i].comment == "") {
+            offer += 
+                `Offer details
+                <div class="swapOfferDetails">
+                    <div class="swapEmptyOfferComment">No details provided</div>
+                </div>`;
+        } else {
+            offer += 
+                `Offer details
+                <div class="swapOfferDetails">` + result[i].comment + `</div>`;
+        }
+
+        getSwapMessages(result[i].swap_request_id);
+
+        offer +=
+                    `<span class="swapRepliesName" id="swapRepliesName` + result[i].swap_request_id + `">Conversion</span>
+                    <div class="swapReplies" id="swapReplies` + result[i].swap_request_id + `"></div>
+                    <form class="swapReplyRequestContainer swapMessageForm` + result[i].swap_request_id + `" 
+                        id="swapReplyRequestContainer` + result[i].swap_request_id + `" action="/swapSendMessage" method="post">
+                        New message
+                        <input class="swapRequestIdHidden" type="number" name="swapRequestId" value="` + result[i].swap_request_id + `">
+                        <input class="swapMessageReceiverHidden" type="text" name="receiverUsername" value="` + result[i].sender_username + `">
+                        <textarea class="swapReplyInput" id="swapReplyInputValue` + result[i].swap_request_id + `" name="message" 
+                            placeholder="Your message..."></textarea>
+                    </form>
+                    <div class="swapUserRequestButtons" id="swapUserRequestButtons` + result[i].swap_request_id + `">
+                        <input type="button" class="swapSendMessageBtn" id="swapSendMessageBtn` + result[i].swap_request_id + `"
+                        onclick="sendForm('.swapMessageForm` + result[i].swap_request_id +`'); getSwapMessages(` + result[i].swap_request_id + `);" value="Send message">
+                        <button class="swapReplyRequestBtn" id="swapReplyRequestBtn` + result[i].swap_request_id + `"
+                            onclick="swapReplyBtnClick(` + result[i].swap_request_id + `)">Reply</button>
                         <button onclick="loadswapModalDismiss('` + result[i].swap_request_id + `');showSwapCloseConfirmation('swapModalDismiss')">Dismiss</button>
                         <button>Swapped</button>
                     </div>
@@ -573,9 +605,7 @@ async function loadSwapRequestChanges(swapRequestId, result) {
         let date = getDateToLocalDate(new Date(result[i].changed_date));
         let row = 
         `Offered coins changed on <div class="textDarksestBlue">` + date + `</div> to <br>`;
-        console.log(result[i].sender_new_coins);
         if (result[i].sender_new_coins != undefined && (result[i].sender_new_coins).length > 0) {
-            console.log((result[i].sender_new_coins).length);
             for (m = 0; m < (result[i].sender_new_coins).length; m++) {
                 let coin = await getAddedCoin((result[i].sender_new_coins)[m]);
                 let nominal = await coinNominalText(coin[0].denomination);
@@ -596,10 +626,13 @@ async function loadSwapRequestChanges(swapRequestId, result) {
                 
             }
         } else {
-            row += `<div class="swapChangesCoinContainer">No offered coins</div>`;
+            row += 
+            `<div class="swapChangesCoinContainer">
+                <div class="swapNoOfferedCoins">No offered coins</div>
+            </div>`;
         }
 
-        row += `<br><br>`;
+        row += `<br>`;
         document.getElementById('swapRequestChanges' + swapRequestId).innerHTML += row;
     }
 }
@@ -610,4 +643,40 @@ function loadswapModalCancel(swapRequestId) {
 
 function loadswapModalDismiss(swapRequestId) {
     document.querySelector('.swapModalDismissRequestId').value = swapRequestId;
+}
+
+async function getSwapMessages(swapRequestId) {
+    const apiPath = `/api/getSwapMessages?swap_request_id=` + swapRequestId;
+    const response = await fetch(apiPath);
+    const obj = await response.json();
+    try {
+        loadSwapMessages(swapRequestId, obj);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function loadSwapMessages(swapRequestId, result) {
+    if (result.length > 0) {
+        document.getElementById("swapRepliesName" + swapRequestId).style.display = "block";
+        document.getElementById("swapReplies" + swapRequestId).style.display = "block";
+        document.getElementById("swapReplies" + swapRequestId).innerHTML = "";
+        document.getElementById("swapReplyInputValue" + swapRequestId).value = "";
+
+        for(k = 0; k < result.length; k++) {
+            let date = getDateToLocalDate(new Date(result[k].created_date));
+            let row = 
+            `
+            <div class="swapWrittenReplyContainer">
+                <div class="swapWrittenReplyName">
+                    <div class="textBold">` + result[k].sender_username + `</div> on 
+                    <div class="textDarksestBlue">` + date + `</div>
+                </div>
+                <div class="swapWrittenReply">` + result[k].message + `</div>
+            </div>
+            `;
+            document.getElementById("swapReplies" + swapRequestId).innerHTML += row;
+            
+        }
+    }
 }

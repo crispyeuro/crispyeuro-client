@@ -47,7 +47,7 @@
 }
 
 .swapUserRequest:hover, .swapMyRequest:hover {
-    background-color: rgba(135, 152, 173, 0.1);
+    background-color: var(--lightestGrey);
 }
 
 .swapUserRequestName, .swapMyRequestName {
@@ -171,13 +171,15 @@
     display: none;
     align-items: flex-start;
     width: 100%;
-    min-height: 50px;
-    border: 1px solid var(--grey);
+    max-height: 150px;
+    /*border: 1px solid var(--grey);*/
     border-radius: 3px;
     margin-bottom: 1%;
     padding: 1%;
-    background-color: transparent;
+    /*background-color: transparent;*/
+    background-color: rgba(135, 152, 173, 0.09);
     color: var(--darkBlue);
+    overflow: auto;
 }
 
 .swapOfferDetails, .swapWrittenReply {
@@ -189,8 +191,9 @@
     border-radius: 3px;
     margin-bottom: 1%;
     padding: 1%;
-    background-color: transparent;
+    background-color: var(--white);
     color: var(--darkBlue);
+    overflow: auto;
 }
 
 .swapReplyRequestContainer {
@@ -358,23 +361,14 @@
     color: var(--darksestBlue);
 }
 
-.swapRequestIdHidden {
+.swapRequestIdHidden, .swapMessageReceiverHidden {
     display: none;
 }
 
 .swapChangesCoinContainer {
     padding-left: 10px;
     color: var(--blue);
-    display: inline-block;
-}
-
-.swapChangesContainer {
-    width: 100%;
-    border: 1px solid var(--grey);
-    border-radius: 3px;
-    margin-bottom: 1%;
-    padding: 1%;
-    background-color: transparent;
+    display: block;
 }
 
 .swapModalCancelRequestId, .swapModalDismissRequestId {
@@ -383,6 +377,16 @@
 
 .noRequestsContainer {
     padding: 2% 0;
+    color: var(--grey);
+    font-style: italic;
+}
+
+.swapNoOfferedCoins {
+    color: var(--grey);
+    font-style: italic;
+}
+
+.swapEmptyOfferComment {
     color: var(--grey);
     font-style: italic;
 }
