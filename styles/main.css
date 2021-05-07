@@ -99,3 +99,46 @@ tr:hover .tableColumnCell {
     color: var(--darkerBlue);
     font-size: 16px;
 }
+
+/*'Close' button style for a modal*/
+
+.closeBtnContainer {
+    display: block;
+    align-self: flex-end;
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    padding-right: 8px;
+    cursor: pointer;
+    margin: -5px;
+}
+
+.closeBtnContainer:hover {
+    background-color: var(--darkBlue);
+}
+
+.closeBtnContainer:hover>.closeBtn, .closeBtnContainer:hover>.closeBtn::after {
+    border-color: var(--white);
+}
+
+.closeBtn {
+    position: relative;
+    width: 25px;
+    height: 3px;
+    top: 18px;
+    left: 8px;
+    transform: rotate(45deg);
+    border-bottom: 3px solid var(--blue);
+}
+
+.closeBtn::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 18px;
+    right: 8px;
+    transform: rotate(-90deg);
+    border-bottom: 3px solid var(--blue);
+}

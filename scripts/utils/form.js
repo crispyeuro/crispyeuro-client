@@ -68,6 +68,23 @@ export function checkTerms(fieldId, mistakeFieldId) {
     return checkFormField(fieldId, mistakeFieldId, RULES);
 }
 
+export function checkName(fieldId, mistakeFieldId) {
+    const RULES = [
+        [/[^A-Za-z]/, 'Allowed English letters'],
+        [/^.{1,2}$/, 'Too short name'],
+        [/^.{30,}$/, 'Too long name']
+    ];
+    return checkFormField(fieldId, mistakeFieldId, RULES);
+}
+
+export function checkAddress(fieldId, mistakeFieldId) {
+    const RULES = [
+        [/^.{1,2}$/, 'Too short address'],
+        [/^.{40,}$/, 'Too long address']
+    ];
+    return checkFormField(fieldId, mistakeFieldId, RULES);
+}
+
 function checkFormField(fieldId, mistakeFieldId, rules) {
     const fieldValue = getFieldValue(fieldId);
     const mistakeField = document.getElementById(mistakeFieldId);

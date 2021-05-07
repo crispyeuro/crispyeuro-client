@@ -1,7 +1,7 @@
 @import "main.css";
 /*Coincard modal*/
 
-.modalContent, .modalContentMyRequest {
+.modalContent, .modalContentMyRequest, .termsOfUseModalWrapper {
     /*display: flex*/
     display: none;
     justify-content: center;
@@ -13,7 +13,7 @@
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.modal, .modalUserMyRequest {
+.modal, .modalUserMyRequest, .termsOfUseModal {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
