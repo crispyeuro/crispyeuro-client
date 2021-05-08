@@ -302,7 +302,6 @@ async function loadSentSwapRequests(result) {
                     <button class="swapChangeOffer" id="swapChangeOffer" onclick="getUserCoinsToSwapChangeOffer('` + result[i].swap_request_id + `'); showSwapChangeOfferModal()">Change
                         offer</button>
                     <button onclick="loadswapModalCancel('` + result[i].swap_request_id + `');showSwapCloseConfirmation('swapModalCancel')">Cancel offer</button>
-                    <button>Swapped</button>
                 </div>
                 <div class="swapRequestChangesName opened" id="swapRequestChangesShow` + result[i].swap_request_id + `"
                     onclick="getSwapRequestChanges('` + result[i].swap_request_id + `');swapRequestChangesBtnClick('` + result[i].swap_request_id + `', 'open')">See offer previous request changes</div>
@@ -470,7 +469,7 @@ async function loadReceivedSwapRequests(result) {
                         <button class="swapReplyRequestBtn" id="swapReplyRequestBtn` + result[i].swap_request_id + `"
                             onclick="swapReplyBtnClick(` + result[i].swap_request_id + `)">Reply</button>
                         <button onclick="loadswapModalDismiss('` + result[i].swap_request_id + `');showSwapCloseConfirmation('swapModalDismiss')">Dismiss</button>
-                        <button>Swapped</button>
+                        <button onclick="openSwapConfirmModal('` + result[i].swap_request_id + `', '` + result[i].receiver_coins + `', '` + result[i].sender_coins + `');">Swapped</button>
                     </div>
                     <div class="swapRequestChangesName opened" id="swapRequestChangesShow` + result[i].swap_request_id + `"
                         onclick="getSwapRequestChanges('` + result[i].swap_request_id + `');swapRequestChangesBtnClick('` + result[i].swap_request_id + `', 'open')">See offer previous request changes</div>
@@ -733,4 +732,43 @@ function processEmptyCoinDataValue(coinValue) {
 
 function closeCoinDetailsModal() {
     document.querySelector('.swapCoinDetailsModalWrapper').style.display = "none";
+}
+
+function openSwapConfirmModal(swapRequestId, receiverCoins, senderCoins) {
+    let modalContent = 
+        `
+        <div class="closeBtnContainer" onclick="closeSwapConfirmModal();">
+            <div class="closeBtn"></div>
+        </div>
+        <div class="swappedConfirmationModalName">Coin swap confirmation</div>
+        <div class="swappedConfirmationModalContent">Do you want the app to perform the coin swap?</div>
+        <form class="swappedConfirmationForm" action="/performCoinsSwap" method="post">
+            <input class="swapRequestIdHidden" name="swapRequestId" type="number" value="` + swapRequestId + `">
+            <input type="button" class="swapModalBtn" onclick="sendForm('.swappedConfirmationForm');swapConfirmSuccessModal();" value="Yes">
+            <input type="button" class="swapModalBtn" value="No" onclick="closeSwapConfirmModal();">
+        </form>
+        `;
+    
+    document.querySelector('.swappedConfirmationModal').innerHTML = modalContent;
+    document.querySelector('.swappedConfirmationModalWrapper').style.display = "flex";
+}
+
+function closeSwapConfirmModal() {
+    document.querySelector('.swappedConfirmationModalWrapper').style.display = "none";
+}
+
+function swapConfirmSuccessModal() {
+    let modalContent = 
+        `
+        <div class="closeBtnContainer" onclick="closeSwapConfirmModal();">
+            <div class="closeBtn"></div>
+        </div>
+        <div class="swappedConfirmationModalName">Coin swap success</div>
+        <div class="swappedConfirmationModalContent">The coin swap was successful!</div>
+        <div class="swappedConfirmationForm">
+            <button class="swapModalBtn" onclick="closeSwapConfirmModal();getReceivedSwapRequests();">OK</button>
+        </div>
+        `;
+    
+    document.querySelector('.swappedConfirmationModal').innerHTML = modalContent;
 }
