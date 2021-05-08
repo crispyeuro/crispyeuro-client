@@ -321,6 +321,7 @@ async function getAddedCoin(coinId) {
     const response = await fetch(apiPath);
     const obj = await response.json();
     try {
+        console.log(obj);
         return obj;
     } catch (error) {
         console.log(error);
@@ -349,7 +350,7 @@ async function loadSenderCoin(coinId) {
                 <div class="coinDescription">
                     <span>ID <div class="textBold">` + coin[0].added_coin_id + `</div> in my collection</span><br><br>
                     <span>Grade: ` + coin[0].grade + `</span><br><br>
-                    <span><a href="coincard.html">View details</a></span>
+                    <div class="swapCoinDetailsBtn" onclick="openCoinDetailsModal(` + coinId + `)">View details</div>
                 </div>
             </div>
         </div>
@@ -382,7 +383,7 @@ async function loadReceiverCoin(coinId) {
                 <div class="coinDescription">
                     <br>
                     <span>Grade: ` + coin[0].grade + `</span><br><br>
-                    <span><a href="coincard.html">View details</a></span>
+                    <div class="swapCoinDetailsBtn" onclick="openCoinDetailsModal(` + coinId + `)">View details</div>
                 </div>
             </div>
         </div>
@@ -679,4 +680,58 @@ async function loadSwapMessages(swapRequestId, result) {
             
         }
     }
+}
+
+
+async function openCoinDetailsModal(coinId) {
+    let coin = await getAddedCoin(coinId);
+    let nominal = await coinNominalText(coin[0].denomination);
+    let coinType = ((coin[0].coin_type).charAt(0).toUpperCase() + (coin[0].coin_type).slice(1)).replace('_', ' ');
+    let modalContent = 
+        `
+        <div class="closeBtnContainer" onclick="closeCoinDetailsModal();">
+            <div class="closeBtn"></div>
+        </div>
+        <div class="swapCoinDetailsModalName">User coin details</div>
+        <div class="swapCoinDetailsModalCoinName">` + nominal + ` ` + coin[0].country + ` ` + coinType + `</div>
+        <div class="swapCoinDetailsModalTable">
+            <div class="swapCoinDetailsModalRow">
+                <div class="swapCoinDetailsModalRowName">Amount</div>
+                <div class="swapCoinDetailsModalRowContent">` + processEmptyCoinDataValue(coin[0].amount) + `</div>
+            </div>
+            <div class="swapCoinDetailsModalRow">
+                <div class="swapCoinDetailsModalRowName">Grade</div>
+                <div class="swapCoinDetailsModalRowContent">` + processEmptyCoinDataValue(coin[0].grade) + `</div>
+            </div>
+            <div class="swapCoinDetailsModalRow">
+                <div class="swapCoinDetailsModalRowName">Design</div>
+                <div class="swapCoinDetailsModalRowContent">` + processEmptyCoinDataValue(coin[0].design) + `</div>
+            </div>
+            <div class="swapCoinDetailsModalRow">
+                <div class="swapCoinDetailsModalRowName">Set</div>
+                <div class="swapCoinDetailsModalRowContent">` + processEmptyCoinDataValue(coin[0].in_set) + `</div>
+            </div>
+            <div class="swapCoinDetailsModalRow">
+                <div class="swapCoinDetailsModalRowName">Picture link</div>
+                <div class="swapCoinDetailsModalRowContent">` + processEmptyCoinDataValue(coin[0].obverse_image_path) + `</div>
+            </div>
+            <div class="swapCoinDetailsModalRow">
+                <div class="swapCoinDetailsModalRowLink">For more details visit <a href="coincard.html?coin_id=` + coin[0].coin_id + `" target=_blank" rel="noopener noreferrer"> coin main page</a>.
+            </div>
+        </div>
+        `;
+    document.querySelector('.swapCoinDetailsModal').innerHTML = modalContent;
+    document.querySelector('.swapCoinDetailsModalWrapper').style.display = "flex";
+}
+
+function processEmptyCoinDataValue(coinValue) {
+    if (coinValue == null || coinValue == "null" || coinValue == "" || coinValue == undefined) {
+        return `<div class="modalCoinDtataValueEmpty">No data</div>`;
+    } else {
+        return `<div class="modalCoinDataValue">` + coinValue + `</div>`;
+    }
+}
+
+function closeCoinDetailsModal() {
+    document.querySelector('.swapCoinDetailsModalWrapper').style.display = "none";
 }
