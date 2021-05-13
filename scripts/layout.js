@@ -22,7 +22,6 @@ window.onload = function () {
                         </form>
                     </div>
                 </li>
-                <li><a href="messages.html">Messages</a></li>
                 <li><a href="swap.html">Swap</a></li>
                 <li><a href="settings.html">Settings</a></li>
                 <li><form class="logoutForm" action="/logout" method="get"><input type="submit" name="logout" value="Log out" /></form></li>
