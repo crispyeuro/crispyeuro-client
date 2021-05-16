@@ -42,11 +42,6 @@
     height: 250px;
     border-radius: 50%;
     margin: 25px;
-    background: radial-gradient(white 55%, transparent 55.5%), 
-    conic-gradient( rgba(52, 123, 152, 1) 25%, 
-    rgba(39, 93, 114, 1) 25% 43%,
-    rgba(53, 74, 84, 1) 43% 45%,
-    rgba(211, 211, 211, 1) 45% 100%);
 }
 
 .chartTextPercent {
@@ -142,19 +137,19 @@
 .statRegularCoinsMeter {
     width: 40%;
     background-color: rgba(52, 123, 152, 1);
-    color: rgba(211, 211, 211, 1);
+    color: white;
 }
 
 .statCommemorativeCoinsMeter {
     width: 72%;
     background-color: rgba(39, 93, 114, 1);
-    color: rgba(211, 211, 211, 1);
+    color: white;
 }
 
 .statOtherCoinsMeter {
     width: 16%;
     background-color: rgba(53, 74, 84, 1);
-    color: rgba(211, 211, 211, 1);
+    color: white;
 }
 
 .statsTotalCoinsAmount {
