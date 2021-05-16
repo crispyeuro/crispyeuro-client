@@ -1,3 +1,5 @@
+// User interface of the 'Messages' tab. (Unused. Functionality to be implemented in further tasks)
+/*
 function showConversation(userId) {
     document.getElementsByClassName("messagesContactsContainer")[0].style.display = "none";
     document.getElementsByClassName("conversationContainer")[0].style.display = "block";
@@ -89,7 +91,7 @@ function loadMessagesContactsList() {
     var userId;
     var contactMessages;
     var messagesContactId = -1;
-    /*Display test contacts. Last display contact not displayed for testing purposes*/
+    // Display test contacts. Last display contact not displayed for testing purposes
     for (contactId = 0; contactId < testContacts.length - 1; contactId++) {
         contactContainer = `
         <div class="messagesContact">
@@ -163,7 +165,7 @@ function searchContacts(x) {
     var found = 0;
     for (i = 0; i < testContacts.length; i++) {
 
-        /*If user is already in contacts list. Last test contact is not in the list for testing purposes.*/
+        //If user is already in contacts list. Last test contact is not in the list for testing purposes.
         if (testContacts[i].username != "user972" && x == testContacts[i].username) {
             var searchResult = `<div class="modalSearchResultRow"><div class="modalSearchUsername"><span class="modalSearchUsernameText">` + testContacts[i].username + `</span>`;
             if (testContacts[i].online == true) {
@@ -191,3 +193,4 @@ function searchContacts(x) {
         document.getElementsByClassName("modalSearchContactResult")[0].innerHTML = "Nothing found";
     }
 }
+*/

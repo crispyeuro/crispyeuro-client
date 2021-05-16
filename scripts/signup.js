@@ -27,7 +27,7 @@ async function setUpSignUpButton() {
         if (validateSignUpForm()) {
             const error = await sendForm('.signUpForm');
             if (error) {
-                document.querySelector('.signupUnsuccessfulShowMistake').innerHTML =  error.error + '<br>';
+                document.querySelector('.signupUnsuccessfulShowMistake').innerHTML = error.error + '<br>';
             } else {
                 showSignUpSuccess();
             }
