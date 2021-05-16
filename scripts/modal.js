@@ -23,7 +23,7 @@ function showAddedCoinDataModal() {
 
     document.getElementById("modalAddCoinBtn").style.display = "none";
     document.getElementById("modalSaveCoinBtn").style.display = "block";
-    document.querySelector('.modalUserMyRequestCoinToChoose').style.display = 'none';
+    /*document.querySelector('.modalUserMyRequestCoinToChoose').style.display = 'none';*/
 
     document.getElementById("modalCoinUserSwap").style.display = "none";
     document.getElementById("modalSendUserOffer").style.display = "none";
@@ -40,13 +40,14 @@ function showCoincardUserOffer() {
     document.querySelector('.modalUserMyRequestCoinToChoose').style.display = 'none';
 
     document.getElementById("modalCoinUserSwap").style.display = "block";
-    document.getElementById("modalSendUserOffer").style.display = "block";
+    /*document.getElementById("modalSendUserOffer").style.display = "block";*/
 }
 
 function showCoincardMyRequest() {
     document.querySelector('.modalContentMyRequest').style.display = 'flex';
     document.querySelector('.offeredCoinRequestContainer').style.display = 'block';
     document.querySelector('.coinRequestContainer').style.display = 'none';
+    document.querySelector('.modalRequestThisCoinSwapBtnNext').style.display = 'block';
 }
 
 function showCoincardMyOffer() {

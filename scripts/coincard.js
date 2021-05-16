@@ -1,83 +1,88 @@
-async function checkCoincardHash() {
-    const apiPath = `/api/lala${window.location.search}`;
+async function getCoinData() {
+    const apiPath = `/api/getCoinData${window.location.search}`;
     const response = await fetch(apiPath);
-    const obj = await response.json();
-    console.log(obj);
+    const object = await response.json();
     try {
-        displayCoinVariables(obj);
+        if (object.length > 0) {
+            loadCoinData(object[0]);
+        } else {
+            alert(`Can't find any coin with these parameters.`);
+        }
     } catch (err) {
-        console.log(`Can't find any coin with these parameters.`);
+        console.log(err);
+        alert(`Can't find any coin with these parameters.`);
     }
 }
 
-function displayCoinVariables(obj) {
-    let denominationStr = coinNominalText(obj[0].denomination);
+function loadCoinData(coin) {
+    let denominationStr = coinNominalText(coin.denomination);
 
-    document.title = "Coin " + denominationStr + " " + obj[0].issue_year + " " + obj[0].country;
-    document.getElementsByClassName("viewCoincardName")[0].innerHTML = denominationStr + " " + obj[0].issue_year + " " + obj[0].country;
-    document.getElementsByClassName("viewCoinDenomination")[0].innerHTML = denominationStr;
-    document.getElementsByClassName("viewCoinYear")[0].innerHTML = obj[0].issue_year;
-    document.getElementsByClassName("viewCoinCountry")[0].innerHTML = obj[0].country;
-    document.getElementsByClassName("viewCoinDiameter")[0].innerHTML = obj[0].diameter + " mm";
-    document.getElementsByClassName("viewCoinThickness")[0].innerHTML = obj[0].thickness + " mm";
-    document.getElementsByClassName("viewCoinMass")[0].innerHTML = obj[0].mass + " g";
-    document.getElementsByClassName("viewCoinComposition")[0].innerHTML = obj[0].composition;
-    document.getElementsByClassName("viewCoinEdge")[0].innerHTML = obj[0].edge;
-    document.getElementsByClassName("viewCoinFeature")[0].innerHTML = obj[0].feature;
-    document.getElementsByClassName("viewCoinDesciprtion")[0].innerHTML = obj[0].coin_description;
-    if (obj[0].obverse_image_path != null) {
-        document.getElementsByClassName("coinPictureContainer")[0].innerHTML = `<img src="` +
-            obj[0].obverse_image_path + `" title="Image source: ` + obj[0].obverse_image_path + `">`;
-        document.getElementsByClassName("coincardImageSource")[0].innerHTML = `<div class="textColorDarkBlue">Coin image source:&nbsp</div><a href="` +
-            obj[0].obverse_image_path + `">` + obj[0].obverse_image_path + `</a>`;
-    }
+    document.title = "Coin " + denominationStr + " " + coin.issue_year + " " + coin.country;
+    document.querySelector('.viewCoincardName').innerHTML = denominationStr + " " + coin.issue_year + " " + coin.country;
 
-    let mintageHTML = `
-        <tr>
-            <th>`;
-    if (obj[0].mintage_total != null) {
-        mintageHTML += obj[0].mintage_total.toLocaleString() + `</th>
-            <td>`;
+    loadCoinDetails(coin, denominationStr);
+    loadCoinImage(coin);
+    loadCoinMintage(coin);
+    loadCoinModalDetails(coin, denominationStr);
+}
+
+function loadCoinDetails(coin, denomination) {
+    document.querySelector('.viewCoinDenomination').innerHTML = denomination;
+    document.querySelector('.viewCoinYear').innerHTML = coin.issue_year;
+    document.querySelector('.viewCoinCountry').innerHTML = coin.country;
+    document.querySelector('.viewCoinDiameter').innerHTML = coin.diameter + " mm";
+    document.querySelector('.viewCoinThickness').innerHTML = coin.thickness + " mm";
+    document.querySelector('.viewCoinMass').innerHTML = coin.mass + " g";
+    document.querySelector('.viewCoinComposition').innerHTML = coin.composition;
+    document.querySelector('.viewCoinEdge').innerHTML = coin.edge;
+    document.querySelector('.viewCoinFeature').innerHTML = coin.feature;
+    document.querySelector('.viewCoinDesciprtion').innerHTML = coin.coin_description;
+}
+
+function loadCoinImage(coin) {
+    if (coin.obverse_image_path != null) {
+        document.querySelector('.coinPictureContainer').innerHTML =
+            `<img src="` + coin.obverse_image_path + `" title="Image source: ` + coin.obverse_image_path + `">`;
+
+        document.querySelector('.coincardImageSource').innerHTML =
+            `<div class="textColorDarkBlue">Coin image source:&nbsp</div><a href="` +
+            coin.obverse_image_path + `">` + coin.obverse_image_path + `</a>`;
+    }
+}
+
+function loadCoinMintage(coin) {
+    let mintageHTML = `<tr><th>`;
+
+    if (coin.mintage_total != null) {
+        mintageHTML += coin.mintage_total.toLocaleString() + `</th><td>`;
     } else {
-        mintageHTML += `<span class="textItalic">No data</span></th>
-            <td>`;
-    }
-    if (obj[0].uncirculated != null) {
-        mintageHTML += obj[0].uncirculated.toLocaleString() + `</th>
-            <td>`;
-    } else {
-        mintageHTML += `</th>
-            <td>`;
-    }
-    if (obj[0].brilliant_uncirculated != null) {
-        mintageHTML += obj[0].brilliant_uncirculated.toLocaleString() + `</th>
-            <td>`;
-    } else {
-        mintageHTML += `</th>
-            <td>`;
-    }
-    if (obj[0].proof != null) {
-        mintageHTML += obj[0].proof.toLocaleString() + `</th>`;
-    } else {
-        mintageHTML += `</th>`;
-    }
-    document.getElementsByClassName("mintageTable")[0].innerHTML += mintageHTML;
-    if (obj[0].mint != null) {
-        document.getElementsByClassName("coincardMint")[0].innerHTML = `  ` + obj[0].mint;
-    }
-    if (obj[0].issue_date != null) {
-        document.getElementsByClassName("coincardIssueDate")[0].innerHTML = ` ` + obj[0].issue_date;
-    }
-    if (obj[0].mintage_description != null) {
-        document.getElementsByClassName("coincardAdditionalInfo")[0].innerHTML = `<div class="textColorDarkBlue">Additional information:&nbsp</div>` + obj[0].mintage_description;
+        mintageHTML += `<span class="textItalic">No data</span></th><td>`;
     }
 
-    document.querySelector('.addedCoinCoincardNameModal').innerHTML = denominationStr + ' ' + obj[0].issue_year + ' ' + obj[0].country;
-    document.querySelector('.addedCoinCoincardOfferName').innerHTML = denominationStr + ' ' + obj[0].issue_year + ' ' + obj[0].country;
-    document.querySelector('.wantThisCoinId').value = obj[0].coin_id;
-    document.querySelector('.wantThisCoinChangeId').value = obj[0].coin_id;
-    document.querySelector('.userWantThisCoinSwapRequestName').innerHTML = denominationStr + ' ' + obj[0].issue_year + ' ' + obj[0].country + ' coin swap request';
-    document.querySelector('.myOfferModalCoinName').innerHTML = 'Wants <div class="textBold">' + denominationStr + ' ' + obj[0].issue_year + ' ' + obj[0].country +  '</div> coin with these parameters';
+    mintageHTML += checkNullTableField(coin.uncirculated).toLocaleString() + `</th><td>`;
+    mintageHTML += checkNullTableField(coin.brilliant_uncirculated).toLocaleString() + `</th><td>`;
+    mintageHTML += checkNullTableField(coin.proof).toLocaleString() + `</th>`;
+
+    document.querySelector('.mintageTable').innerHTML += mintageHTML;
+
+    document.querySelector('.coincardMint').innerHTML = `  ` + checkNullTableField(coin.mint);
+    document.querySelector('.coincardMint').innerHTML = `  ` + checkNullTableField(coin.issue_date);
+    if (coin.mintage_description != null) {
+        document.querySelector('.coincardAdditionalInfo').innerHTML =
+            `<div class="textColorDarkBlue">Additional information:&nbsp</div>` + coin.mintage_description;
+    }
+}
+
+function loadCoinModalDetails(coin, denominationStr) {
+    document.querySelector('.addedCoinCoincardNameModal').innerHTML = denominationStr + ' ' + coin.issue_year + ' ' + coin.country;
+    document.querySelector('.addedCoinCoincardOfferName').innerHTML = denominationStr + ' ' + coin.issue_year + ' ' + coin.country;
+    document.querySelector('.wantThisCoinId').value = coin.coin_id;
+    document.querySelector('.wantThisCoinChangeId').value = coin.coin_id;
+    document.querySelector('.userWantThisCoinSwapRequestName').innerHTML =
+        denominationStr + ' ' + coin.issue_year + ' ' + coin.country + ' coin swap request';
+    document.querySelector('.myOfferModalCoinName').innerHTML =
+        'Wants <div class="textBold">' + denominationStr + ' ' + coin.issue_year + ' ' + coin.country +
+        '</div> coin with these parameters';
 }
 
 async function getCommemorativecardUrlValues() {
@@ -132,7 +137,6 @@ function displayCommemorativecardVariables(obj) {
 }
 
 function displayCommemorativeCoinType(obj, urlParams) {
-    console.log(obj);
     let coinsAmount = 0;
     let commonIssueName = "";
     if (urlParams.has('coin_type')) {
@@ -186,7 +190,6 @@ async function getCountrycardUrlValues() {
     const response = await fetch(apiPath);
     const obj = await response.json();
     try {
-        console.log(obj);
         displayCountrycardVariables(obj);
     } catch (err) {
         alert(err);
@@ -476,7 +479,7 @@ function coinNominalText(nominal) {
                 nominalText = nominal + " euro";
             }
         } else {
-            console.log("Denomination value mistake")
+            console.log("Denomination value error");
         }
     } else {
         nominalText += nominal + " euro";
@@ -489,7 +492,6 @@ async function checkDenominationcardUrlValues() {
     const response = await fetch(apiPath);
     const obj = await response.json();
     try {
-        console.log(obj);
         separateDenominationValues(obj);
     } catch (err) {
         alert(err);
@@ -555,7 +557,7 @@ function separateDenominationValues(result) {
         table += `</tr></table>`;
         document.getElementsByClassName("denominationTable")[0].innerHTML = table;
 
-        let denomination = denominationString(result[0].denomination);
+        let denomination = coinNominalText(result[0].denomination);
         document.title = denomination + " coins";
         document.getElementsByClassName("containerName")[0].innerHTML = denomination + " coins";
         document.getElementsByClassName("cardDescription")[0].innerHTML = "There are " + totalCoinsAmount + " coins with the value of " + denomination + ".";
@@ -563,26 +565,7 @@ function separateDenominationValues(result) {
 }
 
 function denominationString(denomination) {
-    let denominationStr = denomination;
-    if (denominationStr.includes(".")) {
-        const separated = (denominationStr).split(".");
-        if (separated.length == 2) {
-            if (separated[0] == "0") {
-                if (separated[1].charAt(0) == "0") {
-                    denominationStr = separated[1].substring(1) + " cent";
-                } else {
-                    denominationStr = separated[1] + "0  cent";
-                }
-            } else {
-                denominationStr = denominationStr + " euro";
-            }
-        } else {
-            console.log("Denomination value mistake");
-        }
-    } else {
-        denominationStr += " euro";
-    }
-    return denominationStr;
+    return coinNominalText(denomination);
 }
 
 async function getAddedCoins() {
@@ -738,14 +721,12 @@ async function getWantedCoin() {
     const obj = await response.json();
     try {
         if (obj.length > 0) {
-            console.log(obj);
             document.querySelector('.changeWantedCoin').style.display = 'block';
             document.querySelector('.coincardWantThisCoinForm').style.display = 'none';
             loadWantedCoin(obj);
         } else {
             document.querySelector('.changeWantedCoin').style.display = 'none';
             document.querySelector('.coincardWantThisCoinForm').style.display = 'block';
-            console.log("no wanted coin");
         }
     } catch (err) {
         console.log(err);
@@ -791,13 +772,13 @@ function loadSwapWantedCoins(result) {
 
     for (i = 0; i < result.length; i++) {
         if (result[i].coin_id == coincardCoinId) {
-            let row = 
-        `
-        <div class="coincardUserSwapOffer" onclick="showCoincardMyOffer(); loadCoincardMyOffer('` + result[i].coin_id + `', '` + 
-        result[i].wanted_coin_id + `', '` + result[i].username + `', '` + result[i].grade + `', '` + result[i].amount + 
-        `', '` + result[i].design + `', '` + result[i].in_set + `', '` + result[i].comment + `')">` + result[i].username + `</div>
+            let row =
+                `
+        <div class="coincardUserSwapOffer" onclick="showCoincardMyOffer(); loadCoincardMyOffer('` + result[i].coin_id + `', '` +
+                result[i].wanted_coin_id + `', '` + result[i].username + `', '` + result[i].grade + `', '` + result[i].amount +
+                `', '` + result[i].design + `', '` + result[i].in_set + `', '` + result[i].comment + `')">` + result[i].username + `</div>
         `;
-        document.querySelector('.coincardOtherUsersRequests').innerHTML += row;
+            document.querySelector('.coincardOtherUsersRequests').innerHTML += row;
         }
     }
 }
@@ -832,9 +813,9 @@ function loadCoincardMyOffer(coinId, wantedCoinId, username, grade, amount, desi
         document.querySelector('.myOfferModalInSet').value = inSet;
     }
     document.querySelector('.myOfferModalInComment').value = comment;
-    document.querySelector('.modalWantThisCoinSwapBtnNext').onclick = function() {
-        getSwapCoinsOtherUser(wantedCoinId); 
-        getSwapCoinsListOffer("'" + wantedCoinId + "'"); 
+    document.querySelector('.modalWantThisCoinSwapBtnNext').onclick = function () {
+        getSwapCoinsOtherUser(wantedCoinId);
+        getSwapCoinsListOffer("'" + wantedCoinId + "'");
         showCreateMyOfferContainer('create');
     }
 }
@@ -856,8 +837,8 @@ async function getSwapCoinsListOffer() {
 
 function loadCoincardSwapCoinsListOffer(result) {
     let count = 0;
-    document.getElementById('modalMyCoinsToOfferList').innerHTML = 
-    `
+    document.getElementById('modalMyCoinsToOfferList').innerHTML =
+        `
     <br>
     <div class="coinSwapSettings coinSwapSettingsHeader">
         <div class="coinSwapSettingsName">Coin</div>
@@ -881,12 +862,12 @@ function loadCoincardSwapCoinsListOffer(result) {
                 imagePath = ``;
             }
 
-            let row = 
-            `
+            let row =
+                `
             <div class="coinSwapSettings" id="swapSettingsCoin` + i + `">
-                <div class="coinSwapSettingsName"><div class=textBold>` + coinNominalText(result[i].denomination) + ` ` + 
-                result[i].issue_year + ` ` + result[i].country + 
-                `</div><br>` + coinType + 
+                <div class="coinSwapSettingsName"><div class=textBold>` + coinNominalText(result[i].denomination) + ` ` +
+                result[i].issue_year + ` ` + result[i].country +
+                `</div><br>` + coinType +
                 `</div>
                 <div class="coinSwapSettingsGrade">` + checkNullTableField(result[i].grade) + `</div>
                 <div class="coinSwapSettingsAmount">` + checkNullTableField(result[i].amount) + `</div>
@@ -924,8 +905,8 @@ async function getSwapCoinsOtherUser(wanted_coin_id) {
 
 function loadCoincardOtherUserSwapCoinsListOffer(result) {
     let count = 0;
-    document.querySelector('.coinSwapOtherUserOfferListHead').innerHTML = 
-    `
+    document.querySelector('.coinSwapOtherUserOfferListHead').innerHTML =
+        `
     <br>
     <div class="coinSwapSettings coinSwapSettingsHeader">
         <div class="coinSwapSettingsName">Coin</div>
@@ -948,13 +929,13 @@ function loadCoincardOtherUserSwapCoinsListOffer(result) {
             imagePath = ``;
         }
 
-        let row = 
+        let row =
             `
             <div class="coinSwapSettings" id="swapSettingsCoin` + i + `">
-                <div class="coinSwapSettingsName"><div class=textBold>` + coinNominalText(result[i].denomination) + ` ` + 
-                result[i].issue_year + ` ` + result[i].country + 
-                `</div><br>` + coinType + 
-                `</div>
+                <div class="coinSwapSettingsName"><div class=textBold>` + coinNominalText(result[i].denomination) + ` ` +
+            result[i].issue_year + ` ` + result[i].country +
+            `</div><br>` + coinType +
+            `</div>
                 <div class="coinSwapSettingsGrade">` + checkNullTableField(result[i].grade) + `</div>
                 <div class="coinSwapSettingsAmount">` + checkNullTableField(result[i].amount) + `</div>
                 <div class="coinSwapSettingsDesign">` + checkNullTableField(result[i].design) + `</div>
@@ -1009,15 +990,14 @@ function loadSwapOfferedCoins(result) {
 
     for (i = 0; i < result.length; i++) {
         if (result[i].coin_id == coincardCoinId) {
-            console.log(result[i].coin_value);
-            let row = 
-        `
-        <div class="coincardUserSwapOffer" onclick="showCoincardMyRequest(); showCreateMyRequestContainer('goBack'); loadCoincardOtherUserOffer('` + result[i].coin_id + `', '` + 
-        result[i].added_coin_id + `', '` + result[i].username + `', '` + result[i].grade + `', '` + 
-        result[i].coin_value + `', '` + result[i].amount + `', '` + result[i].design + `', '` + 
-        result[i].in_set + `', '` + result[i].image_path + `', '` + result[i].comment + `')">` + result[i].username + `</div>
+            let row =
+                `
+        <div class="coincardUserSwapOffer" onclick="showCoincardMyRequest(); showCreateMyRequestContainer('goBack'); loadCoincardOtherUserOffer('` + result[i].coin_id + `', '` +
+                result[i].added_coin_id + `', '` + result[i].username + `', '` + result[i].grade + `', '` +
+                result[i].coin_value + `', '` + result[i].amount + `', '` + result[i].design + `', '` +
+                result[i].in_set + `', '` + result[i].image_path + `', '` + result[i].comment + `')">` + result[i].username + `</div>
         `;
-        document.querySelector('.coincardOtherUsersOffers').innerHTML += row;
+            document.querySelector('.coincardOtherUsersOffers').innerHTML += row;
         }
     }
 }
@@ -1058,7 +1038,7 @@ function loadCoincardOtherUserOffer(coinId, addedCoinId, username, grade, value,
     } else {
         document.querySelector('.offeredCoinPictureUrl').value = imagePath;
     }
-    document.querySelector('.modalRequestThisCoinSwapBtnNext').onclick = function() {
+    document.querySelector('.modalRequestThisCoinSwapBtnNext').onclick = function () {
         getWantedCoinsOtherUser(addedCoinId);
         getAddedCoinsToSwap();
         showCreateMyRequestContainer('create');
@@ -1078,8 +1058,8 @@ async function getWantedCoinsOtherUser(added_coin_id) {
 
 function loadCoincardOtherUserWantedCoinsList(result) {
     let count = 0;
-    document.getElementById('modalOtherUserReuestList').innerHTML = 
-    `
+    document.getElementById('modalOtherUserReuestList').innerHTML =
+        `
     <br>
     <div class="coinSwapSettings coinSwapSettingsHeader">
         <div class="coinSwapSettingsName">Coin</div>
@@ -1095,13 +1075,13 @@ function loadCoincardOtherUserWantedCoinsList(result) {
         let coinType = (result[i].coin_type).charAt(0).toUpperCase() + (result[i].coin_type).slice(1);
         coinType = coinType.replace('_', ' ');
 
-        let row = 
+        let row =
             `
             <div class="coinSwapSettings" id="swapSettingsCoin` + i + `">
-                <div class="coinSwapSettingsName"><div class=textBold>` + coinNominalText(result[i].denomination) + ` ` + 
-                result[i].issue_year + ` ` + result[i].country + 
-                `</div><br>` + coinType + 
-                `</div>
+                <div class="coinSwapSettingsName"><div class=textBold>` + coinNominalText(result[i].denomination) + ` ` +
+            result[i].issue_year + ` ` + result[i].country +
+            `</div><br>` + coinType +
+            `</div>
                 <div class="coinSwapSettingsGrade">` + checkNullTableField(result[i].grade) + `</div>
                 <div class="coinSwapSettingsAmount">` + checkNullTableField(result[i].amount) + `</div>
                 <div class="coinSwapSettingsDesign">` + checkNullTableField(result[i].design) + `</div>
@@ -1123,7 +1103,6 @@ async function getAddedCoinsToSwap() {
     const response = await fetch(apiPath);
     const obj = await response.json();
     try {
-        console.log(obj);
         loadCoincardAddedCoinsToSwap(obj);
     } catch (err) {
         console.log(err);
@@ -1132,8 +1111,8 @@ async function getAddedCoinsToSwap() {
 
 function loadCoincardAddedCoinsToSwap(result) {
     let count = 0;
-    document.querySelector('.coinSwapSettingsHead').innerHTML = 
-    `
+    document.querySelector('.coinSwapSettingsHead').innerHTML =
+        `
     <br>
     <div class="coinSwapSettings coinSwapSettingsHeader">
         <div class="coinSwapSettingsName">Coin</div>
@@ -1158,13 +1137,13 @@ function loadCoincardAddedCoinsToSwap(result) {
             imagePath = ``;
         }
 
-        let row = 
+        let row =
             `
             <div class="coinSwapSettings" id="swapSettingsCoin` + i + `">
-                <div class="coinSwapSettingsName"><div class=textBold>` + coinNominalText(result[i].denomination) + ` ` + 
-                result[i].issue_year + ` ` + result[i].country + 
-                `</div><br>` + coinType + 
-                `</div>
+                <div class="coinSwapSettingsName"><div class=textBold>` + coinNominalText(result[i].denomination) + ` ` +
+            result[i].issue_year + ` ` + result[i].country +
+            `</div><br>` + coinType +
+            `</div>
                 <div class="coinSwapSettingsGrade">` + checkNullTableField(result[i].grade) + `</div>
                 <div class="coinSwapSettingsAmount">` + checkNullTableField(result[i].amount) + `</div>
                 <div class="coinSwapSettingsDesign">` + checkNullTableField(result[i].design) + `</div>
