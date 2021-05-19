@@ -261,6 +261,104 @@ input[type=checkbox]:checked~.fCheckbox {
     padding-bottom: 10px;
 }
 
+
+.termsOfUseModalWrapper {
+    /*display: flex*/
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.termsOfUseModal {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 50%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    padding: 5px;
+}
+
+.termsOfUseModalName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 100%;
+    color: rgba(39, 93, 114, 1);
+    font-weight: bold;
+}
+
+.termsOfUseModalContent {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    width: 100%;
+    padding: 5% 5px;
+    margin: 5px 0;
+    color: rgba(51, 74, 82, 1);
+    background-color: rgba(135, 152, 173, 0.4);
+}
+
+.termsOfUseModalCloseBtnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+}
+
+
+/*'Close' button style for a modal*/
+
+.closeBtnContainer {
+    display: block;
+    align-self: flex-end;
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    padding-right: 8px;
+    cursor: pointer;
+    margin: -5px;
+}
+
+.closeBtnContainer:hover {
+    background-color: rgba(39, 93, 114, 1);
+}
+
+.closeBtnContainer:hover>.closeBtn, .closeBtnContainer:hover>.closeBtn::after {
+    border-color: rgb(255, 255, 255);
+}
+
+.closeBtn {
+    position: relative;
+    width: 25px;
+    height: 3px;
+    top: 18px;
+    left: 8px;
+    transform: rotate(45deg);
+    border-bottom: 3px solid rgba(52, 123, 152, 1);
+}
+
+.closeBtn::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 18px;
+    right: 8px;
+    transform: rotate(-90deg);
+    border-bottom: 3px solid rgba(52, 123, 152, 1);
+}
+
+
 footer {
     grid-area: footer;
     display: flex;
@@ -339,6 +437,9 @@ footer {
     }
     .formTermsRow, .formSubmitRow, .goBackBtnRow {
         width: 100%;
+    }
+    .termsOfUseModal {
+        width: 90%;
     }
 }
 
