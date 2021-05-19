@@ -6,7 +6,6 @@
     <title>Coins by denomination</title>
     <script src="../scripts/layout.js"></script>
     <script src="../scripts/data.js"></script>
-    <script src="../scripts/coincard.js"></script>
     <link rel="stylesheet" href="../styles/layout.css">
     <link rel="stylesheet" href="../styles/nominalcard.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,12 +16,8 @@
     <div class="menu"></div>
 
     <div class="content">
-        <br><br>
-        <script type="text/javascript">
-            checkDenominationcardUrlValues();
-        </script>
         <div class="goBack">
-            <button onclick="window.history.back()">Go back</button>
+            <button class="goBackBtn">Go back</button>
         </div>
         <div class="cardName">
             <div class="containerName">Coins by denomination</div>
@@ -40,5 +35,7 @@
 
     <footer id="footer"></footer>
 </body>
+
+<script src="../scripts/coincard.js"></script>
 
 </html>

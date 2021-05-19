@@ -17,7 +17,7 @@ window.onload = function () {
                                 <div class="navSearchSignPart"></div>
                             </button>
                             <div class="navSearchInputContainer" id="navSearchInputContainer">
-                                <input type="text" name="search" class="navSearchInputCollapsed" id="navSearchInput" onclick="stopParent(event)">
+                                <input type="text" name="search" class="navSearchInputCollapsed" id="navSearchInput" onclick="stopParent(event)" placeholder="Search for a coin">
                             </div>
                         </form>
                     </div>

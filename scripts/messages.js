@@ -1,4 +1,4 @@
-// User interface of the 'Messages' tab. (Unused. Functionality to be implemented in further tasks)
+// Graphical user interface of the 'Messages' tab. (Unused. Functionality to be implemented in further tasks)
 /*
 function showConversation(userId) {
     document.getElementsByClassName("messagesContactsContainer")[0].style.display = "none";

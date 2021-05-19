@@ -1,33 +1,6 @@
 /*Coincard tab modal*/
 
-var modalContent = document.getElementsByClassName("modalContent")[0];
-
-function showAddCoinContainer() {
-    modalContent.style.display = "flex";
-
-    document.getElementById("modalAddCoinName").style.display = "block";
-    document.getElementById("modalCoinDataName").style.display = "none";
-
-    document.getElementById("modalAddCoinBtn").style.display = "block";
-    document.getElementById("modalSaveCoinBtn").style.display = "none";
-
-    document.getElementById("modalCoinUserSwap").style.display = "none";
-    document.getElementById("modalSendUserOffer").style.display = "none";
-}
-
-function showAddedCoinDataModal() {
-    modalContent.style.display = "flex";
-
-    document.getElementById("modalAddCoinName").style.display = "none";
-    document.getElementById("modalCoinDataName").style.display = "block";
-
-    document.getElementById("modalAddCoinBtn").style.display = "none";
-    document.getElementById("modalSaveCoinBtn").style.display = "block";
-    /*document.querySelector('.modalUserMyRequestCoinToChoose').style.display = 'none';*/
-
-    document.getElementById("modalCoinUserSwap").style.display = "none";
-    document.getElementById("modalSendUserOffer").style.display = "none";
-}
+let modalContent = document.querySelector('.modalContent');
 
 function showCoincardUserOffer() {
     modalContent.style.display = "flex";
@@ -59,10 +32,6 @@ function hideModalContentMyOffer() {
     document.getElementsByClassName("modalContentMyOffer")[0].style.display = "none";
     document.getElementsByClassName("modalUserMyOfferViewUserRequest")[0].style.display = "none";
     document.getElementsByClassName("modalUserMyOfferCoinToChoose")[0].style.display = "none";
-}
-
-function hideAddCoinContainer() {
-    modalContent.style.display = "none";
 }
 
 function hideMyRequestContainer() {
@@ -124,8 +93,8 @@ function hideSwapChangeOfferModal() {
 }
 
 
-/*Add new contact modal
-function showAddNewContactModal() {
+//Add new contact modal
+/*function showAddNewContactModal() {
     document.getElementsByClassName("modalContentAddNewContact")[0].style.display = "flex";
 }
 

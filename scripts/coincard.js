@@ -1,3 +1,51 @@
+setUp();
+
+function setUp() {
+    let path = window.location.pathname;
+    if (path == '/static/coincard.html') {
+        setUpCoincard();
+    }
+    if (path == '/static/commemorativecard.html') {
+        setUpCommemorativecard();
+    }
+    if (path == '/static/countrycard.html') {
+        setUpCountrycard();
+    }
+    if (path == '/static/nominalcard.html') {
+        setUpNominalcard();
+    }
+
+    setUpGoBackButton();
+}
+
+function setUpCoincard() {
+    getCoinData();
+    getWantedCoin();
+    getAddedCoins();
+    getSwapWantedCoins();
+    getSwapOfferedCoins();
+    setUpAddNewCoinBtn();
+}
+
+function setUpCommemorativecard() {
+    getCommemorativecardUrlValues();
+}
+
+function setUpCountrycard() {
+    getCountrycardUrlValues();
+}
+
+function setUpNominalcard() {
+    checkDenominationcardUrlValues();
+}
+
+async function setUpGoBackButton() {
+    const button = document.querySelector('.goBackBtn');
+    button.addEventListener('click', () => {
+        window.history.back();
+    });
+}
+
 async function getCoinData() {
     const apiPath = `/api/getCoinData${window.location.search}`;
     const response = await fetch(apiPath);
@@ -575,6 +623,7 @@ async function getAddedCoins() {
     try {
         if (obj.length > 0) {
             loadAddedCoinsCoincard(obj);
+            setUpAddedCoinsViewBtn(obj);
         } else {
             document.querySelector('.addedCoinsTable').innerHTML = "";
         }
@@ -611,10 +660,7 @@ function loadAddedCoinsCoincard(obj) {
             `
             </div>
             <div class="coincardAddedAmount">` + obj[i].amount + `</div>
-            <div class="coincardAddedDataBtn"><a href="#" onclick="loadAddedCoinModalData(` +
-            obj[i].added_coin_id + `,'` + obj[i].grade + `',` + obj[i].amount + `,'` + obj[i].coin_value + `','` +
-            obj[i].comment + `','` + obj[i].design + `','` + obj[i].image_path + `','` + obj[i].in_set +
-            `',` + obj[i].swap_availability + `); showAddedCoinDataModal(); return false;">View</a>
+            <div class="coincardAddedDataBtn"><a href="#" class="addedCoinViewBtn` + obj[i].added_coin_id + `">View</a>
             </div>
             <form class="coincardAddedSwap coincardAddedSwapCBForm` + obj[i].added_coin_id + `" name="coincardAddedSwap" action="/checkboxAddedCoin" method="post">
                 <label for="coincardAddedSwapCB` + obj[i].added_coin_id + `" class="checkboxContainer coincardAddedSwapDisable"
@@ -643,39 +689,61 @@ function loadAddedCoinsCoincard(obj) {
     }
 }
 
-function loadAddedCoinModalData(coinId, grade, amount, value, comment, design, imagePath, inSet) {
-    document.querySelector('.addedCoinModalCoinId').value = coinId;
+function setUpAddedCoinsViewBtn(obj) {
+    for (i = 0; i < obj.length; i++) {
+        setUpViewBtn(obj[i]);
+    }
+}
 
-    document.querySelector('.addedCoinIdModal').innerHTML = '. Id: ' + coinId;
-    document.querySelector('.addedCoinAmount').value = amount;
-    if (grade === "null") {
-        document.querySelector('.addedCoinGrade').value = "";
-    } else {
-        document.querySelector('.addedCoinGrade').value = grade;
-    }
-    if (value === "null") {
-        document.querySelector('.addedCoinValue').value = "";
-    } else {
-        document.querySelector('.addedCoinValue').value = value;
-    }
-    if (design === "null") {
-        document.querySelector('.addedCoinDesign').value = "";
-    } else {
-        document.querySelector('.addedCoinDesign').value = design;
-    }
-    if (inSet === "null") {
-        document.querySelector('.addedCoinInSet').value = "";
-    } else {
-        document.querySelector('.addedCoinInSet').value = inSet;
-    }
-    if (comment === "null") {
-        document.querySelector('.addedCoinComment').value = "";
-    } else {
-        document.querySelector('.addedCoinComment').value = comment;
-    }
-    if (imagePath === "null") {
-        document.querySelector('.addedCoinPictureUrl').value = "";
-    } else document.querySelector('.addedCoinPictureUrl').value = imagePath;
+function setUpViewBtn(coin) {
+    const button = document.querySelector('.addedCoinViewBtn' + coin.added_coin_id);
+    button.addEventListener('click', () => {
+        loadAddedCoinModalData(coin);
+        showCoinModal();
+    });
+}
+
+function loadAddedCoinModalData(coin) {
+    document.querySelector('.modalName').innerHTML = 'Coin data';
+    document.querySelector('.modalMainBtn').value = 'Save';
+    document.querySelector('.modalMainBtn').onclick = function () {
+        sendForm('.addCoinModalForm'); hideCoinModal(); getAddedCoins();
+    };
+
+    document.querySelector('.addedCoinModalCoinId').value = coin.added_coin_id;
+    document.querySelector('.addedCoinIdModal').innerHTML = '. Id: ' + coin.added_coin_id;
+    document.querySelector('.addedCoinAmount').value = checkNullTableField(coin.amount);
+    document.querySelector('.addedCoinGrade').value = checkNullTableField(coin.grade);
+    document.querySelector('.addedCoinValue').value = checkNullTableField(coin.coin_value);
+    document.querySelector('.addedCoinDesign').value = checkNullTableField(coin.design);
+    document.querySelector('.addedCoinInSet').value = checkNullTableField(coin.in_set);
+    document.querySelector('.addedCoinComment').value = checkNullTableField(coin.comment);
+    document.querySelector('.addedCoinPictureUrl').value = checkNullTableField(coin.image_path);
+}
+
+function setUpAddNewCoinBtn() {
+    const button = document.querySelector('.addNewCoinBtn');
+    button.addEventListener('click', () => {
+        emptyAddedCoinModalData();
+        loadAddNewCoinModalData();
+        showCoinModal();
+    });
+}
+
+function loadAddNewCoinModalData() {
+    document.querySelector('.modalName').innerHTML = 'Add new coin';
+    document.querySelector('.modalMainBtn').value = 'Add coin';
+    document.querySelector('.modalMainBtn').onclick = function () {
+        sendForm('.addCoinModalForm'); hideCoinModal(); getAddedCoins();
+    };
+}
+
+function showCoinModal() {
+    document.querySelector('.modalContent').style.display = 'flex';
+}
+
+function hideCoinModal() {
+    document.querySelector('.modalContent').style.display = 'none';
 }
 
 async function sendForm(formSelectorQuery) {
@@ -792,27 +860,11 @@ function loadCoincardMyOffer(coinId, wantedCoinId, username, grade, amount, desi
     document.querySelector('.myOfferCoinId').value = coinId;
     document.querySelector('.myOfferWantedCoinId').value = wantedCoinId;
 
-    if (grade === "null") {
-        document.querySelector('.myOfferModalGrade').value = "";
-    } else {
-        document.querySelector('.myOfferModalGrade').value = grade;
-    }
-    if (amount === "null") {
-        document.querySelector('.myOfferModalAmount').value = "";
-    } else {
-        document.querySelector('.myOfferModalAmount').value = amount;
-    }
-    if (design === "null") {
-        document.querySelector('.myOfferModalDesign').value = "";
-    } else {
-        document.querySelector('.myOfferModalDesign').value = design;
-    }
-    if (inSet === "null") {
-        document.querySelector('.myOfferModalInSet').value = "";
-    } else {
-        document.querySelector('.myOfferModalInSet').value = inSet;
-    }
-    document.querySelector('.myOfferModalInComment').value = comment;
+    document.querySelector('.myOfferModalGrade').value = checkNullTableField(grade);
+    document.querySelector('.myOfferModalAmount').value = checkNullTableField(amount);
+    document.querySelector('.myOfferModalDesign').value = checkNullTableField(design);
+    document.querySelector('.myOfferModalInSet').value = checkNullTableField(inSet);
+    document.querySelector('.myOfferModalInComment').value = checkNullTableField(comment);
     document.querySelector('.modalWantThisCoinSwapBtnNext').onclick = function () {
         getSwapCoinsOtherUser(wantedCoinId);
         getSwapCoinsListOffer("'" + wantedCoinId + "'");
@@ -1007,37 +1059,13 @@ function loadCoincardOtherUserOffer(coinId, addedCoinId, username, grade, value,
     document.querySelector('.myRequestOtherUserCoinsToSWapName').innerHTML = `User <div class="textBold">` + username + `</div> wanted coins list`;
     document.querySelector('.coinRequestOfferedCoinId').value = addedCoinId;
 
-    if (grade === "null") {
-        document.querySelector('.offeredCoinGrade').value = "";
-    } else {
-        document.querySelector('.offeredCoinGrade').value = grade;
-    }
-    if (value === "null") {
-        document.querySelector('.offeredCoinValue').value = "";
-    } else {
-        document.querySelector('.offeredCoinValue').value = value;
-    }
-    document.querySelector('.offeredCoinAmount').value = amount;
-    if (design === "null") {
-        document.querySelector('.offeredCoinDesign').value = "";
-    } else {
-        document.querySelector('.offeredCoinDesign').value = design;
-    }
-    if (inSet === "null") {
-        document.querySelector('.offeredCoinInSet').value = "";
-    } else {
-        document.querySelector('.offeredCoinInSet').value = inSet;
-    }
-    if (comment === "null") {
-        document.querySelector('.offeredCoinComment').value = "";
-    } else {
-        document.querySelector('.offeredCoinComment').value = comment;
-    }
-    if (imagePath === "null") {
-        document.querySelector('.offeredCoinPictureUrl').value = "";
-    } else {
-        document.querySelector('.offeredCoinPictureUrl').value = imagePath;
-    }
+    document.querySelector('.offeredCoinGrade').value = checkNullTableField(grade);
+    document.querySelector('.offeredCoinValue').value = checkNullTableField(value);
+    document.querySelector('.offeredCoinAmount').value = checkNullTableField(amount);
+    document.querySelector('.offeredCoinDesign').value = checkNullTableField(design);
+    document.querySelector('.offeredCoinInSet').value = checkNullTableField(inSet);
+    document.querySelector('.offeredCoinComment').value = checkNullTableField(comment);
+    document.querySelector('.offeredCoinPictureUrl').value = checkNullTableField(imagePath);
     document.querySelector('.modalRequestThisCoinSwapBtnNext').onclick = function () {
         getWantedCoinsOtherUser(addedCoinId);
         getAddedCoinsToSwap();
