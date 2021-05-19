@@ -37,6 +37,10 @@ button {
     grid-area: specification;
 }
 
+.specification td {
+    border: 1px solid var(-white);
+}
+
 .coinPicture {
     display: flex;
     align-items: center;
@@ -139,12 +143,12 @@ td {
 }
 
 .mintageTableHeader, .specificationTableHeader {
-    color: var(--darkBlue);
+    color: var(--white);
 }
 
 .mintageTable th {
     font-weight: bold;
-    color: var(--darkBlue);
+    color: var(--white);
 }
 
 .collapse {
@@ -264,12 +268,12 @@ input[type="checkbox"]:checked+.collapsed {
 
 .coincardAddedCoinsHeader {
     font-weight: bold;
-    color: var(--darkBlue);
-    background-color: var(--lightOrange);
+    color: var(--white);
+    background-color: var(--orange);
 }
 
 .coincardAddedCoinsHeader:hover {
-    background-color: var(--lightOrange);
+    background-color: var(--orange);
 }
 
 .deleteBtnContainer {
@@ -340,9 +344,7 @@ input[type="checkbox"]:checked+.collapsed {
     text-decoration: underline;
 }
 
-.addedCoinModalCoinId, .coinIdModalCoinId, .addedCoinIdToDelete, .addedCoinToSwapId, .wantThisCoinId, 
-.wantThisCoinChangeId, .wantThisCoinDeleteId, .myOfferCoinId, .myOfferWantedCoinId, .myOfferOtherUserUsername, 
-.myReuestOtherUserUsername, .coinRequestOfferedCoinId {
+.addedCoinModalCoinId, .coinIdModalCoinId, .addedCoinIdToDelete, .addedCoinToSwapId, .wantThisCoinId, .wantThisCoinChangeId, .wantThisCoinDeleteId, .myOfferCoinId, .myOfferWantedCoinId, .myOfferOtherUserUsername, .myReuestOtherUserUsername, .coinRequestOfferedCoinId {
     display: none;
 }
 

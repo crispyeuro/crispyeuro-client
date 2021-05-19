@@ -104,7 +104,7 @@ table tr>.tableCellCenter:hover {
 
 .commemorativeOrderRow, .yearRow {
     width: 11.11%;
-    background-color: var(--lightOrange);
+    background-color: var(--orange);
     font-weight: bold;
 }
 
@@ -131,7 +131,7 @@ table tr>.tableCellCenter:hover {
 }
 
 .tableColumnCell {
-    background-color: var(--lightOrange);
+    background-color: var(--white);
     font-weight: bold;
 }
 
@@ -164,6 +164,7 @@ table tr>.tableCellCenter:hover {
 
 #countrycardOrdinaryContainer, #countrycardCommemorativeContainer, #countrycardOtherDenominationsContainer, #countrycardSilverContainer, #countrycardGoldContainer {
     margin-bottom: 25px;
+    width: 100%;
 }
 
 #displayOrdinaryCoins0, #displayOrdinaryCoins1, #displayOrdinaryCoins2, #displayOrdinaryCoins3 {
@@ -178,4 +179,14 @@ table tr>.tableCellCenter:hover {
 
 .tableNameGermany:hover {
     color: var(--darkBlue);
+}
+
+@media only screen and (max-width: 992px) {
+    .viewOrdinaryCoins, .ordinaryCoinsGermany {
+        min-width: fit-content;
+    }
+    #countrycardOrdinaryContainer, .viewCommemorativeCoins, .countrycardOtherDenominationsTable, .countrycardSilverTable, .countrycardGoldTable, .ordinaryCoinsGermany {
+        width: 87vw;
+        overflow-x: auto;
+    }
 }

@@ -371,7 +371,7 @@ function countrycardDisplayOrdinaryCoins(x) {
 function countrycardDisplayOrdinaryCoinsGermany(x, tableNumber, coinMint, click, clicked) {
     document.getElementById("countrycardOrdinaryContainer").innerHTML += `
     <div id="tableName` + tableNumber + `" class="tableNameGermany ` + click + `" onclick="countrycardTableGermanyClicked(` + tableNumber + `)">` + coinMint.replace("-", " ") + `</div>
-    <div id="displayOrdinaryCoins` + tableNumber + `" class="` + clicked + `">
+    <div class="ordinaryCoinsGermany" id="displayOrdinaryCoins` + tableNumber + `" class="` + clicked + `">
     <table class="viewOrdinaryCoins">
         <tr>
             <th>Year</th>
@@ -959,7 +959,6 @@ function loadCoincardOtherUserSwapCoinsListOffer(result) {
     let count = 0;
     document.querySelector('.coinSwapOtherUserOfferListHead').innerHTML =
         `
-    <br>
     <div class="coinSwapSettings coinSwapSettingsHeader">
         <div class="coinSwapSettingsName">Coin</div>
         <div class="coinSwapSettingsGrade">Grade</div>
@@ -1056,7 +1055,7 @@ function loadSwapOfferedCoins(result) {
 
 function loadCoincardOtherUserOffer(coinId, addedCoinId, username, grade, value, amount, design, inSet, imagePath, comment) {
     document.querySelector('.addedCoinCoincardOfferNameMonal').innerHTML = `User <div class="textBold">` + username + `</div> offer`;
-    document.querySelector('.myRequestOtherUserCoinsToSWapName').innerHTML = `User <div class="textBold">` + username + `</div> wanted coins list`;
+    document.querySelector('.myRequestOtherUserCoinsToSWapName').innerHTML = `<br>User <div class="textBold">` + username + `</div> wanted coins list`;
     document.querySelector('.coinRequestOfferedCoinId').value = addedCoinId;
 
     document.querySelector('.offeredCoinGrade').value = checkNullTableField(grade);
@@ -1141,7 +1140,6 @@ function loadCoincardAddedCoinsToSwap(result) {
     let count = 0;
     document.querySelector('.coinSwapSettingsHead').innerHTML =
         `
-    <br>
     <div class="coinSwapSettings coinSwapSettingsHeader">
         <div class="coinSwapSettingsName">Coin</div>
         <div class="coinSwapSettingsGrade">Grade</div>

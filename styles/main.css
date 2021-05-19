@@ -88,7 +88,9 @@ table, th, td {
 }
 
 th {
-    background-color: var(--lightOrange);
+    /*background-color: var(--lightOrange);*/
+    background-color: var(--orange);
+    color: var(--white);
 }
 
 tr:hover .tableColumnCell {
