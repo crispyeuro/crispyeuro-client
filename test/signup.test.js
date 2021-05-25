@@ -58,15 +58,15 @@ test.serial('Password is too short => an error message', async t => {
 test.serial('Password is OK => OK message', async t => {
     await t.context.driver.get('http://127.0.0.1:8080/static/signup.html');
     await t.context.driver.findElement(By.id('fPWD')).sendKeys('1234567');
-    const PasswordErrorMessage = await t.context.driver.findElement(By.id('fPWDMistake')).getText();
-    t.is(PasswordErrorMessage, 'OK');
+    const passwordErrorMessage = await t.context.driver.findElement(By.id('fPWDMistake')).getText();
+    t.is(passwordErrorMessage, 'OK');
 });
 
 test.serial('Signup button shows an error if the email is not specified', async t => {
     await t.context.driver.get('http://127.0.0.1:8080/static/signup.html');
     await t.context.driver.findElement(By.className('signUpBtn')).click();
-    const passwordErrorMessage = await t.context.driver.findElement(By.id('fEmailMistake')).getText();
-    t.is(passwordErrorMessage, 'Please enter email');
+    const emailErrorMessage = await t.context.driver.findElement(By.id('fEmailMistake')).getText();
+    t.is(emailErrorMessage, 'Please enter email');
 });
 
 test.serial('Email is OK => OK message', async t => {

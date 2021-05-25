@@ -51,15 +51,15 @@ test.serial('Username contains special characters => an error message', async t 
 test.serial('Password is too short => an error message', async t => {
     await t.context.driver.get('http://127.0.0.1:8080/static/login.html');
     await t.context.driver.findElement(By.id('fLoginPassword')).sendKeys('pass');
-    const usernameErrorMessage = await t.context.driver.findElement(By.id('fPasswordError')).getText();
-    t.is(usernameErrorMessage, 'Too short password');
+    const passwordErrorMessage = await t.context.driver.findElement(By.id('fPasswordError')).getText();
+    t.is(passwordErrorMessage, 'Too short password');
 });
 
 test.serial('Password is OK => OK message', async t => {
     await t.context.driver.get('http://127.0.0.1:8080/static/login.html');
     await t.context.driver.findElement(By.id('fLoginPassword')).sendKeys('1234567');
-    const usernameErrorMessage = await t.context.driver.findElement(By.id('fPasswordError')).getText();
-    t.is(usernameErrorMessage, 'OK');
+    const passwordErrorMessage = await t.context.driver.findElement(By.id('fPasswordError')).getText();
+    t.is(passwordErrorMessage, 'OK');
     t.pass();
 });
 
@@ -68,8 +68,8 @@ test.serial('Auth error if specified user does not exist', async t => {
     await t.context.driver.findElement(By.id('fLoginUsername')).sendKeys('r2eipfirn20ejkepm');
     await t.context.driver.findElement(By.id('fLoginPassword')).sendKeys('1234567');
     await t.context.driver.findElement(By.className('logInBtn')).click();
-    const usernameErrorMessage = await t.context.driver.findElement(By.className('loginUnsuccessfulShowMistake')).getText();
-    t.is(usernameErrorMessage, 'Authentication error (invalid username or password)');
+    const authErrorMessage = await t.context.driver.findElement(By.className('loginUnsuccessfulShowMistake')).getText();
+    t.is(authErrorMessage, 'Authentication error (invalid username or password)');
 });
 
 test.serial('Auth success if specified user exists', async t => {
@@ -85,8 +85,8 @@ test.serial('Recover account button shows an error if the email is not specified
     await t.context.driver.get('http://127.0.0.1:8080/static/login.html');
     await t.context.driver.findElement(By.className('forgotPasswordBtn')).click();
     await t.context.driver.findElement(By.className('emailSendBtn')).click();
-    const usernameErrorMessage = await t.context.driver.findElement(By.id('fForgotPassEmailError')).getText();
-    t.is(usernameErrorMessage, 'Please enter email');
+    const recoverErrorMessage = await t.context.driver.findElement(By.id('fForgotPassEmailError')).getText();
+    t.is(recoverErrorMessage, 'Please enter email');
 });
 
 test.serial('Fetch successful is database answer received', async t => {
