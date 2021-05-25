@@ -1,10 +1,15 @@
 {
     "private": true,
     "name": "@crispyeuro/crispyeuro-client",
+    "type": "module",
     "scripts": {
-        "build": "tsc"
+        "pretest": "nyc instrument --all src scripts",
+        "test": "ava",
+        "posttest": "nyc report"
     },
     "devDependencies": {
-        "typescript": "^4.0.3"
+        "ava": "^3.15.0",
+        "nyc": "^15.1.0",
+        "selenium-webdriver": "^4.0.0-beta.3"
     }
 }
