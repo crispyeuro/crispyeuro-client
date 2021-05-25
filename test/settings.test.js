@@ -243,8 +243,12 @@ test.serial('Auth succes', async t => {
     await t.context.driver.findElement(By.id('fEmail')).sendKeys('');
     await t.context.driver.findElement(By.id('fEmail')).clear();
     await t.context.driver.findElement(By.id('fEmail')).sendKeys('test@test.com');
-    await t.context.driver.findElement(By.id('fPWD')).sendKeys('testuser1234567');
-    await t.context.driver.findElement(By.id('fConfPWD')).sendKeys('testuser1234567');
+    await t.context.driver.findElement(By.id('fPWD')).sendKeys('');
+    await t.context.driver.findElement(By.id('fPWD')).clear();
+    await t.context.driver.findElement(By.id('fPWD')).sendKeys('testuser123456');
+    await t.context.driver.findElement(By.id('fConfPWD')).sendKeys('');
+    await t.context.driver.findElement(By.id('fConfPWD')).clear();
+    await t.context.driver.findElement(By.id('fConfPWD')).sendKeys('testuser123456');
     await t.context.driver.findElement(By.id('fAddress')).sendKeys('');
     await t.context.driver.findElement(By.id('fAddress')).clear();
     await t.context.driver.findElement(By.id('fAddress')).sendKeys('Estonia, Tallinn');
